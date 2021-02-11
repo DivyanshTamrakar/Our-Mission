@@ -1,0 +1,6 @@
+package com.example.namma_badavane;
+
+import io.flutter.embedding.android.FlutterActivity;
+
+public class MainActivity extends FlutterActivity {
+}

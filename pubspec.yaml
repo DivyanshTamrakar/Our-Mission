@@ -1,0 +1,51 @@
+name: namma_badavane
+description: An Android Application to report and resolve local issues
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  otp_text_field: ^1.0.2
+  image_picker: ^0.6.7+21
+  http: ^0.12.2
+  http_parser:
+  firebase_messaging: ^6.0.9
+  shared_preferences: ^0.5.12+4
+  dio: ^3.0.10
+  geolocator: ^6.2.0
+  permission_handler: ^5.1.0+2
+  connectivity: ^2.0.2
+  translator: ^0.1.5
+
+
+
+  cupertino_icons: ^1.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: ^0.8.1
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/app_icon.png"
+
+
+flutter:
+
+
+  uses-material-design: true
+
+
+  assets:
+     - assets/
+
+
