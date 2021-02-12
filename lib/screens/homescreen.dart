@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:namma_badavane/config.dart';
 import 'package:namma_badavane/models/department_model.dart';
 import 'package:namma_badavane/screens/category_list_screen.dart';
@@ -14,23 +15,44 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  GoogleTranslator translator = new GoogleTranslator();
+  String out;
+  var arr = new List(9);
   List<Department> departments = [];
-  List<dynamic> KannadaTranslation;
+  List<String> kann = ["ರಸ್ತೆನಿರ್ವಹಣೆ","ತ್ಯಾಜ್ಯ ಸಂಬಂಧಿತ","ವಿದ್ಯುತ್","ಆರೋಗ್ಯ ಇಲಾಖೆ","ಉದ್ಯಾನವನ ಹಾಗೂ ಆಟದ ಮೈದಾನ","ವಿದ್ಯಾಅಭ್ಯಾಸ ಮತ್ತು ಕಲ್ಯಾಣ ಯೋಜನೆಗಳು(ಸಹಾಯ)","ಒಳಚರಂಡಿ","ನೀರು","ಇತರೆ"];
 
   fetchData() async {
-    final translator = GoogleTranslator();
     var data = await DepartmentApi().getAllDepartments();
     setState(() {
       departments = data;
+      // for(int i = 0 ;i<departments.length;i++)
+      //   {
+      //     print(departments[i].title);
+      //     translator.translate(departments[i].title, from: 'en', to: 'kn').then((output){
+      //       print(output);
+      //       setState(() {
+      //         out = output.toString();
+      //         arr[i] = out;
+      //       });
+      //     });
+      //
+      //
+      //
+      //   }
+
+
     });
   }
-
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     fetchData();
+    StatusColor();
+
+
   }
 
   @override
@@ -38,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     print(width);
-    return SafeArea(
+     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
         elevation: 0.0,
@@ -46,6 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
           "Departments",
           style: TextStyle(color: primary_text_color),
         ),
+
         backgroundColor: primary_color,
         actions: [
           IconButton(
@@ -63,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: (departments.length > 1)
           ? Container(
-        margin: EdgeInsets.only(top: 20.0),
+              margin: EdgeInsets.only(top: 20.0),
               padding: EdgeInsets.all(6.0), //divyansh editing
               // padding: EdgeInsets.all(12.0),
               child: GridView.builder(
@@ -96,6 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             Divider(),
                             Text(
                               departments[index].title,
+                              // out,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: departments[index].title.length < 20
@@ -103,7 +127,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                       : 9,
                                   fontWeight: FontWeight.bold),
                             ),
-
                           ],
                         ),
                       ),

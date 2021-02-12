@@ -78,36 +78,51 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           children: [
             GestureDetector(
               onTap: () async {
-                var dio = new Dio();
-                var image_picker = await ImagePicker.pickImage(source: ImageSource.camera);
-                if(image_picker != null){
-                  setState(() {
-                    image = image_picker;
-                  });
-                }
-                try{
-                  String user_url = BASE_URL + "/users/profile-update";
-                  String filename  = image.path.split('/').last;
-                  FormData formdata = new FormData.fromMap({
-                    "profile": await MultipartFile.fromFile(image.path,filename: filename,
-                    contentType: new MediaType('image','png')),
-                    "type":"image/png"
-                  });
-                  Response response = await dio.post(user_url,
-                      data: formdata,
-                      options: Options(headers: {
-                        // "Authorization": token
-                        "accept":"*/*",
-                        "Authorization": token,
-                        "Content-Type":"multipart/form-data"
-                      }));
-                  print(response);
-
-
-
-                }catch(e){print(e);
-                }
-
+                // SharedPreferences prefs = await SharedPreferences
+                //     .getInstance();
+                // Dio dio = new Dio();
+                // dio.options.connectTimeout = 5000; //5s
+                // dio.options.receiveTimeout = 3000;
+                //
+                // var image_picker = await ImagePicker.pickImage(source: ImageSource.camera,imageQuality:50);
+                // if(image_picker != null){
+                //   setState(() {
+                //     image = image_picker;
+                //   });
+                // }
+                // try{
+                //   String user_url = BASE_URL + "/users/profile-update";
+                //   String filename  = image.path.split('/').last;
+                //   var formData = new FormData.fromMap({
+                //     "name":"Nitesh Vishwakarma",
+                //     "email":"tx2terminator@gmail.com",
+                //     "address":"sfdlsdfjg",
+                //     "location":[latitude,longitude],
+                //     "profile": await MultipartFile.fromFile(image.path,filename:filename, contentType: new MediaType('image','jpeg') ),
+                //   });
+                //   print("fOrm data");
+                //   print(formData);
+                //   var response = await dio.post(user_url, data: formData,
+                //       options: Options(headers: {
+                //         // "Authorization": prefs.getString("token"),
+                //         "Authorization": token,
+                //       })
+                //   );
+                //   print(response);
+                // }catch(e){print(e);
+                //
+                // showDialog(
+                //     context: context,
+                //     builder: (BuildContext context) {
+                //       return oneButtonDialog(
+                //           context: context,
+                //           title: "Error",
+                //           content:
+                //           e.toString(),
+                //           actionTitle: "OK");
+                //     });
+                //
+                // }
               },
               child: Container(
                   height: height * 0.5,

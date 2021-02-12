@@ -12,29 +12,33 @@ class _SubmittedScreenState extends State<SubmittedScreen> {
     double height=MediaQuery.of(context).size.height;
     double width=MediaQuery.of(context).size.width;
     return Scaffold(
+      extendBodyBehindAppBar: true,
       body: Column(
         children: [
-          Container(
-            height: 0.5*height,
-            width: width,
-            color: Colors.amber,
-          ),
+          SizedBox(height: 30.0,),
+          Image.asset("assets/registered.png"),
+          SizedBox(height: 40.0,),
+          Text("Succefully Registered !",style: TextStyle(fontSize: 25.0,fontWeight: FontWeight.bold),),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                SizedBox(height: 30),
-                Text("Your Complaint/Issue has been successfully registered.You will be notified if there will be any updates or progress",
-                  style: TextStyle(
-                    fontSize: 20,
-                  ),
-                  textAlign: TextAlign.center,),
+                SizedBox(height: 20),
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 35.0),
+                  child: Text("Your Complaint/Issue has been successfully registered.You will be notified if there will be any updates or progress",
+                    style: TextStyle(
+                      fontSize: 15,
+                    ),
+                    textAlign: TextAlign.justify,),
+                ),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Divider(
-                    height: 1,
+                    height: 5,
                   ),
                 ),
+                SizedBox(height: 30.0),
 
                 Material(
                   elevation: 5,
@@ -48,7 +52,7 @@ class _SubmittedScreenState extends State<SubmittedScreen> {
                     },
                     child: Container(
                       width:width*0.8,
-                      padding: EdgeInsets.symmetric(horizontal: 25,vertical: 10),
+                      padding: EdgeInsets.symmetric(horizontal: 25,vertical: 20),
                       decoration: BoxDecoration(
                           color: Colors.teal,
                           borderRadius: BorderRadius.circular(20.0)

@@ -3,15 +3,16 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:namma_badavane/config.dart';
 import 'package:namma_badavane/models/complaint_model.dart';
 import 'package:namma_badavane/models/department_model.dart';
+import 'package:namma_badavane/screens/submitted_screen.dart';
 import 'package:namma_badavane/utils/colors.dart';
 import 'package:namma_badavane/widgets/dialogs.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:http/http.dart' as http;
-
 
 class ComplaintFormScreen extends StatefulWidget {
   final List<Department> departments;
@@ -36,18 +37,17 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
   final _formKey = GlobalKey<FormState>();
   List<String> subDepartments;
   Department _selectedDepartment;
-  String _selectedSubDepartment,contact="",email="",location="";
-  Complaint complaint=new Complaint();
+  String _selectedSubDepartment, contact = "", email = "", location = "";
+  Complaint complaint = new Complaint();
   String lat = "";
   String lan = "";
 
-
   getCurrenLocation() async {
-    final geoposition  = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    final geoposition = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
     setState(() {
       lat = "${geoposition.latitude}";
       lan = "${geoposition.longitude}";
-
     });
   }
 
@@ -62,14 +62,14 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
         selectedDate = picked;
       });
   }
-  getData()async{
-    SharedPreferences prefs=await SharedPreferences.getInstance();
-    setState(() {
-      contact=prefs.getString('contact');
-      email=prefs.getString('email');
-      location=prefs.getString('location');
-    });
 
+  getData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      contact = prefs.getString('contact');
+      email = prefs.getString('email');
+      location = prefs.getString('location');
+    });
   }
 
   @override
@@ -103,8 +103,10 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                     width: width,
                     height: 200,
                     color: Colors.transparent,
-                    child: Image.file(widget.image,
-                    fit: BoxFit.fill,)),
+                    child: Image.file(
+                      widget.image,
+                      fit: BoxFit.fill,
+                    )),
               ),
               Form(
                 key: _formKey,
@@ -114,9 +116,9 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                     Card(
                       elevation: 5,
                       child: TextFormField(
-                        onChanged: (value){
+                        onChanged: (value) {
                           setState(() {
-                            complaint.title=value;
+                            complaint.title = value;
                           });
                         },
                         decoration: InputDecoration(
@@ -188,9 +190,9 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                             ),
                             SizedBox(height: 10),
                             TextFormField(
-                              onChanged: (value){
+                              onChanged: (value) {
                                 setState(() {
-                                  complaint.description=value;
+                                  complaint.description = value;
                                 });
                               },
                               keyboardType: TextInputType.multiline,
@@ -227,11 +229,13 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                     Card(
                       elevation: 5,
                       child: TextFormField(
-                        onChanged: (value){
+                        onChanged: (value) {
                           setState(() {
-                            complaint.contact=int.parse(value);
+                            complaint.contact = int.parse(value);
                           });
                         },
+                        maxLength: 10,
+                        keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(8.0),
                           border: OutlineInputBorder(
@@ -266,9 +270,9 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                     Card(
                       elevation: 5,
                       child: TextFormField(
-                        onChanged: (value){
+                        onChanged: (value) {
                           setState(() {
-                            complaint.email=value;
+                            complaint.email = value;
                           });
                         },
                         decoration: InputDecoration(
@@ -313,10 +317,10 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                     Card(
                       elevation: 5,
                       child: TextFormField(
-                        
-                        onChanged: (value){
+                        onChanged: (value) {
                           setState(() {
-                            complaint.location=Location(coordinates: [11.2,11.3]);
+                            complaint.location =
+                                Location(coordinates: [11.2, 11.3]);
                           });
                         },
                         keyboardType: TextInputType.multiline,
@@ -360,68 +364,95 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                           borderRadius: BorderRadius.circular(4.0)),
                       elevation: 5,
                       child: Container(
-                        width: width,
+                        width:  width,
                         padding: EdgeInsets.symmetric(horizontal: 10.0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
-                        child: DropdownButtonHideUnderline(
-                          child: DropdownButton(
-                            hint: Text('Select department'),
-                            items: widget.departments
-                                .map((item) => DropdownMenuItem(
-                                    child: new Text(item.title), value: item))
-                                .toList(),
-                            value: _selectedDepartment,
-                            onChanged: (value) {
-                              setState(() {
-                                complaint.department=value.title;
-                                print(value.toString());
-                                _selectedDepartment = value;
-                                _selectedSubDepartment = null;
-                                subDepartments = value.subDepartment;
-                                // _selectedSubDepartment = subDepartments[0];
-                              });
-                            },
-                          ),
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(5.0),),
+                        child: TextFormField(
+                          readOnly: true,
+                          initialValue: widget.departments[widget.departmentNumber].title,
                         ),
                       ),
+                      // Drop Down for departments done by karanpreet.
+                      // child: Container(
+                      //   width: width,
+                      //   padding: EdgeInsets.symmetric(horizontal: 10.0),
+                      //   decoration: BoxDecoration(
+                      //     borderRadius: BorderRadius.circular(5.0),
+                      //   ),
+                      //   child: DropdownButtonHideUnderline(
+                      //     child: DropdownButton(
+                      //       hint: Text('Select department'),
+                      //       items: widget.departments
+                      //           .map((item) => DropdownMenuItem(
+                      //               child: new Text(item.title), value: item))
+                      //           .toList(),
+                      //       value: _selectedDepartment,
+                      //       onChanged: (value) {
+                      //         setState(() {
+                      //           complaint.department = value.title;
+                      //           print(value.toString());
+                      //           _selectedDepartment = value;
+                      //           _selectedSubDepartment = null;
+                      //           subDepartments = value.subDepartment;
+                      //           // _selectedSubDepartment = subDepartments[0];
+                      //         });
+                      //       },
+                      //     ),
+                      //   ),
+                      // ),
                     ),
                     SizedBox(height: 10),
-                    Card(
-                      shape: RoundedRectangleBorder(
-                          side: new BorderSide(
-                              color: Colors.grey[500], width: 1.0),
-                          borderRadius: BorderRadius.circular(4.0)),
-                      elevation: 5,
-                      child: Container(
-                        width: width,
-                        padding: EdgeInsets.symmetric(horizontal: 10.0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
-                        child: DropdownButtonHideUnderline(
-                          child: DropdownButton(
-                            hint: Text('Select Type of Service'),
-                            items: subDepartments.map((
-                              item,
-                            ) {
-                              return DropdownMenuItem(
-                                  child: Container(
-                                    width: width*0.8,
-                                      child: new Text(item)), value: item);
-                            }).toList(),
-                            value: _selectedSubDepartment,
-                            onChanged: (value) {
-                              setState(() {
-                                complaint.subDepartment=value;
-                                _selectedSubDepartment = value;
-                              });
-                            },
-                          ),
-                        ),
-                      ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                      side: new BorderSide(
+                          color: Colors.grey[500], width: 1.0),
+                      borderRadius: BorderRadius.circular(4.0)),
+                  elevation: 5,
+                  child: Container(
+                    width:  width,
+                    padding: EdgeInsets.symmetric(horizontal: 10.0),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(5.0),),
+                    child: TextFormField(
+                      readOnly: true,
+                      initialValue: _selectedSubDepartment,
                     ),
+                  ),),
+                            // Sub department drop down done by karan preet.
+                    // Card(
+                    //   shape: RoundedRectangleBorder(
+                    //       side: new BorderSide(
+                    //           color: Colors.grey[500], width: 1.0),
+                    //       borderRadius: BorderRadius.circular(4.0)),
+                    //   elevation: 5,
+                    //   child: Container(
+                    //     width: width,
+                    //     padding: EdgeInsets.symmetric(horizontal: 10.0),
+                    //     decoration: BoxDecoration(
+                    //       borderRadius: BorderRadius.circular(5.0),
+                    //     ),
+                    //     child: DropdownButtonHideUnderline(
+                    //       child: DropdownButton(
+                    //         hint: Text('Select Type of Service'),
+                    //         items: subDepartments.map((
+                    //           item,
+                    //         ) {
+                    //           return DropdownMenuItem(
+                    //               child: Container(
+                    //                   width: width * 0.8,
+                    //                   child: new Text(item)),
+                    //               value: item);
+                    //         }).toList(),
+                    //         value: _selectedSubDepartment,
+                    //         onChanged: (value) {
+                    //           setState(() {
+                    //             complaint.subDepartment = value;
+                    //             _selectedSubDepartment = value;
+                    //           });
+                    //         },
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                     SizedBox(height: 10),
                     Card(
                       shape: RoundedRectangleBorder(
@@ -432,7 +463,6 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                       child: InkWell(
                         onTap: () {
                           _selectDate(context);
-
                         },
                         child: Container(
                           padding: EdgeInsets.all(15.0),
@@ -453,109 +483,52 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                       elevation: 5,
                       borderRadius: BorderRadius.circular(20.0),
                       child: InkWell(
-                        onTap: () async{
-
+                        onTap: () async {
+                          SharedPreferences prefs = await SharedPreferences.getInstance();
                           if (_formKey.currentState.validate()) {
-                            try{
+                            try {
                               String url = BASE_URL + "/complain/register";
-                              var dio=new Dio();
-                              File image = widget.image;
-                              String filename  = image.path.split('/').last;
-                              FormData formdata = new FormData.fromMap({
+                              Dio dio = new Dio();
+                              dio.options.connectTimeout = 5000; //5s
+                              dio.options.receiveTimeout = 3000;
+                              File img = widget.image;
+                              String filename = img.path.split('/').last;
+                              var formdata = new FormData.fromMap({
                                 "title": complaint.title,
-                                "description":complaint.description,
+                                "description": complaint.description,
                                 "email": complaint.email,
-                                "contact":complaint.contact,
-                                "file": await MultipartFile.fromFile(image.path,filename: filename, contentType: new MediaType('image','png')),
-                                "department":complaint.department,
-                                "sub_department":complaint.subDepartment,
-                                "location":[lat,lan],
-                                "type":"image/png"
+                                "contact": complaint.contact,
+                                "file": await MultipartFile.fromFile(img.path,
+                                    filename: filename,
+                                    contentType: new MediaType('image', 'jpeg')),
+                                "department": widget.departments[widget.departmentNumber].title,
+                                "sub_department": _selectedSubDepartment,
+                                "location": [lat, lan],
                               });
-                              Response response = await dio.post(url,
+                              var response = await dio.post(url,
                                   data: formdata,
                                   options: Options(headers: {
-                                    // "Authorization": token
-                                    "accept":"*/*",
-                                    "Authorization": token,
-                                    "Content-Type":"multipart/form-data"
+                                    // "Authorization": prefs.getString("token"),
+                                     "Authorization": token,
                                   }));
                               print(response);
-
-
-
-
-
-                              // var dio=new Dio();
-                              // // var token =getToken();
-                              // String url = BASE_URL + "/complain/register";
-                              // File file = widget.image;
-                              // print('Path of Image=========${file.path}');
-                              // String fileName = file.path.split('/').last;
-
-
-
-
-                              // FormData formData = new FormData.fromMap({
-                              //   "title": complaint.title,
-                              //   "description":complaint.description,
-                              //   "email": complaint.email,
-                              //   "contact":complaint.contact,
-                              //   "file": await MultipartFile.fromFile(file.path,filename:fileName),
-                              //   "department":complaint.department,
-                              //   "sub_department":complaint.subDepartment,
-                              //   "location":[{11.2,11.3}],
-                              // });
-                              // var response = await dio.post(url, data: formData,options: Options(
-                              //     headers: {
-                              //       "Authorization": token
-                              //     }),
-                              // );
-
-                              // Map<String,String> map={
-                              //   "title": complaint.title,
-                              //   "description":complaint.description,
-                              //   "email": complaint.email,
-                              //   "contact":complaint.contact.toString(),
-                              //   "department":complaint.department,
-                              //   "sub_department":complaint.subDepartment,
-                              //   "location":[{11.2,11.3}].toString(),
-                              // };
-                              // var request = http.MultipartRequest('POST', Uri.parse(url));
-                              // request.files.add(
-                              //     http.MultipartFile(
-                              //         'picture',
-                              //         file.readAsBytes().asStream(),
-                              //         file.lengthSync(),
-                              //         filename: file.path.split("/").last
-                              //     )
-                              // );
-                              // request.fields.addAll(map);
-                              // Map<String,String> header={
-                              //   "Authorization": token,"Content-Type": "application/json"};
-                              // request.headers.addAll(header);
-                              // print("request========"+request.toString()+"===="+request.headers.toString());
-                              // var response=await request.send();
-                              // print("response======"+response.statusCode.toString()+"===="+response.headers.toString()+response.stream.toString());
-
-                              // Navigator.push(
-                              //     context,
-                              //     CupertinoPageRoute(builder: (context) => SubmittedScreen()));
-                            }catch(e){
-                               print(e.toString());
-                               showDialog(
-                                   context: context,
-                                   builder: (BuildContext context) {
-                                     return oneButtonDialog(
-                                         context: context,
-                                         title: "Network Error",
-                                         content: "Please check your internet connection",
-                                         actionTitle: "OK"
-                                     );
-                                   });
+                              Navigator.pop(context);
+                              Navigator.push(
+                                  context,
+                                  CupertinoPageRoute(builder: (context) => SubmittedScreen()));
+                            } catch (e) {
+                              print(e.toString());
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return oneButtonDialog(
+                                        context: context,
+                                        title: "Network Error",
+                                        content:e.toString(),
+                                        actionTitle: "OK");
+                                  });
                             }
-                          }
-                          else{
+                          } else {
                             showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
@@ -563,11 +536,9 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                                       context: context,
                                       title: "Details Error",
                                       content: "Please enter all details",
-                                      actionTitle: "OK"
-                                  );
+                                      actionTitle: "OK");
                                 });
                           }
-
                         },
                         child: Container(
                           width: width * 0.8,

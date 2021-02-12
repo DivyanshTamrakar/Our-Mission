@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:namma_badavane/location_practise.dart';
 import 'package:namma_badavane/screens/category_list_screen.dart';
 import 'package:namma_badavane/screens/complaint_form_screen.dart';
+import 'package:namma_badavane/screens/homescreen.dart';
 import 'package:namma_badavane/utils/bottom_navigation.dart';
 import 'package:namma_badavane/screens/history_screen.dart';
 import 'package:namma_badavane/screens/notification.dart';
@@ -26,12 +27,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: primary_color,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+
       ),
       // home: BottomBarExample(),
-      home : EditProfileScreen(newUser: true,)
+      // home:SubmittedScreen(),
+      // home : EditProfileScreen(newUser: true,)
       // home: Location(),
-
-      // home: SplashScreen(),
+      //  home: HomeScreen(),
+      home: SplashScreen(),
       // home: ComplaintFormScreen(),
 
 

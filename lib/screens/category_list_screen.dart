@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:namma_badavane/models/department_model.dart';
 import 'package:namma_badavane/screens/complaint_form_screen.dart';
 import 'package:namma_badavane/utils/colors.dart';
+import 'package:translator/translator.dart';
 
 class CategoryListScreen extends StatefulWidget {
   final List<Department> departments;
@@ -25,6 +26,15 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
     image = await ImagePicker.pickImage(
         source: ImageSource.camera, imageQuality: 50);
   }
+
+
+  @override
+  void initState() {
+
+    // print("${widget.departments[widget.departmentNumber].title}");
+    super.initState();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +59,7 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
                 child: InkWell(
                   onTap: () async {
                     await _imgFromCamera();
+                    Navigator.pop(context);
                     Navigator.push(
                         context,
                         CupertinoPageRoute(
@@ -58,11 +69,14 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
                                   image: image,
                                   departmentNumber: widget.departmentNumber,
                                 )));
+
+
                   },
                   child: ListTile(
                     leading: Icon(Icons.info, color: primary_color),
                     title: Text(
                       subDepartment[i],
+                      // out,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),

@@ -107,6 +107,7 @@ class _BottomBarExampleState extends State<BottomBarExample> {
         notchMargin: 4,
         child: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
+          unselectedItemColor: black,
           selectedItemColor: primary_text_color,
           backgroundColor: primary_color,
           currentIndex: _page,
