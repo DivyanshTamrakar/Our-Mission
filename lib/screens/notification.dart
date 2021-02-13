@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:namma_badavane/utils/colors.dart';
 
+import 'homescreen.dart';
+
 class NotificationScreen extends StatefulWidget {
   @override
   _NotificationScreenState createState() => _NotificationScreenState();
@@ -13,7 +15,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: primary_color,
+        backgroundColor: HomeScreen.color,
         title: Text('Notifications',
         style: TextStyle(
           color: primary_text_color

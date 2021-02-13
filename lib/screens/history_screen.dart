@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:namma_badavane/models/complaint_model.dart';
 import 'package:namma_badavane/screens/complaint_detail_screen.dart';
+import 'package:namma_badavane/screens/homescreen.dart';
 import 'package:namma_badavane/services/complaint_service.dart';
 import 'package:namma_badavane/utils/colors.dart';
 
@@ -16,7 +17,6 @@ class _HistoryScreenState extends State<HistoryScreen> {
     var data=await ComplaintApi().getAllComplaints();
     setState(() {
       complaints=data;
-      print("complaints = $complaints");
     });
   }
 
@@ -36,11 +36,11 @@ class _HistoryScreenState extends State<HistoryScreen> {
     double width=MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: primary_color,
+        backgroundColor: HomeScreen.color,
         title: Text("History",
-        style: TextStyle(
-          color:primary_text_color,
-        ),
+          style: TextStyle(
+            color:primary_text_color,
+          ),
         ),
         centerTitle: true,
       ),
@@ -141,7 +141,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
           ),
         ],
       ):Center(child: Text("No complaint History Found",
-      textAlign: TextAlign.center)):
+          textAlign: TextAlign.center)):
       Center(child: CircularProgressIndicator(),),
     );
   }

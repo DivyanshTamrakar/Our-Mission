@@ -10,11 +10,14 @@ import 'package:namma_badavane/utils/colors.dart';
 import 'package:translator/translator.dart';
 
 class HomeScreen extends StatefulWidget {
+  static Color color = Color.fromRGBO(38, 40, 52, 1.0);
+  static Color button_back = Color.fromRGBO(125,140,223,1.0);
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
 
   GoogleTranslator translator = new GoogleTranslator();
   String out;
@@ -26,23 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
     var data = await DepartmentApi().getAllDepartments();
     setState(() {
       departments = data;
-      // for(int i = 0 ;i<departments.length;i++)
-      //   {
-      //     print(departments[i].title);
-      //     translator.translate(departments[i].title, from: 'en', to: 'kn').then((output){
-      //       print(output);
-      //       setState(() {
-      //         out = output.toString();
-      //         arr[i] = out;
-      //       });
-      //     });
-      //
-      //
-      //
-      //   }
-
-
-    });
+         });
   }
 
   @override
@@ -69,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
           style: TextStyle(color: primary_text_color),
         ),
 
-        backgroundColor: primary_color,
+        backgroundColor: HomeScreen.color,
         actions: [
           IconButton(
             icon:
@@ -87,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: (departments.length > 1)
           ? Container(
               margin: EdgeInsets.only(top: 20.0),
-              padding: EdgeInsets.all(6.0), //divyansh editing
+              padding: EdgeInsets.all(3.0), //divyansh editing
               // padding: EdgeInsets.all(12.0),
               child: GridView.builder(
                 itemCount: departments.length,

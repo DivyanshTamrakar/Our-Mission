@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+import 'package:namma_badavane/screens/homescreen.dart';
 import 'package:namma_badavane/utils/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -9,8 +10,8 @@ const token='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJOYW1tYUJhZGF2YW5lIE
 
 Future<String> StatusColor() async {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    systemNavigationBarColor: primary_color, // navigation bar color
-    statusBarColor: primary_color, // status bar color
+    systemNavigationBarColor: HomeScreen.color, // navigation bar color
+    statusBarColor:  HomeScreen.color, // status bar color
   ));
 }
 

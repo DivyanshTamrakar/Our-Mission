@@ -8,6 +8,8 @@ import 'package:namma_badavane/screens/complaint_form_screen.dart';
 import 'package:namma_badavane/utils/colors.dart';
 import 'package:translator/translator.dart';
 
+import 'homescreen.dart';
+
 class CategoryListScreen extends StatefulWidget {
   final List<Department> departments;
   final int departmentNumber;
@@ -44,7 +46,7 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
         widget.departments[widget.departmentNumber].subDepartment;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: primary_color,
+        backgroundColor:  HomeScreen.color,
         title: Text('Choose Category',
             style: TextStyle(color: primary_text_color)),
       ),
@@ -73,7 +75,7 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
 
                   },
                   child: ListTile(
-                    leading: Icon(Icons.info, color: primary_color),
+                    leading: Icon(Icons.info, color:  HomeScreen.color),
                     title: Text(
                       subDepartment[i],
                       // out,

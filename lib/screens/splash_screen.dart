@@ -21,7 +21,8 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   String _versionName = 'V1.0';
-  final splashDelay = 5;
+  final splashDelay = 3;
+
   // File image;
 
   // _imgFromCamera() async {
@@ -78,6 +79,14 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Stack(
           fit: StackFit.expand,
           children: <Widget>[
+            Container(
+              // color: Colors.amber,
+              child: Image.asset('assets/bidar.jpg',
+                  fit: BoxFit.cover,
+                  height: double.infinity,
+                  width: double.infinity,
+                  alignment: Alignment.center),
+            ),
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
@@ -97,16 +106,16 @@ class _SplashScreenState extends State<SplashScreen> {
                             vertical: 20, horizontal: 60),
                         child: Container(
                           height: 5,
-                          color: Colors.grey[400],
+                          color: Colors.white,
                         ),
                       ),
                       Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Text("Namma", style: TextStyle(fontSize: 40)),
+                            Text("Namma", style: TextStyle(fontSize: 40,color: button_text_color)),
                             Text("Badavane",
                                 style: TextStyle(
-                                    fontSize: 40, fontWeight: FontWeight.bold))
+                                    fontSize: 40,color: button_text_color, fontWeight: FontWeight.bold))
                           ])
                     ],
                   )),
@@ -114,7 +123,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 Expanded(
                   child: Column(
                     children: <Widget>[
-                      CircularProgressIndicator(),
+                      // CircularProgressIndicator(),
                       Container(
                         height: 10,
                       ),
@@ -124,7 +133,7 @@ class _SplashScreenState extends State<SplashScreen> {
                             Spacer(),
                             Text("Don't worry we're here to solve your Issues",
                                 style: TextStyle(
-                                    fontSize: 14, fontWeight: FontWeight.bold)),
+                                    fontSize: 14, fontWeight: FontWeight.bold,color: button_text_color)),
                             Spacer(),
                           ])
                     ],

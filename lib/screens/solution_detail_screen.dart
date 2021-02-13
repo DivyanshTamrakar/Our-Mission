@@ -5,6 +5,8 @@ import 'package:namma_badavane/models/complaint_model.dart';
 import 'package:namma_badavane/utils/HttpResponse.dart';
 import 'package:namma_badavane/utils/colors.dart';
 
+import 'homescreen.dart';
+
 class SoutionDetailScreen extends StatefulWidget {
   final id;
 
@@ -58,7 +60,7 @@ class _SoutionDetailScreenState extends State<SoutionDetailScreen> {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: primary_color,
+        backgroundColor:  HomeScreen.color,
         title: Text("Solved Complaint Details View",
             style: TextStyle(color: primary_text_color)),
       ),

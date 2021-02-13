@@ -18,6 +18,7 @@ class _BottomBarExampleState extends State<BottomBarExample> {
   int _page = 0;
   PageController _controller;
 
+
   @override
   void initState() {
     _controller = new PageController(
@@ -25,6 +26,8 @@ class _BottomBarExampleState extends State<BottomBarExample> {
     );
     super.initState();
   }
+
+
 
   _imgFromCamera() async {
 
@@ -89,13 +92,15 @@ class _BottomBarExampleState extends State<BottomBarExample> {
         },
         child: CircleAvatar(
           radius: 22,
-          backgroundColor: primary_color,
+          // backgroundColor: primary_color,
+          backgroundColor: HomeScreen.color,
           child: CircleAvatar(
             radius: 20,
             backgroundColor: Colors.white,
             child: Icon(
               Icons.camera_alt_outlined,
-              color: primary_color,
+              // color: primary_color,
+              color: HomeScreen.color,
             ),
           ),
         ),
@@ -109,7 +114,8 @@ class _BottomBarExampleState extends State<BottomBarExample> {
           type: BottomNavigationBarType.fixed,
           unselectedItemColor: black,
           selectedItemColor: primary_text_color,
-          backgroundColor: primary_color,
+          // backgroundColor: primary_color,
+          backgroundColor: HomeScreen.color,
           currentIndex: _page,
           onTap: (index) {
             this._controller.animateToPage(index,

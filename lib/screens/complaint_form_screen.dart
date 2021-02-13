@@ -14,6 +14,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:http/http.dart' as http;
 
+import 'homescreen.dart';
+
 class ComplaintFormScreen extends StatefulWidget {
   final List<Department> departments;
   final String subDepartment;
@@ -80,6 +82,7 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
     _selectedSubDepartment = widget.subDepartment;
     subDepartments = _selectedDepartment.subDepartment;
     getData();
+    getCurrenLocation();
   }
 
   @override
@@ -88,7 +91,7 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: primary_color,
+        backgroundColor: HomeScreen.color,
         title: Text("Complaint/Issue Detail",
             style: TextStyle(color: primary_text_color)),
       ),
@@ -308,7 +311,7 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                     SizedBox(height: 10),
                     Row(
                       children: [
-                        Icon(Icons.map_sharp),
+                        Icon(Icons.add_location_alt_rounded),
                         SizedBox(width: 3),
                         Text("Location is Automatically Detected"),
                       ],
@@ -503,7 +506,9 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                                     contentType: new MediaType('image', 'jpeg')),
                                 "department": widget.departments[widget.departmentNumber].title,
                                 "sub_department": _selectedSubDepartment,
-                                "location": [lat, lan],
+                                "location": {
+                                  "coordinates":[lat, lan]
+                                },
                               });
                               var response = await dio.post(url,
                                   data: formdata,
@@ -545,7 +550,7 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                           padding: EdgeInsets.symmetric(
                               horizontal: 25, vertical: 10),
                           decoration: BoxDecoration(
-                              color: button_color,
+                              color: HomeScreen.button_back ,
                               borderRadius: BorderRadius.circular(20.0)),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.end,

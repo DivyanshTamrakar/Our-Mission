@@ -8,9 +8,11 @@ import 'package:http/http.dart' as http;
 import 'package:namma_badavane/widgets/dialogs.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'homescreen.dart';
+
 class ComplaintDetailScreen extends StatefulWidget {
   final Complaint complaint;
-
+   // final id ;
   ComplaintDetailScreen({Key key, this.complaint}) : super(key: key);
 
   @override
@@ -24,7 +26,7 @@ class _ComplaintDetailScreenState extends State<ComplaintDetailScreen> {
   void initState() {
     super.initState();
     print("Complaint data");
-    print("${widget.complaint.status}");
+    // print("${widget.id.status}");
   }
 
   @override
@@ -35,7 +37,7 @@ class _ComplaintDetailScreenState extends State<ComplaintDetailScreen> {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: primary_color,
+        backgroundColor: HomeScreen.color,
         title: Text("Complaint/Issue Detail",
             style: TextStyle(color: primary_text_color)),
       ),

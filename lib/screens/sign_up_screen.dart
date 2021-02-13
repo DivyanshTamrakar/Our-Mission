@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:namma_badavane/screens/homescreen.dart';
 import 'package:namma_badavane/screens/login_screen.dart';
 import 'package:namma_badavane/screens/otp_screen.dart';
 import 'package:namma_badavane/utils/HttpResponse.dart';
@@ -79,7 +80,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               hintStyle: new TextStyle(color: Colors.grey[800]),
                               hintText: "Enter Phone Number",
                               prefixIcon: Icon(Icons.call,
-                                  color: primary_color),
+                                  color: HomeScreen.button_back),
                               fillColor: primary_text_color),
                         ),
                       ),
@@ -168,7 +169,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             padding:
                             EdgeInsets.symmetric(horizontal: 25, vertical: 10),
                             decoration: BoxDecoration(
-                                color: button_color,
+                                color: HomeScreen.button_back,
                                 borderRadius: BorderRadius.circular(20.0)),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.end,

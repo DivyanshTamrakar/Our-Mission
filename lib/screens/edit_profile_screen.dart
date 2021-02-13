@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -11,6 +12,7 @@ import 'package:namma_badavane/config.dart';
 import 'package:namma_badavane/utils/bottom_navigation.dart';
 import 'package:namma_badavane/utils/colors.dart';
 import 'package:namma_badavane/widgets/dialogs.dart';
+import 'package:namma_badavane/utils/HttpResponse.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class EditProfileScreen extends StatefulWidget {
@@ -23,19 +25,36 @@ class EditProfileScreen extends StatefulWidget {
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
-  String _name = "", _email = "", _location = "", _area = "";
+  String _name = "", _email = "", _location = "", _area = "",profile_image = "";
+
   List<bool> hasError = [false, false, false, false];
-  String usertoken ;
+  String usertoken;
+
   String latitude = "";
   String longitude = "";
   File image;
 
+  getUserData()async{
+
+    var resp = await HttpResponse.getResponse(
+      service: '/users/profile',);
+    print("\n\n$resp\n\n");
+
+    var response = jsonDecode(resp);
+    print("\n\n${response.toString()}\n\n");
+
+    setState(() {
+      profile_image = response['data']['profile'].toString();
+
+    });
+  }
+
   getCurrenLocation() async {
-    final geoposition  = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    final geoposition = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
     setState(() {
       latitude = "${geoposition.latitude}";
       longitude = "${geoposition.longitude}";
-
     });
   }
 
@@ -54,15 +73,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     // TODO: implement initState
     super.initState();
     getCurrenLocation();
+    getUserData();
     print("Bool widget.newUser == ${widget.newUser}");
     print(widget.newUser);
     print(" Nitesh token");
     print(token);
     print(" My Token");
-    getToken().then((value) =>  {
-    print(value),
-      usertoken = value
-     });
+    getToken().then((value) => {print(value), usertoken = value});
     print(usertoken);
     if (!widget.newUser) getData();
   }
@@ -73,66 +90,125 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        shadowColor: Colors.transparent,
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            GestureDetector(
-              onTap: () async {
-                // SharedPreferences prefs = await SharedPreferences
-                //     .getInstance();
-                // Dio dio = new Dio();
-                // dio.options.connectTimeout = 5000; //5s
-                // dio.options.receiveTimeout = 3000;
-                //
-                // var image_picker = await ImagePicker.pickImage(source: ImageSource.camera,imageQuality:50);
-                // if(image_picker != null){
-                //   setState(() {
-                //     image = image_picker;
-                //   });
-                // }
-                // try{
-                //   String user_url = BASE_URL + "/users/profile-update";
-                //   String filename  = image.path.split('/').last;
-                //   var formData = new FormData.fromMap({
-                //     "name":"Nitesh Vishwakarma",
-                //     "email":"tx2terminator@gmail.com",
-                //     "address":"sfdlsdfjg",
-                //     "location":[latitude,longitude],
-                //     "profile": await MultipartFile.fromFile(image.path,filename:filename, contentType: new MediaType('image','jpeg') ),
-                //   });
-                //   print("fOrm data");
-                //   print(formData);
-                //   var response = await dio.post(user_url, data: formData,
-                //       options: Options(headers: {
-                //         // "Authorization": prefs.getString("token"),
-                //         "Authorization": token,
-                //       })
-                //   );
-                //   print(response);
-                // }catch(e){print(e);
-                //
-                // showDialog(
-                //     context: context,
-                //     builder: (BuildContext context) {
-                //       return oneButtonDialog(
-                //           context: context,
-                //           title: "Error",
-                //           content:
-                //           e.toString(),
-                //           actionTitle: "OK");
-                //     });
-                //
-                // }
-              },
-              child: Container(
-                  height: height * 0.5,
-                  width: width,
+            Stack(
+              children: <Widget>[
+                Container(
                   decoration: BoxDecoration(
-                      image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: AssetImage("assets/profile_details_green.png"),
-                  ))),
+                    border: Border.all(color: Colors.green),
+                    borderRadius: BorderRadius.circular(100),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey,
+                        blurRadius: 10.0,
+                        offset: Offset(0, 5),
+                        spreadRadius: 1.0,
+                      ),
+                    ],
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(200),
+                    child: Image.asset(
+                      "assets/profile_placeholder.png",
+                      height: 202,
+                      width: 200,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  bottom: 5,
+                  right: 15,
+                  child: GestureDetector(
+                    onTap: () async {
+                      var image_picker = await ImagePicker.pickImage(
+                          source: ImageSource.camera, imageQuality: 50);
+                      if (image_picker != null) {
+                        setState(() {
+                          image = image_picker;
+                        });
+                      }
+                    },
+                    child: Container(
+                        height: 40,
+                        width: 40,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.orange,
+                        ),
+                        child: Center(
+                          child: Icon(
+                            Icons.edit,
+                            color: Colors.black,
+                            size: 30,
+                          ),
+                        )),
+                  ),
+                )
+              ],
             ),
+            // GestureDetector(
+            //   onTap: () async {
+            //     // SharedPreferences prefs = await SharedPreferences
+            //     //     .getInstance();
+            //     // Dio dio = new Dio();
+            //     // dio.options.connectTimeout = 5000; //5s
+            //     // dio.options.receiveTimeout = 3000;
+            //     //
+            //     // var image_picker = await ImagePicker.pickImage(source: ImageSource.camera,imageQuality:50);
+            //     // if(image_picker != null){
+            //     //   setState(() {
+            //     //     image = image_picker;
+            //     //   });
+            //     // }
+            //     // try{
+            //     //   String user_url = BASE_URL + "/users/profile-update";
+            //     //   String filename  = image.path.split('/').last;
+            //     //   var formData = new FormData.fromMap({
+            //     //     "name":"Nitesh Vishwakarma",
+            //     //     "email":"tx2terminator@gmail.com",
+            //     //     "address":"sfdlsdfjg",
+            //     //     "location":[latitude,longitude],
+            //     //     "profile": await MultipartFile.fromFile(image.path,filename:filename, contentType: new MediaType('image','jpeg') ),
+            //     //   });
+            //     //   print("fOrm data");
+            //     //   print(formData);
+            //     //   var response = await dio.post(user_url, data: formData,
+            //     //       options: Options(headers: {
+            //     //         // "Authorization": prefs.getString("token"),
+            //     //         "Authorization": token,
+            //     //       })
+            //     //   );
+            //     //   print(response);
+            //     // }catch(e){print(e);
+            //     //
+            //     // showDialog(
+            //     //     context: context,
+            //     //     builder: (BuildContext context) {
+            //     //       return oneButtonDialog(
+            //     //           context: context,
+            //     //           title: "Error",
+            //     //           content:
+            //     //           e.toString(),
+            //     //           actionTitle: "OK");
+            //     //     });
+            //     //
+            //     // }
+            //   },
+            //   child: Container(
+            //       height: height * 0.5,
+            //       width: width,
+            //       decoration: BoxDecoration(
+            //           image: DecorationImage(
+            //         fit: BoxFit.fill,
+            //         image: AssetImage("assets/profile_details_green.png"),
+            //       ))),
+            // ),
             SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.all(15.0),
@@ -224,7 +300,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                   color: Colors.grey[500], width: 1.0),
                               borderRadius: BorderRadius.circular(10)),
                           hintText: 'Area/Locality',
-                          prefixIcon: Icon(Icons.map_sharp),
+                          prefixIcon: Icon(Icons.add_location_alt_rounded),
                           suffixIcon: Visibility(
                             visible: hasError[2],
                             child: Icon(Icons.error_outline, color: Colors.red),
@@ -290,25 +366,32 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             hasError[2] ||
                             hasError[3]))
                           try {
-                            var dio = new Dio();
-
+                            Dio dio = new Dio();
+                            dio.options.connectTimeout = 5000; //5s
+                            dio.options.receiveTimeout = 3000;
                             // var uniquetoken = getToken();
                             String url;
                             if (widget.newUser)
                               url = BASE_URL + "/users/profile-completion";
                             else
                               url = BASE_URL + "/users/profile-update";
-                            FormData formData = new FormData.fromMap({
+                            String filename = image.path.split('/').last;
+                            var formData = new FormData.fromMap({
                               "name": _name,
                               "email": _email,
-                              // "profile": await MultipartFile.fromFile("././assets/splash_icon.png",filename: "profile.png"),
                               "address": _area,
-                              "location": [latitude,longitude],
+                              "location": {
+                                "coordinates":[latitude, longitude],
+                              },
+                              "profile": await MultipartFile.fromFile(
+                                  image.path,
+                                  filename: filename,
+                                  contentType: new MediaType('image', 'jpeg')),
                             });
                             print("profile update  === $url");
                             var response = await dio.post(url,
                                 data: formData,
-                                options: new Options(headers: {
+                                options: Options(headers: {
                                   // "Authorization": token
                                   "Authorization": usertoken
                                 }));
@@ -330,8 +413,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                   return oneButtonDialog(
                                       context: context,
                                       title: "Network Error",
-                                      content:
-                                          "Please check your internet connection",
+                                      content: e.toString(),
                                       actionTitle: "OK");
                                 });
                           }

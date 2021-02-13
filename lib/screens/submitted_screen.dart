@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:namma_badavane/screens/homescreen.dart';
 import 'package:namma_badavane/utils/bottom_navigation.dart';
 class SubmittedScreen extends StatefulWidget {
   @override
@@ -51,10 +52,10 @@ class _SubmittedScreenState extends State<SubmittedScreen> {
                       (route) => false,);
                     },
                     child: Container(
-                      width:width*0.8,
-                      padding: EdgeInsets.symmetric(horizontal: 25,vertical: 20),
+                      width:width*0.75,
+                      padding: EdgeInsets.symmetric(horizontal: 50,vertical: 10),
                       decoration: BoxDecoration(
-                          color: Colors.teal,
+                          color: HomeScreen.button_back,
                           borderRadius: BorderRadius.circular(20.0)
                       ),
                       child: Row(

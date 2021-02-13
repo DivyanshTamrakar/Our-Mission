@@ -9,6 +9,8 @@ import 'package:namma_badavane/services/complaint_service.dart';
 import 'package:namma_badavane/utils/HttpResponse.dart';
 import 'package:namma_badavane/utils/colors.dart';
 
+import 'homescreen.dart';
+
 class SolutionScreen extends StatefulWidget {
   @override
   _SolutionScreenState createState() => _SolutionScreenState();
@@ -46,7 +48,7 @@ class _SolutionScreenState extends State<SolutionScreen> {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: primary_color,
+        backgroundColor:  HomeScreen.color,
         title: Text(
           "Solved Complaints",
           style: TextStyle(

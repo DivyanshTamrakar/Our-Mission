@@ -8,6 +8,7 @@ import 'package:namma_badavane/utils/colors.dart';
 import 'package:namma_badavane/widgets/dialogs.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'homescreen.dart';
 import 'otp_screen_after_login.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -161,7 +162,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             padding:
                             EdgeInsets.symmetric(horizontal: 25, vertical: 10),
                             decoration: BoxDecoration(
-                                color: button_color,
+                                color: HomeScreen.button_back,
                                 borderRadius: BorderRadius.circular(20.0)),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.end,

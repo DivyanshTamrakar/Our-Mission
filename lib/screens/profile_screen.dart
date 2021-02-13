@@ -1,6 +1,4 @@
-
 import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:namma_badavane/models/user_model.dart';
@@ -13,6 +11,7 @@ import 'package:namma_badavane/utils/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../config.dart';
+import 'homescreen.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -20,7 +19,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  String name="",contact="";
+  String name="",contact="",profile="";
 
   getUserData()async{
 
@@ -34,6 +33,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
     setState(() {
       name  = response['data']['name'].toString();
       contact = response['data']['contact'].toString();
+      profile = response['data']['profile'].toString();
+
     });
 
 
@@ -75,33 +76,48 @@ class _ProfileScreenState extends State<ProfileScreen> {
         Container(
           height: 0.5 * height,
           width: width,
-          color: primary_color,
+          color: HomeScreen.color,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: CircleAvatar(
-                  backgroundColor: Colors.white,
-                  radius: 50,
-                  child: Icon(
-                    Icons.person_outline_sharp,
-                    size: 40,
-                  ),
+              Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.green),
+                  borderRadius: BorderRadius.circular(100),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.green,
+                      blurRadius: 10.0,
+                      offset: Offset(0, 5),
+                      spreadRadius: 1.0,
+                    ),
+                  ],
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(100),
+                  child: profile == null ?Image.asset(
+                    "assets/profile_placeholder.png",
+                    height: 202,
+                    width: 200,
+                  ):Image.network(profile,height: 200,width: 200,),
                 ),
               ),
+              SizedBox(height:30),
               Text(
                 name==""?"Test_user":name.toString(),
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 16,
+                  fontSize: 20,
+                  color: button_text_color,
                 ),
               ),
               SizedBox(height: 10),
               Text(
                 contact==""?"111111111":contact.toString(),
                 style: TextStyle(
-                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                  color: button_text_color,
                 ),
               ),
             ],
