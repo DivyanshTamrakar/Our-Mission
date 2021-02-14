@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -19,6 +20,23 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
 
+
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+  bool _initialized = false;
+
+  Future<void> init() async {
+    if (!_initialized) {
+      // For iOS request permission first.
+      _firebaseMessaging.requestNotificationPermissions();
+      _firebaseMessaging.configure();
+
+      // For testing purposes print the Firebase Messaging token
+      String token = await _firebaseMessaging.getToken();
+      print("FirebaseMessaging token: $token");
+
+      _initialized = true;
+    }
+  }
   GoogleTranslator translator = new GoogleTranslator();
   String out;
   var arr = new List(9);
@@ -36,8 +54,10 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    init();
     fetchData();
     StatusColor();
+
 
 
   }

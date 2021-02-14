@@ -17,14 +17,16 @@ class _HistoryScreenState extends State<HistoryScreen> {
     var data=await ComplaintApi().getAllComplaints();
     setState(() {
       complaints=data;
+
     });
   }
 
 
 
+
+
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     fetchData();
   }
@@ -44,7 +46,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
         ),
         centerTitle: true,
       ),
-      body: (complaints!=null)?(complaints.length>0)?Column(
+      body: (complaints!=null)?
+      (complaints.length>0)?
+      Column(
         mainAxisSize: MainAxisSize.max,
         children: [
           // Padding(
@@ -140,9 +144,10 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 }),
           ),
         ],
-      ):Center(child: Text("No complaint History Found",
-          textAlign: TextAlign.center)):
-      Center(child: CircularProgressIndicator(),),
+      ):
+      Center(child: CircularProgressIndicator(),):
+      Center(child: Text("No complaint History Found",   textAlign: TextAlign.center)),
+
     );
   }
 }

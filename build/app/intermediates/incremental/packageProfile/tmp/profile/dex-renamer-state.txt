@@ -1,4 +1,4 @@
-#Sun Feb 14 01:06:19 IST 2021
+#Sun Feb 14 17:17:24 IST 2021
 base.0=C\:\\Users\\hp\\Downloads\\namma_badavane-master (1)\\namma_badavane-master\\build\\app\\intermediates\\dex\\profile\\mergeDexProfile\\out\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

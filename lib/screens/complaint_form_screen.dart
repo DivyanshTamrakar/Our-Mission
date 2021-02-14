@@ -44,6 +44,23 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
   String lat = "";
   String lan = "";
 
+
+  showLoaderDialog(BuildContext context){
+    AlertDialog alert=AlertDialog(
+      content: new Row(
+        children: [
+          CircularProgressIndicator(),
+          Container(margin: EdgeInsets.only(left: 7),child:Text("Please wait..." )),
+        ],),
+    );
+    showDialog(barrierDismissible: false,
+      context:context,
+      builder:(BuildContext context){
+        return alert;
+      },
+    );
+  }
+
   getCurrenLocation() async {
     final geoposition = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
@@ -311,7 +328,7 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                     SizedBox(height: 10),
                     Row(
                       children: [
-                        Icon(Icons.add_location_alt_rounded),
+                        Icon(Icons.my_location_outlined),
                         SizedBox(width: 3),
                         Text("Location is Automatically Detected"),
                       ],
@@ -487,6 +504,7 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                       borderRadius: BorderRadius.circular(20.0),
                       child: InkWell(
                         onTap: () async {
+                          showLoaderDialog(context);
                           SharedPreferences prefs = await SharedPreferences.getInstance();
                           if (_formKey.currentState.validate()) {
                             try {
@@ -518,10 +536,12 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                                   }));
                               print(response);
                               Navigator.pop(context);
+                              Navigator.pop(context);
                               Navigator.push(
                                   context,
                                   CupertinoPageRoute(builder: (context) => SubmittedScreen()));
                             } catch (e) {
+                              Navigator.pop(context);
                               print(e.toString());
                               showDialog(
                                   context: context,
@@ -533,7 +553,8 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                                         actionTitle: "OK");
                                   });
                             }
-                          } else {
+                          }
+                          else {
                             showDialog(
                                 context: context,
                                 builder: (BuildContext context) {

@@ -23,6 +23,7 @@ dependencies:
   permission_handler: ^5.1.0+2
   connectivity: ^2.0.2
   translator: ^0.1.5
+  flutter_rating_bar: ^3.2.0+1
 
 
 

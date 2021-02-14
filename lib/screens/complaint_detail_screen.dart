@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:namma_badavane/config.dart';
 import 'package:namma_badavane/models/complaint_model.dart';
 import 'package:namma_badavane/utils/colors.dart';
@@ -21,6 +22,7 @@ class ComplaintDetailScreen extends StatefulWidget {
 
 class _ComplaintDetailScreenState extends State<ComplaintDetailScreen> {
   TextEditingController _controller = new TextEditingController();
+  var star_rating = 1;
 
   @override
   void initState() {
@@ -229,6 +231,26 @@ class _ComplaintDetailScreenState extends State<ComplaintDetailScreen> {
                     ),
                   ),
                   SizedBox(height: 10),
+                  Container(
+                    child: RatingBar.builder(
+                      initialRating: 2,
+                      minRating: 1,
+                      direction: Axis.horizontal,
+                      allowHalfRating: false,
+                      itemCount: 5,
+                      itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                      itemBuilder: (context, _) => Icon(
+                        Icons.star,
+                        color: Colors.amber,
+                      ),
+                      onRatingUpdate: (rating) {
+                        setState(() {
+                          star_rating = rating.toInt();
+                        });
+                      },
+                    ),
+                  ),
+                  SizedBox(height: 10),
                   Material(
                     elevation: 5,
                     borderRadius: BorderRadius.circular(20.0),
@@ -257,7 +279,7 @@ class _ComplaintDetailScreenState extends State<ComplaintDetailScreen> {
                           print(_controller.text.toString());
                           var map = new Map<String, dynamic>();
                           map["description"] = _controller.text.toString();
-                          map['rating'] = "4";
+                          map['rating'] = star_rating;
                           print("Params Feedback Data " + map.toString());
                           print("map + $map");
                           final msg  = jsonEncode(map);

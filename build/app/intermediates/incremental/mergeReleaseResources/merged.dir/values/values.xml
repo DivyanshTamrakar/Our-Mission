@@ -102,7 +102,14 @@
     <string name="common_open_on_phone">Open on phone</string>
     <string name="common_signin_button_text">Sign in</string>
     <string name="common_signin_button_text_long">Sign in with Google</string>
+    <string name="default_web_client_id" translatable="false">1089899098637-pk2r3mcupkvqf68gjlrloqufocg3r7et.apps.googleusercontent.com</string>
     <string name="fcm_fallback_notification_channel_label">Miscellaneous</string>
+    <string name="gcm_defaultSenderId" translatable="false">1089899098637</string>
+    <string name="google_api_key" translatable="false">AIzaSyDDl3XkvYItc0vi9az3QfmcV_ZpfGgGKGg</string>
+    <string name="google_app_id" translatable="false">1:1089899098637:android:207f9316e29bef1d05db44</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDDl3XkvYItc0vi9az3QfmcV_ZpfGgGKGg</string>
+    <string name="google_storage_bucket" translatable="false">nammabadavane.appspot.com</string>
+    <string name="project_id" translatable="false">nammabadavane</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <style name="LaunchTheme" parent="@android:style/Theme.Black.NoTitleBar">
         <!-- Show a splash screen on the activity. Automatically removed when

@@ -170,12 +170,8 @@ class _SolutionScreenState extends State<SolutionScreen> {
                     ),
                   ],
                 )
-              : Center(
-                  child: Text("No complaint History Found",
-                      textAlign: TextAlign.center))
-          : Center(
-              child: CircularProgressIndicator(),
-            ),
+              : Center(child: CircularProgressIndicator(),)
+          : Center(child: Text("No complaint History Found",textAlign: TextAlign.center)),
     );
   }
 }

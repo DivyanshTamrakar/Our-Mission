@@ -82,27 +82,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
             children: [
               Container(
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.green),
+                  border: Border.all(color: Colors.white),
                   borderRadius: BorderRadius.circular(100),
                   boxShadow: [
-                    BoxShadow(
-                      color: Colors.green,
-                      blurRadius: 10.0,
-                      offset: Offset(0, 5),
-                      spreadRadius: 1.0,
-                    ),
+                    // BoxShadow(
+                    //   color: Colors.green,
+                    //   blurRadius: 10.0,
+                    //   offset: Offset(0, 5),
+                    //   spreadRadius: 1.0,
+                    // ),
                   ],
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(100),
                   child: profile == null ?Image.asset(
                     "assets/profile_placeholder.png",
-                    height: 202,
-                    width: 200,
-                  ):Image.network(profile,height: 200,width: 200,),
+                    height: 120,
+                    width: 120,
+                    fit: BoxFit.cover,
+                  ):Image.network(profile,height: 120,width: 120,fit: BoxFit.cover,),
                 ),
               ),
-              SizedBox(height:30),
+              SizedBox(height:20),
               Text(
                 name==""?"Test_user":name.toString(),
                 style: TextStyle(

@@ -9,6 +9,7 @@ import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:namma_badavane/config.dart';
+import 'package:namma_badavane/screens/homescreen.dart';
 import 'package:namma_badavane/utils/bottom_navigation.dart';
 import 'package:namma_badavane/utils/colors.dart';
 import 'package:namma_badavane/widgets/dialogs.dart';
@@ -49,6 +50,21 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     });
   }
 
+  showLoaderDialog(BuildContext context){
+    AlertDialog alert=AlertDialog(
+      content: new Row(
+        children: [
+          CircularProgressIndicator(),
+          Container(margin: EdgeInsets.only(left: 7),child:Text("Please wait..." )),
+        ],),
+    );
+    showDialog(barrierDismissible: false,
+      context:context,
+      builder:(BuildContext context){
+        return alert;
+      },
+    );
+  }
   getCurrenLocation() async {
     final geoposition = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
@@ -73,7 +89,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     // TODO: implement initState
     super.initState();
     getCurrenLocation();
-    getUserData();
+    // getUserData();
     print("Bool widget.newUser == ${widget.newUser}");
     print(widget.newUser);
     print(" Nitesh token");
@@ -101,28 +117,34 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               children: <Widget>[
                 Container(
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.green),
+                    border: Border.all(color: HomeScreen.color),
                     borderRadius: BorderRadius.circular(100),
                     boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey,
-                        blurRadius: 10.0,
-                        offset: Offset(0, 5),
-                        spreadRadius: 1.0,
-                      ),
+                      // BoxShadow(
+                      //   color: Colors.grey,
+                      //   blurRadius: 10.0,
+                      //   offset: Offset(0, 5),
+                      //   spreadRadius: 1.0,
+                      // ),
                     ],
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(200),
-                    child: Image.asset(
+                    child: image == null? Image.asset(
                       "assets/profile_placeholder.png",
-                      height: 202,
-                      width: 200,
-                    ),
+                      height: 120,
+                      width: 120,
+                      fit: BoxFit.cover,
+                    ):Image.file(
+                      image,
+                        height: 120,
+                        width: 120,
+                        fit: BoxFit.cover,
+                    )
                   ),
                 ),
                 Positioned(
-                  bottom: 5,
+                  bottom: 1,
                   right: 15,
                   child: GestureDetector(
                     onTap: () async {
@@ -135,17 +157,17 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       }
                     },
                     child: Container(
-                        height: 40,
-                        width: 40,
+                        height: 30,
+                        width: 30,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: Colors.orange,
+                          color: HomeScreen.color,
                         ),
                         child: Center(
                           child: Icon(
                             Icons.edit,
-                            color: Colors.black,
-                            size: 30,
+                            color: Colors.white,
+                            size: 20,
                           ),
                         )),
                   ),
@@ -300,7 +322,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                   color: Colors.grey[500], width: 1.0),
                               borderRadius: BorderRadius.circular(10)),
                           hintText: 'Area/Locality',
-                          prefixIcon: Icon(Icons.add_location_alt_rounded),
+                          prefixIcon: Icon(Icons.location_on_sharp),
                           suffixIcon: Visibility(
                             visible: hasError[2],
                             child: Icon(Icons.error_outline, color: Colors.red),
@@ -310,7 +332,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   SizedBox(height: 20),
                   Row(
                     children: [
-                      Icon(Icons.map_sharp),
+                      Icon(Icons.my_location),
                       SizedBox(width: 3),
                       Text("Location is Automatically Detected"),
                       // Text(latitude),
@@ -361,6 +383,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     borderRadius: BorderRadius.circular(20.0),
                     child: InkWell(
                       onTap: () async {
+                        showLoaderDialog(context);
                         if (!(hasError[0] ||
                             hasError[1] ||
                             hasError[2] ||
@@ -396,6 +419,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                   "Authorization": usertoken
                                 }));
                             print(response);
+                            Navigator.pop(context);
                             if (widget.newUser)
                               Navigator.pushAndRemoveUntil(
                                 context,
@@ -403,9 +427,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                     builder: (context) => BottomBarExample()),
                                 (route) => false,
                               );
-                            else
+                            else{
                               Navigator.pop(context);
+                              Navigator.pop(context);
+                            }
+
                           } catch (e) {
+                            Navigator.pop(context);
                             print(e.toString());
                             showDialog(
                                 context: context,
@@ -434,7 +462,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         padding:
                             EdgeInsets.symmetric(horizontal: 25, vertical: 10),
                         decoration: BoxDecoration(
-                            color: button_color,
+                            color: HomeScreen.button_back,
                             borderRadius: BorderRadius.circular(20.0)),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,

@@ -163,6 +163,13 @@
             </list>
           </value>
         </entry>
+        <entry key="flutter_rating_bar">
+          <value>
+            <list>
+              <option value="G:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_rating_bar-3.2.0+1/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="flutter_test">
           <value>
             <list>
@@ -503,6 +510,7 @@
       <root url="file://G:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_messaging-6.0.16/lib" />
       <root url="file://G:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_launcher_icons-0.8.1/lib" />
       <root url="file://G:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-1.0.11/lib" />
+      <root url="file://G:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_rating_bar-3.2.0+1/lib" />
       <root url="file://G:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/geolocator-6.2.0/lib" />
       <root url="file://G:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/geolocator_platform_interface-1.0.9/lib" />
       <root url="file://G:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/geolocator_web-1.0.0/lib" />
