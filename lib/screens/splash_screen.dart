@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:namma_badavane/config.dart';
 import 'package:namma_badavane/screens/sign_up_screen.dart';
@@ -103,7 +104,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            vertical: 20, horizontal: 60),
+                            vertical: 5, horizontal: 60),
                         child: Container(
                           height: 5,
                           color: Colors.white,
@@ -121,22 +122,38 @@ class _SplashScreenState extends State<SplashScreen> {
                   )),
                 ),
                 Expanded(
-                  child: Column(
-                    children: <Widget>[
-                      // CircularProgressIndicator(),
-                      Container(
-                        height: 10,
-                      ),
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: <Widget>[
-                            Spacer(),
-                            Text("Don't worry we're here to solve your Issues",
-                                style: TextStyle(
-                                    fontSize: 14, fontWeight: FontWeight.bold,color: button_text_color)),
-                            Spacer(),
-                          ])
-                    ],
+                  child: Container(
+                    alignment: Alignment.bottomCenter,
+                    child: Column(
+                      children: <Widget>[
+                        // CircularProgressIndicator(),
+                        Container(
+                          height: 10,
+                        ),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+
+                            children: <Widget>[
+                              Spacer(),
+                              Text("Don't worry we're here to solve your Issues",
+                                  style: TextStyle(
+                                      fontSize: 14, fontWeight: FontWeight.bold,color: button_text_color)),
+                              Spacer(),
+                            ]),
+                        // CircularProgressIndicator(),
+
+                        SizedBox(
+                          width: 140,
+                          child: Row(
+
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                             children: <Widget>[
+                                Text("Powered by",  style: TextStyle( fontSize: 14, fontWeight: FontWeight.bold,color: button_text_color)),
+                               Image.asset("assets/footer.png",height:65,width: 65,color: Colors.white,),
+                              ]),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ],

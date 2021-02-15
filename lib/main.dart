@@ -30,12 +30,12 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
 
       ),
-      home: BottomBarExample(),
+      // home: BottomBarExample(),
       // home:SubmittedScreen(),
       // home : EditProfileScreen(newUser: true,)
       // home: Location(),
       //  home: HomeScreen(),
-      // home: SplashScreen(),
+      home: SplashScreen(),
       // home: ComplaintFormScreen(),
 
 

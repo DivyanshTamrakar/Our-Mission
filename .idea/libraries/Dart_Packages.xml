@@ -205,6 +205,13 @@
             </list>
           </value>
         </entry>
+        <entry key="group_radio_button">
+          <value>
+            <list>
+              <option value="G:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/group_radio_button-1.0.1/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="http">
           <value>
             <list>
@@ -514,6 +521,7 @@
       <root url="file://G:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/geolocator-6.2.0/lib" />
       <root url="file://G:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/geolocator_platform_interface-1.0.9/lib" />
       <root url="file://G:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/geolocator_web-1.0.0/lib" />
+      <root url="file://G:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/group_radio_button-1.0.1/lib" />
       <root url="file://G:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.12.2/lib" />
       <root url="file://G:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/http_parser-3.1.4/lib" />
       <root url="file://G:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/image-2.1.19/lib" />
