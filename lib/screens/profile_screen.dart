@@ -9,6 +9,8 @@ import 'package:namma_badavane/services/auth_service.dart';
 import 'package:namma_badavane/utils/HttpResponse.dart';
 import 'package:namma_badavane/utils/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:namma_badavane/screens/language_screen.dart';
 
 import '../config.dart';
 import 'homescreen.dart';
@@ -139,6 +141,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
               leading: Icon(Icons.edit, color: button_color),
               title: Text(
                 "Edit Profile",
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+              trailing: Icon(Icons.arrow_forward, color: Colors.blueAccent),
+            ),
+          ),
+        ),
+        Card(
+          elevation: 5,
+          child: InkWell(
+            onTap: () {
+              print("clicked");
+              showMaterialModalBottomSheet(
+                context: context,
+                builder: (context) => Language_selection(),
+              );
+
+            },
+            child: ListTile(
+              leading: Icon(Icons.edit, color: button_color),
+              title: Text(
+                "Change Language",
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),

@@ -28,24 +28,26 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   bool _initialized = false;
-
-  Future<void> init() async {
-    if (!_initialized) {
-      // For iOS request permission first.
-      _firebaseMessaging.requestNotificationPermissions();
-      _firebaseMessaging.configure();
-
-      // For testing purposes print the Firebase Messaging token
-      String fcm_token = await _firebaseMessaging.getToken();
-      print("FirebaseMessaging token: $fcm_token");
-      _initialized = true;
-    }
-  }
   GoogleTranslator translator = new GoogleTranslator();
-  String out;
+  String language;
   var arr = new List(9);
   List<Department> departments = [];
   List<String> kann = ["ರಸ್ತೆನಿರ್ವಹಣೆ","ತ್ಯಾಜ್ಯ ಸಂಬಂಧಿತ","ವಿದ್ಯುತ್","ಆರೋಗ್ಯ ಇಲಾಖೆ","ಉದ್ಯಾನವನ ಹಾಗೂ ಆಟದ ಮೈದಾನ","ವಿದ್ಯಾಅಭ್ಯಾಸ ಮತ್ತು ಕಲ್ಯಾಣ ಯೋಜನೆಗಳು(ಸಹಾಯ)","ಒಳಚರಂಡಿ","ನೀರು","ಇತರೆ"];
+
+    PreferenceData() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+
+    setState(() {
+      language = pref.getString("language");
+
+    });
+    print(pref.getString("language"));
+    print("language ========$language");
+
+  }
+
+
+
 
   fetchData() async {
     var data = await DepartmentApi().getAllDepartments();
@@ -58,9 +60,9 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    init();
     fetchData();
     StatusColor();
+    PreferenceData();
  }
 
   @override
@@ -126,8 +128,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Image.network(departments[index].file)),
                             Divider(),
                             Text(
-                              departments[index].title,
-                              // out,
+                              language == "English"?departments[index].title:kann[index],
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: departments[index].title.length < 20

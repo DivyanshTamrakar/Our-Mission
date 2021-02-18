@@ -26,10 +26,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Namma Badavane',
       theme: ThemeData(
-        primarySwatch: primary_color,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-
-      ),
+          primarySwatch: primary_color,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          ),
       // home: BottomBarExample(),
       // home:SubmittedScreen(),
       // home : EditProfileScreen(newUser: true,)
@@ -37,10 +36,6 @@ class MyApp extends StatelessWidget {
       //  home: HomeScreen(),
       home: SplashScreen(),
       // home: ComplaintFormScreen(),
-
-
     );
   }
 }
-
-

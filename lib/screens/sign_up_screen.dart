@@ -13,6 +13,7 @@ import 'package:namma_badavane/utils/HttpResponse.dart';
 import 'package:namma_badavane/utils/colors.dart';
 import 'package:namma_badavane/widgets/dialogs.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:namma_badavane/utils/bottom_navigation.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -21,7 +22,8 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController _controller = new TextEditingController();
-   @override
+
+  @override
   void initState() {
     super.initState();
   }
@@ -35,8 +37,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
           body: SingleChildScrollView(
         child: Column(
           children: [
+            SizedBox(height: 20),
+          RaisedButton(
+            onPressed: (){
+              showMaterialModalBottomSheet(
+                context: context,
+                builder: (context) => Language_selection(),
+              );
+            },
+
+            elevation: 5,
+            color: HomeScreen.color,
+            child: Text("Choose language",style: TextStyle( color: Colors.white),),
+          ),
+
             Container(
-                height: height * 0.52,
+                height: height * 0.42,
                 width: width,
                 decoration: BoxDecoration(
                     image: DecorationImage(
@@ -196,14 +212,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   SizedBox(height: 40),
                   GestureDetector(
                     onTap: () {
-                      // Navigator.push(
-                      //     context,
-                      //     CupertinoPageRoute(
-                      //         builder: (context) => LoginScreen()));
                       Navigator.push(
                           context,
                           CupertinoPageRoute(
-                              builder: (context) => HomeScreen()));
+                              builder: (context) => LoginScreen()));
+                      // Navigator.push(
+                      //     context,
+                      //     CupertinoPageRoute(
+                      //         builder: (context) => BottomBarExample()));
                     },
                     child: Text(
                       "Already Registered ? Sign in ",
@@ -215,10 +231,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   GestureDetector(
                     onTap: () {
                       print("clicked");
-                      showMaterialModalBottomSheet(
-                        context: context,
-                        builder: (context) => Language_selection(),
-                      );
+
                     },
                     child: Text(
                       "Terms & Conditions Applied*",
