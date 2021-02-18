@@ -3,7 +3,10 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:group_radio_button/group_radio_button.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:namma_badavane/screens/category_list_screen.dart';
 import 'package:namma_badavane/screens/homescreen.dart';
+import 'package:namma_badavane/screens/language_screen.dart';
 import 'package:namma_badavane/screens/login_screen.dart';
 import 'package:namma_badavane/screens/otp_screen.dart';
 import 'package:namma_badavane/utils/HttpResponse.dart';
@@ -18,20 +21,10 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController _controller = new TextEditingController();
-  String single = "English";
-  int _radioValue1 = -1;
-
-  @override
+   @override
   void initState() {
     super.initState();
   }
-  void _handleRadioValueChange1(int value) {
-    setState(() {
-      _radioValue1 = value;
-      print(_radioValue1);
-    });
-  }
-
 
   @override
   Widget build(BuildContext context) {
@@ -203,10 +196,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   SizedBox(height: 40),
                   GestureDetector(
                     onTap: () {
+                      // Navigator.push(
+                      //     context,
+                      //     CupertinoPageRoute(
+                      //         builder: (context) => LoginScreen()));
                       Navigator.push(
                           context,
                           CupertinoPageRoute(
-                              builder: (context) => LoginScreen()));
+                              builder: (context) => HomeScreen()));
                     },
                     child: Text(
                       "Already Registered ? Sign in ",
@@ -217,93 +214,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   SizedBox(height: 40),
                   GestureDetector(
                     onTap: () {
-                      // String languageValue = "English";
-                      String _singleValue = "English";
                       print("clicked");
-                      var alert = AlertDialog(
-                        content: Container(
-                          height: 80,
-                          child: Column(
-                            children: [
-                              Text(
-                                "Choose your language",
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              new Row(
-                                children: [
-                                  new Radio(
-                                    value: 0,
-                                    groupValue: _radioValue1,
-                                    onChanged: _handleRadioValueChange1,
-                                  ),
-                                  new Text(
-                                    'English',
-                                    style: new TextStyle(fontSize: 16.0),
-                                  ),
-                                  new Radio(
-                                    value: 1,
-                                    groupValue: _radioValue1,
-                                    onChanged: _handleRadioValueChange1,
-                                  ),
-                                  new Text(
-                                    'Kannada',
-                                    style: new TextStyle(
-                                      fontSize: 16.0,
-                                    ),
-                                  ),
-                                  //  Radio(
-                                  //   value: 1,
-                                  //   groupValue: _groupValue,
-                                  //   activeColor: Colors.blue,
-                                  //   onChanged: (value){
-                                  //     print(value);
-                                  //     setState(() {
-                                  //       _groupValue = value;
-                                  //
-                                  //     });
-                                  //
-                                  //   },
-                                  // ),
-                                  //  Text(
-                                  //   "English",
-                                  //   style: new TextStyle(fontSize: 16.0),
-                                  // ),
-                                  //  Radio(
-                                  //   value: _groupValue,
-                                  //   activeColor: Colors.blue,
-                                  //   groupValue: _groupValue,
-                                  //   onChanged: (val){
-                                  //     print(val);
-                                  //     setState(() {
-                                  //       _groupValue = val;
-                                  //     });
-                                  //
-                                  //   },
-                                  // ),
-                                  // Text(
-                                  //   'Kannada',
-                                  //   style: new TextStyle(
-                                  //     fontSize: 16.0,
-                                  //   ),
-                                  // ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        actions: [FlatButton(onPressed: (){
-                          Navigator.pop(context);
-
-                        }, child: Text("OK"))],
-                      );
-                      showDialog(
-                        barrierDismissible: false,
+                      showMaterialModalBottomSheet(
                         context: context,
-                        builder: (BuildContext context) {
-                          return alert;
-                        },
+                        builder: (context) => Language_selection(),
                       );
                     },
                     child: Text(

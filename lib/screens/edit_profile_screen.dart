@@ -135,8 +135,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       height: 120,
                       width: 120,
                       fit: BoxFit.cover,
-                    ):Image.file(
-                      image,
+                    ):
+                    Image.file(
+                         image,
                         height: 120,
                         width: 120,
                         fit: BoxFit.cover,

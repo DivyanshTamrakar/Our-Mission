@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Namma Badavane',
       theme: ThemeData(
         primarySwatch: primary_color,
         visualDensity: VisualDensity.adaptivePlatformDensity,

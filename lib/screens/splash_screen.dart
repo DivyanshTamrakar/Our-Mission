@@ -74,91 +74,93 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    return Scaffold(
-      backgroundColor: splash_background,
-      body: InkWell(
-        child: Stack(
-          fit: StackFit.expand,
-          children: <Widget>[
-            Container(
-              // color: Colors.amber,
-              child: Image.asset('assets/bidar.jpg',
-                  fit: BoxFit.cover,
-                  height: double.infinity,
-                  width: double.infinity,
-                  alignment: Alignment.center),
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Expanded(
-                  flex: 7,
-                  child: Container(
-                      child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        height: height * 0.28,
-                        // color: Colors.amber,
-                        child: Image.asset('assets/splash_icon.png'),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 5, horizontal: 60),
-                        child: Container(
-                          height: 5,
-                          color: Colors.white,
-                        ),
-                      ),
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Text("Namma", style: TextStyle(fontSize: 40,color: button_text_color)),
-                            Text("Badavane",
-                                style: TextStyle(
-                                    fontSize: 40,color: button_text_color, fontWeight: FontWeight.bold))
-                          ])
-                    ],
-                  )),
-                ),
-                Expanded(
-                  child: Container(
-                    alignment: Alignment.bottomCenter,
-                    child: Column(
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: splash_background,
+        body: InkWell(
+          child: Stack(
+            fit: StackFit.expand,
+            children: <Widget>[
+              Container(
+                // color: Colors.amber,
+                child: Image.asset('assets/bidar.jpg',
+                    fit: BoxFit.cover,
+                    height: double.infinity,
+                    width: double.infinity,
+                    alignment: Alignment.center),
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Expanded(
+                    flex: 7,
+                    child: Container(
+                        child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        // CircularProgressIndicator(),
                         Container(
-                          height: 10,
+                          height: height * 0.28,
+                          // color: Colors.amber,
+                          child: Image.asset('assets/splash_icon.png'),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 5, horizontal: 60),
+                          child: Container(
+                            height: 5,
+                            color: Colors.white,
+                          ),
                         ),
                         Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              Spacer(),
-                              Text("Don't worry we're here to solve your Issues",
+                              Text("Namma", style: TextStyle(fontSize: 40,color: button_text_color)),
+                              Text("Badavane",
                                   style: TextStyle(
-                                      fontSize: 14, fontWeight: FontWeight.bold,color: button_text_color)),
-                              Spacer(),
-                            ]),
-                        // CircularProgressIndicator(),
-
-                        SizedBox(
-                          width: 140,
-                          child: Row(
-
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                             children: <Widget>[
-                                Text("Powered by",  style: TextStyle( fontSize: 14, fontWeight: FontWeight.bold,color: button_text_color)),
-                               Image.asset("assets/footer.png",height:65,width: 65,color: Colors.white,),
-                              ]),
-                        )
+                                      fontSize: 40,color: button_text_color, fontWeight: FontWeight.bold))
+                            ])
                       ],
+                    )),
+                  ),
+                  Expanded(
+                    child: Container(
+                      alignment: Alignment.bottomCenter,
+                      child: Column(
+                        children: <Widget>[
+                          // CircularProgressIndicator(),
+                          Container(
+                            height: 10,
+                          ),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+
+                              children: <Widget>[
+                                Spacer(),
+                                Text("Don't worry we're here to solve your Issues",
+                                    style: TextStyle(
+                                        fontSize: 14, fontWeight: FontWeight.bold,color: button_text_color)),
+                                Spacer(),
+                              ]),
+                          // CircularProgressIndicator(),
+
+                          SizedBox(
+                            width: 140,
+                            child: Row(
+
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                               children: <Widget>[
+                                  Text("Powered by",  style: TextStyle( fontSize: 14, fontWeight: FontWeight.bold,color: button_text_color)),
+                                 Image.asset("assets/footer.png",height:65,width: 65,color: Colors.white,),
+                                ]),
+                          )
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

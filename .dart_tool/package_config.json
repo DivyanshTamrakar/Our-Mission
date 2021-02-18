@@ -230,6 +230,12 @@
       "languageVersion": "2.10"
     },
     {
+      "name": "modal_bottom_sheet",
+      "rootUri": "file:///G:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/modal_bottom_sheet-1.0.0+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "otp_text_field",
       "rootUri": "file:///G:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/otp_text_field-1.0.2",
       "packageUri": "lib/",
@@ -428,7 +434,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-02-15T17:11:03.411275Z",
+  "generated": "2021-02-18T10:54:54.451818Z",
   "generator": "pub",
   "generatorVersion": "2.10.5"
 }

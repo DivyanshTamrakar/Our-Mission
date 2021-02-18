@@ -8,6 +8,7 @@ import 'package:namma_badavane/models/department_model.dart';
 import 'package:namma_badavane/screens/complaint_form_screen.dart';
 import 'package:namma_badavane/utils/colors.dart';
 import 'package:namma_badavane/utils/HttpResponse.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:translator/translator.dart';
 
 import 'homescreen.dart';
@@ -25,6 +26,7 @@ class CategoryListScreen extends StatefulWidget {
 
 class _CategoryListScreenState extends State<CategoryListScreen> {
   File image;
+  String language;
 
   _imgFromCamera() async {
     image = await ImagePicker.pickImage(
@@ -32,11 +34,24 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
   }
 
 
+  GetPreferData() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+
+    setState(() {
+      language = pref.getString("language");
+
+    });
+    print(pref.getString("language"));
+    print("language ========$language");
+
+  }
   @override
   void initState() {
     print(widget.departments[widget.departmentNumber].subDepartment);
     print(widget.departments[widget.departmentNumber].subDepartmentKannada);
     super.initState();
+    GetPreferData();
+
   }
 
 
@@ -80,7 +95,7 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
                     leading: Icon(Icons.info, color:  HomeScreen.color),
                     title: Text(
                       // subDepartmentKannada[i],
-                      subDepartment[i],
+                      language == "Kannada"?subDepartmentKannada[i]:subDepartment[i],
 
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
