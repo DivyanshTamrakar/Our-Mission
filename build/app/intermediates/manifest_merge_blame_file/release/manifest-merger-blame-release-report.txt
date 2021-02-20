@@ -55,7 +55,7 @@
 30-->[androidx.core:core:1.1.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\8014592fef965c457f4d96ed4583a915\core-1.1.0\AndroidManifest.xml:24:18-86
 31        android:icon="@mipmap/ic_launcher"
 31-->C:\Users\hp\Downloads\namma_badavane-master (1)\namma_badavane-master\android\app\src\main\AndroidManifest.xml:17:9-43
-32        android:label="namma_badavane"
+32        android:label="Namma Badavane"
 32-->C:\Users\hp\Downloads\namma_badavane-master (1)\namma_badavane-master\android\app\src\main\AndroidManifest.xml:16:9-39
 33        android:requestLegacyExternalStorage="true" >
 33-->C:\Users\hp\Downloads\namma_badavane-master (1)\namma_badavane-master\android\app\src\main\AndroidManifest.xml:18:9-52

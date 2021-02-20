@@ -34,7 +34,7 @@
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="namma_badavane"
+        android:label="Namma Badavane"
         android:requestLegacyExternalStorage="true" >
         <activity
             android:name="com.example.namma_badavane.MainActivity"

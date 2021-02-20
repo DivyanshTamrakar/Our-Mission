@@ -76,12 +76,15 @@ class ComplaintApi {
   }
 
   Future<List<Complaint>> getAllComplaints() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     List<Complaint> complaints;
     try {
       var headers = {
         "Accept": "application/json",
         "Authorization": token,
+        // "Authorization": prefs.getString('token'),
       };
+      
       final response =
           await http.get('${BASE_URL}/complain/all', headers: headers);
       print(response.body.toString());
@@ -95,11 +98,13 @@ class ComplaintApi {
   }
 
   Future<Complaint> getComplaint(String id) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     Complaint complaint;
     try {
       var headers = {
         "Accept": "application/json",
-        "Authorization": token,
+        // "Authorization": token,
+        "Authorization": prefs.getString('token'),
       };
       final response =
           await http.get('${BASE_URL}/complain/${id}', headers: headers);

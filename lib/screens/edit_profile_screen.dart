@@ -430,7 +430,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               );
                             else{
                               Navigator.pop(context);
-                              Navigator.pop(context);
+                              Navigator.pushAndRemoveUntil(
+                                context,
+                                CupertinoPageRoute(
+                                    builder: (context) => BottomBarExample()),
+                                    (route) => false,
+                              );
                             }
 
                           } catch (e) {

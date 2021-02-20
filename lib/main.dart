@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
       // home: BottomBarExample(),
       // home:SubmittedScreen(),
       // home : EditProfileScreen(newUser: true,)
+      // home : EditProfileScreen(newUser: false,)
       // home: Location(),
       //  home: HomeScreen(),
       home: SplashScreen(),

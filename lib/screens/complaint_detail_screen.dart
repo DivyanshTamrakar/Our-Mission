@@ -270,8 +270,8 @@ class _ComplaintDetailScreenState extends State<ComplaintDetailScreen> {
                           SharedPreferences prefs =
                               await SharedPreferences.getInstance();
                           var headers = {
-                            // "Authorization":  prefs.getString("token"),
-                            "Authorization": token,
+                            "Authorization":  prefs.getString("token"),
+                            // "Authorization": token,
                             "Content-Type": "application/json",
 
                           };

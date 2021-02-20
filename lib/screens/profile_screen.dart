@@ -178,6 +178,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               prefs.clear();
               print("token cleared");
               print(prefs.getString("token"));
+              print("language cleared");
+              print(prefs.getString("language"));
               Navigator.pop(context);
               Navigator.push(
                   context,

@@ -57,7 +57,7 @@
 34        android:debuggable="true"
 35        android:icon="@mipmap/ic_launcher"
 35-->C:\Users\hp\Downloads\namma_badavane-master (1)\namma_badavane-master\android\app\src\main\AndroidManifest.xml:17:9-43
-36        android:label="namma_badavane"
+36        android:label="Namma Badavane"
 36-->C:\Users\hp\Downloads\namma_badavane-master (1)\namma_badavane-master\android\app\src\main\AndroidManifest.xml:16:9-39
 37        android:requestLegacyExternalStorage="true" >
 37-->C:\Users\hp\Downloads\namma_badavane-master (1)\namma_badavane-master\android\app\src\main\AndroidManifest.xml:18:9-52
