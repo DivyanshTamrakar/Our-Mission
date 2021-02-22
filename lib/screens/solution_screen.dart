@@ -8,6 +8,7 @@ import 'package:namma_badavane/screens/solution_detail_screen.dart';
 import 'package:namma_badavane/services/complaint_service.dart';
 import 'package:namma_badavane/utils/HttpResponse.dart';
 import 'package:namma_badavane/utils/colors.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'homescreen.dart';
 
@@ -18,6 +19,7 @@ class SolutionScreen extends StatefulWidget {
 
 class _SolutionScreenState extends State<SolutionScreen> {
   List<dynamic> solution = [];
+  String language = "";
 
   getSolutionData() async {
     var resp = await HttpResponse.getResponse(service: '/users/solution/all');
@@ -34,12 +36,22 @@ class _SolutionScreenState extends State<SolutionScreen> {
       print(solution.length);
     });
   }
+  GetPreferData() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
 
+    setState(() {
+      language = pref.getString("language");
+
+    });
+    print(pref.getString("language"));
+    print("language ========$language");
+  }
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     getSolutionData();
+    GetPreferData();
   }
 
   @override
@@ -50,7 +62,7 @@ class _SolutionScreenState extends State<SolutionScreen> {
       appBar: AppBar(
         backgroundColor:  HomeScreen.color,
         title: Text(
-          "Solved Complaints",
+          language == "English"?"Solved Complaints":"ಪರಿಹರಿಸಿದ ದೂರುಗಳು",
           style: TextStyle(
             color: primary_text_color,
           ),

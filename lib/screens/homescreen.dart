@@ -75,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         elevation: 0.0,
         title: Text(
-          "Departments",
+          language == "English" ?"Departments":"ಇಲಾಖೆಗಳು",
           style: TextStyle(color: primary_text_color),
         ),
 

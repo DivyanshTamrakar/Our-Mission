@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:namma_badavane/models/complaint_model.dart';
 import 'package:namma_badavane/utils/HttpResponse.dart';
 import 'package:namma_badavane/utils/colors.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'homescreen.dart';
 
@@ -23,7 +24,8 @@ class _SoutionDetailScreenState extends State<SoutionDetailScreen> {
       department = "",
       subdepartment = "",
       status = "",
-      file="";
+      file = "",
+      language = "";
 
   getSolutionDataDetail() async {
     var resp =
@@ -44,12 +46,23 @@ class _SoutionDetailScreenState extends State<SoutionDetailScreen> {
     });
   }
 
+  GetPreferData() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+
+    setState(() {
+      language = pref.getString("language");
+    });
+    print(pref.getString("language"));
+    print("language ========$language");
+  }
+
   @override
   void initState() {
     super.initState();
     getSolutionDataDetail();
     print("Solution data");
     print("${widget.id}");
+    GetPreferData();
   }
 
   @override
@@ -60,8 +73,9 @@ class _SoutionDetailScreenState extends State<SoutionDetailScreen> {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor:  HomeScreen.color,
-        title: Text("Solved Complaint Details View",
+        backgroundColor: HomeScreen.color,
+        title: Text(
+            language == "English"?"Solved Complaint Details View":"ಪರಿಹರಿಸಿದ ದೂರು ವಿವರಗಳ ವೀಕ್ಷಣೆ",
             style: TextStyle(color: primary_text_color)),
       ),
       body: SingleChildScrollView(
@@ -93,6 +107,30 @@ class _SoutionDetailScreenState extends State<SoutionDetailScreen> {
                   Card(
                     elevation: 5,
                     child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Container(
+                                child: Text(
+                                  "Complaint id : ${widget.id}",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14),
+                                ),
+                              ),
+                            ],
+                          ),
+
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 5),
+                  Card(
+                    elevation: 5,
+                    child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -100,7 +138,7 @@ class _SoutionDetailScreenState extends State<SoutionDetailScreen> {
                           Row(
                             children: [
                               Container(
-                                width: width * 0.7,
+                                width: width * 0.5,
                                 child: Text(
                                   title,
                                   style: TextStyle(
@@ -111,7 +149,11 @@ class _SoutionDetailScreenState extends State<SoutionDetailScreen> {
                               Spacer(),
                               Container(
                                 width: width * 0.18,
-                                child: Icon(Icons.assignment_turned_in_rounded,color: Colors.green,size: 40.0,),
+                                child: Icon(
+                                  Icons.assignment_turned_in_rounded,
+                                  color: Colors.green,
+                                  size: 40.0,
+                                ),
                               ),
                             ],
                           ),
@@ -150,8 +192,8 @@ class _SoutionDetailScreenState extends State<SoutionDetailScreen> {
                             child: Text(
                               "Department :- $department",
                               textAlign: TextAlign.left,
-                              style:
-                              TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                           ),
                           SizedBox(height: 20),
@@ -160,8 +202,8 @@ class _SoutionDetailScreenState extends State<SoutionDetailScreen> {
                             child: Text(
                               "Sub Department :- $subdepartment",
                               textAlign: TextAlign.left,
-                              style:
-                              TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                           ),
                           SizedBox(height: 20),
@@ -170,18 +212,15 @@ class _SoutionDetailScreenState extends State<SoutionDetailScreen> {
                             child: Text(
                               "Status :- ${status}",
                               textAlign: TextAlign.left,
-                              style:
-                              TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                           ),
                           SizedBox(height: 10),
-
                         ],
                       ),
                     ),
                   ),
-
-
                 ],
               )
             ],

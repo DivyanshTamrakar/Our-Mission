@@ -7,6 +7,7 @@ import 'package:namma_badavane/screens/edit_profile_screen.dart';
 import 'package:namma_badavane/screens/sign_up_screen.dart';
 import 'package:namma_badavane/services/auth_service.dart';
 import 'package:namma_badavane/utils/HttpResponse.dart';
+import 'package:namma_badavane/utils/bottom_navigation.dart';
 import 'package:namma_badavane/utils/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
@@ -21,7 +22,17 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  String name="",contact="",profile="";
+  String name="",contact="",profile="",language="";
+
+  GetPreferData() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+
+    setState(() {
+      language = pref.getString("language");
+    });
+    print(pref.getString("language"));
+    print("language ========$language");
+  }
 
   getUserData()async{
 
@@ -62,8 +73,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
     // TODO: implement initState
     super.initState();
     getUserData();
-    print("name shared =$name");
-    print("contact shared =$contact");
+    GetPreferData();
+    // print("name shared =$name");
+    // print("contact shared =$contact");
 
 
 
@@ -140,7 +152,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: ListTile(
               leading: Icon(Icons.edit, color: button_color),
               title: Text(
-                "Edit Profile",
+                language == "English"?"Edit Profile":"ಪ್ರೊಫೈಲ್ ಬದಲಿಸು",
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
@@ -157,12 +169,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 context: context,
                 builder: (context) => Language_selection(),
               );
+              //     .then((value){
+              //   Navigator.pop(context);
+              //   Navigator.push(
+              //       context,
+              //       CupertinoPageRoute(
+              //           builder: (context) => BottomBarExample()));
+              // } );
 
             },
             child: ListTile(
               leading: Icon(Icons.edit, color: button_color),
               title: Text(
-                "Change Language",
+                language == "English"?"Change Language":"ಭಾಷೆ ಬದಲಾಯಿಸಿ",
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
@@ -190,7 +209,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: ListTile(
               leading: Icon(Icons.logout, color: button_color),
               title: Text(
-                "Log out",
+                language == "English"?"Log out":"ಲಾಗ್ ಔಟ್",
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),

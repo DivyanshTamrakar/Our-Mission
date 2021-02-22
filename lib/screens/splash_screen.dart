@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -10,6 +11,7 @@ import 'package:namma_badavane/utils/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'complaint_form_screen.dart';
+import 'login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   final Color backgroundColor = Colors.white;
@@ -50,8 +52,10 @@ class _SplashScreenState extends State<SplashScreen> {
 
     var usertoken = prefs.getString("token");
     if (usertoken == null) {
+      // Navigator.pushReplacement(context,
+      //     MaterialPageRoute(builder: (BuildContext context) => SignUpScreen()));
       Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (BuildContext context) => SignUpScreen()));
+          MaterialPageRoute(builder: (BuildContext context) => LoginScreen()));
     } else {
       Navigator.pushReplacement(
           context,
@@ -81,14 +85,29 @@ class _SplashScreenState extends State<SplashScreen> {
           child: Stack(
             fit: StackFit.expand,
             children: <Widget>[
-              Container(
-                // color: Colors.amber,
-                child: Image.asset('assets/bidar.jpg',
-                    fit: BoxFit.cover,
-                    height: double.infinity,
-                    width: double.infinity,
-                    alignment: Alignment.center),
+              Image.asset('assets/bidar.jpg',
+                  fit: BoxFit.cover,
+                  height: double.infinity,
+                  width: double.infinity,
+                  alignment: Alignment.center),
+              ClipRRect(
+                // Clip it cleanly.
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                  child: Container(
+                    color: Colors.grey.withOpacity(0.1),
+                    alignment: Alignment.center,
+                  ),
+                ),
               ),
+
+              // Container(
+              //   child: Image.asset('assets/bidar.jpg',
+              //       fit: BoxFit.cover,
+              //       height: double.infinity,
+              //       width: double.infinity,
+              //       alignment: Alignment.center),
+              // ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
@@ -114,10 +133,14 @@ class _SplashScreenState extends State<SplashScreen> {
                         Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              Text("Namma", style: TextStyle(fontSize: 40,color: button_text_color)),
+                              Text("Namma",
+                                  style: TextStyle(
+                                      fontSize: 40, color: button_text_color)),
                               Text("Badavane",
                                   style: TextStyle(
-                                      fontSize: 40,color: button_text_color, fontWeight: FontWeight.bold))
+                                      fontSize: 40,
+                                      color: button_text_color,
+                                      fontWeight: FontWeight.bold))
                             ])
                       ],
                     )),
@@ -133,12 +156,14 @@ class _SplashScreenState extends State<SplashScreen> {
                           ),
                           Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
-
                               children: <Widget>[
                                 Spacer(),
-                                Text("Don't worry we're here to solve your Issues",
+                                Text(
+                                    "Don't worry we're here to solve your Issues",
                                     style: TextStyle(
-                                        fontSize: 14, fontWeight: FontWeight.bold,color: button_text_color)),
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                        color: button_text_color)),
                                 Spacer(),
                               ]),
                           // CircularProgressIndicator(),
@@ -146,11 +171,20 @@ class _SplashScreenState extends State<SplashScreen> {
                           SizedBox(
                             width: 140,
                             child: Row(
-
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                               children: <Widget>[
-                                  Text("Powered by",  style: TextStyle( fontSize: 14, fontWeight: FontWeight.bold,color: button_text_color)),
-                                 Image.asset("assets/footer.png",height:65,width: 65,color: Colors.white,),
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Text("Powered by",
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.bold,
+                                          color: button_text_color)),
+                                  Image.asset(
+                                    "assets/footer.png",
+                                    height: 65,
+                                    width: 65,
+                                    color: Colors.white,
+                                  ),
                                 ]),
                           )
                         ],

@@ -2,13 +2,16 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:namma_badavane/screens/otp_screen.dart';
+import 'package:namma_badavane/screens/sign_up_screen.dart';
 import 'package:namma_badavane/utils/HttpResponse.dart';
 import 'package:namma_badavane/utils/colors.dart';
 import 'package:namma_badavane/widgets/dialogs.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'homescreen.dart';
+import 'language_screen.dart';
 import 'otp_screen_after_login.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -34,6 +37,23 @@ class _LoginScreenState extends State<LoginScreen> {
           body: SingleChildScrollView(
             child: Column(
               children: [
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  color: HomeScreen.color,
+                  child:    RaisedButton(
+                    onPressed: (){
+                      showMaterialModalBottomSheet(
+                        context: context,
+                        builder: (context) => Language_selection(),
+                      );
+                    },
+
+                    elevation: 5,
+                    color: HomeScreen.color,
+                    child: Text("Choose language",style: TextStyle( fontSize: 18.0, color: Colors.white,fontWeight: FontWeight.bold),),
+                  ),
+                ),
+
                 Container(
                     height: height * 0.52,
                     width: width,
@@ -191,12 +211,30 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       SizedBox(height: 30),
-                      Text(
-                        "Terms & Conditions Applied*",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
+                      // Text(
+                      //   "Terms & Conditions Applied*",
+                      //   style: TextStyle(
+                      //     fontWeight: FontWeight.bold,
+                      //   ),
+                      // )
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                          Navigator.push(
+                              context,
+                              CupertinoPageRoute(
+                                  builder: (context) => SignUpScreen()));
+                          // Navigator.push(
+                          //     context,
+                          //     CupertinoPageRoute(
+                          //         builder: (context) => BottomBarExample()));
+                        },
+                        child: Text(
+                          "Not Registered ? Sign Up ",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20.0),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),

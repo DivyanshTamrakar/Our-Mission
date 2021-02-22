@@ -23,13 +23,26 @@ class ComplaintDetailScreen extends StatefulWidget {
 class _ComplaintDetailScreenState extends State<ComplaintDetailScreen> {
   TextEditingController _controller = new TextEditingController();
   var star_rating = 1;
+  String language = "";
 
   @override
   void initState() {
     super.initState();
     print("Complaint data");
+    GetPreferData();
     // print("${widget.id.status}");
   }
+
+  GetPreferData() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+
+    setState(() {
+      language = pref.getString("language");
+    });
+    print(pref.getString("language"));
+    print("language ========$language");
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +53,9 @@ class _ComplaintDetailScreenState extends State<ComplaintDetailScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: HomeScreen.color,
-        title: Text("Complaint/Issue Detail",
+        title: Text(
+          language == "English"?
+            "Complaint/Issue Detail":"ದೂರು / ಸಂಚಿಕೆ ವಿವರ",
             style: TextStyle(color: primary_text_color)),
       ),
       body: SingleChildScrollView(
@@ -78,7 +93,7 @@ class _ComplaintDetailScreenState extends State<ComplaintDetailScreen> {
                           Row(
                             children: [
                               Container(
-                                width: width * 0.7,
+                                width: width * 0.4,
                                 child: Text(
                                   widget.complaint.title,
                                   style: TextStyle(
@@ -88,7 +103,7 @@ class _ComplaintDetailScreenState extends State<ComplaintDetailScreen> {
                               ),
                               Spacer(),
                               Container(
-                                width: width * 0.18,
+                                width: width * 0.20,
                                 child: Text(
                                   formattedDate,
                                   style: TextStyle(
@@ -199,7 +214,7 @@ class _ComplaintDetailScreenState extends State<ComplaintDetailScreen> {
                   Container(
                     width: width,
                     child: Text(
-                      "Provide Feedback to Us !",
+                      language == "English"?"Provide Feedback to Us !":"ನಮಗೆ ಪ್ರತಿಕ್ರಿಯೆ ನೀಡಿ!",
                       textAlign: TextAlign.left,
                       style:
                           TextStyle(fontSize: 16, fontWeight: FontWeight.bold),

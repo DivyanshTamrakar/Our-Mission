@@ -13,20 +13,24 @@ import 'package:namma_badavane/widgets/dialogs.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:http/http.dart' as http;
+import 'dart:async';
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:path_provider/path_provider.dart';
+
 
 import 'homescreen.dart';
 
 class ComplaintFormScreen extends StatefulWidget {
   final List<Department> departments;
   final String subDepartment;
-  final File image;
+  // final File image;
   final int departmentNumber;
 
   ComplaintFormScreen(
       {Key key,
       this.departments,
       this.subDepartment,
-      this.image,
+      // this.image,
       this.departmentNumber})
       : super(key: key);
 
@@ -43,6 +47,8 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
   Complaint complaint = new Complaint();
   String lat = "";
   String lan = "";
+  String language = "";
+  File image;
 
 
   showLoaderDialog(BuildContext context){
@@ -60,6 +66,18 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
       },
     );
   }
+
+  Future<File> getImageFileFromAssets(String path) async {
+    final byteData = await rootBundle.load('assets/$path');
+
+    final file = File('${(await getTemporaryDirectory()).path}/$path');
+    await file.writeAsBytes(byteData.buffer.asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
+
+    return file;
+  }
+
+
+
 
   getCurrenLocation() async {
     final geoposition = await Geolocator.getCurrentPosition(
@@ -88,7 +106,14 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
       contact = prefs.getString('contact');
       email = prefs.getString('email');
       location = prefs.getString('location');
+      language = prefs.getString('language');
     });
+  }
+
+  _imgFromCamera() async {
+    image = await ImagePicker.pickImage(
+        source: ImageSource.camera, imageQuality: 50);
+    print(image);
   }
 
   @override
@@ -100,6 +125,7 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
     subDepartments = _selectedDepartment.subDepartment;
     getData();
     getCurrenLocation();
+
   }
 
   @override
@@ -109,7 +135,8 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: HomeScreen.color,
-        title: Text("Complaint/Issue Detail",
+        title: Text(
+            language == "English" ? "Complaint/Issue Detail":"ದೂರು / ಸಂಚಿಕೆ ವಿವರ",
             style: TextStyle(color: primary_text_color)),
       ),
       body: SingleChildScrollView(
@@ -123,11 +150,53 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                     width: width,
                     height: 200,
                     color: Colors.transparent,
-                    child: Image.file(
-                      widget.image,
-                      fit: BoxFit.fill,
-                    )),
+                    child: image == null? Image.asset(
+                      'assets/placeholder_image.png',
+                      height: 150,
+                      width: MediaQuery.of(context).size.width,
+                      fit: BoxFit.cover,
+                    ):
+                    Image.file(
+                      image,
+                      height: 150,
+                      width: MediaQuery.of(context).size.width,
+                      fit: BoxFit.cover,
+                    ),
+                      // widget.image,
+
+                    ),
               ),
+              SizedBox(height: 15.0,),
+              Align(
+                alignment: Alignment.center,
+                child: SizedBox(
+                  width: 52.0,
+                  height: 52.0,
+                  child: Container(
+                    alignment: Alignment.center,
+
+                    decoration: BoxDecoration(
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.circular(30.0),
+                        border: Border.all(width: 2.0,color: HomeScreen.color)
+                    ),
+                    child: Row(
+                      children: [
+                        IconButton(icon:Icon(Icons.camera_alt_outlined),color: HomeScreen.color,iconSize: 25.0,onPressed: () async {
+                          var image_picker = await ImagePicker.pickImage(
+                              source: ImageSource.camera, imageQuality: 50);
+                          if (image_picker != null) {
+                            setState(() {
+                              image = image_picker;
+                            });
+                          }
+                        },),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+
               Form(
                 key: _formKey,
                 child: Column(
@@ -147,7 +216,7 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                             borderSide:
                                 BorderSide(color: Colors.grey[500], width: 1.0),
                           ),
-                          hintText: 'Enter Complaint title',
+                          hintText: language == "English" ? 'Enter Complaint title':'ದೂರು ಶೀರ್ಷಿಕೆಯನ್ನು ನಮೂದಿಸಿ',
                           suffixIcon: Container(
                             width: width * 0.08,
                             // color: Colors.pink,
@@ -190,7 +259,8 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                           children: [
                             Row(
                               children: [
-                                Text("Enter Complaint Details/Desc"),
+                                Text(
+                                    language == "English" ? "Enter Complaint Details/Desc":"ದೂರು ವಿವರಗಳನ್ನು ನಮೂದಿಸಿ / ಡೆಸ್ಕ್"),
                                 Spacer(),
                                 Container(
                                   width: width * 0.08,
@@ -262,7 +332,7 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                             borderSide:
                                 BorderSide(color: Colors.grey[500], width: 1.0),
                           ),
-                          hintText: 'Enter Contact Number',
+                          hintText: language == "English" ?'Enter Contact Number':'ಸಂಪರ್ಕ ಸಂಖ್ಯೆಯನ್ನು ನಮೂದಿಸಿ',
                           suffixIcon: Container(
                             width: width * 0.08,
                             // color: Colors.pink,
@@ -301,7 +371,7 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                             borderSide:
                                 BorderSide(color: Colors.grey[500], width: 1.0),
                           ),
-                          hintText: 'Enter Email Id',
+                          hintText:language == "English" ?'Enter Email Id':'ಇಮೇಲ್ ಐಡಿ ನಮೂದಿಸಿ' ,
                           suffixIcon: Container(
                             width: width * 0.08,
                             // color: Colors.pink,
@@ -352,7 +422,7 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                             borderSide:
                                 BorderSide(color: Colors.grey[500], width: 1.0),
                           ),
-                          hintText: 'Enter Location',
+                          hintText:language == "English" ?'Enter Location':'ಸ್ಥಳವನ್ನು ನಮೂದಿಸಿ',
                           suffixIcon: Container(
                             width: width * 0.08,
                             // color: Colors.pink,
@@ -512,16 +582,20 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                               Dio dio = new Dio();
                               dio.options.connectTimeout = 5000; //5s
                               dio.options.receiveTimeout = 3000;
-                              File img = widget.image;
+                              File img = image == null? await getImageFileFromAssets('placeholder_image.png'):image;
+                              print("img === $img");
+                              print("image === $image");
+
+
+
+
                               String filename = img.path.split('/').last;
                               var formdata = new FormData.fromMap({
                                 "title": complaint.title,
                                 "description": complaint.description,
                                 "email": complaint.email,
                                 "contact": complaint.contact,
-                                "file": await MultipartFile.fromFile(img.path,
-                                    filename: filename,
-                                    contentType: new MediaType('image', 'jpeg')),
+                                "file":  await MultipartFile.fromFile(img.path,filename: filename,contentType: new MediaType('image', 'jpeg')),
                                 "department": widget.departments[widget.departmentNumber].title,
                                 "sub_department": _selectedSubDepartment,
                                 "location": {
@@ -531,8 +605,8 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                               var response = await dio.post(url,
                                   data: formdata,
                                   options: Options(headers: {
-                                    "Authorization": prefs.getString("token"),
-                                     // "Authorization": token,
+                                    // "Authorization": prefs.getString("token"),
+                                     "Authorization": token,
                                   }));
                               print(response);
                               Navigator.pop(context);
@@ -579,7 +653,7 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                               SizedBox(width: 15),
                               Expanded(
                                 child: Text(
-                                  'Submit',
+                                  language == "English" ?'Submit':'ಸಲ್ಲಿಸು',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       color: button_text_color,

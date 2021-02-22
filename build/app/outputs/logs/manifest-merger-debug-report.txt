@@ -12,6 +12,7 @@ MERGED from [:image_picker] C:\Users\hp\Downloads\namma_badavane-master (1)\namm
 MERGED from [:flutter_plugin_android_lifecycle] C:\Users\hp\Downloads\namma_badavane-master (1)\namma_badavane-master\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:connectivity] C:\Users\hp\Downloads\namma_badavane-master (1)\namma_badavane-master\build\connectivity\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:geolocator] C:\Users\hp\Downloads\namma_badavane-master (1)\namma_badavane-master\build\geolocator\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:path_provider] C:\Users\hp\Downloads\namma_badavane-master (1)\namma_badavane-master\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.firebase:firebase-analytics:18.0.2] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\e3ea7efb94bcca26ccb459db64f008a8\firebase-analytics-18.0.2\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.firebase:firebase-messaging:21.0.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\cde0b34d641607e7d42ea59963ae7cd0\jetified-firebase-messaging-21.0.1\AndroidManifest.xml:17:1-45:12
 MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\8597632647464b9e8b07f825bcd51a69\play-services-location-17.0.0\AndroidManifest.xml:2:1-9:12
@@ -245,6 +246,8 @@ MERGED from [:connectivity] C:\Users\hp\Downloads\namma_badavane-master (1)\namm
 MERGED from [:connectivity] C:\Users\hp\Downloads\namma_badavane-master (1)\namma_badavane-master\build\connectivity\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:geolocator] C:\Users\hp\Downloads\namma_badavane-master (1)\namma_badavane-master\build\geolocator\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:geolocator] C:\Users\hp\Downloads\namma_badavane-master (1)\namma_badavane-master\build\geolocator\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:path_provider] C:\Users\hp\Downloads\namma_badavane-master (1)\namma_badavane-master\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:path_provider] C:\Users\hp\Downloads\namma_badavane-master (1)\namma_badavane-master\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-analytics:18.0.2] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\e3ea7efb94bcca26ccb459db64f008a8\firebase-analytics-18.0.2\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-analytics:18.0.2] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\e3ea7efb94bcca26ccb459db64f008a8\firebase-analytics-18.0.2\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-messaging:21.0.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\cde0b34d641607e7d42ea59963ae7cd0\jetified-firebase-messaging-21.0.1\AndroidManifest.xml:20:5-44

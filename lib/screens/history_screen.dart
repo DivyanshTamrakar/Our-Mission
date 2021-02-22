@@ -5,6 +5,7 @@ import 'package:namma_badavane/screens/complaint_detail_screen.dart';
 import 'package:namma_badavane/screens/homescreen.dart';
 import 'package:namma_badavane/services/complaint_service.dart';
 import 'package:namma_badavane/utils/colors.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HistoryScreen extends StatefulWidget {
   @override
@@ -13,6 +14,7 @@ class HistoryScreen extends StatefulWidget {
 
 class _HistoryScreenState extends State<HistoryScreen> {
   List<Complaint> complaints=[];
+  String language ="";
   fetchData()async{
     var data=await ComplaintApi().getAllComplaints();
     setState(() {
@@ -22,13 +24,23 @@ class _HistoryScreenState extends State<HistoryScreen> {
   }
 
 
+  GetPreferData() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
 
+    setState(() {
+      language = pref.getString("language");
+
+    });
+    print(pref.getString("language"));
+    print("language ========$language");
+  }
 
 
   @override
   void initState() {
     super.initState();
     fetchData();
+    GetPreferData();
   }
 
 
@@ -39,7 +51,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: HomeScreen.color,
-        title: Text("History",
+        title: Text(
+          language == "English"?"History":"ಇತಿಹಾಸ",
           style: TextStyle(
             color:primary_text_color,
           ),

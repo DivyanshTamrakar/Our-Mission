@@ -37,19 +37,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
           body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 20),
-          RaisedButton(
-            onPressed: (){
-              showMaterialModalBottomSheet(
-                context: context,
-                builder: (context) => Language_selection(),
-              );
-            },
+            // SizedBox(height: 20),
+       Container(
+         width: MediaQuery.of(context).size.width,
+         color: HomeScreen.color,
+         child:    RaisedButton(
+           onPressed: (){
+             showMaterialModalBottomSheet(
+               context: context,
+               builder: (context) => Language_selection(),
+             );
+           },
 
-            elevation: 5,
-            color: HomeScreen.color,
-            child: Text("Choose language",style: TextStyle( color: Colors.white),),
-          ),
+           elevation: 5,
+           color: HomeScreen.color,
+           child: Text("Choose language",style: TextStyle( fontSize: 18.0, color: Colors.white,fontWeight: FontWeight.bold),),
+         ),
+       ),
 
             Container(
                 height: height * 0.42,
@@ -212,6 +216,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   SizedBox(height: 40),
                   GestureDetector(
                     onTap: () {
+                      Navigator.pop(context);
                       Navigator.push(
                           context,
                           CupertinoPageRoute(
@@ -228,18 +233,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                   SizedBox(height: 40),
-                  GestureDetector(
-                    onTap: () {
-                      print("clicked");
-
-                    },
-                    child: Text(
-                      "Terms & Conditions Applied*",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  )
+                  // GestureDetector(
+                  //   onTap: () {
+                  //     print("clicked");
+                  //
+                  //   },
+                  //   child: Text(
+                  //     "Terms & Conditions Applied*",
+                  //     style: TextStyle(
+                  //       fontWeight: FontWeight.bold,
+                  //     ),
+                  //   ),
+                  // )
                 ],
               ),
             ),

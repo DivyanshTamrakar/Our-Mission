@@ -43,7 +43,6 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
     });
     print(pref.getString("language"));
     print("language ========$language");
-
   }
   @override
   void initState() {
@@ -64,7 +63,7 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor:  HomeScreen.color,
-        title: Text('Choose Category',
+        title: Text( language == "English"?"Choose Category":"ವರ್ಗವನ್ನು ಆರಿಸಿ",
             style: TextStyle(color: primary_text_color)),
       ),
       body: Container(
@@ -77,7 +76,6 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
                 elevation: 5,
                 child: InkWell(
                   onTap: () async {
-                    await _imgFromCamera();
                     Navigator.pop(context);
                     Navigator.push(
                         context,
@@ -85,7 +83,7 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
                             builder: (context) => ComplaintFormScreen(
                                   departments: widget.departments,
                                   subDepartment: subDepartment[i],
-                                  image: image,
+                                  // image: image,
                                   departmentNumber: widget.departmentNumber,
                                 )));
 
@@ -95,8 +93,7 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
                     leading: Icon(Icons.info, color:  HomeScreen.color),
                     title: Text(
                       // subDepartmentKannada[i],
-                      language == "Kannada"?subDepartmentKannada[i]:subDepartment[i],
-
+                      language == "English"?subDepartment[i]:subDepartmentKannada[i],
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),

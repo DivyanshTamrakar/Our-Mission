@@ -83,37 +83,37 @@ class _BottomBarExampleState extends State<BottomBarExample> {
   Widget build(BuildContext context) {
     return new Scaffold(
       extendBody: true,
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.white,
-        shape: CircleBorder(),
-        onPressed: () {
-          _imgFromCamera();
-        },
-        child: CircleAvatar(
-          radius: 22,
-          // backgroundColor: primary_color,
-          backgroundColor: HomeScreen.color,
-          child: CircleAvatar(
-            radius: 20,
-            backgroundColor: Colors.white,
-            child: Icon(
-              Icons.camera_alt_outlined,
-              // color: primary_color,
-              color: HomeScreen.color,
-            ),
-          ),
-        ),
-        elevation: 5.0,
-      ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // floatingActionButton: FloatingActionButton(
+      //   backgroundColor: Colors.white,
+      //   shape: CircleBorder(),
+      //   onPressed: () {
+      //     _imgFromCamera();
+      //   },
+      //   child: CircleAvatar(
+      //     radius: 22,
+      //     // backgroundColor: primary_color,
+      //     backgroundColor: HomeScreen.color,
+      //     child: CircleAvatar(
+      //       radius: 20,
+      //       backgroundColor: Colors.white,
+      //       child: Icon(
+      //         Icons.camera_alt_outlined,
+      //         // color: primary_color,
+      //         color: HomeScreen.color,
+      //       ),
+      //     ),
+      //   ),
+      //   elevation: 5.0,
+      // ),
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
         clipBehavior: Clip.antiAlias,
         notchMargin: 4,
         child: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
-          unselectedItemColor: black,
-          selectedItemColor: primary_text_color,
+          unselectedItemColor: Colors.white,
+          selectedItemColor: Colors.yellowAccent,
           // backgroundColor: primary_color,
           backgroundColor: HomeScreen.color,
           currentIndex: _page,
