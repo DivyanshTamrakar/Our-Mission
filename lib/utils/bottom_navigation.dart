@@ -7,6 +7,7 @@ import 'package:namma_badavane/screens/homescreen.dart';
 import 'package:namma_badavane/screens/profile_screen.dart';
 import 'package:namma_badavane/screens/solution_screen.dart';
 import 'package:namma_badavane/utils/colors.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class BottomBarExample extends StatefulWidget {
   @override
@@ -17,6 +18,17 @@ class _BottomBarExampleState extends State<BottomBarExample> {
   File _image;
   int _page = 0;
   PageController _controller;
+  String language = "";
+
+  GetPreferData() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+
+    setState(() {
+      language = pref.getString("language");
+    });
+    print(pref.getString("language"));
+    print("language ========$language");
+  }
 
 
   @override
@@ -124,13 +136,13 @@ class _BottomBarExampleState extends State<BottomBarExample> {
           },
           items: <BottomNavigationBarItem>[
             new BottomNavigationBarItem(
-                icon: new Icon(Icons.home,color: Colors.white,), label: "Home"),
+                icon: new Icon(Icons.home,color: Colors.white,), label: language =="English"? "Home":"ಮನೆ"),
             new BottomNavigationBarItem(
-                icon: new Icon(Icons.history,color: Colors.white,), label: "History"),
+                icon: new Icon(Icons.history,color: Colors.white,), label: language =="English"? "History":"ಇತಿಹಾಸ"),
             new BottomNavigationBarItem(
-                icon: new Icon(Icons.lightbulb,color: Colors.white,), label: "Solutions"),
+                icon: new Icon(Icons.lightbulb,color: Colors.white,), label: language =="English"? "Solutions":"ಪರಿಹಾರಗಳು"),
             new BottomNavigationBarItem(
-                icon: new Icon(Icons.person,color: Colors.white,), label: "Profile"),
+                icon: new Icon(Icons.person,color: Colors.white,), label: language =="English"? "Profile":"ಪ್ರೊಫೈಲ್"),
           ],
         ),
       ),

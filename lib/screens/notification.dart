@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:namma_badavane/utils/colors.dart';
 import 'package:namma_badavane/utils/HttpResponse.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 
 import 'homescreen.dart';
@@ -12,6 +13,18 @@ class NotificationScreen extends StatefulWidget {
 
 class _NotificationScreenState extends State<NotificationScreen> {
   List<dynamic> notification = [];
+  String language = "";
+
+  GetPreferData() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+
+    setState(() {
+      language = pref.getString("language");
+    });
+    print(pref.getString("language"));
+    print("language ========$language");
+  }
+
 
   getNotificationData() async {
     var resp = await HttpResponse.getResponse(service: '/notification');
@@ -33,6 +46,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
   void initState() {
     super.initState();
     getNotificationData();
+    GetPreferData();
   }
 
   @override
@@ -43,7 +57,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
       appBar: AppBar(
         backgroundColor: HomeScreen.color,
         title: Text(
-          'Notifications',
+          language == "English"?'Notifications':'ಅಧಿಸೂಚನೆಗಳು',
           style: TextStyle(color: primary_text_color),
         ),
       ),

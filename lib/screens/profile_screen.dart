@@ -15,6 +15,7 @@ import 'package:namma_badavane/screens/language_screen.dart';
 
 import '../config.dart';
 import 'homescreen.dart';
+import 'login_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -203,7 +204,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Navigator.push(
                   context,
                   CupertinoPageRoute(
-                      builder: (context) => SignUpScreen(
+                      builder: (context) => LoginScreen(
                           )));
             },
             child: ListTile(
