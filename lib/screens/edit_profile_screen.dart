@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
@@ -14,6 +15,7 @@ import 'package:namma_badavane/utils/bottom_navigation.dart';
 import 'package:namma_badavane/utils/colors.dart';
 import 'package:namma_badavane/widgets/dialogs.dart';
 import 'package:namma_badavane/utils/HttpResponse.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class EditProfileScreen extends StatefulWidget {
@@ -26,7 +28,11 @@ class EditProfileScreen extends StatefulWidget {
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
-  String _name = "", _email = "", _location = "", _area = "",profile_image = "";
+  String _name = "",
+      _email = "",
+      _location = "",
+      _area = "",
+      profile_image = "";
 
   List<bool> hasError = [false, false, false, false];
   String usertoken;
@@ -34,11 +40,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   String latitude = "";
   String longitude = "";
   File image;
+  String language = "";
 
-  getUserData()async{
-
+  getUserData() async {
     var resp = await HttpResponse.getResponse(
-      service: '/users/profile',);
+      service: '/users/profile',
+    );
     print("\n\n$resp\n\n");
 
     var response = jsonDecode(resp);
@@ -46,25 +53,38 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
     setState(() {
       profile_image = response['data']['profile'].toString();
-
     });
   }
 
-  showLoaderDialog(BuildContext context){
-    AlertDialog alert=AlertDialog(
+  Future<File> getImageFileFromAssets(String path) async {
+    final byteData = await rootBundle.load('assets/$path');
+
+    final file = File('${(await getTemporaryDirectory()).path}/$path');
+    await file.writeAsBytes(byteData.buffer
+        .asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
+
+    return file;
+  }
+
+  showLoaderDialog(BuildContext context) {
+    AlertDialog alert = AlertDialog(
       content: new Row(
         children: [
           CircularProgressIndicator(),
-          Container(margin: EdgeInsets.only(left: 7),child:Text("Please wait..." )),
-        ],),
+          Container(
+              margin: EdgeInsets.only(left: 7), child: Text("Please wait...")),
+        ],
+      ),
     );
-    showDialog(barrierDismissible: false,
-      context:context,
-      builder:(BuildContext context){
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (BuildContext context) {
         return alert;
       },
     );
   }
+
   getCurrenLocation() async {
     final geoposition = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
@@ -84,11 +104,19 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     });
   }
 
+  getlanguage() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      language = prefs.getString('language');
+    });
+  }
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     getCurrenLocation();
+    getlanguage();
     // getUserData();
     print("Bool widget.newUser == ${widget.newUser}");
     print(widget.newUser);
@@ -129,20 +157,20 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     ],
                   ),
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(200),
-                    child: image == null? Image.asset(
-                      "assets/profile_placeholder.png",
-                      height: 120,
-                      width: 120,
-                      fit: BoxFit.cover,
-                    ):
-                    Image.file(
-                         image,
-                        height: 120,
-                        width: 120,
-                        fit: BoxFit.cover,
-                    )
-                  ),
+                      borderRadius: BorderRadius.circular(200),
+                      child: image == null
+                          ? Image.asset(
+                              "assets/profile_placeholder.png",
+                              height: 120,
+                              width: 120,
+                              fit: BoxFit.cover,
+                            )
+                          : Image.file(
+                              image,
+                              height: 120,
+                              width: 120,
+                              fit: BoxFit.cover,
+                            )),
                 ),
                 Positioned(
                   bottom: 1,
@@ -241,8 +269,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     width: width,
                     child: Text(
                       (widget.newUser == false)
-                          ? "Edit your Profile"
-                          : "Complete your Profile",
+                          ? language == "English"?"Edit your Profile":"ನಿಮ್ಮ ಪ್ರೊಫೈಲ್ ಸಂಪಾದಿಸಿ"
+                          : language == "English"?"Complete your Profile":"ನಿಮ್ಮ ಪ್ರೊಫೈಲ್ ಅನ್ನು ಪೂರ್ಣಗೊಳಿಸಿ",
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -264,7 +292,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             borderSide:
                                 BorderSide(color: Colors.grey[500], width: 1.0),
                             borderRadius: BorderRadius.circular(10)),
-                        hintText: 'Full Name',
+                        hintText:
+                            language == "English" ? 'Full Name' : 'ಪೂರ್ಣ ಹೆಸರು',
                         prefixIcon: Icon(Icons.person),
                         suffixIcon: Visibility(
                             visible: hasError[0],
@@ -299,7 +328,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               Icons.error_outline,
                               color: Colors.red,
                             )),
-                        hintText: 'Email',
+                        hintText: language == "English" ? 'Email' : 'ಇಮೇಲ್',
                         prefixIcon: Icon(Icons.alternate_email),
                       ),
                     ),
@@ -322,7 +351,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               borderSide: BorderSide(
                                   color: Colors.grey[500], width: 1.0),
                               borderRadius: BorderRadius.circular(10)),
-                          hintText: 'Area/Locality',
+                          hintText: language == "English"
+                              ? 'Area/Locality'
+                              : 'ಪ್ರದೇಶ / ಸ್ಥಳ',
                           prefixIcon: Icon(Icons.location_on_sharp),
                           suffixIcon: Visibility(
                             visible: hasError[2],
@@ -362,7 +393,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             borderSide:
                                 BorderSide(color: Colors.grey[500], width: 1.0),
                             borderRadius: BorderRadius.circular(10.0)),
-                        hintText: 'Enter Location',
+                        hintText: language == "English"
+                            ? 'Enter Location'
+                            : 'ಸ್ಥಳವನ್ನು ನಮೂದಿಸಿ',
                         suffixIcon: Visibility(
                             visible: hasError[3],
                             child: Icon(
@@ -399,16 +432,22 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               url = BASE_URL + "/users/profile-completion";
                             else
                               url = BASE_URL + "/users/profile-update";
-                            String filename = image.path.split('/').last;
+
+                            File img = image == null
+                                ? await getImageFileFromAssets(
+                                    'profile_placeholder.png')
+                                : image;
+                            print("img === $img");
+                            print("image === $image");
+                            String filename = img.path.split('/').last;
                             var formData = new FormData.fromMap({
                               "name": _name,
                               "email": _email,
                               "address": _area,
                               "location": {
-                                "coordinates":[latitude, longitude],
+                                "coordinates": [latitude, longitude],
                               },
-                              "profile": await MultipartFile.fromFile(
-                                  image.path,
+                              "profile": await MultipartFile.fromFile(img.path,
                                   filename: filename,
                                   contentType: new MediaType('image', 'jpeg')),
                             });
@@ -416,8 +455,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             var response = await dio.post(url,
                                 data: formData,
                                 options: Options(headers: {
-                                  // "Authorization": token
-                                  "Authorization": usertoken
+                                  "Authorization": token
+                                  // "Authorization": usertoken
                                 }));
                             print(response);
                             Navigator.pop(context);
@@ -428,16 +467,15 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                     builder: (context) => BottomBarExample()),
                                 (route) => false,
                               );
-                            else{
+                            else {
                               Navigator.pop(context);
                               Navigator.pushAndRemoveUntil(
                                 context,
                                 CupertinoPageRoute(
                                     builder: (context) => BottomBarExample()),
-                                    (route) => false,
+                                (route) => false,
                               );
                             }
-
                           } catch (e) {
                             Navigator.pop(context);
                             print(e.toString());
@@ -476,7 +514,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             SizedBox(width: 15),
                             Expanded(
                               child: Text(
-                                widget.newUser == false ? 'Save' : 'Continue',
+                                widget.newUser == false
+                                    ? (language == "English" ? 'Save' : 'ಉಳಿಸು')
+                                    : (language == "English"
+                                        ? 'Continue'
+                                        : 'ಮುಂದುವರಿಸಿ'),
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     color: button_text_color,

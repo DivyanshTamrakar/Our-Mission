@@ -110,5 +110,6 @@
     <orderEntry type="module" module-name="android.flutter_plugin_android_lifecycle" />
     <orderEntry type="module" module-name="android.connectivity" />
     <orderEntry type="module" module-name="android.geolocator" />
+    <orderEntry type="module" module-name="android.path_provider" />
   </component>
 </module>
