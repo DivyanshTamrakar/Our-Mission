@@ -1,9 +1,11 @@
+import 'package:aws_translate/aws_translate.dart';
 import 'package:flutter/material.dart';
 import 'package:namma_badavane/utils/colors.dart';
 import 'package:namma_badavane/utils/HttpResponse.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 
+import '../config.dart';
 import 'homescreen.dart';
 
 class NotificationScreen extends StatefulWidget {
@@ -14,6 +16,9 @@ class NotificationScreen extends StatefulWidget {
 class _NotificationScreenState extends State<NotificationScreen> {
   List<dynamic> notification = [];
   String language = "";
+  List<dynamic> title_kann=[];
+  List<dynamic> description_kann=[];
+
 
   GetPreferData() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
@@ -40,8 +45,40 @@ class _NotificationScreenState extends State<NotificationScreen> {
       print(notification);
       print(notification.length);
     });
+    getaws();
   }
 
+  getaws() async {
+    AwsTranslate awsTranslate = AwsTranslate(
+      poolId: poolId, // your pool id here
+      region: region,
+    ); // your region here
+
+    print("outside loop");
+    for (var i = 0; i < notification.length; i++) {
+      print("inside loop");
+
+      String translated1 = await awsTranslate
+          .translateText(notification[i]['title'].toString(), to: 'kn');
+      String translated2 = await awsTranslate
+          .translateText(notification[i]['description'].toString(), to: 'kn');
+      if (!mounted) return CircularProgressIndicator();
+      setState(() {
+        title_kann.add(translated1.toString());
+        description_kann.add(translated2.toString());
+
+        print("title kanana list ");
+        print(title_kann);
+        print("description kannada  list ");
+        print(description_kann);
+      });
+    }
+
+    print("title kanana list ");
+    print(title_kann);
+    print("descreption kanana list ");
+    print(description_kann);
+  }
   @override
   void initState() {
     super.initState();
@@ -88,7 +125,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                             title: Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                notification[i]['title'],
+                                language == "English" ? notification[i]['title']:(title_kann.length > i      ? title_kann[i]  : 'Please wait...'),
                                 maxLines: 3,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
@@ -101,7 +138,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                             subtitle: Container(
                               margin: EdgeInsets.only(top: 10.0),
                               child: Text(
-                                notification[i]['description'],
+                                language == "English" ? notification[i]['description']:(description_kann.length > i      ? description_kann[i]  : 'Please wait...'),
                                 maxLines: 3,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(

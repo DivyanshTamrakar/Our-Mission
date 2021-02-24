@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:aws_translate/aws_translate.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:namma_badavane/models/complaint_model.dart';
@@ -11,6 +12,7 @@ import 'package:namma_badavane/utils/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:translator/translator.dart';
 
+import '../config.dart';
 import 'homescreen.dart';
 
 class SolutionScreen extends StatefulWidget {
@@ -22,6 +24,7 @@ class _SolutionScreenState extends State<SolutionScreen> {
   List<dynamic> solution = [];
   String language = "";
   List<dynamic> title_kann=[];
+  List<dynamic> description_kann=[];
 
   getSolutionData() async {
     var resp = await HttpResponse.getResponse(service: '/users/solution/all');
@@ -37,7 +40,42 @@ class _SolutionScreenState extends State<SolutionScreen> {
       print(solution);
       print(solution.length);
     });
+    getaws();
+
   }
+
+  getaws() async {
+    AwsTranslate awsTranslate = AwsTranslate(
+      poolId: poolId, // your pool id here
+      region: region,
+    ); // your region here
+
+    print("outside loop");
+    for (var i = 0; i < solution.length; i++) {
+      print("inside loop");
+
+      String translated1 = await awsTranslate
+          .translateText(solution[i]['title'].toString(), to: 'kn');
+      String translated2 = await awsTranslate
+          .translateText(solution[i]['description'].toString(), to: 'kn');
+      if (!mounted) return CircularProgressIndicator();
+      setState(() {
+        title_kann.add(translated1.toString());
+        description_kann.add(translated2.toString());
+
+        print("title kanana list ");
+        print(title_kann);
+        print("description kannada  list ");
+        print(description_kann);
+      });
+    }
+
+    print("title kanana list ");
+    print(title_kann);
+    print("descreption kanana list ");
+    print(description_kann);
+  }
+
   GetPreferData() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
 
@@ -76,37 +114,12 @@ class _SolutionScreenState extends State<SolutionScreen> {
               ? Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    // Padding(
-                    //   padding: const EdgeInsets.all(8.0),
-                    //   child: Row(
-                    //     children: [
-                    //       SizedBox(width: 10,),
-                    //       Text("List of available Compaints"),
-                    //       SizedBox(width: 10,),
-                    //       Expanded(
-                    //           child: Divider(
-                    //             color: Colors.grey[500],
-                    //           )
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
+
                     Expanded(
                       child: ListView.builder(
                           itemCount: solution.length,
                           itemBuilder: (context, i) {
-                            // FutureBuilder<dynamic>(
-                            //     future: getlanguage(solution[i]["title"].toString()),
-                            //     builder: (context, snapshot) {
-                            //       if (snapshot.hasData) {
-                            //
-                            //       }
-                            //       return CircularProgressIndicator();
-                            //     }
-                            // );
-
-
-                            return Container(
+                              return Container(
                               margin: EdgeInsets.all(5),
                               child: Card(
                                 elevation: 5,
@@ -137,7 +150,7 @@ class _SolutionScreenState extends State<SolutionScreen> {
                                             Container(
                                               width: width * 0.5,
                                               child: Text(
-                                                solution[i]['title'],
+                                                language == "English" ? solution[i]['title']:(title_kann.length > i      ? title_kann[i]  : 'Please wait...'),
                                                 overflow: TextOverflow.ellipsis,
                                                 maxLines: 1,
                                                 style: TextStyle(
@@ -148,7 +161,7 @@ class _SolutionScreenState extends State<SolutionScreen> {
                                             ),
                                             Spacer(),
                                             Text(
-                                              "Complain Id:",
+                                              language == "English"?"Complain Id : ":"ಐಡಿ ದೂರು : ",
                                               style: TextStyle(
                                                   fontSize: 12,
                                                   fontWeight: FontWeight.bold),
@@ -178,7 +191,7 @@ class _SolutionScreenState extends State<SolutionScreen> {
                                           ),
                                         ),
                                         Text(
-                                          solution[i]['description'],
+                                          language == "English" ? solution[i]['description']:(description_kann.length > i      ? description_kann[i]  : 'Please wait...'),
                                           maxLines: 2,
                                           overflow: TextOverflow.ellipsis,
                                           style: TextStyle(

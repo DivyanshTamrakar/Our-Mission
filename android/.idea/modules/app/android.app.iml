@@ -103,13 +103,14 @@
     <orderEntry type="library" name="Gradle: androidx.documentfile:documentfile:1.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.localbroadcastmanager:localbroadcastmanager:1.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.print:print:1.0.0@aar" level="project" />
-    <orderEntry type="module" module-name="android.firebase_messaging" />
-    <orderEntry type="module" module-name="android.shared_preferences" />
-    <orderEntry type="module" module-name="android.permission_handler" />
-    <orderEntry type="module" module-name="android.image_picker" />
     <orderEntry type="module" module-name="android.flutter_plugin_android_lifecycle" />
-    <orderEntry type="module" module-name="android.connectivity" />
     <orderEntry type="module" module-name="android.geolocator" />
+    <orderEntry type="module" module-name="android.firebase_messaging" />
+    <orderEntry type="module" module-name="android.aws_translate" />
     <orderEntry type="module" module-name="android.path_provider" />
+    <orderEntry type="module" module-name="android.connectivity" />
+    <orderEntry type="module" module-name="android.permission_handler" />
+    <orderEntry type="module" module-name="android.shared_preferences" />
+    <orderEntry type="module" module-name="android.image_picker" />
   </component>
 </module>

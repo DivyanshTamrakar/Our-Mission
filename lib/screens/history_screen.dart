@@ -17,51 +17,52 @@ class HistoryScreen extends StatefulWidget {
 }
 
 class _HistoryScreenState extends State<HistoryScreen> {
-  List<Complaint> complaints=[];
-  List<dynamic> title_kann=[];
-   String language ="";
-   String title1 = "";
+  List<Complaint> complaints = [];
+  List<dynamic> title_kann = [];
+  List<dynamic> description_kann = [];
+  String language = "";
+  String title1 = "";
   String titleKn = "";
-  fetchData()async{
-    var data=await ComplaintApi().getAllComplaints();
+
+  fetchData() async {
+    var data = await ComplaintApi().getAllComplaints();
     setState(() {
-      complaints=data;
+      complaints = data;
 
       getaws();
-          });
-
+    });
   }
 
-
-
-  getaws( ) async{
+  getaws() async {
     AwsTranslate awsTranslate = AwsTranslate(
       poolId: poolId, // your pool id here
       region: region,
     ); // your region here
 
     print("outside loop");
-    for(var i =0;i<complaints.length;i++)
-      {
-        print("inside loop");
+    for (var i = 0; i < complaints.length; i++) {
+      print("inside loop");
 
-        String translated1 = await awsTranslate.translateText(complaints[i].title.toString(), to: 'kn');
-        if (!mounted) return CircularProgressIndicator();
-        setState(() {
-          title_kann.add(translated1.toString());
+      String translated1 = await awsTranslate
+          .translateText(complaints[i].title.toString(), to: 'kn');
+      String translated2 = await awsTranslate
+          .translateText(complaints[i].description.toString(), to: 'kn');
+      if (!mounted) return CircularProgressIndicator();
+      setState(() {
+        title_kann.add(translated1.toString());
+        description_kann.add(translated2.toString());
 
-          print("title kanana list ");
-          print(title_kann );
-
-        });
-
-      }
+        print("title kanana list ");
+        print(title_kann);
+        print("description kannada  list ");
+        print(description_kann);
+      });
+    }
 
     print("title kanana list ");
-    print(title_kann );
-
-
-
+    print(title_kann);
+    print("descreption kanana list ");
+    print(description_kann);
   }
 
   GetPreferData() async {
@@ -69,12 +70,10 @@ class _HistoryScreenState extends State<HistoryScreen> {
 
     setState(() {
       language = pref.getString("language");
-
     });
     print(pref.getString("language"));
     print("language ========$language");
   }
-
 
   @override
   void initState() {
@@ -82,114 +81,138 @@ class _HistoryScreenState extends State<HistoryScreen> {
     fetchData();
     GetPreferData();
     print("title lsit kannada ");
-   print(title_kann);
+    print(title_kann);
   }
-
 
   @override
   Widget build(BuildContext context) {
-    double height=MediaQuery.of(context).size.height;
-    double width=MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: HomeScreen.color,
         title: Text(
-          language == "English"?"History":"ಇತಿಹಾಸ",
+          language == "English" ? "History" : "ಇತಿಹಾಸ",
           style: TextStyle(
-            color:primary_text_color,
+            color: primary_text_color,
           ),
         ),
         centerTitle: true,
       ),
-      body: (complaints!=null)?
-      (complaints.length>0)?
-      Column(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          title_kann.length>0?
-          Expanded(
-            child: ListView.builder(
-                itemCount: complaints.length,
-                itemBuilder: (context, i) {
-                   return Container(
-                    margin: EdgeInsets.all(5),
-                    child: Card(
-                      elevation: 5,
-                      shape: RoundedRectangleBorder(
-                          side: new BorderSide(color: Colors.grey[300], width: 1.0),
-                          borderRadius: BorderRadius.circular(4.0)),
-                      child: InkWell(
-                        borderRadius: BorderRadius.circular(4.0),
-                        onTap: ()  {
-                          Navigator.push(
-                              context,
-                              CupertinoPageRoute(
-                                  builder: (context) => ComplaintDetailScreen(complaint:complaints[i])));
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10, right: 10, top: 15, bottom: 20),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Container(
-                                    width: width*0.5,
-                                    child: Text(
-                                      language == "English"? complaints[i].title:title_kann[i],
-
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 1,
-                                      style: TextStyle(
-                                          fontSize: 16, fontWeight: FontWeight.bold),
+      body: (complaints != null)
+          ? (complaints.length > 0)
+              ? Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Expanded(
+                      child: ListView.builder(
+                          itemCount: complaints.length,
+                          itemBuilder: (context, i) {
+                            return Container(
+                              margin: EdgeInsets.all(5),
+                              child: Card(
+                                elevation: 5,
+                                shape: RoundedRectangleBorder(
+                                    side: new BorderSide(
+                                        color: Colors.grey[300], width: 1.0),
+                                    borderRadius: BorderRadius.circular(4.0)),
+                                child: InkWell(
+                                  borderRadius: BorderRadius.circular(4.0),
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        CupertinoPageRoute(
+                                            builder: (context) =>
+                                                ComplaintDetailScreen(
+                                                    complaint: complaints[i])));
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 10,
+                                        right: 10,
+                                        top: 15,
+                                        bottom: 20),
+                                    child: Column(
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Container(
+                                              width: width * 0.5,
+                                              child: Text(
+                                                // language == "English"? complaints[i].title:title_kann[i],
+                                                language == "English"
+                                                    ? complaints[i].title
+                                                    : (title_kann.length > i
+                                                        ? title_kann[i]
+                                                        : 'Please wait...'),
+                                                overflow: TextOverflow.ellipsis,
+                                                maxLines: 1,
+                                                style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ),
+                                            Spacer(),
+                                            Text(
+                                              language == "English"?"Complain Id : ":"ಐಡಿ ದೂರು : ",
+                                              style: TextStyle(
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            Container(
+                                              width: width * 0.2,
+                                              child: Text(
+                                                complaints[i].sId == null
+                                                    ? "123"
+                                                    : complaints[i].sId,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: TextStyle(
+                                                    fontSize: 12,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        // SizedBox(height: 20,),
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: 8.0),
+                                          child: Divider(
+                                            height: 1,
+                                            color: Colors.grey[500],
+                                          ),
+                                        ),
+                                        Text(
+                                          language == "English"
+                                              ? complaints[i].description
+                                              : (description_kann.length > i
+                                                  ? description_kann[i]
+                                                  : 'Please wait...'),
+                                          //complaints[i].description,
+                                          maxLines: 2,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                  Spacer(),
-                                  Text(
-                                    "Complain Id:",
-                                    style: TextStyle(
-                                        fontSize: 12, fontWeight: FontWeight.bold),
-                                  ),
-                                  Container(
-                                    width: width*0.2,
-                                    child: Text(
-                                      complaints[i].sId==null?"123":complaints[i].sId,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
-                                          fontSize: 12, fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              // SizedBox(height: 20,),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                                child: Divider(
-                                  height: 1,
-                                  color: Colors.grey[500],
                                 ),
                               ),
-                              Text(
-                                complaints[i].description,
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                  fontSize: 14,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                            );
+                          }),
                     ),
-                  );
-                }),
-          ):CircularProgressIndicator(),
-        ],
-      ):
-      Center(child: CircularProgressIndicator(),):
-      Center(child: Text("No complaint History Found",   textAlign: TextAlign.center)),
-
+                  ],
+                )
+              : Center(
+                  child: CircularProgressIndicator(),
+                )
+          : Center(
+              child: Text("No complaint History Found",
+                  textAlign: TextAlign.center)),
     );
   }
 }
