@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:aws_translate/aws_translate.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:namma_badavane/config.dart';
@@ -8,6 +9,7 @@ import 'package:namma_badavane/utils/colors.dart';
 import 'package:http/http.dart' as http;
 import 'package:namma_badavane/widgets/dialogs.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:translator/translator.dart';
 
 import 'homescreen.dart';
 
@@ -24,14 +26,74 @@ class _ComplaintDetailScreenState extends State<ComplaintDetailScreen> {
   TextEditingController _controller = new TextEditingController();
   var star_rating = 1;
   String language = "";
+  String title = "";
+  String status ="";
+  String description = "";
+
+
+
+  getlanguage()  async {
+    final translator = GoogleTranslator();
+
+      var translation1 =  await translator.translate(widget.complaint.title, to: 'kn');
+    var translation2 =  await  translator.translate(widget.complaint.description, to: 'kn');
+    var translation3 =  await  translator.translate(widget.complaint.status, to: 'kn');
+      setState(() {
+        title = translation1.toString();
+        description = translation2.toString();
+        status = translation3.toString();
+      });
+      print(translation1 );
+      print(translation2);
+      print(translation3);
+      print("title");
+     print("description");print("status");
+     print(title);
+    print(description);
+    print(status);
+  }
+
+
+  getaws() async{
+    AwsTranslate awsTranslate = AwsTranslate(
+        poolId: poolId, // your pool id here
+        region: region,
+    ); // your region here
+
+
+    String translated1 = await awsTranslate.translateText(widget.complaint.title, to: 'kn');
+    String translated2 = await awsTranslate.translateText(widget.complaint.description, to: 'kn');
+    String translated3 = await awsTranslate.translateText(widget.complaint.status, to: 'kn');
+    if (!mounted) return;
+    setState(() {
+      title = translated1.toString();
+      description = translated2.toString();
+      status = translated3.toString();
+    });
+
+    print(translated1 );
+    print(translated2);
+    print(translated3);
+    print("title");
+    print("description");print("status");
+    print(title);
+    print(description);
+    print(status);
+
+
+  }
+
 
   @override
   void initState() {
     super.initState();
     print("Complaint data");
     GetPreferData();
+    // getlanguage();
+    getaws();
     // print("${widget.id.status}");
   }
+
 
   GetPreferData() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
@@ -95,7 +157,7 @@ class _ComplaintDetailScreenState extends State<ComplaintDetailScreen> {
                               Container(
                                 width: width * 0.4,
                                 child: Text(
-                                  widget.complaint.title,
+                                  language == "English"? widget.complaint.title:title ==""?"Please wait...":title,
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 18),
@@ -120,7 +182,8 @@ class _ComplaintDetailScreenState extends State<ComplaintDetailScreen> {
                             color: Colors.black38,
                           ),
                           SizedBox(height: 10),
-                          Text("Description",
+                          Text(
+                              language == "English"?"Description":"ವಿವರಣೆ",
                               textAlign: TextAlign.left,
                               style: TextStyle(fontSize: 12)),
                           SizedBox(height: 10),
@@ -130,7 +193,7 @@ class _ComplaintDetailScreenState extends State<ComplaintDetailScreen> {
                                 border: Border.all(color: Colors.black12),
                                 borderRadius: BorderRadius.circular(5)),
                             child: Text(
-                              widget.complaint.description,
+                              language == "English"?widget.complaint.description:description==""?"PLease wait...":description,
                               style: TextStyle(),
                             ),
                           ),
@@ -147,7 +210,7 @@ class _ComplaintDetailScreenState extends State<ComplaintDetailScreen> {
                                           Icon(Icons.call,
                                               color: Colors.green, size: 14),
                                           SizedBox(width: 5),
-                                          Text("Contact no -"),
+                                          Text("${language == "English" ? "Contact no -":"ಸಂಪರ್ಕಿಸಿ - "}"),
                                           SizedBox(width: 5),
                                           Text(widget.complaint.contact
                                               .toString()),
@@ -159,7 +222,7 @@ class _ComplaintDetailScreenState extends State<ComplaintDetailScreen> {
                                           Icon(Icons.alternate_email_outlined,
                                               color: Colors.green, size: 14),
                                           SizedBox(width: 5),
-                                          Text("Email Id -"),
+                                          Text("${language == "English"?"Email Id -":"ಇಮೇಲ್ ಐಡಿ -"}" ),
                                           SizedBox(width: 5),
                                           Text(widget.complaint.email),
                                         ]),
@@ -170,10 +233,13 @@ class _ComplaintDetailScreenState extends State<ComplaintDetailScreen> {
                                           Icon(Icons.call,
                                               color: Colors.green, size: 14),
                                           SizedBox(width: 5),
-                                          Text("Status -"),
+                                          Text("${language == "English"?"Status :-":"ಸ್ಥಿತಿ :-"}"),
                                           SizedBox(width: 5),
                                           // Text("Submitted"),
-                                          Text(widget.complaint.status),
+                                          Text(
+                                            language == "English"?
+                                              widget.complaint.status:status==""?"Please wait...":status, overflow: TextOverflow.ellipsis,
+                                          ),
                                         ]),
                                     SizedBox(height: 10),
                                   ],
@@ -347,7 +413,7 @@ class _ComplaintDetailScreenState extends State<ComplaintDetailScreen> {
                             SizedBox(width: 15),
                             Expanded(
                               child: Text(
-                                'Submit Feedback',
+                                language=="English"?'Submit Feedback':'ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ಸಲ್ಲಿಸಿ',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     color: button_text_color,

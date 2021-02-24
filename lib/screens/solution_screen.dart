@@ -9,6 +9,7 @@ import 'package:namma_badavane/services/complaint_service.dart';
 import 'package:namma_badavane/utils/HttpResponse.dart';
 import 'package:namma_badavane/utils/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:translator/translator.dart';
 
 import 'homescreen.dart';
 
@@ -20,6 +21,7 @@ class SolutionScreen extends StatefulWidget {
 class _SolutionScreenState extends State<SolutionScreen> {
   List<dynamic> solution = [];
   String language = "";
+  List<dynamic> title_kann=[];
 
   getSolutionData() async {
     var resp = await HttpResponse.getResponse(service: '/users/solution/all');
@@ -93,6 +95,17 @@ class _SolutionScreenState extends State<SolutionScreen> {
                       child: ListView.builder(
                           itemCount: solution.length,
                           itemBuilder: (context, i) {
+                            // FutureBuilder<dynamic>(
+                            //     future: getlanguage(solution[i]["title"].toString()),
+                            //     builder: (context, snapshot) {
+                            //       if (snapshot.hasData) {
+                            //
+                            //       }
+                            //       return CircularProgressIndicator();
+                            //     }
+                            // );
+
+
                             return Container(
                               margin: EdgeInsets.all(5),
                               child: Card(

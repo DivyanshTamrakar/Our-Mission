@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:aws_translate/aws_translate.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -10,7 +11,6 @@ import 'package:namma_badavane/utils/colors.dart';
 import 'package:namma_badavane/utils/HttpResponse.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:translator/translator.dart';
-
 import 'homescreen.dart';
 
 class CategoryListScreen extends StatefulWidget {
@@ -27,6 +27,7 @@ class CategoryListScreen extends StatefulWidget {
 class _CategoryListScreenState extends State<CategoryListScreen> {
   File image;
   String language;
+  String potholes ="";
 
   _imgFromCamera() async {
     image = await ImagePicker.pickImage(
@@ -50,9 +51,24 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
     print(widget.departments[widget.departmentNumber].subDepartmentKannada);
     super.initState();
     GetPreferData();
+    getlanguage();
 
   }
 
+         getlanguage() async {
+           final translator = GoogleTranslator();
+
+           var translation = await translator.translate("Potholes!", to: 'kn');
+           print("Potholes");
+           setState(() {
+             potholes = translation.toString();
+           });
+           print(translation);
+           print(potholes);
+
+
+
+}
 
   @override
   Widget build(BuildContext context) {

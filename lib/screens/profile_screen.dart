@@ -99,15 +99,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.white),
                   borderRadius: BorderRadius.circular(100),
-                  boxShadow: [
-                    // BoxShadow(
-                    //   color: Colors.green,
-                    //   blurRadius: 10.0,
-                    //   offset: Offset(0, 5),
-                    //   spreadRadius: 1.0,
-                    // ),
-                  ],
-                ),
+                               ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(100),
                   child: profile == null ?Image.asset(
@@ -139,7 +131,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ],
           ),
         ),
-        SizedBox(height: 20),
+        Card(
+          elevation: 5,
+          child: ListTile(
+            title: Text(
+              language == "English"?"Ward no 13":"ವಾರ್ಡ್ ಸಂಖ್ಯೆ 13",
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.bold),textAlign: TextAlign.center,
+            ),
+            // trailing: Icon(Icons.arrow_forward, color: Colors.blueAccent),
+          ),
+        ),
+
         Card(
           elevation: 5,
           child: InkWell(

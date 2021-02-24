@@ -1,11 +1,14 @@
 import 'dart:convert';
 
+import 'package:aws_translate/aws_translate.dart';
 import 'package:flutter/material.dart';
 import 'package:namma_badavane/models/complaint_model.dart';
 import 'package:namma_badavane/utils/HttpResponse.dart';
 import 'package:namma_badavane/utils/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:translator/translator.dart';
 
+import '../config.dart';
 import 'homescreen.dart';
 
 class SoutionDetailScreen extends StatefulWidget {
@@ -25,7 +28,8 @@ class _SoutionDetailScreenState extends State<SoutionDetailScreen> {
       subdepartment = "",
       status = "",
       file = "",
-      language = "";
+      language = "",
+  titleKn="",statusKn="",descriptionKn="",departmentKn="",subdepartmentKn="" ;
 
   getSolutionDataDetail() async {
     var resp =
@@ -43,7 +47,41 @@ class _SoutionDetailScreenState extends State<SoutionDetailScreen> {
       subdepartment = response['data']['sub_department'];
       status = response['data']['status'];
       file = response['data']['file'];
+      getaws();
     });
+  }
+
+  getaws() async{
+    AwsTranslate awsTranslate = AwsTranslate(
+      poolId: poolId, // your pool id here
+      region: region,
+    ); // your region here
+
+
+    String translated1 = await awsTranslate.translateText(title, to: 'kn');
+    String translated2 = await awsTranslate.translateText(description, to: 'kn');
+    String translated3 = await awsTranslate.translateText(department, to: 'kn');
+    String translated4 = await awsTranslate.translateText(subdepartment, to: 'kn');
+    String translated5 = await awsTranslate.translateText(status, to: 'kn');
+    if (!mounted) return;
+    setState(() {
+      titleKn = translated1.toString();
+      descriptionKn = translated2.toString();
+      statusKn = translated3.toString();
+      departmentKn = translated4.toString();
+      subdepartmentKn = translated5.toString();
+    });
+
+    print(translated1 );
+    print(translated2);
+    print(translated3);
+    print("title");
+    print("description");print("status");
+    print(title);
+    print(description);
+    print(status);
+
+
   }
 
   GetPreferData() async {
@@ -114,7 +152,7 @@ class _SoutionDetailScreenState extends State<SoutionDetailScreen> {
                             children: [
                               Container(
                                 child: Text(
-                                  "Complaint id : ${widget.id}",
+                                  "${language == "English"?"Complaint id":"ದೂರು ಐಡಿ"} : ${widget.id}",
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 14),
@@ -140,7 +178,7 @@ class _SoutionDetailScreenState extends State<SoutionDetailScreen> {
                               Container(
                                 width: width * 0.5,
                                 child: Text(
-                                  title,
+                                  language == "English"?title:titleKn==""?"Please wait...":titleKn,
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 18),
@@ -163,7 +201,8 @@ class _SoutionDetailScreenState extends State<SoutionDetailScreen> {
                             color: Colors.black38,
                           ),
                           SizedBox(height: 10),
-                          Text("Description",
+                          Text(
+                              language == "English"?"Description":"ವಿವರಣೆ",
                               textAlign: TextAlign.left,
                               style: TextStyle(fontSize: 12)),
                           SizedBox(height: 10),
@@ -173,7 +212,7 @@ class _SoutionDetailScreenState extends State<SoutionDetailScreen> {
                                 border: Border.all(color: Colors.black12),
                                 borderRadius: BorderRadius.circular(5)),
                             child: Text(
-                              description,
+                              language == "English"?description:descriptionKn==""?"Please wait...":descriptionKn,
                               style: TextStyle(),
                             ),
                           ),
@@ -190,7 +229,7 @@ class _SoutionDetailScreenState extends State<SoutionDetailScreen> {
                           Container(
                             width: width,
                             child: Text(
-                              "Department :- $department",
+                              "${language == "English"?"Department :-":"ಇಲಾಖೆ :-"} ${language == "English"?department:departmentKn==""?"Please wait...":departmentKn}",
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
@@ -200,7 +239,7 @@ class _SoutionDetailScreenState extends State<SoutionDetailScreen> {
                           Container(
                             width: width,
                             child: Text(
-                              "Sub Department :- $subdepartment",
+                              "${language == "English"?"Sub Department :-":"ಉಪ ಇಲಾಖೆ :-"} ${language == "English"?subdepartment:subdepartmentKn==""?"Please wait...":subdepartmentKn}",
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
@@ -210,7 +249,7 @@ class _SoutionDetailScreenState extends State<SoutionDetailScreen> {
                           Container(
                             width: width,
                             child: Text(
-                              "Status :- ${status}",
+                              "${language == "English"?"Status :-":"ಸ್ಥಿತಿ :-"} ${language == "English"?status:statusKn==""?"Please wait...":statusKn}",
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),

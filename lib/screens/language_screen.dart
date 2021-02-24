@@ -16,7 +16,7 @@ class _Language_selectionState extends State<Language_selection> {
   @override
   void initState() {
     super.initState();
-    // prefShared();
+    prefShared();
   }
 
   prefShared() async {

@@ -19,12 +19,14 @@ class _BottomBarExampleState extends State<BottomBarExample> {
   int _page = 0;
   PageController _controller;
   String language = "";
+  String label_one = "",label_two =  "",label_three= "",label_four= "";
 
   GetPreferData() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
 
     setState(() {
       language = pref.getString("language");
+
     });
     print(pref.getString("language"));
     print("language ========$language");
@@ -136,13 +138,13 @@ class _BottomBarExampleState extends State<BottomBarExample> {
           },
           items: <BottomNavigationBarItem>[
             new BottomNavigationBarItem(
-                icon: new Icon(Icons.home,color: Colors.white,), label: language =="English"? "Home":"ಮನೆ"),
+                icon: new Icon(Icons.home,color: Colors.white,), label: "Home"),//:"ಮನೆ"
             new BottomNavigationBarItem(
-                icon: new Icon(Icons.history,color: Colors.white,), label: language =="English"? "History":"ಇತಿಹಾಸ"),
+                icon: new Icon(Icons.history,color: Colors.white,), label:"History"),//"ಇತಿಹಾಸ"
             new BottomNavigationBarItem(
-                icon: new Icon(Icons.lightbulb,color: Colors.white,), label: language =="English"? "Solutions":"ಪರಿಹಾರಗಳು"),
+                icon: new Icon(Icons.lightbulb,color: Colors.white,), label: "Solutions"),//:"ಪರಿಹಾರಗಳು"
             new BottomNavigationBarItem(
-                icon: new Icon(Icons.person,color: Colors.white,), label: language =="English"? "Profile":"ಪ್ರೊಫೈಲ್"),
+                icon: new Icon(Icons.person,color: Colors.white,), label: "Profile"),//:"ಪ್ರೊಫೈಲ್"
           ],
         ),
       ),

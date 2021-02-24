@@ -20,6 +20,12 @@
       "languageVersion": "2.10"
     },
     {
+      "name": "aws_translate",
+      "rootUri": "file:///G:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/aws_translate-0.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
       "name": "boolean_selector",
       "rootUri": "file:///G:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/boolean_selector-2.1.0-nullsafety.1",
       "packageUri": "lib/",
@@ -446,7 +452,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-02-23T14:51:01.568196Z",
+  "generated": "2021-02-24T09:34:15.201052Z",
   "generator": "pub",
   "generatorVersion": "2.10.5"
 }
