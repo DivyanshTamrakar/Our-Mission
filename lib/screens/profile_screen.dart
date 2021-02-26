@@ -112,7 +112,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               SizedBox(height:20),
               Text(
-                name==""?"Test_user":name.toString(),
+                name==""?"No Name ":name.toString(),
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,

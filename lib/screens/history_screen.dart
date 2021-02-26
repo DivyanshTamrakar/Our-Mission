@@ -208,7 +208,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
                   ],
                 )
               : Center(
-                  child: CircularProgressIndicator(),
+        child: Text("No complaint History Found",
+            textAlign: TextAlign.center),
                 )
           : Center(
               child: Text("No complaint History Found",

@@ -161,8 +161,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   return oneButtonDialog(
                                       context: context,
                                       title: "Network Error",
-                                      content:
-                                          "Please check your internet connection",
+                                      content: e.toString(),
                                       actionTitle: "OK");
                                 });
                             // print('Invalid Number');

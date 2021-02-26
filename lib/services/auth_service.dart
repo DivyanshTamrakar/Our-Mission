@@ -75,11 +75,15 @@ class Auth{
 
 
   Future<void> updateProfile(User user) async {
+
     try {
+      SharedPreferences prefs= await SharedPreferences.getInstance();
       final response = await http.post(
         Uri.parse("$BASE_URL/users/profile-update"),
         headers: {
-          "Authorization":token
+          // "Authorization":token
+          "Authorization":prefs.getString('token')
+
         },
         body: jsonEncode(<String,dynamic>{
           "name": user.name,
@@ -92,7 +96,7 @@ class Auth{
       );
       print(response.body.toString());
       var  data = jsonDecode(response.body.toString());
-      SharedPreferences prefs= await SharedPreferences.getInstance();
+      // SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString("user", user.toJson().toString());
     } catch (e) {
       rethrow;
@@ -102,9 +106,11 @@ class Auth{
 
   Future<User> getProfile() async {
     try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
       var headers = {
         "Accept": "application/json",
-        "Authorization": token,
+        // "Authorization": token,
+        "Authorization": prefs.getString('token'),
       };
       final response = await http.get('${BASE_URL}/users/profile',
           headers: headers);

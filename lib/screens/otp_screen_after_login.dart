@@ -124,7 +124,16 @@ class _OTPScreenAfterLoginState extends State<OTPScreenAfterLogin> {
                               }
                             }
                             catch(e){
-
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return oneButtonDialog(
+                                        context: context,
+                                        title: "Network Error",
+                                        content: e.toString(),
+                                        actionTitle: "OK"
+                                    );
+                                  });
                             }
                             }
                         else {

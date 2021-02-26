@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:aws_translate/aws_translate.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -49,6 +50,8 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
   String lan = "";
   String language = "";
   File image;
+  String dep_kn = "";
+  String sub_dep_kn = "";
 
 
   showLoaderDialog(BuildContext context){
@@ -110,6 +113,35 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
     });
   }
 
+
+  getaws() async {
+    AwsTranslate awsTranslate = AwsTranslate(
+      poolId: poolId, // your pool id here
+      region: region,
+    ); // your region here
+
+    print("outside loop");
+
+    String translated1 = await awsTranslate
+        .translateText(widget.departments[widget.departmentNumber].title.toString(), to: 'kn');
+    String translated2 = await awsTranslate
+        .translateText(_selectedSubDepartment.toString(), to: 'kn');
+    if (!mounted) return CircularProgressIndicator();
+    setState(() {
+      dep_kn = translated1.toString();
+      sub_dep_kn = translated2.toString();
+
+
+
+
+    });
+
+    print("dep_knn ");
+    print(dep_kn);
+    print("sub_dep_kn");
+    print(sub_dep_kn);
+  }
+
   _imgFromCamera() async {
     image = await ImagePicker.pickImage(
         source: ImageSource.camera, imageQuality: 50);
@@ -125,6 +157,7 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
     subDepartments = _selectedDepartment.subDepartment;
     getData();
     getCurrenLocation();
+    getaws();
 
   }
 
@@ -447,21 +480,21 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                       ),
                     ),
                     SizedBox(height: 10),
-                    Card(
-                      shape: RoundedRectangleBorder(
-                          side: new BorderSide(
-                              color: Colors.grey[500], width: 1.0),
-                          borderRadius: BorderRadius.circular(4.0)),
-                      elevation: 5,
-                      child: Container(
-                        width:  width,
-                        padding: EdgeInsets.symmetric(horizontal: 10.0),
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(5.0),),
-                        child: TextFormField(
-                          readOnly: true,
-                          initialValue: widget.departments[widget.departmentNumber].title,
-                        ),
-                      ),
+                    // Card(
+                    //   shape: RoundedRectangleBorder(
+                    //       side: new BorderSide(
+                    //           color: Colors.grey[500], width: 1.0),
+                    //       borderRadius: BorderRadius.circular(4.0)),
+                    //   elevation: 5,
+                    //   child: Container(
+                    //     width:  width,
+                    //     padding: EdgeInsets.symmetric(horizontal: 10.0),
+                    //     decoration: BoxDecoration(borderRadius: BorderRadius.circular(5.0),),
+                    //     child: TextFormField(
+                    //       readOnly: true,
+                    //       initialValue: language == "English" ? widget.departments[widget.departmentNumber].title:dep_kn,
+                    //     ),
+                    //   ),
                       // Drop Down for departments done by karanpreet.
                       // child: Container(
                       //   width: width,
@@ -490,23 +523,54 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                       //     ),
                       //   ),
                       // ),
+                    // ),
+
+                    Card(
+                      shape: RoundedRectangleBorder(
+                          side: new BorderSide(
+                              color: Colors.grey[500], width: 1.0),
+                          borderRadius: BorderRadius.circular(4.0)),
+                      elevation: 5,
+                      child: ListTile(
+                        title: Text(
+                          language == "English" ? widget.departments[widget.departmentNumber].title:dep_kn ==""?"...":dep_kn,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+
+                      ),
                     ),
                     SizedBox(height: 10),
-                Card(
-                  shape: RoundedRectangleBorder(
-                      side: new BorderSide(
-                          color: Colors.grey[500], width: 1.0),
-                      borderRadius: BorderRadius.circular(4.0)),
-                  elevation: 5,
-                  child: Container(
-                    width:  width,
-                    padding: EdgeInsets.symmetric(horizontal: 10.0),
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(5.0),),
-                    child: TextFormField(
-                      readOnly: true,
-                      initialValue: _selectedSubDepartment,
+                    Card(
+                      shape: RoundedRectangleBorder(
+                          side: new BorderSide(
+                              color: Colors.grey[500], width: 1.0),
+                          borderRadius: BorderRadius.circular(4.0)),
+                      elevation: 5,
+                      child: ListTile(
+                        title: Text(
+                            language == "English" ? _selectedSubDepartment:sub_dep_kn==""?"...":sub_dep_kn ,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+
+                      ),
                     ),
-                  ),),
+                // Card(
+                //   shape: RoundedRectangleBorder(
+                //       side: new BorderSide(
+                //           color: Colors.grey[500], width: 1.0),
+                //       borderRadius: BorderRadius.circular(4.0)),
+                //   elevation: 5,
+                //   child: Container(
+                //     width:  width,
+                //     padding: EdgeInsets.symmetric(horizontal: 10.0),
+                //     decoration: BoxDecoration(borderRadius: BorderRadius.circular(5.0),),
+                //     child: TextFormField(
+                //       readOnly: true,
+                //       initialValue: language == "English" ? _selectedSubDepartment:sub_dep_kn ,
+                //     ),
+                //   ),),
                             // Sub department drop down done by karan preet.
                     // Card(
                     //   shape: RoundedRectangleBorder(
@@ -605,8 +669,8 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                               var response = await dio.post(url,
                                   data: formdata,
                                   options: Options(headers: {
-                                    // "Authorization": prefs.getString("token"),
-                                     "Authorization": token,
+                                    "Authorization": prefs.getString("token"),
+                                     // "Authorization": token,
                                   }));
                               print(response);
                               Navigator.pop(context);

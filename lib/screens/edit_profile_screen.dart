@@ -121,7 +121,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     print("Bool widget.newUser == ${widget.newUser}");
     print(widget.newUser);
     print(" Nitesh token");
-    print(token);
+    // print(token);
     print(" My Token");
     getToken().then((value) => {print(value), usertoken = value});
     print(usertoken);
@@ -455,8 +455,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             var response = await dio.post(url,
                                 data: formData,
                                 options: Options(headers: {
-                                  "Authorization": token
-                                  // "Authorization": usertoken
+                                  // "Authorization": token
+                                  "Authorization": usertoken
                                 }));
                             print(response);
                             Navigator.pop(context);

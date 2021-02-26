@@ -11,8 +11,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 class ComplaintApi {
   Future<void> registerComplaint(Complaint complaint, File file) async {
     try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
       var dio = Dio();
-      dio.options.headers["Authorization"] = token;
+      // dio.options.headers["Authorization"] = token;
+      dio.options.headers["Authorization"] = prefs.getString('token');
       FormData formData = new FormData.fromMap({
         'title': complaint.title,
         'description': complaint.description,
@@ -81,8 +83,8 @@ class ComplaintApi {
     try {
       var headers = {
         "Accept": "application/json",
-        "Authorization": token,
-        // "Authorization": prefs.getString('token'),
+        // "Authorization": token,
+        "Authorization": prefs.getString('token'),
       };
       
       final response =

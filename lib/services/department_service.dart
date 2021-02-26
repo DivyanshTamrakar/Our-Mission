@@ -13,9 +13,11 @@ class DepartmentApi{
   Future<List<Department>> getAllDepartments() async {
     List<Department> departments = [];
     try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
       var headers = {
         "Accept": "application/json",
-        "Authorization":  token,
+        // "Authorization":  token,
+        "Authorization":  prefs.getString('token'),
       };
       final response = await http.get('${BASE_URL}/department',
           headers: headers);
@@ -37,9 +39,11 @@ class DepartmentApi{
   Future<Department> getDepartment(String id) async {
     Department department;
     try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
       var headers = {
         "Accept": "application/json",
-        "Authorization":  token,
+        // "Authorization":  token,
+        "Authorization":  prefs.getString('token'),
       };
       final response = await http.get('${BASE_URL}/department/${id}',
           headers: headers);

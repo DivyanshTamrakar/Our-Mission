@@ -222,7 +222,7 @@ class _ComplaintDetailScreenState extends State<ComplaintDetailScreen> {
                                           Icon(Icons.alternate_email_outlined,
                                               color: Colors.green, size: 14),
                                           SizedBox(width: 5),
-                                          Text("${language == "English"?"Email Id -":"ಇಮೇಲ್ ಐಡಿ -"}" ),
+                                          Text("${language == "English"?"Email Id -":"ಇಮೇಲ್ ಐಡಿ -"}",overflow: TextOverflow.ellipsis,),
                                           SizedBox(width: 5),
                                           Text(widget.complaint.email),
                                         ]),

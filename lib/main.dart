@@ -18,7 +18,7 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+   class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -29,13 +29,13 @@ class MyApp extends StatelessWidget {
           primarySwatch: primary_color,
           visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
-      home: BottomBarExample(),
+      // home: BottomBarExample(),
       // home:SubmittedScreen(),
       // home : EditProfileScreen(newUser: true,)
       // home : EditProfileScreen(newUser: false,)
       // home: Location(),
       //  home: HomeScreen(),
-      // home: SplashScreen(),
+      home: SplashScreen(),
       // home: ComplaintFormScreen(),
     );
   }

@@ -149,7 +149,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
                         );
                       }),
                 )
-              : Center(child: CircularProgressIndicator())
+              : Center(child: Text("No complaint History Found",
+          textAlign: TextAlign.center))
           : Center(
               child: Text("No complaint History Found",
                   textAlign: TextAlign.center)),

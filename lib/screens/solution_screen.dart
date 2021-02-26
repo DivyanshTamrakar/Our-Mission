@@ -159,12 +159,12 @@ class _SolutionScreenState extends State<SolutionScreen> {
                                                         FontWeight.bold),
                                               ),
                                             ),
-                                            Spacer(),
+                                            // Spacer(),
                                             Text(
-                                              language == "English"?"Complain Id : ":"ಐಡಿ ದೂರು : ",
+                                              language == "English"?"Complain Id:":"ಐಡಿ ದೂರು : ",
                                               style: TextStyle(
                                                   fontSize: 12,
-                                                  fontWeight: FontWeight.bold),
+                                                  fontWeight: FontWeight.bold),overflow: TextOverflow.ellipsis,
                                             ),
                                             Container(
                                               width: width * 0.2,
@@ -208,8 +208,8 @@ class _SolutionScreenState extends State<SolutionScreen> {
                     ),
                   ],
                 )
-              : Center(child: CircularProgressIndicator(),)
-          : Center(child: Text("No complaint History Found",textAlign: TextAlign.center)),
+              : Center(child: Text("No complaint Solution Found",textAlign: TextAlign.center),)
+          : Center(child: Text("No complaint Solution Found",textAlign: TextAlign.center)),
     );
   }
 }
