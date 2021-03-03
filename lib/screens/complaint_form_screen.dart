@@ -167,7 +167,7 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: HomeScreen.color,
+        backgroundColor: Color.fromRGBO(67,88,185,1.0),
         title: Text(
             language == "English" ? "Complaint/Issue Detail":"ದೂರು / ಸಂಚಿಕೆ ವಿವರ",
             style: TextStyle(color: primary_text_color)),
@@ -647,9 +647,16 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                               dio.options.connectTimeout = 5000; //5s
                               dio.options.receiveTimeout = 3000;
                               File img = image == null? await getImageFileFromAssets('placeholder_image.png'):image;
+
                               print("img === $img");
                               print("image === $image");
-
+                              print("title === ${complaint.title}");
+                              print("description === ${complaint.description}");
+                              print("eamil === ${complaint.email}");
+                              print("contact === ${complaint.contact}");
+                              print("department === ${widget.departments[widget.departmentNumber].title}");
+                              print("subdepartment === ${_selectedSubDepartment}");
+                              print("file === $image");
 
 
 

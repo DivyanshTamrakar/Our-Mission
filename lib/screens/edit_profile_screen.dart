@@ -28,11 +28,6 @@ class EditProfileScreen extends StatefulWidget {
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
-  String _name = "",
-      _email = "",
-      _location = "",
-      _area = "",
-      profile_image = "";
 
   List<bool> hasError = [false, false, false, false];
   String usertoken;
@@ -41,8 +36,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   String longitude = "";
   File image;
   String language = "";
+  String _name = "";
+  String  _email = "";
+  String _location = "";
+  String _area = "";
+  String profile_image = "";
 
-  getUserData() async {
+
+     getUserData() async {
     var resp = await HttpResponse.getResponse(
       service: '/users/profile',
     );
@@ -51,10 +52,20 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     var response = jsonDecode(resp);
     print("\n\n${response.toString()}\n\n");
 
-    setState(() {
+
+     setState(() {
       profile_image = response['data']['profile'].toString();
-    });
+      _name  = response['data']['name'].toString();
+      _email = response['data']['email'].toString();
+      _area = response['data']['address'].toString();
+      _location = response['data']['location']['coordinates'].toString();
+     });
+    // print(_name);
+    // print(_email);
+    // print(_area);
   }
+
+
 
   Future<File> getImageFileFromAssets(String path) async {
     final byteData = await rootBundle.load('assets/$path');
@@ -113,11 +124,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+    if(widget.newUser == false) getUserData();
     getCurrenLocation();
     getlanguage();
-    // getUserData();
     print("Bool widget.newUser == ${widget.newUser}");
     print(widget.newUser);
     print(" Nitesh token");
@@ -125,7 +135,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     print(" My Token");
     getToken().then((value) => {print(value), usertoken = value});
     print(usertoken);
-    if (!widget.newUser) getData();
+    // if (!widget.newUser) getData();
+
+
   }
 
   @override
@@ -134,8 +146,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
+      backgroundColor: Color.fromRGBO(246,244,246,1.0),
+      appBar: AppBar(        backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
       ),
       body: SingleChildScrollView(
@@ -160,7 +172,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       borderRadius: BorderRadius.circular(200),
                       child: image == null
                           ? Image.asset(
-                              "assets/profile_placeholder.png",
+                        "assets/profile_placeholder.png",
                               height: 120,
                               width: 120,
                               fit: BoxFit.cover,
@@ -203,63 +215,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 )
               ],
             ),
-            // GestureDetector(
-            //   onTap: () async {
-            //     // SharedPreferences prefs = await SharedPreferences
-            //     //     .getInstance();
-            //     // Dio dio = new Dio();
-            //     // dio.options.connectTimeout = 5000; //5s
-            //     // dio.options.receiveTimeout = 3000;
-            //     //
-            //     // var image_picker = await ImagePicker.pickImage(source: ImageSource.camera,imageQuality:50);
-            //     // if(image_picker != null){
-            //     //   setState(() {
-            //     //     image = image_picker;
-            //     //   });
-            //     // }
-            //     // try{
-            //     //   String user_url = BASE_URL + "/users/profile-update";
-            //     //   String filename  = image.path.split('/').last;
-            //     //   var formData = new FormData.fromMap({
-            //     //     "name":"Nitesh Vishwakarma",
-            //     //     "email":"tx2terminator@gmail.com",
-            //     //     "address":"sfdlsdfjg",
-            //     //     "location":[latitude,longitude],
-            //     //     "profile": await MultipartFile.fromFile(image.path,filename:filename, contentType: new MediaType('image','jpeg') ),
-            //     //   });
-            //     //   print("fOrm data");
-            //     //   print(formData);
-            //     //   var response = await dio.post(user_url, data: formData,
-            //     //       options: Options(headers: {
-            //     //         // "Authorization": prefs.getString("token"),
-            //     //         "Authorization": token,
-            //     //       })
-            //     //   );
-            //     //   print(response);
-            //     // }catch(e){print(e);
-            //     //
-            //     // showDialog(
-            //     //     context: context,
-            //     //     builder: (BuildContext context) {
-            //     //       return oneButtonDialog(
-            //     //           context: context,
-            //     //           title: "Error",
-            //     //           content:
-            //     //           e.toString(),
-            //     //           actionTitle: "OK");
-            //     //     });
-            //     //
-            //     // }
-            //   },
-            //   child: Container(
-            //       height: height * 0.5,
-            //       width: width,
-            //       decoration: BoxDecoration(
-            //           image: DecorationImage(
-            //         fit: BoxFit.fill,
-            //         image: AssetImage("assets/profile_details_green.png"),
-            //       ))),
-            // ),
             SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.all(15.0),
@@ -435,8 +390,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
                             File img = image == null
                                 ? await getImageFileFromAssets(
-                                    'profile_placeholder.png')
+                                'profile_placeholder.png')
                                 : image;
+
                             print("img === $img");
                             print("image === $image");
                             String filename = img.path.split('/').last;
@@ -447,9 +403,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               "location": {
                                 "coordinates": [latitude, longitude],
                               },
-                              "profile": await MultipartFile.fromFile(img.path,
+                              "profile": image != null ? await MultipartFile.fromFile(img.path,
                                   filename: filename,
-                                  contentType: new MediaType('image', 'jpeg')),
+                                  contentType: new MediaType('image', 'jpeg')):null,
                             });
                             print("profile update  === $url");
                             var response = await dio.post(url,
@@ -506,7 +462,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         padding:
                             EdgeInsets.symmetric(horizontal: 25, vertical: 10),
                         decoration: BoxDecoration(
-                            color: HomeScreen.button_back,
+                            color: Color.fromRGBO(215,111,115,1.0),
                             borderRadius: BorderRadius.circular(20.0)),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,

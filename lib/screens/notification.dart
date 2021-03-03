@@ -92,7 +92,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: HomeScreen.color,
+        backgroundColor: Color.fromRGBO(67,88,185,1.0),
         title: Text(
           language == "English"?'Notifications':'ಅಧಿಸೂಚನೆಗಳು',
           style: TextStyle(color: primary_text_color),
@@ -149,7 +149,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                         );
                       }),
                 )
-              : Center(child: Text("No complaint History Found",
+              : Center(child: Text(language == "English"?"No Notification Found":"ಯಾವುದೇ ಅಧಿಸೂಚನೆ ಕಂಡುಬಂದಿಲ್ಲ",
           textAlign: TextAlign.center))
           : Center(
               child: Text("No complaint History Found",

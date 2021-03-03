@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:namma_badavane/config.dart';
+import 'package:namma_badavane/screens/screen.dart';
 import 'package:namma_badavane/screens/sign_up_screen.dart';
 import 'package:namma_badavane/utils/bottom_navigation.dart';
 import 'package:namma_badavane/utils/colors.dart';
@@ -45,17 +46,21 @@ class _SplashScreenState extends State<SplashScreen> {
     return Timer(_duration, navigationPage);
   }
 
+
+
   void navigationPage() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    print(prefs.getString("token"));
+    print("user token ========  ${prefs.getString("token")}");
+    print("user default language in shared preference  ========  ${prefs.getString("language")}");
+
 
     var usertoken = prefs.getString("token");
     if (usertoken == null) {
       // Navigator.pushReplacement(context,
       //     MaterialPageRoute(builder: (BuildContext context) => SignUpScreen()));
       Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (BuildContext context) => LoginScreen()));
+          MaterialPageRoute(builder: (BuildContext context) => Screen()));
     } else {
       Navigator.pushReplacement(
           context,

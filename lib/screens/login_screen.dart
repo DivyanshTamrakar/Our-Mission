@@ -151,7 +151,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                           builder: (context) => OTPScreenAfterLogin(
                                               contact: _controller.text)));
                                 }
-                              } catch (e) {
+                              }
+                            catch (e) {
                                 showDialog(
                                     context: context,
                                     builder: (BuildContext context) {

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:namma_badavane/models/user_model.dart';
 import 'package:namma_badavane/screens/complaint_form_screen.dart';
 import 'package:namma_badavane/screens/edit_profile_screen.dart';
+import 'package:namma_badavane/screens/screen.dart';
 import 'package:namma_badavane/screens/sign_up_screen.dart';
 import 'package:namma_badavane/services/auth_service.dart';
 import 'package:namma_badavane/utils/HttpResponse.dart';
@@ -24,12 +25,15 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   String name="",contact="",profile="",language="";
+  String dropdownValue = 'Select Ward';
+  String dropdownValueKannada  = 'ವಾರ್ಡ್ ಆಯ್ಕೆಮಾಡಿ';
 
   GetPreferData() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
 
     setState(() {
       language = pref.getString("language");
+
     });
     print(pref.getString("language"));
     print("language ========$language");
@@ -50,19 +54,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
       profile = response['data']['profile'].toString();
 
     });
-
-
-    //
-    // SharedPreferences prefs=await SharedPreferences.getInstance();
-    // setState(() {
-    //   name=prefs.getString("name");
-    //    contact=prefs.getString("contact").toString();
-    //
-    // });
-
-
-
-
   }
   
   
@@ -75,6 +66,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
     super.initState();
     getUserData();
     GetPreferData();
+
+
     // print("name shared =$name");
     // print("contact shared =$contact");
 
@@ -102,7 +95,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(100),
-                  child: profile == null ?Image.asset(
+                  child: profile == "null" ?Image.asset(
                     "assets/profile_placeholder.png",
                     height: 120,
                     width: 120,
@@ -131,15 +124,87 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ],
           ),
         ),
-        Card(
-          elevation: 5,
-          child: ListTile(
-            title: Text(
-              language == "English"?"Ward no 13":"ವಾರ್ಡ್ ಸಂಖ್ಯೆ 13",
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.bold),textAlign: TextAlign.center,
-            ),
-            // trailing: Icon(Icons.arrow_forward, color: Colors.blueAccent),
+        language == "English"?
+        Container(
+          width: MediaQuery.of(context).size.width,
+
+          child: Card(
+
+            elevation: 5,
+            child:Center(
+              child: DropdownButton<String>(
+                value: dropdownValue,
+                icon: Icon(Icons.arrow_drop_down,color: Colors.black,),
+                iconSize: 30,
+                elevation: 16,
+                style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
+                underline: Container(
+                  height: 2,
+                  color: Colors.transparent,
+                ),
+                onChanged: (String newValue) {
+                  setState(() {
+                    dropdownValue = newValue;
+                  });
+                },
+                items:<String>['Select Ward','Ward no 13']
+                    .map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value,style: TextStyle(fontSize: 20.0),),
+                  );
+                }).toList(),
+              ),
+            )
+            // ListTile(
+            //   title: Text(
+            //     language == "English"?"Ward no 13":"ವಾರ್ಡ್ ಸಂಖ್ಯೆ 13",
+            //     maxLines: 1,
+            //     overflow: TextOverflow.ellipsis,style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.bold),textAlign: TextAlign.center,
+            //   ),
+            //   // trailing: Icon(Icons.arrow_forward, color: Colors.blueAccent),
+            // ),
+          ),
+        ):
+        Container(
+          width: MediaQuery.of(context).size.width,
+
+          child: Card(
+
+              elevation: 5,
+              child:Center(
+                child: DropdownButton<String>(
+                  value: dropdownValueKannada,
+                  icon: Icon(Icons.arrow_drop_down,color: Colors.black,),
+                  iconSize: 30,
+                  elevation: 16,
+                  style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
+                  underline: Container(
+                    height: 2,
+                    color: Colors.transparent,
+                  ),
+                  onChanged: (String newValue) {
+                    setState(() {
+                      dropdownValue = newValue;
+                    });
+                  },
+                  items:<String>['ವಾರ್ಡ್ ಆಯ್ಕೆಮಾಡಿ','ವಾರ್ಡ್ ಸಂಖ್ಯೆ 13']
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value,style: TextStyle(fontSize: 20.0),),
+                    );
+                  }).toList(),
+                ),
+              )
+            // ListTile(
+            //   title: Text(
+            //     language == "English"?"Ward no 13":"ವಾರ್ಡ್ ಸಂಖ್ಯೆ 13",
+            //     maxLines: 1,
+            //     overflow: TextOverflow.ellipsis,style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.bold),textAlign: TextAlign.center,
+            //   ),
+            //   // trailing: Icon(Icons.arrow_forward, color: Colors.blueAccent),
+            // ),
           ),
         ),
 
@@ -207,7 +272,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Navigator.push(
                   context,
                   CupertinoPageRoute(
-                      builder: (context) => LoginScreen(
+                      builder: (context) => Screen(
                           )));
             },
             child: ListTile(

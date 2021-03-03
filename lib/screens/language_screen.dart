@@ -11,7 +11,7 @@ class Language_selection extends StatefulWidget {
 }
 
 class _Language_selectionState extends State<Language_selection> {
-  String _group_value = "English";
+  String _group_value = "";
 
   @override
   void initState() {
@@ -22,32 +22,33 @@ class _Language_selectionState extends State<Language_selection> {
   prefShared() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     if (pref.getString("language") == null) {
+
+
       if (_group_value == "English") {
-        if (pref.getString("language") == null) {
           pref.setString("language", "English");
-        } else {
-          pref.setString("language", "English");
-        }
-      } else {
-        if (pref.getString("language") == null) {
-          pref.setString("language", "Kannada");
-        } else {
-          pref.setString("language", "Kannada");
-        }
       }
-    } else {
+      else if (_group_value == "") {
+        pref.setString("language", "English");
+      }
+      else if(_group_value == "Kannada") {
+          pref.setString("language", "Kannada");
+      }
+    }
+
+
+
+    else {
+
+
       if (_group_value == "English") {
-        if (pref.getString("language") == null) {
+
           pref.setString("language", "English");
-        } else {
-          pref.setString("language", "English");
-        }
-      } else {
-        if (pref.getString("language") == null) {
-          pref.setString("language", "Kannada");
-        } else {
-          pref.setString("language", "Kannada");
-        }
+
+      }
+      else {
+
+        pref.setString("language", "Kannada");
+
       }
     }
 

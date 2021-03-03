@@ -114,7 +114,7 @@ class _ComplaintDetailScreenState extends State<ComplaintDetailScreen> {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: HomeScreen.color,
+        backgroundColor: Color.fromRGBO(67,88,185,1.0),
         title: Text(
           language == "English"?
             "Complaint/Issue Detail":"ದೂರು / ಸಂಚಿಕೆ ವಿವರ",
@@ -405,7 +405,7 @@ class _ComplaintDetailScreenState extends State<ComplaintDetailScreen> {
                         padding:
                             EdgeInsets.symmetric(horizontal: 25, vertical: 10),
                         decoration: BoxDecoration(
-                            color: button_color,
+                            color: Color.fromRGBO(215,111,115,1.0),
                             borderRadius: BorderRadius.circular(20.0)),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,

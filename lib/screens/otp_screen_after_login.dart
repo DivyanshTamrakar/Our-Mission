@@ -10,6 +10,7 @@ import 'package:otp_text_field/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:namma_badavane/screens/edit_profile_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:timer_button/timer_button.dart';
 
 
 class OTPScreenAfterLogin extends StatefulWidget {
@@ -28,13 +29,16 @@ class _OTPScreenAfterLoginState extends State<OTPScreenAfterLogin> {
     double width=MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Color.fromRGBO(234,232,232,1.0),
         body: SingleChildScrollView(
           child: Column(
             children: [
               Container(
                 height: 0.3*height,
                 width: width,
+
                   decoration: BoxDecoration(
+                    color: Color.fromRGBO(234,232,232,1.0),
                       image: DecorationImage(
                         fit: BoxFit.fill,
                         image: AssetImage("assets/otp_green.png"),
@@ -48,6 +52,7 @@ class _OTPScreenAfterLoginState extends State<OTPScreenAfterLogin> {
                     Text("An OTP has been sent to your registered mobile number",
                     style: TextStyle(
                       fontSize: 20,
+                      color: Color.fromRGBO(115,114,124,1.0)
                     ),
                     textAlign: TextAlign.center,),
                     Padding(
@@ -155,7 +160,7 @@ class _OTPScreenAfterLoginState extends State<OTPScreenAfterLogin> {
                           width:width*0.8,
                           padding: EdgeInsets.symmetric(horizontal: 25,vertical: 10),
                           decoration: BoxDecoration(
-                              color: button_color,
+                              color: Color.fromRGBO(215,111,115,1.0),
                               borderRadius: BorderRadius.circular(20.0)
                           ),
                           child: Row(
@@ -196,36 +201,115 @@ class _OTPScreenAfterLoginState extends State<OTPScreenAfterLogin> {
                         ],
                       ),
                     ),
+                    // Material(
+                    //   elevation: 5,
+                    //   borderRadius:BorderRadius.circular(20.0) ,
+                    //   child: Container(
+                    //     width:width*0.8,
+                    //     padding: EdgeInsets.symmetric(horizontal: 25,vertical: 10),
+                    //     decoration: BoxDecoration(
+                    //         color: Colors.deepOrange,
+                    //         borderRadius: BorderRadius.circular(20.0)
+                    //     ),
+                    //     child: Row(
+                    //       mainAxisAlignment: MainAxisAlignment.end,
+                    //       children: [
+                    //         SizedBox(width: 15),
+                    //         Expanded(
+                    //           child: Text('Resend OTP',
+                    //             textAlign: TextAlign.center,
+                    //             style: TextStyle(
+                    //                 color: button_text_color,
+                    //                 fontSize: 20,
+                    //                 fontWeight: FontWeight.bold
+                    //             ),),
+                    //         ),
+                    //         SizedBox(width: 10,),
+                    //         Icon(Icons.mobile_screen_share,
+                    //           color: button_icon_color,)
+                    //       ],
+                    //     ),
+                    //   ),
+                    // ),
                     Material(
-                      elevation: 5,
-                      borderRadius:BorderRadius.circular(20.0) ,
                       child: Container(
                         width:width*0.8,
                         padding: EdgeInsets.symmetric(horizontal: 25,vertical: 10),
                         decoration: BoxDecoration(
-                            color: Colors.deepOrange,
-                            borderRadius: BorderRadius.circular(20.0)
+                            color: Color.fromRGBO(234,232,232,1.0),
+                            borderRadius: BorderRadius.circular(0.0)
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             SizedBox(width: 15),
                             Expanded(
-                              child: Text('Resend OTP',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: button_text_color,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold
-                                ),),
+
+                              child: new TimerButton(
+                                label: "Resend OTP",
+                                timeOutInSeconds: 60,
+                                onPressed: () async {
+
+                                  if (_otpPin.length == 0)
+                                    try {
+                                      Map data={
+                                        "contact":widget.contact,
+                                      };
+                                      var resp = await HttpResponse.postResponse(
+                                          service: '/users/send-otp', data: data);
+                                      print("\n\n$resp\n\n");
+                                      print(data);
+                                      var response = jsonDecode(resp);
+                                      print("\n\n${response.toString()}\n\n");
+                                      showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return oneButtonDialog(
+                                                context: context,
+                                                title: "Successfull!",
+                                                content: " An OTP has been sent to your registered mobile number !",
+                                                actionTitle: "OK"
+                                            );
+                                          });
+                                    }
+                                    catch (e) {
+                                      showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return oneButtonDialog(
+                                                context: context,
+                                                title: "Network Error",
+                                                content: e.toString(),
+                                                actionTitle: "OK"
+                                            );
+                                          });
+                                      // print('Invalid Number');
+                                    }
+                                  else
+                                    showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return oneButtonDialog(
+                                              context: context,
+                                              title: "Invalid Number",
+                                              content: "Please enter a valid 10 digit mobile number",
+                                              actionTitle: "OK"
+                                          );
+                                        });
+
+                                },
+                                disabledColor: Colors.grey,
+                                color: Color.fromRGBO(107,64,70,1.0),
+                                disabledTextStyle: new TextStyle(color:Colors.grey,fontSize: 15.0),
+                                activeTextStyle: new TextStyle(fontSize: 15.0, color: Colors.white),
+                              ),
                             ),
                             SizedBox(width: 10,),
-                            Icon(Icons.mobile_screen_share,
-                              color: button_icon_color,)
                           ],
                         ),
                       ),
                     ),
+
 
 
                   ],

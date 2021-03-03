@@ -208,7 +208,7 @@ class _SolutionScreenState extends State<SolutionScreen> {
                     ),
                   ],
                 )
-              : Center(child: Text("No complaint Solution Found",textAlign: TextAlign.center),)
+              : Center(child: Text(language == "English"?"No complaint Solution Found":"ಯಾವುದೇ ದೂರು ಪರಿಹಾರ ಕಂಡುಬಂದಿಲ್ಲ",textAlign: TextAlign.center),)
           : Center(child: Text("No complaint Solution Found",textAlign: TextAlign.center)),
     );
   }

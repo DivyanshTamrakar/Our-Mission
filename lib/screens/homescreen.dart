@@ -43,6 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
     });
     print(pref.getString("language"));
     print("language ========$language");
+    print("token ========${pref.getString("token")}");
 
   }
 
@@ -72,18 +73,19 @@ class _HomeScreenState extends State<HomeScreen> {
     print(width);
      return SafeArea(
         child: Scaffold(
+          backgroundColor: Color.fromRGBO(246,244,246,1.0),
       appBar: AppBar(
         elevation: 0.0,
         title: Text(
           language == "English" ?"Departments":"ಇಲಾಖೆಗಳು",
-          style: TextStyle(color: primary_text_color),
+          style: TextStyle(color: Color.fromRGBO(173,171,184,1.0)),
         ),
 
-        backgroundColor: HomeScreen.color,
+        backgroundColor: Color.fromRGBO(22,14,27,1.0),
         actions: [
           IconButton(
             icon:
-                Icon(Icons.notifications_active_outlined, color: Colors.white),
+                Icon(Icons.notifications_active_outlined, color: Color.fromRGBO(67,88,185,1.0)),
             color: button_icon_color,
             onPressed: () {
               Navigator.push(
