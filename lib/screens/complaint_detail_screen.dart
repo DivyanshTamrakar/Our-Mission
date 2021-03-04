@@ -301,7 +301,7 @@ class _ComplaintDetailScreenState extends State<ComplaintDetailScreen> {
                               BorderSide(color: Colors.grey[200], width: 2.0),
                         ),
                         hintText:
-                            'Feel free to provide your feedback over here !',
+                            language == "English" ? 'Feel free to provide your feedback over here !':'ನಿಮ್ಮ ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ಇಲ್ಲಿ ನೀಡಲು ಹಿಂಜರಿಯಬೇಡಿ!',
                       ),
                       validator: (value) {
                         if (value.isEmpty) {

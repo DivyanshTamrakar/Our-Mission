@@ -1,380 +1,152 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="be21e92b-6fe7-494a-91f2-8f91f01ca91f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../.dart_tool/flutter_build/99868dc404fee86c03cafd236402653f/app.dill" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.dart_tool/flutter_build/99868dc404fee86c03cafd236402653f/gen_localizations.stamp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.flutter-plugins" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.flutter-plugins-dependencies" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/aws_translate/.transforms/1d7665d07aab09ac3d71e37fd84c6d58.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/aws_translate/.transforms/f3638ce10f79a0cb48c61d342ff37c9e.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/aws_translate/.transforms/f3638ce10f79a0cb48c61d342ff37c9e/full/classes.dex" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/aws_translate/generated/source/buildConfig/release/com/example/aws_translate/BuildConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/aws_translate/intermediates/aapt_friendly_merged_manifests/release/aapt/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/aws_translate/intermediates/aapt_friendly_merged_manifests/release/aapt/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/aws_translate/intermediates/annotation_processor_list/release/annotationProcessors.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/aws_translate/intermediates/compile_library_classes/release/classes.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/aws_translate/intermediates/compile_only_not_namespaced_r_class_jar/release/R.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/aws_translate/intermediates/full_jar/release/createFullJarRelease/full.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/aws_translate/intermediates/incremental/mergeReleaseJniLibFolders/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/aws_translate/intermediates/incremental/mergeReleaseShaders/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/aws_translate/intermediates/incremental/packageReleaseAssets/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/aws_translate/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/aws_translate/intermediates/incremental/packageReleaseResources/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/aws_translate/intermediates/incremental/release-mergeNativeLibs/merge-state" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/aws_translate/intermediates/javac/release/classes/com/example/aws_translate/AwsTranslatePlugin$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/aws_translate/intermediates/javac/release/classes/com/example/aws_translate/AwsTranslatePlugin$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/aws_translate/intermediates/javac/release/classes/com/example/aws_translate/AwsTranslatePlugin.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/aws_translate/intermediates/javac/release/classes/com/example/aws_translate/BuildConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/aws_translate/intermediates/library_java_res/release/res.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/aws_translate/intermediates/library_manifest/release/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/aws_translate/intermediates/local_only_symbol_list/release/parseReleaseLibraryResources/R-def.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/aws_translate/intermediates/manifest_merge_blame_file/release/manifest-merger-blame-release-report.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/aws_translate/intermediates/merged_manifests/release/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/aws_translate/intermediates/res/symbol-table-with-package/release/package-aware-r.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/aws_translate/intermediates/runtime_library_classes/release/classes.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/aws_translate/intermediates/symbols/release/R.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/aws_translate/outputs/logs/manifest-merger-release-report.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/connectivity/.transforms/51893bf11fe896ee056e7e790cece04c.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/connectivity/.transforms/51893bf11fe896ee056e7e790cece04c/full/classes.dex" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/connectivity/.transforms/8d60aeb48fce2c1173d8245c18a4116a.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/connectivity/generated/source/buildConfig/release/io/flutter/plugins/connectivity/BuildConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/aapt_friendly_merged_manifests/release/aapt/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/aapt_friendly_merged_manifests/release/aapt/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/annotation_processor_list/release/annotationProcessors.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/compile_library_classes/release/classes.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/compile_only_not_namespaced_r_class_jar/release/R.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/full_jar/release/createFullJarRelease/full.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/incremental/mergeReleaseJniLibFolders/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/incremental/mergeReleaseShaders/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/incremental/packageReleaseAssets/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/incremental/packageReleaseResources/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/incremental/release-mergeNativeLibs/merge-state" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/javac/release/classes/io/flutter/plugins/connectivity/BuildConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/javac/release/classes/io/flutter/plugins/connectivity/Connectivity.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/javac/release/classes/io/flutter/plugins/connectivity/ConnectivityBroadcastReceiver$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/javac/release/classes/io/flutter/plugins/connectivity/ConnectivityBroadcastReceiver$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/javac/release/classes/io/flutter/plugins/connectivity/ConnectivityBroadcastReceiver.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/javac/release/classes/io/flutter/plugins/connectivity/ConnectivityMethodChannelHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/javac/release/classes/io/flutter/plugins/connectivity/ConnectivityPlugin.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/library_java_res/release/res.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/library_manifest/release/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/local_only_symbol_list/release/parseReleaseLibraryResources/R-def.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/manifest_merge_blame_file/release/manifest-merger-blame-release-report.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/merged_manifests/release/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/res/symbol-table-with-package/release/package-aware-r.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/runtime_library_classes/release/classes.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/symbols/release/R.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/connectivity/outputs/logs/manifest-merger-release-report.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/.transforms/3d00539d0579e04a4aba33a189d25ee5.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/.transforms/436df0e00d63753b9410633ea2da0439.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/.transforms/436df0e00d63753b9410633ea2da0439/full/classes.dex" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/generated/source/buildConfig/release/io/flutter/plugins/firebasemessaging/BuildConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/aapt_friendly_merged_manifests/release/aapt/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/aapt_friendly_merged_manifests/release/aapt/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/annotation_processor_list/release/annotationProcessors.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/compile_library_classes/release/classes.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/compile_only_not_namespaced_r_class_jar/release/R.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/full_jar/release/createFullJarRelease/full.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/incremental/mergeReleaseJniLibFolders/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/incremental/mergeReleaseShaders/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/incremental/packageReleaseAssets/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/incremental/packageReleaseResources/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/incremental/release-mergeNativeLibs/merge-state" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/javac/release/classes/io/flutter/plugins/firebasemessaging/BuildConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/javac/release/classes/io/flutter/plugins/firebasemessaging/FirebaseMessagingPlugin$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/javac/release/classes/io/flutter/plugins/firebasemessaging/FirebaseMessagingPlugin$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/javac/release/classes/io/flutter/plugins/firebasemessaging/FirebaseMessagingPlugin$3.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/javac/release/classes/io/flutter/plugins/firebasemessaging/FirebaseMessagingPlugin$4.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/javac/release/classes/io/flutter/plugins/firebasemessaging/FirebaseMessagingPlugin$5$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/javac/release/classes/io/flutter/plugins/firebasemessaging/FirebaseMessagingPlugin$5$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/javac/release/classes/io/flutter/plugins/firebasemessaging/FirebaseMessagingPlugin$5.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/javac/release/classes/io/flutter/plugins/firebasemessaging/FirebaseMessagingPlugin.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/javac/release/classes/io/flutter/plugins/firebasemessaging/FlutterFirebaseAppRegistrar.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/javac/release/classes/io/flutter/plugins/firebasemessaging/FlutterFirebaseMessagingService$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/javac/release/classes/io/flutter/plugins/firebasemessaging/FlutterFirebaseMessagingService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/javac/release/classes/io/flutter/plugins/firebasemessaging/LatchResult$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/javac/release/classes/io/flutter/plugins/firebasemessaging/LatchResult.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/library_java_res/release/res.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/library_manifest/release/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/local_only_symbol_list/release/parseReleaseLibraryResources/R-def.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/manifest_merge_blame_file/release/manifest-merger-blame-release-report.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/merged_manifests/release/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/res/symbol-table-with-package/release/package-aware-r.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/runtime_library_classes/release/classes.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/symbols/release/R.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/firebase_messaging/outputs/logs/manifest-merger-release-report.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/.transforms/0e0fa2273ede587315bb9e322e115f9e.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/.transforms/28246f78b4fee575ee4783724ddd9e48.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/.transforms/28246f78b4fee575ee4783724ddd9e48/full/classes.dex" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/generated/source/buildConfig/release/io/flutter/plugins/flutter_plugin_android_lifecycle/BuildConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/aapt_friendly_merged_manifests/release/aapt/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/aapt_friendly_merged_manifests/release/aapt/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/annotation_processor_list/release/annotationProcessors.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/compile_library_classes/release/classes.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/compile_only_not_namespaced_r_class_jar/release/R.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/full_jar/release/createFullJarRelease/full.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/incremental/mergeReleaseJniLibFolders/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/incremental/mergeReleaseShaders/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/incremental/packageReleaseAssets/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/incremental/packageReleaseResources/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/incremental/release-mergeNativeLibs/merge-state" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/javac/release/classes/io/flutter/embedding/engine/plugins/lifecycle/FlutterLifecycleAdapter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/javac/release/classes/io/flutter/plugins/flutter_plugin_android_lifecycle/BuildConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/javac/release/classes/io/flutter/plugins/flutter_plugin_android_lifecycle/FlutterAndroidLifecyclePlugin.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/library_java_res/release/res.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/library_manifest/release/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/local_only_symbol_list/release/parseReleaseLibraryResources/R-def.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/manifest_merge_blame_file/release/manifest-merger-blame-release-report.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/merged_manifests/release/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/res/symbol-table-with-package/release/package-aware-r.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/runtime_library_classes/release/classes.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/symbols/release/R.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/outputs/logs/manifest-merger-release-report.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/.transforms/dc9e45851c968bb8c7bb8ca99ad9a680.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/.transforms/dc9e45851c968bb8c7bb8ca99ad9a680/full/classes.dex" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/.transforms/e751ec5c843c6610432ad4db7ab7e59e.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/generated/source/buildConfig/release/com/baseflow/geolocator/BuildConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/aapt_friendly_merged_manifests/release/aapt/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/aapt_friendly_merged_manifests/release/aapt/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/annotation_processor_list/release/annotationProcessors.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/compile_library_classes/release/classes.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/compile_only_not_namespaced_r_class_jar/release/R.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/full_jar/release/createFullJarRelease/full.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/incremental/mergeReleaseJniLibFolders/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/incremental/mergeReleaseShaders/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/incremental/packageReleaseAssets/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/incremental/packageReleaseResources/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/incremental/release-mergeNativeLibs/merge-state" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/javac/release/classes/com/baseflow/geolocator/BuildConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/javac/release/classes/com/baseflow/geolocator/GeolocatorPlugin.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/javac/release/classes/com/baseflow/geolocator/MethodCallHandlerImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/javac/release/classes/com/baseflow/geolocator/StreamHandlerImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/javac/release/classes/com/baseflow/geolocator/errors/ErrorCallback.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/javac/release/classes/com/baseflow/geolocator/errors/ErrorCodes$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/javac/release/classes/com/baseflow/geolocator/errors/ErrorCodes.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/javac/release/classes/com/baseflow/geolocator/errors/PermissionUndefinedException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/javac/release/classes/com/baseflow/geolocator/location/FlutterLocationServiceListener.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/javac/release/classes/com/baseflow/geolocator/location/FusedLocationClient$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/javac/release/classes/com/baseflow/geolocator/location/FusedLocationClient$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/javac/release/classes/com/baseflow/geolocator/location/FusedLocationClient.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/javac/release/classes/com/baseflow/geolocator/location/GeolocationManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/javac/release/classes/com/baseflow/geolocator/location/LocationAccuracy.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/javac/release/classes/com/baseflow/geolocator/location/LocationClient.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/javac/release/classes/com/baseflow/geolocator/location/LocationManagerClient$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/javac/release/classes/com/baseflow/geolocator/location/LocationManagerClient.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/javac/release/classes/com/baseflow/geolocator/location/LocationMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/javac/release/classes/com/baseflow/geolocator/location/LocationOptions.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/javac/release/classes/com/baseflow/geolocator/location/LocationServiceListener.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/javac/release/classes/com/baseflow/geolocator/location/PositionChangedCallback.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/javac/release/classes/com/baseflow/geolocator/permission/LocationPermission$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/javac/release/classes/com/baseflow/geolocator/permission/LocationPermission.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/javac/release/classes/com/baseflow/geolocator/permission/PermissionManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/javac/release/classes/com/baseflow/geolocator/permission/PermissionResultCallback.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/javac/release/classes/com/baseflow/geolocator/permission/PermissionUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/javac/release/classes/com/baseflow/geolocator/utils/Utils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/library_java_res/release/res.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/library_manifest/release/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/local_only_symbol_list/release/parseReleaseLibraryResources/R-def.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/manifest_merge_blame_file/release/manifest-merger-blame-release-report.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/merged_manifests/release/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/res/symbol-table-with-package/release/package-aware-r.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/runtime_library_classes/release/classes.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/symbols/release/R.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/geolocator/outputs/logs/manifest-merger-release-report.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/.transforms/3ae3c639fca2b7680b291fb84184b48a.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/.transforms/60f7ec12f1f4f7390bfa689266e8273e.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/.transforms/60f7ec12f1f4f7390bfa689266e8273e/full/classes.dex" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/generated/source/buildConfig/release/io/flutter/plugins/imagepicker/BuildConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/aapt_friendly_merged_manifests/release/aapt/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/aapt_friendly_merged_manifests/release/aapt/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/annotation_processor_list/release/annotationProcessors.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/compile_library_classes/release/classes.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/compile_only_not_namespaced_r_class_jar/release/R.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/full_jar/release/createFullJarRelease/full.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/incremental/mergeReleaseJniLibFolders/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/incremental/mergeReleaseShaders/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/incremental/packageReleaseAssets/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/incremental/packageReleaseResources/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/incremental/release-mergeNativeLibs/merge-state" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/javac/release/classes/io/flutter/plugins/imagepicker/BuildConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/javac/release/classes/io/flutter/plugins/imagepicker/CameraDevice.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/javac/release/classes/io/flutter/plugins/imagepicker/ExifDataCopier.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/javac/release/classes/io/flutter/plugins/imagepicker/FileUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/javac/release/classes/io/flutter/plugins/imagepicker/ImagePickerCache.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/javac/release/classes/io/flutter/plugins/imagepicker/ImagePickerDelegate$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/javac/release/classes/io/flutter/plugins/imagepicker/ImagePickerDelegate$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/javac/release/classes/io/flutter/plugins/imagepicker/ImagePickerDelegate$3$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/javac/release/classes/io/flutter/plugins/imagepicker/ImagePickerDelegate$3.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/javac/release/classes/io/flutter/plugins/imagepicker/ImagePickerDelegate$4.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/javac/release/classes/io/flutter/plugins/imagepicker/ImagePickerDelegate$5.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/javac/release/classes/io/flutter/plugins/imagepicker/ImagePickerDelegate$FileUriResolver.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/javac/release/classes/io/flutter/plugins/imagepicker/ImagePickerDelegate$IntentResolver.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/javac/release/classes/io/flutter/plugins/imagepicker/ImagePickerDelegate$OnPathReadyListener.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/javac/release/classes/io/flutter/plugins/imagepicker/ImagePickerDelegate$PermissionManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/javac/release/classes/io/flutter/plugins/imagepicker/ImagePickerDelegate.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/javac/release/classes/io/flutter/plugins/imagepicker/ImagePickerFileProvider.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/javac/release/classes/io/flutter/plugins/imagepicker/ImagePickerPlugin$LifeCycleObserver.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/javac/release/classes/io/flutter/plugins/imagepicker/ImagePickerPlugin$MethodResultWrapper$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/javac/release/classes/io/flutter/plugins/imagepicker/ImagePickerPlugin$MethodResultWrapper$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/javac/release/classes/io/flutter/plugins/imagepicker/ImagePickerPlugin$MethodResultWrapper$3.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/javac/release/classes/io/flutter/plugins/imagepicker/ImagePickerPlugin$MethodResultWrapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/javac/release/classes/io/flutter/plugins/imagepicker/ImagePickerPlugin.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/javac/release/classes/io/flutter/plugins/imagepicker/ImagePickerUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/javac/release/classes/io/flutter/plugins/imagepicker/ImageResizer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/library_java_res/release/res.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/local_only_symbol_list/release/parseReleaseLibraryResources/R-def.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/manifest_merge_blame_file/release/manifest-merger-blame-release-report.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/merged_manifests/release/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/packaged_res/release/xml/flutter_image_picker_file_paths.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/res/symbol-table-with-package/release/package-aware-r.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/runtime_library_classes/release/classes.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/symbols/release/R.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/image_picker/outputs/logs/manifest-merger-release-report.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/path_provider/.transforms/8d0da2db9e35d49660ba7be1b3220358.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/path_provider/.transforms/8d0da2db9e35d49660ba7be1b3220358/full/classes.dex" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/path_provider/.transforms/c8f5d1c06f02633450fd4c322dbdfe36.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/path_provider/generated/source/buildConfig/release/io/flutter/plugins/pathprovider/BuildConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/path_provider/intermediates/aapt_friendly_merged_manifests/release/aapt/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/path_provider/intermediates/aapt_friendly_merged_manifests/release/aapt/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/path_provider/intermediates/annotation_processor_list/release/annotationProcessors.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/path_provider/intermediates/compile_library_classes/release/classes.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/path_provider/intermediates/compile_only_not_namespaced_r_class_jar/release/R.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/path_provider/intermediates/full_jar/release/createFullJarRelease/full.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/path_provider/intermediates/incremental/mergeReleaseJniLibFolders/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/path_provider/intermediates/incremental/mergeReleaseShaders/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/path_provider/intermediates/incremental/packageReleaseAssets/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/path_provider/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/path_provider/intermediates/incremental/packageReleaseResources/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/path_provider/intermediates/incremental/release-mergeNativeLibs/merge-state" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/path_provider/intermediates/javac/release/classes/io/flutter/plugins/pathprovider/BuildConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/path_provider/intermediates/javac/release/classes/io/flutter/plugins/pathprovider/PathProviderPlugin$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/path_provider/intermediates/javac/release/classes/io/flutter/plugins/pathprovider/PathProviderPlugin$UiThreadExecutor.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/path_provider/intermediates/javac/release/classes/io/flutter/plugins/pathprovider/PathProviderPlugin.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/path_provider/intermediates/javac/release/classes/io/flutter/plugins/pathprovider/StorageDirectoryMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/path_provider/intermediates/library_java_res/release/res.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/path_provider/intermediates/library_manifest/release/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/path_provider/intermediates/local_only_symbol_list/release/parseReleaseLibraryResources/R-def.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/path_provider/intermediates/manifest_merge_blame_file/release/manifest-merger-blame-release-report.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/path_provider/intermediates/merged_manifests/release/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/path_provider/intermediates/res/symbol-table-with-package/release/package-aware-r.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/path_provider/intermediates/runtime_library_classes/release/classes.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/path_provider/intermediates/symbols/release/R.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/path_provider/outputs/logs/manifest-merger-release-report.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/.transforms/042231e237805f9da046ce63f3fb6bbe.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/.transforms/a1c9bbd24ce929357315391b0c8b316c.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/.transforms/a1c9bbd24ce929357315391b0c8b316c/full/classes.dex" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/generated/source/buildConfig/release/com/baseflow/permissionhandler/BuildConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/aapt_friendly_merged_manifests/release/aapt/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/aapt_friendly_merged_manifests/release/aapt/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/annotation_processor_list/release/annotationProcessors.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/compile_library_classes/release/classes.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/compile_only_not_namespaced_r_class_jar/release/R.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/full_jar/release/createFullJarRelease/full.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/incremental/mergeReleaseJniLibFolders/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/incremental/mergeReleaseShaders/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/incremental/packageReleaseAssets/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/incremental/packageReleaseResources/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/incremental/release-mergeNativeLibs/merge-state" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/javac/release/classes/com/baseflow/permissionhandler/AppSettingsManager$OpenAppSettingsSuccessCallback.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/javac/release/classes/com/baseflow/permissionhandler/AppSettingsManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/javac/release/classes/com/baseflow/permissionhandler/BuildConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/javac/release/classes/com/baseflow/permissionhandler/ErrorCallback.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/javac/release/classes/com/baseflow/permissionhandler/MethodCallHandlerImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/javac/release/classes/com/baseflow/permissionhandler/PermissionConstants$PermissionGroup.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/javac/release/classes/com/baseflow/permissionhandler/PermissionConstants$PermissionStatus.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/javac/release/classes/com/baseflow/permissionhandler/PermissionConstants$ServiceStatus.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/javac/release/classes/com/baseflow/permissionhandler/PermissionConstants.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/javac/release/classes/com/baseflow/permissionhandler/PermissionHandlerPlugin.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/javac/release/classes/com/baseflow/permissionhandler/PermissionManager$ActivityRegistry.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/javac/release/classes/com/baseflow/permissionhandler/PermissionManager$ActivityResultListener.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/javac/release/classes/com/baseflow/permissionhandler/PermissionManager$CheckPermissionsSuccessCallback.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/javac/release/classes/com/baseflow/permissionhandler/PermissionManager$PermissionRegistry.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/javac/release/classes/com/baseflow/permissionhandler/PermissionManager$RequestPermissionsListener.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/javac/release/classes/com/baseflow/permissionhandler/PermissionManager$RequestPermissionsSuccessCallback.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/javac/release/classes/com/baseflow/permissionhandler/PermissionManager$ShouldShowRequestPermissionRationaleSuccessCallback.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/javac/release/classes/com/baseflow/permissionhandler/PermissionManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/javac/release/classes/com/baseflow/permissionhandler/PermissionUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/javac/release/classes/com/baseflow/permissionhandler/ServiceManager$SuccessCallback.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/javac/release/classes/com/baseflow/permissionhandler/ServiceManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/library_java_res/release/res.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/library_manifest/release/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/local_only_symbol_list/release/parseReleaseLibraryResources/R-def.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/manifest_merge_blame_file/release/manifest-merger-blame-release-report.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/merged_manifests/release/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/res/symbol-table-with-package/release/package-aware-r.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/runtime_library_classes/release/classes.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/symbols/release/R.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/permission_handler/outputs/logs/manifest-merger-release-report.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/shared_preferences/.transforms/6a7e5075ea6ca082a071ad191330a11c.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/shared_preferences/.transforms/6a7e5075ea6ca082a071ad191330a11c/full/classes.dex" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/shared_preferences/.transforms/ad5b9996ec0e9540cb244c02001e7148.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/shared_preferences/generated/source/buildConfig/release/io/flutter/plugins/sharedpreferences/BuildConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/shared_preferences/intermediates/aapt_friendly_merged_manifests/release/aapt/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/shared_preferences/intermediates/aapt_friendly_merged_manifests/release/aapt/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/shared_preferences/intermediates/annotation_processor_list/release/annotationProcessors.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/shared_preferences/intermediates/compile_library_classes/release/classes.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/shared_preferences/intermediates/compile_only_not_namespaced_r_class_jar/release/R.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/shared_preferences/intermediates/full_jar/release/createFullJarRelease/full.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/shared_preferences/intermediates/incremental/mergeReleaseJniLibFolders/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/shared_preferences/intermediates/incremental/mergeReleaseShaders/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/shared_preferences/intermediates/incremental/packageReleaseAssets/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/shared_preferences/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/shared_preferences/intermediates/incremental/packageReleaseResources/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/shared_preferences/intermediates/incremental/release-mergeNativeLibs/merge-state" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/shared_preferences/intermediates/javac/release/classes/io/flutter/plugins/sharedpreferences/BuildConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/shared_preferences/intermediates/javac/release/classes/io/flutter/plugins/sharedpreferences/MethodCallHandlerImpl$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/shared_preferences/intermediates/javac/release/classes/io/flutter/plugins/sharedpreferences/MethodCallHandlerImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/shared_preferences/intermediates/javac/release/classes/io/flutter/plugins/sharedpreferences/SharedPreferencesPlugin.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/shared_preferences/intermediates/library_java_res/release/res.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/shared_preferences/intermediates/library_manifest/release/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/shared_preferences/intermediates/local_only_symbol_list/release/parseReleaseLibraryResources/R-def.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/shared_preferences/intermediates/manifest_merge_blame_file/release/manifest-merger-blame-release-report.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/shared_preferences/intermediates/merged_manifests/release/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/shared_preferences/intermediates/res/symbol-table-with-package/release/package-aware-r.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/shared_preferences/intermediates/runtime_library_classes/release/classes.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/shared_preferences/intermediates/symbols/release/R.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../build/shared_preferences/outputs/logs/manifest-merger-release-report.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lib/screens/screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lib/screens/screen_signup.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Dart_Packages.xml" afterDir="false" />
+    <list default="true" id="84fc3e6e-d454-498b-836b-20543d5c9dee" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.dart_tool/flutter_build/99868dc404fee86c03cafd236402653f/.filecache" beforeDir="false" afterPath="$PROJECT_DIR$/../.dart_tool/flutter_build/99868dc404fee86c03cafd236402653f/.filecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.dart_tool/flutter_build/99868dc404fee86c03cafd236402653f/aot_android_asset_bundle.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/../.dart_tool/flutter_build/99868dc404fee86c03cafd236402653f/aot_android_asset_bundle.stamp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.dart_tool/flutter_build/99868dc404fee86c03cafd236402653f/app.dill" beforeDir="false" afterPath="$PROJECT_DIR$/../.dart_tool/flutter_build/99868dc404fee86c03cafd236402653f/app.dill" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.dart_tool/flutter_build/99868dc404fee86c03cafd236402653f/arm64-v8a/app.so" beforeDir="false" afterPath="$PROJECT_DIR$/../.dart_tool/flutter_build/99868dc404fee86c03cafd236402653f/arm64-v8a/app.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.dart_tool/flutter_build/99868dc404fee86c03cafd236402653f/armeabi-v7a/app.so" beforeDir="false" afterPath="$PROJECT_DIR$/../.dart_tool/flutter_build/99868dc404fee86c03cafd236402653f/armeabi-v7a/app.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.dart_tool/flutter_build/99868dc404fee86c03cafd236402653f/flutter_assets.d" beforeDir="false" afterPath="$PROJECT_DIR$/../.dart_tool/flutter_build/99868dc404fee86c03cafd236402653f/flutter_assets.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.dart_tool/flutter_build/99868dc404fee86c03cafd236402653f/outputs.json" beforeDir="false" afterPath="$PROJECT_DIR$/../.dart_tool/flutter_build/99868dc404fee86c03cafd236402653f/outputs.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.dart_tool/flutter_build/99868dc404fee86c03cafd236402653f/x86_64/app.so" beforeDir="false" afterPath="$PROJECT_DIR$/../.dart_tool/flutter_build/99868dc404fee86c03cafd236402653f/x86_64/app.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.dart_tool/flutter_build/aa2ece345cfc1d26e5a51319b642469e/.filecache" beforeDir="false" afterPath="$PROJECT_DIR$/../.dart_tool/flutter_build/aa2ece345cfc1d26e5a51319b642469e/.filecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.dart_tool/flutter_build/aa2ece345cfc1d26e5a51319b642469e/android_aot_bundle_profile_android-arm.stamp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.dart_tool/flutter_build/aa2ece345cfc1d26e5a51319b642469e/android_aot_profile_android-arm.stamp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.dart_tool/flutter_build/aa2ece345cfc1d26e5a51319b642469e/aot_android_asset_bundle.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/../.dart_tool/flutter_build/aa2ece345cfc1d26e5a51319b642469e/aot_android_asset_bundle.stamp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.dart_tool/flutter_build/aa2ece345cfc1d26e5a51319b642469e/app.dill" beforeDir="false" afterPath="$PROJECT_DIR$/../.dart_tool/flutter_build/aa2ece345cfc1d26e5a51319b642469e/app.dill" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.dart_tool/flutter_build/aa2ece345cfc1d26e5a51319b642469e/armeabi-v7a/app.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.dart_tool/flutter_build/aa2ece345cfc1d26e5a51319b642469e/flutter_assets.d" beforeDir="false" afterPath="$PROJECT_DIR$/../.dart_tool/flutter_build/aa2ece345cfc1d26e5a51319b642469e/flutter_assets.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.dart_tool/flutter_build/aa2ece345cfc1d26e5a51319b642469e/outputs.json" beforeDir="false" afterPath="$PROJECT_DIR$/../.dart_tool/flutter_build/aa2ece345cfc1d26e5a51319b642469e/outputs.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.dart_tool/flutter_build/cc0b29259576a7f6c7cdef802cbda6e9/.filecache" beforeDir="false" afterPath="$PROJECT_DIR$/../.dart_tool/flutter_build/cc0b29259576a7f6c7cdef802cbda6e9/.filecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.dart_tool/flutter_build/cc0b29259576a7f6c7cdef802cbda6e9/app.dill" beforeDir="false" afterPath="$PROJECT_DIR$/../.dart_tool/flutter_build/cc0b29259576a7f6c7cdef802cbda6e9/app.dill" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.dart_tool/flutter_build/cc0b29259576a7f6c7cdef802cbda6e9/debug_android_application.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/../.dart_tool/flutter_build/cc0b29259576a7f6c7cdef802cbda6e9/debug_android_application.stamp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.dart_tool/flutter_build/cc0b29259576a7f6c7cdef802cbda6e9/flutter_assets.d" beforeDir="false" afterPath="$PROJECT_DIR$/../.dart_tool/flutter_build/cc0b29259576a7f6c7cdef802cbda6e9/flutter_assets.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/../.dart_tool/package_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/../.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.packages" beforeDir="false" afterPath="$PROJECT_DIR$/../.packages" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/release/app-release.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/app-release.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/otp_green.png" beforeDir="false" afterPath="$PROJECT_DIR$/../assets/otp_green.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/registered.png" beforeDir="false" afterPath="$PROJECT_DIR$/../assets/registered.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/flutter/debug/flutter_build.d" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/flutter/debug/flutter_build.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/flutter/debug/libs.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/flutter/debug/libs.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/flutter/profile/armeabi-v7a/app.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/flutter/profile/flutter_build.d" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/flutter/profile/flutter_build.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/flutter/profile/libs.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/flutter/profile/libs.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/flutter/release/arm64-v8a/app.so" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/flutter/release/arm64-v8a/app.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/flutter/release/armeabi-v7a/app.so" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/flutter/release/armeabi-v7a/app.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/flutter/release/flutter_build.d" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/flutter/release/flutter_build.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/flutter/release/libs.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/flutter/release/libs.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/flutter/release/x86_64/app.so" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/flutter/release/x86_64/app.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/incremental/debug-mergeJavaRes/merge-state" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/incremental/debug-mergeJavaRes/merge-state" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/37DMZn+Sv6OzSCADZTmfY1GALq0=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/bhkzX6ChuV0ICA+gukVaoCwFDKc=" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/bhkzX6ChuV0ICA+gukVaoCwFDKc=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/incremental/debug-mergeNativeLibs/merge-state" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/incremental/debug-mergeNativeLibs/merge-state" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/37DMZn+Sv6OzSCADZTmfY1GALq0=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/bhkzX6ChuV0ICA+gukVaoCwFDKc=" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/bhkzX6ChuV0ICA+gukVaoCwFDKc=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/incremental/mergeDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/incremental/mergeProfileResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/incremental/mergeProfileResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/incremental/mergeReleaseResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/incremental/mergeReleaseResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/incremental/packageDebug/tmp/debug/zip-cache/kNELk19qPIf161h2tK5UmF5nFF8=" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/incremental/packageDebug/tmp/debug/zip-cache/kNELk19qPIf161h2tK5UmF5nFF8=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/incremental/packageProfile/tmp/profile/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/incremental/packageProfile/tmp/profile/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/incremental/packageProfile/tmp/profile/zip-cache/qnlJUHByriBfnnaR5KKqdVarf3s=" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/incremental/packageProfile/tmp/profile/zip-cache/qnlJUHByriBfnnaR5KKqdVarf3s=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/incremental/packageRelease/tmp/release/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/incremental/packageRelease/tmp/release/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/incremental/packageRelease/tmp/release/zip-cache/gKSmXPEwg8E+VERVW4Vs2kOSuzc=" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/incremental/packageRelease/tmp/release/zip-cache/gKSmXPEwg8E+VERVW4Vs2kOSuzc=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/incremental/profile-mergeJavaRes/merge-state" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/incremental/profile-mergeJavaRes/merge-state" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/incremental/profile-mergeJavaRes/zip-cache/_h1eszqLq__S7YN73k2bxmmXoZE=" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/incremental/profile-mergeJavaRes/zip-cache/_h1eszqLq__S7YN73k2bxmmXoZE=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/incremental/profile-mergeJavaRes/zip-cache/uT_WtgDdjrlIJdR6qgRrpSZAGwE=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/incremental/profile-mergeNativeLibs/merge-state" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/incremental/profile-mergeNativeLibs/merge-state" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/incremental/profile-mergeNativeLibs/zip-cache/_h1eszqLq__S7YN73k2bxmmXoZE=" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/incremental/profile-mergeNativeLibs/zip-cache/_h1eszqLq__S7YN73k2bxmmXoZE=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/incremental/profile-mergeNativeLibs/zip-cache/uT_WtgDdjrlIJdR6qgRrpSZAGwE=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/incremental/release-mergeJavaRes/zip-cache/oJTLVDBlNEATMGHAhTFgSK26XAs=" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/incremental/release-mergeJavaRes/zip-cache/oJTLVDBlNEATMGHAhTFgSK26XAs=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/incremental/release-mergeNativeLibs/zip-cache/oJTLVDBlNEATMGHAhTFgSK26XAs=" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/incremental/release-mergeNativeLibs/zip-cache/oJTLVDBlNEATMGHAhTFgSK26XAs=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/merged_assets/debug/out/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/merged_assets/debug/out/flutter_assets/kernel_blob.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/merged_java_res/debug/out.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/merged_java_res/debug/out.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/merged_java_res/profile/out.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/merged_java_res/profile/out.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/merged_java_res/release/out.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/merged_java_res/release/out.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/merged_native_libs/debug/out/lib/armeabi-v7a/libflutter.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/merged_native_libs/profile/out/lib/armeabi-v7a/libapp.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/merged_native_libs/profile/out/lib/armeabi-v7a/libflutter.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/merged_native_libs/release/out/lib/arm64-v8a/libapp.so" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/merged_native_libs/release/out/lib/arm64-v8a/libapp.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/merged_native_libs/release/out/lib/armeabi-v7a/libapp.so" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/merged_native_libs/release/out/lib/armeabi-v7a/libapp.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/merged_native_libs/release/out/lib/x86_64/libapp.so" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/merged_native_libs/release/out/lib/x86_64/libapp.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/stripped_native_libs/debug/out/lib/armeabi-v7a/libflutter.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/stripped_native_libs/profile/out/lib/armeabi-v7a/libapp.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/stripped_native_libs/profile/out/lib/armeabi-v7a/libflutter.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/stripped_native_libs/release/out/lib/arm64-v8a/libapp.so" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/stripped_native_libs/release/out/lib/arm64-v8a/libapp.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/stripped_native_libs/release/out/lib/armeabi-v7a/libapp.so" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/stripped_native_libs/release/out/lib/armeabi-v7a/libapp.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/intermediates/stripped_native_libs/release/out/lib/x86_64/libapp.so" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/intermediates/stripped_native_libs/release/out/lib/x86_64/libapp.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/outputs/flutter-apk/app.apk.sha1" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/outputs/flutter-apk/app.apk.sha1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/app/reports/lint-results-release-fatal.html" beforeDir="false" afterPath="$PROJECT_DIR$/../build/app/reports/lint-results-release-fatal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/aws_translate/intermediates/compile_only_not_namespaced_r_class_jar/debug/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/aws_translate/intermediates/compile_only_not_namespaced_r_class_jar/debug/R.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/aws_translate/intermediates/compile_only_not_namespaced_r_class_jar/profile/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/aws_translate/intermediates/compile_only_not_namespaced_r_class_jar/profile/R.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/aws_translate/intermediates/compile_only_not_namespaced_r_class_jar/release/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/aws_translate/intermediates/compile_only_not_namespaced_r_class_jar/release/R.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/aws_translate/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../build/aws_translate/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/aws_translate/intermediates/incremental/packageProfileResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../build/aws_translate/intermediates/incremental/packageProfileResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/aws_translate/intermediates/incremental/packageReleaseResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../build/aws_translate/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/connectivity/intermediates/compile_only_not_namespaced_r_class_jar/debug/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/compile_only_not_namespaced_r_class_jar/debug/R.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/connectivity/intermediates/compile_only_not_namespaced_r_class_jar/profile/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/compile_only_not_namespaced_r_class_jar/profile/R.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/connectivity/intermediates/compile_only_not_namespaced_r_class_jar/release/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/compile_only_not_namespaced_r_class_jar/release/R.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/connectivity/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/connectivity/intermediates/incremental/packageProfileResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/incremental/packageProfileResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/connectivity/intermediates/incremental/packageReleaseResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../build/connectivity/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/compile_only_not_namespaced_r_class_jar/debug/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/compile_only_not_namespaced_r_class_jar/debug/R.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/compile_only_not_namespaced_r_class_jar/profile/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/compile_only_not_namespaced_r_class_jar/profile/R.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/compile_only_not_namespaced_r_class_jar/release/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/compile_only_not_namespaced_r_class_jar/release/R.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/incremental/packageProfileResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/incremental/packageProfileResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/incremental/packageReleaseResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../build/firebase_messaging/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/compile_only_not_namespaced_r_class_jar/debug/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/compile_only_not_namespaced_r_class_jar/debug/R.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/compile_only_not_namespaced_r_class_jar/profile/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/compile_only_not_namespaced_r_class_jar/profile/R.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/compile_only_not_namespaced_r_class_jar/release/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/compile_only_not_namespaced_r_class_jar/release/R.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/incremental/packageProfileResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/incremental/packageProfileResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/incremental/packageReleaseResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../build/flutter_plugin_android_lifecycle/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/geolocator/intermediates/compile_only_not_namespaced_r_class_jar/debug/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/compile_only_not_namespaced_r_class_jar/debug/R.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/geolocator/intermediates/compile_only_not_namespaced_r_class_jar/profile/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/compile_only_not_namespaced_r_class_jar/profile/R.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/geolocator/intermediates/compile_only_not_namespaced_r_class_jar/release/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/compile_only_not_namespaced_r_class_jar/release/R.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/geolocator/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/geolocator/intermediates/incremental/packageProfileResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/incremental/packageProfileResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/geolocator/intermediates/incremental/packageReleaseResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../build/geolocator/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/image_picker/intermediates/compile_only_not_namespaced_r_class_jar/debug/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/compile_only_not_namespaced_r_class_jar/debug/R.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/image_picker/intermediates/compile_only_not_namespaced_r_class_jar/profile/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/compile_only_not_namespaced_r_class_jar/profile/R.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/image_picker/intermediates/compile_only_not_namespaced_r_class_jar/release/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/compile_only_not_namespaced_r_class_jar/release/R.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/image_picker/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/image_picker/intermediates/incremental/packageProfileResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/incremental/packageProfileResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/image_picker/intermediates/incremental/packageReleaseResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../build/image_picker/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/path_provider/intermediates/compile_only_not_namespaced_r_class_jar/debug/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/path_provider/intermediates/compile_only_not_namespaced_r_class_jar/debug/R.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/path_provider/intermediates/compile_only_not_namespaced_r_class_jar/profile/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/path_provider/intermediates/compile_only_not_namespaced_r_class_jar/profile/R.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/path_provider/intermediates/compile_only_not_namespaced_r_class_jar/release/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/path_provider/intermediates/compile_only_not_namespaced_r_class_jar/release/R.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/path_provider/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../build/path_provider/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/path_provider/intermediates/incremental/packageProfileResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../build/path_provider/intermediates/incremental/packageProfileResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/path_provider/intermediates/incremental/packageReleaseResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../build/path_provider/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/permission_handler/intermediates/compile_only_not_namespaced_r_class_jar/debug/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/compile_only_not_namespaced_r_class_jar/debug/R.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/permission_handler/intermediates/compile_only_not_namespaced_r_class_jar/profile/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/compile_only_not_namespaced_r_class_jar/profile/R.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/permission_handler/intermediates/compile_only_not_namespaced_r_class_jar/release/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/compile_only_not_namespaced_r_class_jar/release/R.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/permission_handler/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/permission_handler/intermediates/incremental/packageProfileResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/incremental/packageProfileResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/permission_handler/intermediates/incremental/packageReleaseResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../build/permission_handler/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/shared_preferences/intermediates/compile_only_not_namespaced_r_class_jar/debug/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/shared_preferences/intermediates/compile_only_not_namespaced_r_class_jar/debug/R.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/shared_preferences/intermediates/compile_only_not_namespaced_r_class_jar/profile/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/shared_preferences/intermediates/compile_only_not_namespaced_r_class_jar/profile/R.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/shared_preferences/intermediates/compile_only_not_namespaced_r_class_jar/release/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../build/shared_preferences/intermediates/compile_only_not_namespaced_r_class_jar/release/R.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/shared_preferences/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../build/shared_preferences/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/shared_preferences/intermediates/incremental/packageProfileResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../build/shared_preferences/intermediates/incremental/packageProfileResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/shared_preferences/intermediates/incremental/packageReleaseResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../build/shared_preferences/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lib/screens/complaint_detail_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screens/complaint_detail_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/screens/complaint_form_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screens/complaint_form_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/screens/edit_profile_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screens/edit_profile_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/screens/history_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screens/history_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/screens/homescreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screens/homescreen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lib/screens/language_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screens/language_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/screens/login_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screens/login_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/screens/notification.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screens/notification.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/screens/otp_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screens/otp_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/screens/otp_screen_after_login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screens/otp_screen_after_login.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lib/screens/profile_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screens/profile_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/screens/solution_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screens/solution_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/screens/splash_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screens/splash_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lib/screens/submitted_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screens/submitted_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/utils/bottom_navigation.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/utils/bottom_navigation.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[0894ec880906]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -389,7 +161,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="1pGMwnd8qzsxR69z3gBBqEBXyCt" />
+  <component name="ProjectId" id="1pHkmdt0Saw8P8eGymPgXqeUxUs" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -482,18 +254,18 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="be21e92b-6fe7-494a-91f2-8f91f01ca91f" name="Default Changelist" comment="" />
-      <created>1614805217738</created>
+      <changelist id="84fc3e6e-d454-498b-836b-20543d5c9dee" name="Default Changelist" comment="" />
+      <created>1614847562952</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1614805217738</updated>
+      <updated>1614847562952</updated>
     </task>
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1614805620071">
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1614847732646">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1614805620071" />
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1614847732646" />
   </component>
 </project>

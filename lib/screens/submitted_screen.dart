@@ -61,7 +61,7 @@ class _SubmittedScreenState extends State<SubmittedScreen> {
               child: Column(
 
                 children: [
-                  SizedBox(height: 20),
+                  SizedBox(height: 30),
                   Container(
                       margin: EdgeInsets.symmetric(horizontal: 35.0),
                       child: Text(
@@ -72,14 +72,14 @@ class _SubmittedScreenState extends State<SubmittedScreen> {
                           fontSize: 15,
                           color: Color.fromRGBO(44,53,76,1.0),
                         ),
-                        textAlign: TextAlign.justify,
+                        textAlign: TextAlign.center,
                       )),
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Divider(
-                      height: 5,
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.all(20.0),
+                  //   child: Divider(
+                  //     height: 5,
+                  //   ),
+                  // ),
                   SizedBox(height: 30.0),
                   Material(
                     elevation: 5,

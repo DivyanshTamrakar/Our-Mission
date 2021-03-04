@@ -237,14 +237,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
               showMaterialModalBottomSheet(
                 context: context,
                 builder: (context) => Language_selection(),
-              );
-              //     .then((value){
-              //   Navigator.pop(context);
-              //   Navigator.push(
-              //       context,
-              //       CupertinoPageRoute(
-              //           builder: (context) => BottomBarExample()));
-              // } );
+              )
+                  .then((value){
+                Navigator.pop(context);
+                Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                        builder: (context) => BottomBarExample()));
+              } );
 
             },
             child: ListTile(

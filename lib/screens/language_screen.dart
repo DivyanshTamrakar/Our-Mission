@@ -45,6 +45,11 @@ class _Language_selectionState extends State<Language_selection> {
           pref.setString("language", "English");
 
       }
+      else  if (_group_value == "") {
+        
+        pref.setString("language", pref.getString("language"));
+
+      }
       else {
 
         pref.setString("language", "Kannada");

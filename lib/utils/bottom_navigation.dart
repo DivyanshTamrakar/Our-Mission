@@ -35,6 +35,7 @@ class _BottomBarExampleState extends State<BottomBarExample> {
 
   @override
   void initState() {
+    GetPreferData();
     _controller = new PageController(
       initialPage: _page,
     );
@@ -136,7 +137,8 @@ class _BottomBarExampleState extends State<BottomBarExample> {
                 duration: const Duration(milliseconds: 10),
                 curve: Curves.easeInOut);
           },
-          items: <BottomNavigationBarItem>[
+          items: language == "English" ?
+           <BottomNavigationBarItem>[
             new BottomNavigationBarItem(
                 icon: new Icon(Icons.home,color: Colors.white,), label: "Home"),//:"ಮನೆ"
             new BottomNavigationBarItem(
@@ -145,7 +147,28 @@ class _BottomBarExampleState extends State<BottomBarExample> {
                 icon: new Icon(Icons.lightbulb,color: Colors.white,), label: "Solutions"),//:"ಪರಿಹಾರಗಳು"
             new BottomNavigationBarItem(
                 icon: new Icon(Icons.person,color: Colors.white,), label: "Profile"),//:"ಪ್ರೊಫೈಲ್"
+          ]:<BottomNavigationBarItem>[
+            new BottomNavigationBarItem(
+                icon: new Icon(Icons.home,color: Colors.white,), label: "ಮನೆ" ),//:"ಮನೆ"
+            new BottomNavigationBarItem(
+                icon: new Icon(Icons.history,color: Colors.white,), label:"ಇತಿಹಾಸ"),//"ಇತಿಹಾಸ"
+            new BottomNavigationBarItem(
+                icon: new Icon(Icons.lightbulb,color: Colors.white,), label: "ಪರಿಹಾರಗಳು"),//:"ಪರಿಹಾರಗಳು"
+            new BottomNavigationBarItem(
+                icon: new Icon(Icons.person,color: Colors.white,), label: "ಪ್ರೊಫೈಲ್"),//:"ಪ್ರೊಫೈಲ್"
           ],
+
+
+          // items: <BottomNavigationBarItem>[
+          //   new BottomNavigationBarItem(
+          //       icon: new Icon(Icons.home,color: Colors.white,), label: "Home"),//:"ಮನೆ"
+          //   new BottomNavigationBarItem(
+          //       icon: new Icon(Icons.history,color: Colors.white,), label:"History"),//"ಇತಿಹಾಸ"
+          //   new BottomNavigationBarItem(
+          //       icon: new Icon(Icons.lightbulb,color: Colors.white,), label: "Solutions"),//:"ಪರಿಹಾರಗಳು"
+          //   new BottomNavigationBarItem(
+          //       icon: new Icon(Icons.person,color: Colors.white,), label: "Profile"),//:"ಪ್ರೊಫೈಲ್"
+          // ],
         ),
       ),
       body: new PageView(
