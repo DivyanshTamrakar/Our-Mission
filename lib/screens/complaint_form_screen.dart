@@ -13,6 +13,7 @@ import 'package:namma_badavane/utils/colors.dart';
 import 'package:namma_badavane/widgets/dialogs.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http_parser/http_parser.dart';
+import 'package:date_format/date_format.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'package:flutter/services.dart' show rootBundle;
@@ -41,6 +42,11 @@ class ComplaintFormScreen extends StatefulWidget {
 
 class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
   DateTime selectedDate = DateTime.now();
+  TimeOfDay selectedTime = TimeOfDay(hour: 00, minute: 00);
+  String _setTime;
+  TextEditingController _timeController = TextEditingController();
+  String _hour, _minute, _time;
+  String dateTime;
   final _formKey = GlobalKey<FormState>();
   List<String> subDepartments;
   Department _selectedDepartment;
@@ -103,6 +109,24 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
       });
   }
 
+  Future<void> _selectTime(BuildContext context) async {
+    final TimeOfDay picked = await showTimePicker(
+      context: context,
+      initialTime: selectedTime,
+    );
+    if (picked != null)
+      setState(() {
+        selectedTime = picked;
+        _hour = selectedTime.hour.toString();
+        _minute = selectedTime.minute.toString();
+        _time = _hour + ' : ' + _minute;
+        _timeController.text = _time;
+        _timeController.text = formatDate(
+            DateTime(2019, 08, 1, selectedTime.hour, selectedTime.minute),
+            [hh, ':', nn, " ", am]).toString();
+      });}
+
+
   getData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
@@ -152,12 +176,16 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    _timeController.text = formatDate(
+        DateTime(2019, 08, 1, DateTime.now().hour, DateTime.now().minute),
+        [hh, ':', nn, " ", am]).toString();
     _selectedDepartment = widget.departments[widget.departmentNumber];
     _selectedSubDepartment = widget.subDepartment;
     subDepartments = _selectedDepartment.subDepartment;
     getData();
     getCurrenLocation();
     getaws();
+
 
   }
 
@@ -629,6 +657,42 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                               Icon(Icons.calendar_today)
                             ],
                           ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Card(
+                      shape: RoundedRectangleBorder(
+                          side: new BorderSide(
+                              color: Colors.grey[500], width: 1.0),
+                          borderRadius: BorderRadius.circular(4.0)),
+                      elevation: 5,
+                      child: InkWell(
+                        onTap: () {
+                          _selectTime(context);
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              padding: EdgeInsets.only(top: 4.0,left: 10.0) ,
+                              width: width/2,
+                             child: TextFormField(
+                               // style: TextStyle(fontSize: 40),
+                               textAlign: TextAlign.left,
+                               onSaved: (String val) {
+                                 _setTime = val;
+                               },
+                               enabled: false,
+                               // keyboardType: TextInputType.text,
+                               controller: _timeController,
+                             ),
+                            ),
+
+                            Container(
+                              padding: EdgeInsets.only(right: 15.0),
+                                child: Icon(Icons.access_time))
+                          ],
                         ),
                       ),
                     ),

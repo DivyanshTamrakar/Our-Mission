@@ -229,35 +229,35 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ),
         ),
-        Card(
-          elevation: 5,
-          child: InkWell(
-            onTap: () {
-              print("clicked");
-              showMaterialModalBottomSheet(
-                context: context,
-                builder: (context) => Language_selection(),
-              )
-                  .then((value){
-                Navigator.pop(context);
-                Navigator.push(
-                    context,
-                    CupertinoPageRoute(
-                        builder: (context) => BottomBarExample()));
-              } );
-
-            },
-            child: ListTile(
-              leading: Icon(Icons.edit, color: button_color),
-              title: Text(
-                language == "English"?"Change Language":"ಭಾಷೆ ಬದಲಾಯಿಸಿ",
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-              trailing: Icon(Icons.arrow_forward, color: Colors.blueAccent),
-            ),
-          ),
-        ),
+        // Card(
+        //   elevation: 5,
+        //   child: InkWell(
+        //     onTap: () {
+        //       print("clicked");
+        //       showMaterialModalBottomSheet(
+        //         context: context,
+        //         builder: (context) => Language_selection(),
+        //       )
+        //           .then((value){
+        //         Navigator.pop(context);
+        //         Navigator.push(
+        //             context,
+        //             CupertinoPageRoute(
+        //                 builder: (context) => BottomBarExample()));
+        //       } );
+        //
+        //     },
+        //     child: ListTile(
+        //       leading: Icon(Icons.edit, color: button_color),
+        //       title: Text(
+        //         language == "English"?"Change Language":"ಭಾಷೆ ಬದಲಾಯಿಸಿ",
+        //         maxLines: 1,
+        //         overflow: TextOverflow.ellipsis,
+        //       ),
+        //       trailing: Icon(Icons.arrow_forward, color: Colors.blueAccent),
+        //     ),
+        //   ),
+        // ),
         Card(
           elevation: 5,
           child: InkWell(

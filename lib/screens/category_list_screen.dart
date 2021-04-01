@@ -51,7 +51,7 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
     print(widget.departments[widget.departmentNumber].subDepartmentKannada);
     super.initState();
     GetPreferData();
-    getlanguage();
+    // getlanguage();
 
   }
 

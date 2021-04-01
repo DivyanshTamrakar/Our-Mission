@@ -22,12 +22,7 @@ void main() {
   runApp(MyApp());
 }
 
-
-
-
-
-
-   class MyApp extends StatelessWidget {
+class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -35,9 +30,9 @@ void main() {
       debugShowCheckedModeBanner: false,
       title: 'Namma Badavane',
       theme: ThemeData(
-          primarySwatch: primary_color,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-          ),
+        primarySwatch: primary_color,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
       // home: BottomBarExample(),
       // home : SubmittedScreen(),
       // home : EditProfileScreen(newUser: true,)
@@ -45,7 +40,7 @@ void main() {
       // home : Location(),
       // home : HomeScreen(),
       // home : SplashScreen(),
-      home :  Screen(),
+      home: Screen(),
       // home : OTPScreen(),
       // home : LoginScreen(),
       // home : ComplaintFormScreen(),

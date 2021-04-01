@@ -90,7 +90,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(67,88,185,1.0),
+        backgroundColor: Color.fromRGBO(67, 88, 185, 1.0),
         title: Text(
           language == "English" ? "History" : "ಇತಿಹಾಸ",
           style: TextStyle(
@@ -155,7 +155,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                             ),
                                             Spacer(),
                                             Text(
-                                              language == "English"?"Complain Id : ":"ಐಡಿ ದೂರು : ",
+                                              language == "English"
+                                                  ? "Complain Id : "
+                                                  : "ಐಡಿ ದೂರು : ",
                                               style: TextStyle(
                                                   fontSize: 12,
                                                   fontWeight: FontWeight.bold),
@@ -208,9 +210,11 @@ class _HistoryScreenState extends State<HistoryScreen> {
                   ],
                 )
               : Center(
-        child: Text(
-            language == "English" ? "No complaint History Found":"ಯಾವುದೇ ದೂರು ಇತಿಹಾಸ ಕಂಡುಬಂದಿಲ್ಲ",
-            textAlign: TextAlign.center),
+                  child: Text(
+                      language == "English"
+                          ? "No complaint History Found"
+                          : "ಯಾವುದೇ ದೂರು ಇತಿಹಾಸ ಕಂಡುಬಂದಿಲ್ಲ",
+                      textAlign: TextAlign.center),
                 )
           : Center(
               child: Text("No complaint History Found",
