@@ -87,10 +87,12 @@ class _ScreenSignupState extends State<ScreenSignup>{
                                   Spacer(),
                                 ]),
                             // CircularProgressIndicator(),
-
+                            Container(
+                              height: 40,
+                            ),
                             SizedBox(
                               width: 140,
-                              child: Row(
+                              child: Column(
                                   mainAxisAlignment:
                                   MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
@@ -101,8 +103,8 @@ class _ScreenSignupState extends State<ScreenSignup>{
                                             color: button_text_color)),
                                     Image.asset(
                                       "assets/footer.png",
-                                      height: 65,
-                                      width: 65,
+                                      height: 255,
+                                      width: 255,
                                       color: Colors.white,
                                     ),
                                   ]),
@@ -283,7 +285,7 @@ class _ScreenSignupState extends State<ScreenSignup>{
                         ),
                       ),
                     ),
-                    SizedBox(height: 30),
+                    SizedBox(height: 50),
                     GestureDetector(
                       onTap: () {
                         Navigator.pop(context);

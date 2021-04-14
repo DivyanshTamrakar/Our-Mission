@@ -30,6 +30,7 @@ dependencies:
   aws_translate: ^0.1.1
   timer_button: ^1.0.1
   date_format: 1.0.6
+  pin_code_fields: ^6.1.0
 
 
 
@@ -54,6 +55,6 @@ flutter:
 
 
   assets:
-     - assets/
+    - assets/
 
 

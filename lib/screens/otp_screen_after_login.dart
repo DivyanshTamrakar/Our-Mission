@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:namma_badavane/screens/splash_screen.dart';
 import 'package:namma_badavane/utils/HttpResponse.dart';
 import 'package:namma_badavane/utils/bottom_navigation.dart';
 import 'package:namma_badavane/utils/colors.dart';
@@ -9,6 +10,7 @@ import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:namma_badavane/screens/edit_profile_screen.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timer_button/timer_button.dart';
 
@@ -61,19 +63,58 @@ class _OTPScreenAfterLoginState extends State<OTPScreenAfterLogin> {
                         height: 1,
                       ),
                     ),
-                    OTPTextField(
+
+
+
+                    PinCodeTextField(
+                      appContext: context,
                       length: 6,
-                      width: width,
-                      fieldWidth: width*0.13,
-                      style: TextStyle(
-                          fontSize: 17
+                      keyboardType: TextInputType.number,
+                      backgroundColor: Colors.transparent,
+                      pinTheme: PinTheme(
+                        shape: PinCodeFieldShape.box,
+                        borderRadius: BorderRadius.circular(5),
+                        activeColor: Colors.grey,
+                        fieldHeight: 50,
+                        fieldWidth: 40,
+                        activeFillColor: Colors.white,
+                        inactiveColor: Colors.grey,
+
                       ),
-                      textFieldAlignment: MainAxisAlignment.spaceAround,
-                      fieldStyle: FieldStyle.box,
-                      onCompleted: (pin) {
-                        _otpPin=pin;
+                      onChanged: (value) {
+                        print(value);
+                      },
+                      onCompleted: (v) {
+                        setState(() {
+                          _otpPin = v;
+                          print(v);
+                        });
                       },
                     ),
+
+
+                    // OTPTextField(
+                    //   length: 6,
+                    //   width: width,
+                    //   fieldWidth: width*0.13,
+                    //   style: TextStyle(
+                    //       fontSize: 17
+                    //   ),
+                    //   textFieldAlignment: MainAxisAlignment.spaceAround,
+                    //   fieldStyle: FieldStyle.box,
+                    //   onCompleted: (pin) {
+                    //     _otpPin=pin;
+                    //   },
+                    // ),
+
+
+
+
+
+
+
+
+
                     SizedBox(
                       height:20
                     ),
@@ -112,20 +153,20 @@ class _OTPScreenAfterLoginState extends State<OTPScreenAfterLogin> {
                                     .getInstance();
                                 prefs.setString('token', response['token']);
                                 prefs.setString('id', response['id']);
+                                // Navigator.pushAndRemoveUntil(
+                                //   context,
+                                //   CupertinoPageRoute(
+                                //       builder: (context) => BottomBarExample()),
+                                //       (route) => false,
+                                // );
                                 Navigator.pushAndRemoveUntil(
                                   context,
                                   CupertinoPageRoute(
-                                      builder: (context) => BottomBarExample()),
+                                      builder: (context) => SplashScreen()),
                                       (route) => false,
                                 );
-                                // Navigator.push(
-                                //     context, CupertinoPageRoute(
-                                //     builder: (context) => EditProfileScreen(
-                                //       newUser: false,
-                                //     )));
-                                // Navigator.push(
-                                //     context, CupertinoPageRoute(
-                                //     builder: (context) => EditProfileScreen()));
+
+
                               }
                             }
                             catch(e){

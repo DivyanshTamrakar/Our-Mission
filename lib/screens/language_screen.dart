@@ -22,15 +22,13 @@ class _Language_selectionState extends State<Language_selection> {
   prefShared() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     if (pref.getString("language") == null) {
-
-
       if (_group_value == "English") {
           pref.setString("language", "English");
       }
-      else if (_group_value == "") {
+      if (_group_value == "") {
         pref.setString("language", "English");
       }
-      else if(_group_value == "Kannada") {
+      if(_group_value == "Kannada") {
           pref.setString("language", "Kannada");
       }
     }

@@ -269,7 +269,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         setState(() {
                           _email = text;
                           hasError[1] = false;
-                          if (text.isEmpty) hasError[1] = true;
+                          // if (text.isEmpty) hasError[1] = true;
+                          if (text.isEmpty) hasError[1] = false;
                         });
                       },
                       decoration: InputDecoration(
@@ -441,7 +442,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                   return oneButtonDialog(
                                       context: context,
                                       title: "Network Error",
-                                      content: e.toString(),
+                                      content: "Check Your Internet Connection",
                                       actionTitle: "OK");
                                 });
                           }

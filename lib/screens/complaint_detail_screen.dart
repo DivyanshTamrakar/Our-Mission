@@ -301,7 +301,7 @@ class _ComplaintDetailScreenState extends State<ComplaintDetailScreen> {
                               BorderSide(color: Colors.grey[200], width: 2.0),
                         ),
                         hintText:
-                            language == "English" ? 'Feel free to provide your feedback over here !':'ನಿಮ್ಮ ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ಇಲ್ಲಿ ನೀಡಲು ಹಿಂಜರಿಯಬೇಡಿ!',
+                            language == "English" ? 'Feel free to provide your feedback over here (optional) !':'ನಿಮ್ಮ ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ಇಲ್ಲಿ ನೀಡಲು ಹಿಂಜರಿಯಬೇಡಿ  (ಐಚ್ al ಿಕ)!',
                       ),
                       validator: (value) {
                         if (value.isEmpty) {
@@ -337,68 +337,124 @@ class _ComplaintDetailScreenState extends State<ComplaintDetailScreen> {
                     borderRadius: BorderRadius.circular(20.0),
                     child: GestureDetector(
                       onTap: () async {
-                        if (_controller.text.toString() == "") {
-                          showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return oneButtonDialog(
+
+                        SharedPreferences prefs =
+                        await SharedPreferences.getInstance();
+                        var headers = {
+                          "Authorization":  prefs.getString("token"),
+                          // "Authorization": token,
+                          "Content-Type": "application/json",
+
+                        };
+                        print(headers);
+                        print(_controller.text.toString());
+                        var map = new Map<String, dynamic>();
+                        map["description"] = _controller.text.toString();
+                        map['rating'] = star_rating;
+                        print("Params Feedback Data " + map.toString());
+                        print("map + $map");
+                        final msg  = jsonEncode(map);
+                        print(msg);
+                        final resp = http
+                            .post("${BASE_URL}/feedback/new-feedback",
+                            body: msg, headers: headers)
+                            .then((http.Response response) {
+                          if (response.statusCode < 200 ||
+                              response.statusCode > 400 ||
+                              json == null) {
+                            print(
+                                'HttpResponse==' + response.body.toString());
+                            throw new Exception(
+                                "Error while fetching============================");
+                          }
+                          print(response.body.toString());
+                           Map<String, dynamic> data =
+                          jsonDecode(response.body);
+
+                          print("Divyansh + $data"); // divyansh
+                          if (data['status'] == "201") {
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return oneButtonDialog(
                                     context: context,
-                                    title: "Feedback Can't be Empty",
-                                    content: "Feedback must be filled",
-                                    actionTitle: "OK");
-                              });
-                        } else {
-                          SharedPreferences prefs =
-                              await SharedPreferences.getInstance();
-                          var headers = {
-                            "Authorization":  prefs.getString("token"),
-                            // "Authorization": token,
-                            "Content-Type": "application/json",
+                                    title: "Successfull",
+                                    content: "Your record has been recorded!",
+                                    actionTitle: "OK",
+                                  );
+                                });
+                          }
+                        });
+                        Navigator.pop(context);
 
-                          };
-                          print(headers);
-                          print(_controller.text.toString());
-                          var map = new Map<String, dynamic>();
-                          map["description"] = _controller.text.toString();
-                          map['rating'] = star_rating;
-                          print("Params Feedback Data " + map.toString());
-                          print("map + $map");
-                          final msg  = jsonEncode(map);
-                          print(msg);
-                          final resp = http
-                              .post("${BASE_URL}/feedback/new-feedback",
-                                  body: msg, headers: headers)
-                              .then((http.Response response) {
-                            if (response.statusCode < 200 ||
-                                response.statusCode > 400 ||
-                                json == null) {
-                              print(
-                                  'HttpResponse==' + response.body.toString());
-                              throw new Exception(
-                                  "Error while fetching============================");
-                            }
-                            print(response.body.toString());
 
-                            Map<String, dynamic> data =
-                                jsonDecode(response.body);
 
-                            print("Divyansh + $data"); // divyansh
 
-                            if (data['status'] == "201") {
-                              showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return oneButtonDialog(
-                                      context: context,
-                                      title: "Successfull",
-                                      content: "Your record has been recorded!",
-                                      actionTitle: "OK",
-                                    );
-                                  });
-                            }
-                          });
-                          Navigator.pop(context);
-                        }
+
+
+                        // if (_controller.text.toString() == "") {
+                        //   showDialog(
+                        //       context: context,
+                        //       builder: (BuildContext context) {
+                        //         return oneButtonDialog(
+                        //             context: context,
+                        //             title: "Feedback Can't be Empty",
+                        //             content: "Feedback must be filled",
+                        //             actionTitle: "OK");
+                        //       });
+                        // }
+                        // else {
+                        //   SharedPreferences prefs =
+                        //       await SharedPreferences.getInstance();
+                        //   var headers = {
+                        //     "Authorization":  prefs.getString("token"),
+                        //     // "Authorization": token,
+                        //     "Content-Type": "application/json",
+                        //
+                        //   };
+                        //   print(headers);
+                        //   print(_controller.text.toString());
+                        //   var map = new Map<String, dynamic>();
+                        //   map["description"] = _controller.text.toString();
+                        //   map['rating'] = star_rating;
+                        //   print("Params Feedback Data " + map.toString());
+                        //   print("map + $map");
+                        //   final msg  = jsonEncode(map);
+                        //   print(msg);
+                        //   final resp = http
+                        //       .post("${BASE_URL}/feedback/new-feedback",
+                        //           body: msg, headers: headers)
+                        //       .then((http.Response response) {
+                        //     if (response.statusCode < 200 ||
+                        //         response.statusCode > 400 ||
+                        //         json == null) {
+                        //       print(
+                        //           'HttpResponse==' + response.body.toString());
+                        //       throw new Exception(
+                        //           "Error while fetching============================");
+                        //     }
+                        //     print(response.body.toString());
+                        //
+                        //     Map<String, dynamic> data =
+                        //         jsonDecode(response.body);
+                        //
+                        //     print("Divyansh + $data"); // divyansh
+                        //
+                        //     if (data['status'] == "201") {
+                        //       showDialog(
+                        //           context: context,
+                        //           builder: (BuildContext context) {
+                        //             return oneButtonDialog(
+                        //               context: context,
+                        //               title: "Successfull",
+                        //               content: "Your record has been recorded!",
+                        //               actionTitle: "OK",
+                        //             );
+                        //           });
+                        //     }
+                        //   });
+                        //   Navigator.pop(context);
+                        // }
                       },
                       child: Container(
                         width: width * 0.8,

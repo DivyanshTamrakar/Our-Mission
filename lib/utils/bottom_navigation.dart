@@ -6,6 +6,7 @@ import 'package:namma_badavane/screens/history_screen.dart';
 import 'package:namma_badavane/screens/homescreen.dart';
 import 'package:namma_badavane/screens/profile_screen.dart';
 import 'package:namma_badavane/screens/solution_screen.dart';
+import 'package:namma_badavane/screens/stats.dart';
 import 'package:namma_badavane/utils/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -19,19 +20,22 @@ class _BottomBarExampleState extends State<BottomBarExample> {
   int _page = 0;
   PageController _controller;
   String language = "";
-  String label_one = "",label_two =  "",label_three= "",label_four= "";
+  String label_one = "", label_two = "", label_three = "", label_four = "";
 
   GetPreferData() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
 
     setState(() {
-      language = pref.getString("language");
-
+      if (pref.getString("language") != null) {
+        language = pref.getString("language");
+      } else {
+        language = "English";
+        pref.setString("language", "English");
+      }
     });
     print(pref.getString("language"));
     print("language ========$language");
   }
-
 
   @override
   void initState() {
@@ -42,12 +46,8 @@ class _BottomBarExampleState extends State<BottomBarExample> {
     super.initState();
   }
 
-
-
   _imgFromCamera() async {
-
-    PickedFile image = await ImagePicker().getImage(
-        source: ImageSource.camera);
+    PickedFile image = await ImagePicker().getImage(source: ImageSource.camera);
 
     setState(() {
       print("Path=======${image.path}");
@@ -56,8 +56,8 @@ class _BottomBarExampleState extends State<BottomBarExample> {
   }
 
   _imgFromGallery() async {
-    PickedFile image = await ImagePicker().getImage(
-        source: ImageSource.gallery, imageQuality: 50);
+    PickedFile image = await ImagePicker()
+        .getImage(source: ImageSource.gallery, imageQuality: 50);
 
     setState(() {
       _image = File(image.path);
@@ -137,27 +137,65 @@ class _BottomBarExampleState extends State<BottomBarExample> {
                 duration: const Duration(milliseconds: 10),
                 curve: Curves.easeInOut);
           },
-          items: language == "English" ?
-           <BottomNavigationBarItem>[
-            new BottomNavigationBarItem(
-                icon: new Icon(Icons.home,color: Colors.white,), label: "Home"),//:"ಮನೆ"
-            new BottomNavigationBarItem(
-                icon: new Icon(Icons.history,color: Colors.white,), label:"History"),//"ಇತಿಹಾಸ"
-            new BottomNavigationBarItem(
-                icon: new Icon(Icons.lightbulb,color: Colors.white,), label: "Solutions"),//:"ಪರಿಹಾರಗಳು"
-            new BottomNavigationBarItem(
-                icon: new Icon(Icons.person,color: Colors.white,), label: "Profile"),//:"ಪ್ರೊಫೈಲ್"
-          ]:<BottomNavigationBarItem>[
-            new BottomNavigationBarItem(
-                icon: new Icon(Icons.home,color: Colors.white,), label: "ಮನೆ" ),//:"ಮನೆ"
-            new BottomNavigationBarItem(
-                icon: new Icon(Icons.history,color: Colors.white,), label:"ಇತಿಹಾಸ"),//"ಇತಿಹಾಸ"
-            new BottomNavigationBarItem(
-                icon: new Icon(Icons.lightbulb,color: Colors.white,), label: "ಪರಿಹಾರಗಳು"),//:"ಪರಿಹಾರಗಳು"
-            new BottomNavigationBarItem(
-                icon: new Icon(Icons.person,color: Colors.white,), label: "ಪ್ರೊಫೈಲ್"),//:"ಪ್ರೊಫೈಲ್"
-          ],
+          items: language == "English"
+              ? <BottomNavigationBarItem>[
+                  new BottomNavigationBarItem(
+                      icon: new Icon(
+                        Icons.home,
+                        color: Colors.white,
+                      ),
+                      label: "Home"), //:"ಮನೆ"
+                  new BottomNavigationBarItem(
+                      icon: new Icon(
+                        Icons.history,
+                        color: Colors.white,
+                      ),
+                      label: "History"), //"ಇತಿಹಾಸ"
+                  new BottomNavigationBarItem(
+                      icon: new Icon(
+                        Icons.lightbulb,
+                        color: Colors.white,
+                      ),
+                      label: "Solutions"), //:"ಪರಿಹಾರಗಳು"
+                  new BottomNavigationBarItem(
+                      icon: new Icon(
+                        Icons.person,
+                        color: Colors.white,
+                      ),
+                      label: "Profile"), //:"ಪ್ರೊಫೈಲ್"
+                  //:"ಪ್ರೊಫೈಲ್"
+                ]
+              : <BottomNavigationBarItem>[
+                  new BottomNavigationBarItem(
+                      icon: new Icon(
+                        Icons.home,
+                        color: Colors.white,
+                      ),
+                      label: "ಮನೆ"),
+                  //:"ಮನೆ"
+                  new BottomNavigationBarItem(
+                      icon: new Icon(
+                        Icons.history,
+                        color: Colors.white,
+                      ),
+                      label: "ಇತಿಹಾಸ"),
+                  //"ಇತಿಹಾಸ"
+                  new BottomNavigationBarItem(
+                      icon: new Icon(
+                        Icons.lightbulb,
+                        color: Colors.white,
+                      ),
+                      label: "ಪರಿಹಾರಗಳು"),
+                  //:"ಪರಿಹಾರಗಳು"
+                  new BottomNavigationBarItem(
+                      icon: new Icon(
+                        Icons.person,
+                        color: Colors.white,
+                      ),
+                      label: "ಪ್ರೊಫೈಲ್"),
+                  //:"ಪ್ರೊಫೈಲ್"
 
+                ],
 
           // items: <BottomNavigationBarItem>[
           //   new BottomNavigationBarItem(
@@ -178,7 +216,12 @@ class _BottomBarExampleState extends State<BottomBarExample> {
             this._page = newPage;
           });
         },
-        children: <Widget>[HomeScreen(),HistoryScreen(), SolutionScreen(),ProfileScreen()],
+        children: <Widget>[
+          HomeScreen(),
+          HistoryScreen(),
+          SolutionScreen(),
+          ProfileScreen(),
+        ],
       ),
     );
   }

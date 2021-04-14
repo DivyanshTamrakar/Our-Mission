@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
       // home : SplashScreen(),
       home: Screen(),
       // home : OTPScreen(),
-      // home : LoginScreen(),
+      // home : OTPScreenAfterLogin(),
       // home : ComplaintFormScreen(),
     );
   }

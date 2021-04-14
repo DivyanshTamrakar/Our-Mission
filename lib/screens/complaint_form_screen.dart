@@ -19,12 +19,12 @@ import 'dart:async';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:path_provider/path_provider.dart';
 
-
 import 'homescreen.dart';
 
 class ComplaintFormScreen extends StatefulWidget {
   final List<Department> departments;
   final String subDepartment;
+
   // final File image;
   final int departmentNumber;
 
@@ -58,19 +58,22 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
   File image;
   String dep_kn = "";
   String sub_dep_kn = "";
+  bool location_detected = false;
 
-
-  showLoaderDialog(BuildContext context){
-    AlertDialog alert=AlertDialog(
+  showLoaderDialog(BuildContext context) {
+    AlertDialog alert = AlertDialog(
       content: new Row(
         children: [
           CircularProgressIndicator(),
-          Container(margin: EdgeInsets.only(left: 7),child:Text("Please wait..." )),
-        ],),
+          Container(
+              margin: EdgeInsets.only(left: 7), child: Text("Please wait...")),
+        ],
+      ),
     );
-    showDialog(barrierDismissible: false,
-      context:context,
-      builder:(BuildContext context){
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (BuildContext context) {
         return alert;
       },
     );
@@ -80,13 +83,11 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
     final byteData = await rootBundle.load('assets/$path');
 
     final file = File('${(await getTemporaryDirectory()).path}/$path');
-    await file.writeAsBytes(byteData.buffer.asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
+    await file.writeAsBytes(byteData.buffer
+        .asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
 
     return file;
   }
-
-
-
 
   getCurrenLocation() async {
     final geoposition = await Geolocator.getCurrentPosition(
@@ -94,6 +95,7 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
     setState(() {
       lat = "${geoposition.latitude}";
       lan = "${geoposition.longitude}";
+      location_detected = true;
     });
   }
 
@@ -124,8 +126,8 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
         _timeController.text = formatDate(
             DateTime(2019, 08, 1, selectedTime.hour, selectedTime.minute),
             [hh, ':', nn, " ", am]).toString();
-      });}
-
+      });
+  }
 
   getData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -137,7 +139,6 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
     });
   }
 
-
   getaws() async {
     AwsTranslate awsTranslate = AwsTranslate(
       poolId: poolId, // your pool id here
@@ -146,18 +147,15 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
 
     print("outside loop");
 
-    String translated1 = await awsTranslate
-        .translateText(widget.departments[widget.departmentNumber].title.toString(), to: 'kn');
+    String translated1 = await awsTranslate.translateText(
+        widget.departments[widget.departmentNumber].title.toString(),
+        to: 'kn');
     String translated2 = await awsTranslate
         .translateText(_selectedSubDepartment.toString(), to: 'kn');
     if (!mounted) return CircularProgressIndicator();
     setState(() {
       dep_kn = translated1.toString();
       sub_dep_kn = translated2.toString();
-
-
-
-
     });
 
     print("dep_knn ");
@@ -183,10 +181,8 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
     _selectedSubDepartment = widget.subDepartment;
     subDepartments = _selectedDepartment.subDepartment;
     getData();
-    getCurrenLocation();
+    // getCurrenLocation();
     getaws();
-
-
   }
 
   @override
@@ -195,9 +191,11 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(67,88,185,1.0),
+        backgroundColor: Color.fromRGBO(67, 88, 185, 1.0),
         title: Text(
-            language == "English" ? "Complaint/Issue Detail":"ದೂರು / ಸಂಚಿಕೆ ವಿವರ",
+            language == "English"
+                ? "Complaint/Issue Detail"
+                : "ದೂರು / ಸಂಚಿಕೆ ವಿವರ",
             style: TextStyle(color: primary_text_color)),
       ),
       body: SingleChildScrollView(
@@ -208,26 +206,28 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
               Material(
                 elevation: 10,
                 child: Container(
-                    width: width,
-                    height: 200,
-                    color: Colors.transparent,
-                    child: image == null? Image.asset(
-                      'assets/placeholder_image.png',
-                      height: 150,
-                      width: MediaQuery.of(context).size.width,
-                      fit: BoxFit.cover,
-                    ):
-                    Image.file(
-                      image,
-                      height: 150,
-                      width: MediaQuery.of(context).size.width,
-                      fit: BoxFit.cover,
-                    ),
-                      // widget.image,
-
-                    ),
+                  width: width,
+                  height: 200,
+                  color: Colors.transparent,
+                  child: image == null
+                      ? Image.asset(
+                          'assets/placeholder_image.png',
+                          height: 150,
+                          width: MediaQuery.of(context).size.width,
+                          fit: BoxFit.cover,
+                        )
+                      : Image.file(
+                          image,
+                          height: 150,
+                          width: MediaQuery.of(context).size.width,
+                          fit: BoxFit.cover,
+                        ),
+                  // widget.image,
+                ),
               ),
-              SizedBox(height: 15.0,),
+              SizedBox(
+                height: 15.0,
+              ),
               Align(
                 alignment: Alignment.center,
                 child: SizedBox(
@@ -235,29 +235,32 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                   height: 52.0,
                   child: Container(
                     alignment: Alignment.center,
-
                     decoration: BoxDecoration(
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.circular(30.0),
-                        border: Border.all(width: 2.0,color: HomeScreen.color)
-                    ),
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.circular(30.0),
+                        border:
+                            Border.all(width: 2.0, color: HomeScreen.color)),
                     child: Row(
                       children: [
-                        IconButton(icon:Icon(Icons.camera_alt_outlined),color: HomeScreen.color,iconSize: 25.0,onPressed: () async {
-                          var image_picker = await ImagePicker.pickImage(
-                              source: ImageSource.camera, imageQuality: 50);
-                          if (image_picker != null) {
-                            setState(() {
-                              image = image_picker;
-                            });
-                          }
-                        },),
+                        IconButton(
+                          icon: Icon(Icons.camera_alt_outlined),
+                          color: HomeScreen.color,
+                          iconSize: 25.0,
+                          onPressed: () async {
+                            var image_picker = await ImagePicker.pickImage(
+                                source: ImageSource.camera, imageQuality: 50);
+                            if (image_picker != null) {
+                              setState(() {
+                                image = image_picker;
+                              });
+                            }
+                          },
+                        ),
                       ],
                     ),
                   ),
                 ),
               ),
-
               Form(
                 key: _formKey,
                 child: Column(
@@ -277,7 +280,9 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                             borderSide:
                                 BorderSide(color: Colors.grey[500], width: 1.0),
                           ),
-                          hintText: language == "English" ? 'Enter Complaint title':'ದೂರು ಶೀರ್ಷಿಕೆಯನ್ನು ನಮೂದಿಸಿ',
+                          hintText: language == "English"
+                              ? 'Enter Complaint title'
+                              : 'ದೂರು ಶೀರ್ಷಿಕೆಯನ್ನು ನಮೂದಿಸಿ',
                           suffixIcon: Container(
                             width: width * 0.08,
                             // color: Colors.pink,
@@ -320,8 +325,9 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                           children: [
                             Row(
                               children: [
-                                Text(
-                                    language == "English" ? "Enter Complaint Details/Desc":"ದೂರು ವಿವರಗಳನ್ನು ನಮೂದಿಸಿ / ಡೆಸ್ಕ್"),
+                                Text(language == "English"
+                                    ? "Enter Complaint Details/Desc"
+                                    : "ದೂರು ವಿವರಗಳನ್ನು ನಮೂದಿಸಿ / ಡೆಸ್ಕ್"),
                                 Spacer(),
                                 Container(
                                   width: width * 0.08,
@@ -393,7 +399,9 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                             borderSide:
                                 BorderSide(color: Colors.grey[500], width: 1.0),
                           ),
-                          hintText: language == "English" ?'Enter Contact Number':'ಸಂಪರ್ಕ ಸಂಖ್ಯೆಯನ್ನು ನಮೂದಿಸಿ',
+                          hintText: language == "English"
+                              ? 'Enter Contact Number'
+                              : 'ಸಂಪರ್ಕ ಸಂಖ್ಯೆಯನ್ನು ನಮೂದಿಸಿ',
                           suffixIcon: Container(
                             width: width * 0.08,
                             // color: Colors.pink,
@@ -432,7 +440,9 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                             borderSide:
                                 BorderSide(color: Colors.grey[500], width: 1.0),
                           ),
-                          hintText:language == "English" ?'Enter Email Id':'ಇಮೇಲ್ ಐಡಿ ನಮೂದಿಸಿ' ,
+                          hintText: language == "English"
+                              ? 'Enter Email Id'
+                              : 'ಇಮೇಲ್ ಐಡಿ ನಮೂದಿಸಿ',
                           suffixIcon: Container(
                             width: width * 0.08,
                             // color: Colors.pink,
@@ -456,13 +466,67 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                         },
                       ),
                     ),
+                    // SizedBox(height: 10),
+                    // Row(
+                    //   children: [
+                    //     Icon(Icons.my_location_outlined),
+                    //     SizedBox(width: 3),
+                    //     Text("Location is Automatically Detected"),
+                    //   ],
+                    // ),
                     SizedBox(height: 10),
-                    Row(
-                      children: [
-                        Icon(Icons.my_location_outlined),
-                        SizedBox(width: 3),
-                        Text("Location is Automatically Detected"),
-                      ],
+                    location_detected == true
+                        ? Row(
+                            children: [
+                              Icon(
+                                Icons.my_location_outlined,
+                                color: Colors.green,
+                              ),
+                              SizedBox(width: 3),
+                              Text(
+                                language == "English" ? "Location Detected Successfull!":"ಸ್ಥಳ ಪತ್ತೆಯಾಗಿದೆ ಯಶಸ್ವಿಯಾಗಿದೆ!",
+                                style: TextStyle(
+                                    color: Colors.green,
+                                    fontWeight: FontWeight.bold),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          )
+                        : Container(),
+                    SizedBox(height: 10),
+                    GestureDetector(
+                      onTap: () {
+                        getCurrenLocation();
+                      },
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                            side: new BorderSide(
+                                color: Colors.grey[500], width: 1.0),
+                            borderRadius: BorderRadius.circular(4.0)),
+                        color: Color.fromRGBO(67, 88, 185, 1.0),
+                        elevation: 5,
+                        child: ListTile(
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.my_location_outlined,
+                                color: Colors.white,
+                              ),
+                              SizedBox(width: 3),
+                              Text(
+                                language == "English"
+                                    ? "Detect Location"
+                                    : "ಸ್ಥಳವನ್ನು ಪತ್ತೆ ಮಾಡಿ",
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(color: Colors.white),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
                     SizedBox(height: 10),
                     Card(
@@ -483,7 +547,9 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                             borderSide:
                                 BorderSide(color: Colors.grey[500], width: 1.0),
                           ),
-                          hintText:language == "English" ?'Enter Location':'ಸ್ಥಳವನ್ನು ನಮೂದಿಸಿ',
+                          hintText: language == "English"
+                              ? 'Enter Location'
+                              : 'ಸ್ಥಳವನ್ನು ನಮೂದಿಸಿ',
                           suffixIcon: Container(
                             width: width * 0.08,
                             // color: Colors.pink,
@@ -508,51 +574,6 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                       ),
                     ),
                     SizedBox(height: 10),
-                    // Card(
-                    //   shape: RoundedRectangleBorder(
-                    //       side: new BorderSide(
-                    //           color: Colors.grey[500], width: 1.0),
-                    //       borderRadius: BorderRadius.circular(4.0)),
-                    //   elevation: 5,
-                    //   child: Container(
-                    //     width:  width,
-                    //     padding: EdgeInsets.symmetric(horizontal: 10.0),
-                    //     decoration: BoxDecoration(borderRadius: BorderRadius.circular(5.0),),
-                    //     child: TextFormField(
-                    //       readOnly: true,
-                    //       initialValue: language == "English" ? widget.departments[widget.departmentNumber].title:dep_kn,
-                    //     ),
-                    //   ),
-                      // Drop Down for departments done by karanpreet.
-                      // child: Container(
-                      //   width: width,
-                      //   padding: EdgeInsets.symmetric(horizontal: 10.0),
-                      //   decoration: BoxDecoration(
-                      //     borderRadius: BorderRadius.circular(5.0),
-                      //   ),
-                      //   child: DropdownButtonHideUnderline(
-                      //     child: DropdownButton(
-                      //       hint: Text('Select department'),
-                      //       items: widget.departments
-                      //           .map((item) => DropdownMenuItem(
-                      //               child: new Text(item.title), value: item))
-                      //           .toList(),
-                      //       value: _selectedDepartment,
-                      //       onChanged: (value) {
-                      //         setState(() {
-                      //           complaint.department = value.title;
-                      //           print(value.toString());
-                      //           _selectedDepartment = value;
-                      //           _selectedSubDepartment = null;
-                      //           subDepartments = value.subDepartment;
-                      //           // _selectedSubDepartment = subDepartments[0];
-                      //         });
-                      //       },
-                      //     ),
-                      //   ),
-                      // ),
-                    // ),
-
                     Card(
                       shape: RoundedRectangleBorder(
                           side: new BorderSide(
@@ -561,11 +582,15 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                       elevation: 5,
                       child: ListTile(
                         title: Text(
-                          language == "English" ? widget.departments[widget.departmentNumber].title:dep_kn ==""?"...":dep_kn,
+                          language == "English"
+                              ? widget
+                                  .departments[widget.departmentNumber].title
+                              : dep_kn == ""
+                                  ? "..."
+                                  : dep_kn,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
-
                       ),
                     ),
                     SizedBox(height: 10),
@@ -577,64 +602,17 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                       elevation: 5,
                       child: ListTile(
                         title: Text(
-                            language == "English" ? _selectedSubDepartment:sub_dep_kn==""?"...":sub_dep_kn ,
+                          language == "English"
+                              ? _selectedSubDepartment
+                              : sub_dep_kn == ""
+                                  ? "..."
+                                  : sub_dep_kn,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
-
                       ),
                     ),
-                // Card(
-                //   shape: RoundedRectangleBorder(
-                //       side: new BorderSide(
-                //           color: Colors.grey[500], width: 1.0),
-                //       borderRadius: BorderRadius.circular(4.0)),
-                //   elevation: 5,
-                //   child: Container(
-                //     width:  width,
-                //     padding: EdgeInsets.symmetric(horizontal: 10.0),
-                //     decoration: BoxDecoration(borderRadius: BorderRadius.circular(5.0),),
-                //     child: TextFormField(
-                //       readOnly: true,
-                //       initialValue: language == "English" ? _selectedSubDepartment:sub_dep_kn ,
-                //     ),
-                //   ),),
-                            // Sub department drop down done by karan preet.
-                    // Card(
-                    //   shape: RoundedRectangleBorder(
-                    //       side: new BorderSide(
-                    //           color: Colors.grey[500], width: 1.0),
-                    //       borderRadius: BorderRadius.circular(4.0)),
-                    //   elevation: 5,
-                    //   child: Container(
-                    //     width: width,
-                    //     padding: EdgeInsets.symmetric(horizontal: 10.0),
-                    //     decoration: BoxDecoration(
-                    //       borderRadius: BorderRadius.circular(5.0),
-                    //     ),
-                    //     child: DropdownButtonHideUnderline(
-                    //       child: DropdownButton(
-                    //         hint: Text('Select Type of Service'),
-                    //         items: subDepartments.map((
-                    //           item,
-                    //         ) {
-                    //           return DropdownMenuItem(
-                    //               child: Container(
-                    //                   width: width * 0.8,
-                    //                   child: new Text(item)),
-                    //               value: item);
-                    //         }).toList(),
-                    //         value: _selectedSubDepartment,
-                    //         onChanged: (value) {
-                    //           setState(() {
-                    //             complaint.subDepartment = value;
-                    //             _selectedSubDepartment = value;
-                    //           });
-                    //         },
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
+
                     SizedBox(height: 10),
                     Card(
                       shape: RoundedRectangleBorder(
@@ -675,22 +653,21 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                              padding: EdgeInsets.only(top: 4.0,left: 10.0) ,
-                              width: width/2,
-                             child: TextFormField(
-                               // style: TextStyle(fontSize: 40),
-                               textAlign: TextAlign.left,
-                               onSaved: (String val) {
-                                 _setTime = val;
-                               },
-                               enabled: false,
-                               // keyboardType: TextInputType.text,
-                               controller: _timeController,
-                             ),
+                              padding: EdgeInsets.only(top: 4.0, left: 10.0),
+                              width: width / 2,
+                              child: TextFormField(
+                                // style: TextStyle(fontSize: 40),
+                                textAlign: TextAlign.left,
+                                onSaved: (String val) {
+                                  _setTime = val;
+                                },
+                                enabled: false,
+                                // keyboardType: TextInputType.text,
+                                controller: _timeController,
+                              ),
                             ),
-
                             Container(
-                              padding: EdgeInsets.only(right: 15.0),
+                                padding: EdgeInsets.only(right: 15.0),
                                 child: Icon(Icons.access_time))
                           ],
                         ),
@@ -703,26 +680,30 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                       child: InkWell(
                         onTap: () async {
                           showLoaderDialog(context);
-                          SharedPreferences prefs = await SharedPreferences.getInstance();
+                          SharedPreferences prefs =
+                              await SharedPreferences.getInstance();
                           if (_formKey.currentState.validate()) {
                             try {
                               String url = BASE_URL + "/complain/register";
                               Dio dio = new Dio();
                               dio.options.connectTimeout = 5000; //5s
                               dio.options.receiveTimeout = 3000;
-                              File img = image == null? await getImageFileFromAssets('placeholder_image.png'):image;
+                              File img = image == null
+                                  ? await getImageFileFromAssets(
+                                      'placeholder_image.png')
+                                  : image;
 
-                              print("img === $img");
-                              print("image === $image");
-                              print("title === ${complaint.title}");
-                              print("description === ${complaint.description}");
-                              print("eamil === ${complaint.email}");
-                              print("contact === ${complaint.contact}");
-                              print("department === ${widget.departments[widget.departmentNumber].title}");
-                              print("subdepartment === ${_selectedSubDepartment}");
-                              print("file === $image");
-
-
+                              // print("img === $img");
+                              // print("image === $image");
+                              // print("title === ${complaint.title}");
+                              // print("description === ${complaint.description}");
+                              // print("eamil === ${complaint.email}");
+                              // print("contact === ${complaint.contact}");
+                              // print(
+                              //     "department === ${widget.departments[widget.departmentNumber].title}");
+                              // print(
+                              //     "subdepartment === ${_selectedSubDepartment}");
+                              // print("file === $image");
 
                               String filename = img.path.split('/').last;
                               var formdata = new FormData.fromMap({
@@ -730,25 +711,30 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                                 "description": complaint.description,
                                 "email": complaint.email,
                                 "contact": complaint.contact,
-                                "file":  await MultipartFile.fromFile(img.path,filename: filename,contentType: new MediaType('image', 'jpeg')),
-                                "department": widget.departments[widget.departmentNumber].title,
+                                "file": await MultipartFile.fromFile(img.path,
+                                    filename: filename,
+                                    contentType:
+                                        new MediaType('image', 'jpeg')),
+                                "department": widget
+                                    .departments[widget.departmentNumber].title,
                                 "sub_department": _selectedSubDepartment,
                                 "location": {
-                                  "coordinates":[lat, lan]
+                                  "coordinates": [lat, lan]
                                 },
                               });
                               var response = await dio.post(url,
                                   data: formdata,
                                   options: Options(headers: {
                                     "Authorization": prefs.getString("token"),
-                                     // "Authorization": token,
+                                    // "Authorization": token,
                                   }));
                               print(response);
                               Navigator.pop(context);
                               Navigator.pop(context);
                               Navigator.push(
                                   context,
-                                  CupertinoPageRoute(builder: (context) => SubmittedScreen()));
+                                  CupertinoPageRoute(
+                                      builder: (context) => SubmittedScreen()));
                             } catch (e) {
                               Navigator.pop(context);
                               print(e.toString());
@@ -758,12 +744,11 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                                     return oneButtonDialog(
                                         context: context,
                                         title: "Network Error",
-                                        content:e.toString(),
+                                        content: e.toString(),
                                         actionTitle: "OK");
                                   });
                             }
-                          }
-                          else {
+                          } else {
                             showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
@@ -780,7 +765,7 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                           padding: EdgeInsets.symmetric(
                               horizontal: 25, vertical: 10),
                           decoration: BoxDecoration(
-                              color: HomeScreen.button_back ,
+                              color: HomeScreen.button_back,
                               borderRadius: BorderRadius.circular(20.0)),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.end,
@@ -788,7 +773,7 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                               SizedBox(width: 15),
                               Expanded(
                                 child: Text(
-                                  language == "English" ?'Submit':'ಸಲ್ಲಿಸು',
+                                  language == "English" ? 'Submit' : 'ಸಲ್ಲಿಸು',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       color: button_text_color,

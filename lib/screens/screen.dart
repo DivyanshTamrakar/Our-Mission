@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:namma_badavane/screens/otp_screen_after_login.dart';
 import 'package:namma_badavane/screens/screen_signup.dart';
 import 'package:namma_badavane/screens/sign_up_screen.dart';
+import 'package:namma_badavane/screens/splash_screen.dart';
 import 'package:namma_badavane/utils/HttpResponse.dart';
 import 'package:namma_badavane/utils/bottom_navigation.dart';
 import 'package:namma_badavane/utils/colors.dart';
@@ -33,7 +34,7 @@ class _ScreenState extends State<Screen>{
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-              builder: (BuildContext context) => BottomBarExample()));
+              builder: (BuildContext context) => SplashScreen()));
     }
     // else {
     //   Navigator.pushReplacement(
@@ -82,10 +83,10 @@ class _ScreenState extends State<Screen>{
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
 
-                  SizedBox(height: MediaQuery.of(context).size.height/4.2,),
+                  SizedBox(height:MediaQuery.of(context).size.height/4.5),
                   Container(
                       width: MediaQuery.of(context).size.width/1.2,
-                      height: MediaQuery.of(context).size.height/2.5,
+                      height: MediaQuery.of(context).size.height/2.2,
                       decoration: BoxDecoration(
                         color: Colors.black26,
                       ),
@@ -104,7 +105,7 @@ class _ScreenState extends State<Screen>{
                           children: <Widget>[
                             // CircularProgressIndicator(),
                             Container(
-                              height: 10,
+                              height: 50,
                             ),
                             Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -122,19 +123,19 @@ class _ScreenState extends State<Screen>{
 
                             SizedBox(
                               width: 140,
-                              child: Row(
+                              child: Column(
                                   mainAxisAlignment:
                                   MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
                                     Text("Powered by",
                                         style: TextStyle(
-                                            fontSize: 14,
+                                            fontSize: 20,
                                             fontWeight: FontWeight.bold,
                                             color: button_text_color)),
                                     Image.asset(
                                       "assets/footer.png",
-                                      height: 65,
-                                      width: 65,
+                                      height: 250,
+                                      width: 250,
                                       color: Colors.white,
                                     ),
                                   ]),
@@ -149,7 +150,24 @@ class _ScreenState extends State<Screen>{
               SingleChildScrollView(
                 child: Column(
                   children: [
-                    SizedBox(height: MediaQuery.of(context).size.height/5.4,),
+                    SizedBox(height:40),
+                    Container(
+                      child:  Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>  [
+
+                            Text("Namma",
+                                style: TextStyle(
+                                    fontSize: 40, color: Colors.orange)),
+                            Text("Badavane",
+                                style: TextStyle(
+                                    fontSize: 40,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold))
+                          ]),
+                    ),
+                    SizedBox(height: MediaQuery.of(context).size.height/15,),
+
                     Container(
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.white),
@@ -220,6 +238,7 @@ class _ScreenState extends State<Screen>{
                       borderRadius: BorderRadius.circular(20.0),
                       child: InkWell(
                         onTap: () async {
+                          print(_controller.text);
                           if (_controller.text.length == 10)
                             try {
                               Map data={
@@ -256,13 +275,14 @@ class _ScreenState extends State<Screen>{
                               }
                             }
                             catch (e) {
+                            print("Error : ${e}");
                               showDialog(
                                   context: context,
                                   builder: (BuildContext context) {
                                     return oneButtonDialog(
                                         context: context,
                                         title: "Network Error",
-                                        content: e.toString(),
+                                        content: "Check Your Internet Connection !",
                                         actionTitle: "OK"
                                     );
                                   });

@@ -6,10 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:namma_badavane/config.dart';
+import 'package:namma_badavane/models/complaint_model.dart';
 import 'package:namma_badavane/models/department_model.dart';
 import 'package:namma_badavane/screens/category_list_screen.dart';
 import 'package:namma_badavane/screens/notification.dart';
+import 'package:namma_badavane/services/complaint_service.dart';
 import 'package:namma_badavane/services/department_service.dart';
+import 'package:namma_badavane/utils/HttpResponse.dart';
 import 'package:namma_badavane/utils/bottom_navigation.dart';
 import 'package:namma_badavane/utils/colors.dart';
 import 'package:namma_badavane/widgets/dialogs.dart';
@@ -28,10 +31,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
-  bool _initialized = false;
-  GoogleTranslator translator = new GoogleTranslator();
   String language;
+  List<Complaint> complaints = [];
+  var complaintLength;
+  var solutionlength;
+  var solvedLength;
+  var pendingLength;
   var arr = new List(9);
   List<Department> departments = [];
   List<String> kann = [
@@ -50,12 +55,19 @@ class _HomeScreenState extends State<HomeScreen> {
     SharedPreferences pref = await SharedPreferences.getInstance();
 
     setState(() {
-      language = pref.getString("language");
+      if(pref.getString("language") != null){
+        language = pref.getString("language");
+      }else{
+        language = "English";
+        pref.setString("language", "English");
+      }
+
     });
     print(pref.getString("language"));
     print("language ========$language");
     print("token ========${pref.getString("token")}");
   }
+
 
   fetchData() async {
     var data = await DepartmentApi().getAllDepartments();
@@ -69,6 +81,8 @@ class _HomeScreenState extends State<HomeScreen> {
     // TODO: implement initState
     super.initState();
     fetchData();
+    fetchDataforStatCard();
+    getSolutionDataForStatCard();
     StatusColor();
     PreferenceData();
   }
@@ -114,7 +128,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     onPressed: () {},
                   ),
                   Text(
-                    "Language",
+                    language == "English" ?"Language":"ಭಾಷೆ",
                     style: TextStyle(color: Colors.white),
                     textAlign: TextAlign.center,
                   ),
@@ -136,59 +150,198 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: (departments.length > 1)
-          ? Container(
-              margin: EdgeInsets.only(top: 20.0),
-              padding: EdgeInsets.all(3.0), //divyansh editing
-              // padding: EdgeInsets.all(12.0),
-              child: GridView.builder(
-                itemCount: departments.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: (width < 350) ? 2 : 3,
-                    crossAxisSpacing: 0.0,
-                    mainAxisSpacing: 15.0),
-                itemBuilder: (BuildContext context, int index) {
-                  return InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          CupertinoPageRoute(
-                              builder: (context) => CategoryListScreen(
-                                  departments: departments,
-                                  departmentNumber: index)));
-                    },
-                    child: Card(
-                      elevation: 5,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          children: [
-                            Container(
-                                height: (width < 350)
-                                    ? height * 0.13
-                                    : height * 0.07,
-                                child: Image.network(departments[index].file)),
-                            Divider(),
-                            Text(
-                              language == "English"
-                                  ? departments[index].title
-                                  : kann[index],
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: departments[index].title.length < 20
-                                      ? 12
-                                      : 9,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
+          ? SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+          physics: NeverScrollableScrollPhysics(),
+            child: Column(
+              children: [
+                Container(
+                margin: EdgeInsets.only(top: 20.0),
+                padding: EdgeInsets.all(3.0), //divyansh editing
+                // padding: EdgeInsets.all(12.0),
+                child: GridView.builder(
+
+                  shrinkWrap: true,
+                  itemCount: departments.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: (width < 350) ? 2 : 3,
+                      crossAxisSpacing: 0.0,
+                      mainAxisSpacing: 15.0),
+                  itemBuilder: (BuildContext context, int index) {
+                    return InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (context) => CategoryListScreen(
+                                    departments: departments,
+                                    departmentNumber: index)));
+                      },
+                      child: Card(
+                        elevation: 5,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            children: [
+                              Container(
+                                  height: (width < 350)
+                                      ? height * 0.13
+                                      : height * 0.07,
+                                  child: Image.network(departments[index].file)),
+                              Divider(),
+                              Text(
+                                language == "English"
+                                    ? departments[index].title
+                                    : kann[index],
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: departments[index].title.length < 20
+                                        ? 12
+                                        : 9,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  );
-                },
-              ))
-          : Center(
-              child: CircularProgressIndicator(),
+                    );
+                  },
+                )),
+                // Line with Text
+                Row(children: <Widget>[
+                  Expanded(
+                    child: new Container(
+                        margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+                        child: Divider(
+                          color: Colors.black,
+                          height: 36,
+                        )),
+                  ),
+                  Text(language == "English"?'Complaint Status':'ದೂರು ಸ್ಥಿತಿ',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
+                  Expanded(
+                    child: new Container(
+                        margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+                        child: Divider(
+                          color: Colors.black,
+                          height: 36,
+                        )),
+                  ),
+                ]),
+                // Status Card
+                Container(
+                  height: MediaQuery.of(context).size.height,
+                  child: GridView.count(
+                    shrinkWrap: true,
+                    crossAxisCount: 3,
+                    padding: EdgeInsets.all(3.0),
+                    children: <Widget>[
+                      makeDashboardItem(
+                          language == "English" ? "Raised" : "ಬೆಳೆದ",
+                          Icons.insert_comment,
+                          Colors.yellow,
+                          Colors.black, complaintLength.toString()),
+                      makeDashboardItem(
+                          language == "English" ? "Solved" : "ಪರಿಹರಿಸಲಾಗಿದೆ",
+                          Icons.assignment_turned_in_rounded,
+                          Colors.green,
+                          Colors.white,
+                          solutionlength.toString()),
+                      makeDashboardItem(
+                          language == "English" ? "Pending" : "ಬಾಕಿ ಉಳಿದಿದೆ",
+                          Icons.pending_actions,
+                          Colors.orangeAccent[400],
+                          Colors.white,
+                          pendingLength.toString()),
+                    ],
+                  ),
+                ),
+              ],
             ),
+          )
+          : Center(
+        child: CircularProgressIndicator(),
+      )
     ));
   }
+
+  // stat card numbering
+
+  fetchDataforStatCard() async {
+    var data = await ComplaintApi().getAllComplaints();
+    setState(() {
+      complaintLength = data.length;
+    });
+  }
+
+  getSolutionDataForStatCard() async {
+    var resp = await HttpResponse.getResponse(service: '/users/solution/all');
+    print("\n\n$resp\n\n");
+
+    var response = jsonDecode(resp);
+    print("\n\n${response.toString()}\n\n");
+
+    setState(() {
+      solutionlength = response['data'].length;
+      if (solutionlength == null) {
+        solutionlength = 0;
+      }
+      print(solutionlength);
+      pendingLength = complaintLength - solutionlength;
+      if (pendingLength == null) {
+        pendingLength = 0;
+      }
+      print(pendingLength);
+    });
+  }
 }
+
+
+Card makeDashboardItem(String title, IconData icon, Color cardcolor,
+    Color textcolor, String complaint) {
+  return Card(
+      elevation: 2.0,
+      child: Container(
+        decoration: BoxDecoration(color: cardcolor,borderRadius: BorderRadius.circular(4),),
+        child: new InkWell(
+          onTap: () {},
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisSize: MainAxisSize.min,
+              verticalDirection: VerticalDirection.down,
+              children: <Widget>[
+                SizedBox(height: 5.0),
+                Center(
+                    child: Icon(
+                      icon,
+                      size: 40.0,
+                      color: Colors.white,
+                    )),
+                SizedBox(height: 5.0),
+                new Center(
+                  child: new Text(title,
+                      overflow: TextOverflow.ellipsis,
+
+                      style: new TextStyle(
+                          fontSize: 18.0,
+                          color: textcolor,
+                          fontWeight: FontWeight.bold)),
+                ),
+                SizedBox(height: 5.0),
+                new Center(
+                  child: new Text(complaint,
+                      style: new TextStyle(
+                          fontSize: 25.0,
+                          color: textcolor,
+                          fontWeight: FontWeight.bold)),
+                )
+              ],
+            ),
+          ),
+        ),
+      ));
+}
+
+
+

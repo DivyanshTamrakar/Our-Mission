@@ -90,7 +90,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(67, 88, 185, 1.0),
+        backgroundColor: HomeScreen.color,
         title: Text(
           language == "English" ? "History" : "ಇತಿಹಾಸ",
           style: TextStyle(

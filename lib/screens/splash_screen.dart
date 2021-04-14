@@ -37,7 +37,6 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-
     _loadWidget();
   }
 
@@ -56,6 +55,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
 
     var usertoken = prefs.getString("token");
+
     if (usertoken == null) {
       // Navigator.pushReplacement(context,
       //     MaterialPageRoute(builder: (BuildContext context) => SignUpScreen()));
@@ -90,21 +90,21 @@ class _SplashScreenState extends State<SplashScreen> {
           child: Stack(
             fit: StackFit.expand,
             children: <Widget>[
-              Image.asset('assets/bidar.jpg',
+              Image.asset('assets/poster.jpg',
                   fit: BoxFit.cover,
                   height: double.infinity,
                   width: double.infinity,
                   alignment: Alignment.center),
-              ClipRRect(
-                // Clip it cleanly.
-                child: BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                  child: Container(
-                    color: Colors.grey.withOpacity(0.1),
-                    alignment: Alignment.center,
-                  ),
-                ),
-              ),
+              // ClipRRect(
+              //   // Clip it cleanly.
+              //   child: BackdropFilter(
+              //     filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+              //     child: Container(
+              //       color: Colors.grey.withOpacity(0.1),
+              //       alignment: Alignment.center,
+              //     ),
+              //   ),
+              // ),
 
               // Container(
               //   child: Image.asset('assets/bidar.jpg',
@@ -113,91 +113,7 @@ class _SplashScreenState extends State<SplashScreen> {
               //       width: double.infinity,
               //       alignment: Alignment.center),
               // ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Expanded(
-                    flex: 7,
-                    child: Container(
-                        child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Container(
-                          height: height * 0.28,
-                          // color: Colors.amber,
-                          child: Image.asset('assets/splash_icon.png'),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 5, horizontal: 60),
-                          child: Container(
-                            height: 5,
-                            color: Colors.white,
-                          ),
-                        ),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Text("Namma",
-                                  style: TextStyle(
-                                      fontSize: 40, color: button_text_color)),
-                              Text("Badavane",
-                                  style: TextStyle(
-                                      fontSize: 40,
-                                      color: button_text_color,
-                                      fontWeight: FontWeight.bold))
-                            ])
-                      ],
-                    )),
-                  ),
-                  Expanded(
-                    child: Container(
-                      alignment: Alignment.bottomCenter,
-                      child: Column(
-                        children: <Widget>[
-                          // CircularProgressIndicator(),
-                          Container(
-                            height: 10,
-                          ),
-                          Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: <Widget>[
-                                Spacer(),
-                                Text(
-                                    "Don't worry we're here to solve your Issues",
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold,
-                                        color: button_text_color)),
-                                Spacer(),
-                              ]),
-                          // CircularProgressIndicator(),
 
-                          SizedBox(
-                            width: 140,
-                            child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  Text("Powered by",
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.bold,
-                                          color: button_text_color)),
-                                  Image.asset(
-                                    "assets/footer.png",
-                                    height: 65,
-                                    width: 65,
-                                    color: Colors.white,
-                                  ),
-                                ]),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
             ],
           ),
         ),
