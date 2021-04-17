@@ -26,7 +26,7 @@ class _ScreenSignupState extends State<ScreenSignup>{
     double width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: splash_background,
+        backgroundColor: Colors.transparent,
         body: InkWell(
           child: Stack(
             fit: StackFit.expand,
@@ -46,25 +46,23 @@ class _ScreenSignupState extends State<ScreenSignup>{
                   ),
                 ),
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-
-                  SizedBox(height: MediaQuery.of(context).size.height/4.2,),
-                  Container(
-                      width: MediaQuery.of(context).size.width/1.2,
-                      height: MediaQuery.of(context).size.height/2.5,
-                      decoration: BoxDecoration(
-                        color: Colors.black26,
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-
-                        ],
-                      )),
-                  Expanded(
-                    child: Container(
+              SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    SizedBox(height: MediaQuery.of(context).size.height / 4.5),
+                    Container(
+                        width: MediaQuery.of(context).size.width / 1.2,
+                        height: MediaQuery.of(context).size.height / 2.2,
+                        decoration: BoxDecoration(
+                          color: Colors.black26,
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[],
+                        )),
+                    Container(
                       alignment: Alignment.bottomCenter,
                       child: SingleChildScrollView(
                         scrollDirection: Axis.vertical,
@@ -72,10 +70,11 @@ class _ScreenSignupState extends State<ScreenSignup>{
                           children: <Widget>[
                             // CircularProgressIndicator(),
                             Container(
-                              height: 10,
+                              height: 30,
                             ),
                             Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                mainAxisAlignment:
+                                MainAxisAlignment.spaceAround,
                                 children: <Widget>[
                                   Spacer(),
                                   Text(
@@ -88,38 +87,50 @@ class _ScreenSignupState extends State<ScreenSignup>{
                                 ]),
                             // CircularProgressIndicator(),
                             Container(
-                              height: 40,
+                              height: 20,
                             ),
-                            SizedBox(
-                              width: 140,
-                              child: Column(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    Text("Powered by",
-                                        style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold,
-                                            color: button_text_color)),
-                                    Image.asset(
-                                      "assets/footer.png",
-                                      height: 255,
-                                      width: 255,
-                                      color: Colors.white,
-                                    ),
-                                  ]),
-                            )
+                            Text("Powered by",
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: button_text_color))
                           ],
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
+
+
+
+
+
+
+
+
               SingleChildScrollView(
                 child: Column(
                   children: [
-                    SizedBox(height: MediaQuery.of(context).size.height/5.4,),
+                    SizedBox(height:40),
+                    Container(
+                      child:  Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>  [
+
+                            Text("Namma",
+                                style: TextStyle(
+                                    fontSize: 40, color: Colors.orange)),
+                            Text("Badavane",
+                                style: TextStyle(
+                                    fontSize: 40,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold))
+                          ]),
+                    ),
+                    SizedBox(height: MediaQuery.of(context).size.height/15,),
+
+                    // SizedBox(height: MediaQuery.of(context).size.height/5.4,),
                     Container(
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.white),
@@ -233,7 +244,7 @@ class _ScreenSignupState extends State<ScreenSignup>{
                                     return oneButtonDialog(
                                         context: context,
                                         title: "Network Error",
-                                        content: e.toString(),
+                                        content: "Check Your Internet Connection",
                                         actionTitle: "OK");
                                   });
                               // print('Invalid Number');
@@ -304,7 +315,16 @@ class _ScreenSignupState extends State<ScreenSignup>{
                             fontWeight: FontWeight.bold, fontSize: 20.0,color: Colors.white),
                       ),
                     ),
-                    SizedBox(height: 40),
+                    Container(
+                      height: 20.0,
+                    ),
+                    Image.asset(
+                      "assets/footer.png",
+                      fit: BoxFit.cover,
+                      height: 300,
+                      width: 300.0,
+                      color: Colors.white,
+                    ),
                   ],
                 ),
               ),

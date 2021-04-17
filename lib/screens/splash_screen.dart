@@ -27,13 +27,6 @@ class _SplashScreenState extends State<SplashScreen> {
   String _versionName = 'V1.0';
   final splashDelay = 3;
 
-  // File image;
-
-  // _imgFromCamera() async {
-  //   image = (await ImagePicker.pickImage(
-  //       source: ImageSource.camera, imageQuality: 50)) as File;
-  // }
-
   @override
   void initState() {
     super.initState();
@@ -57,8 +50,7 @@ class _SplashScreenState extends State<SplashScreen> {
     var usertoken = prefs.getString("token");
 
     if (usertoken == null) {
-      // Navigator.pushReplacement(context,
-      //     MaterialPageRoute(builder: (BuildContext context) => SignUpScreen()));
+
       Navigator.pushReplacement(context,
           MaterialPageRoute(builder: (BuildContext context) => Screen()));
     } else {
@@ -68,15 +60,7 @@ class _SplashScreenState extends State<SplashScreen> {
               builder: (BuildContext context) => BottomBarExample()));
     }
 
-    // Iyyer bhai editing
-    // var token = await getToken();
-    //   if(token==null)
-    //     Navigator.pushReplacement(context,
-    //         MaterialPageRoute(builder: (BuildContext context) => SignUpScreen()));
-    //   else
-    //     Navigator.pushReplacement(context,
-    //         MaterialPageRoute(builder: (BuildContext context) => BottomBarExample()));
-    //
+
   }
 
   @override
@@ -85,36 +69,17 @@ class _SplashScreenState extends State<SplashScreen> {
     double width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: splash_background,
+        backgroundColor: Colors.white,
         body: InkWell(
           child: Stack(
             fit: StackFit.expand,
             children: <Widget>[
               Image.asset('assets/poster.jpg',
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fill,
                   height: double.infinity,
                   width: double.infinity,
                   alignment: Alignment.center),
-              // ClipRRect(
-              //   // Clip it cleanly.
-              //   child: BackdropFilter(
-              //     filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-              //     child: Container(
-              //       color: Colors.grey.withOpacity(0.1),
-              //       alignment: Alignment.center,
-              //     ),
-              //   ),
-              // ),
-
-              // Container(
-              //   child: Image.asset('assets/bidar.jpg',
-              //       fit: BoxFit.cover,
-              //       height: double.infinity,
-              //       width: double.infinity,
-              //       alignment: Alignment.center),
-              // ),
-
-            ],
+                        ],
           ),
         ),
       ),

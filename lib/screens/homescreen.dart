@@ -69,6 +69,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
 
+
+
   fetchData() async {
     var data = await DepartmentApi().getAllDepartments();
     setState(() {
@@ -83,6 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
     fetchData();
     fetchDataforStatCard();
     getSolutionDataForStatCard();
+
     StatusColor();
     PreferenceData();
   }
@@ -236,22 +239,24 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding: EdgeInsets.all(3.0),
                     children: <Widget>[
                       makeDashboardItem(
-                          language == "English" ? "Raised" : "ಬೆಳೆದ",
+                          language == "English" ? "Registered" : "ನೋಂದಾಯಿಸಲಾಗಿದೆ",
                           Icons.insert_comment,
                           Colors.yellow,
-                          Colors.black, complaintLength.toString()),
+                          Colors.black,
+                          complaintLength.toString()),
                       makeDashboardItem(
                           language == "English" ? "Solved" : "ಪರಿಹರಿಸಲಾಗಿದೆ",
                           Icons.assignment_turned_in_rounded,
                           Colors.green,
                           Colors.white,
                           solutionlength.toString()),
+
                       makeDashboardItem(
                           language == "English" ? "Pending" : "ಬಾಕಿ ಉಳಿದಿದೆ",
                           Icons.pending_actions,
                           Colors.orangeAccent[400],
                           Colors.white,
-                          pendingLength.toString()),
+                          pendingLength != null ? pendingLength.toString() : "0" ),
                     ],
                   ),
                 ),
@@ -267,14 +272,19 @@ class _HomeScreenState extends State<HomeScreen> {
   // stat card numbering
 
   fetchDataforStatCard() async {
-    var data = await ComplaintApi().getAllComplaints();
+    var resp = await HttpResponse.getResponse(service: '/complain');
+    print("\n\n$resp\n\n");
+
+    var response = jsonDecode(resp);
+    print("\n\n${response.toString()}\n\n");
+
     setState(() {
-      complaintLength = data.length;
+      complaintLength = response['data'].length;
     });
   }
 
   getSolutionDataForStatCard() async {
-    var resp = await HttpResponse.getResponse(service: '/users/solution/all');
+    var resp = await HttpResponse.getResponse(service: '/solution');
     print("\n\n$resp\n\n");
 
     var response = jsonDecode(resp);
@@ -291,8 +301,11 @@ class _HomeScreenState extends State<HomeScreen> {
         pendingLength = 0;
       }
       print(pendingLength);
+
     });
   }
+
+
 }
 
 
@@ -315,20 +328,25 @@ Card makeDashboardItem(String title, IconData icon, Color cardcolor,
                 Center(
                     child: Icon(
                       icon,
-                      size: 40.0,
+                      size: 25.0,
                       color: Colors.white,
                     )),
                 SizedBox(height: 5.0),
                 new Center(
-                  child: new Text(title,
-                      overflow: TextOverflow.ellipsis,
+                  child: Container(
+                    width: 110.0,
+                    alignment: Alignment.center,
+                    child: new Text(title,
+                        textAlign: TextAlign.justify,
+                        // overflow: TextOverflow.ellipsis,
 
-                      style: new TextStyle(
-                          fontSize: 18.0,
-                          color: textcolor,
-                          fontWeight: FontWeight.bold)),
+                        style: new TextStyle(
+                            fontSize: 18.0,
+                            color: textcolor,
+                            fontWeight: FontWeight.bold)),
+                  ),
                 ),
-                SizedBox(height: 5.0),
+                SizedBox(height: 2.0),
                 new Center(
                   child: new Text(complaint,
                       style: new TextStyle(

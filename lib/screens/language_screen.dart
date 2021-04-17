@@ -62,7 +62,7 @@ class _Language_selectionState extends State<Language_selection> {
   Widget build(BuildContext context) {
     return new Container(
       height: 100.0,
-      color: Colors.blue,
+      color:Color(0xFF737373).withOpacity(0.4),
       child: new Container(
           alignment: Alignment.center,
           decoration: new BoxDecoration(

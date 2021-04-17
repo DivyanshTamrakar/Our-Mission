@@ -14,27 +14,24 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'homescreen.dart';
 
-class Screen extends StatefulWidget{
+class Screen extends StatefulWidget {
   _ScreenState createState() => _ScreenState();
 }
 
-class _ScreenState extends State<Screen>{
+class _ScreenState extends State<Screen> {
   TextEditingController _controller = new TextEditingController();
-
 
   check() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     print("user token ========  ${prefs.getString("token")}");
-    print("user default language in shared preference  ========  ${prefs.getString("language")}");
-
+    print(
+        "user default language in shared preference  ========  ${prefs.getString("language")}");
 
     var usertoken = prefs.getString("token");
     if (usertoken != null) {
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-              builder: (BuildContext context) => SplashScreen()));
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (BuildContext context) => SplashScreen()));
     }
     // else {
     //   Navigator.pushReplacement(
@@ -42,9 +39,7 @@ class _ScreenState extends State<Screen>{
     //       MaterialPageRoute(
     //           builder: (BuildContext context) => BottomBarExample()));
     // }
-
   }
-
 
   @override
   void initState() {
@@ -59,11 +54,12 @@ class _ScreenState extends State<Screen>{
     double width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: splash_background,
+        backgroundColor: Colors.transparent,
         body: InkWell(
           child: Stack(
             fit: StackFit.expand,
             children: <Widget>[
+              // Bidar Image backgrounf Blur
               Image.asset('assets/bidar.jpg',
                   fit: BoxFit.cover,
                   height: double.infinity,
@@ -79,25 +75,24 @@ class _ScreenState extends State<Screen>{
                   ),
                 ),
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-
-                  SizedBox(height:MediaQuery.of(context).size.height/4.5),
-                  Container(
-                      width: MediaQuery.of(context).size.width/1.2,
-                      height: MediaQuery.of(context).size.height/2.2,
-                      decoration: BoxDecoration(
-                        color: Colors.black26,
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-
-                        ],
-                      )),
-                  Expanded(
-                    child: Container(
+              // Black backGround Color and some Title
+              SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    SizedBox(height: MediaQuery.of(context).size.height / 4.5),
+                    Container(
+                        width: MediaQuery.of(context).size.width / 1.2,
+                        height: MediaQuery.of(context).size.height / 2.2,
+                        decoration: BoxDecoration(
+                          color: Colors.black26,
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[],
+                        )),
+                    Container(
                       alignment: Alignment.bottomCenter,
                       child: SingleChildScrollView(
                         scrollDirection: Axis.vertical,
@@ -105,10 +100,11 @@ class _ScreenState extends State<Screen>{
                           children: <Widget>[
                             // CircularProgressIndicator(),
                             Container(
-                              height: 50,
+                              height: 30,
                             ),
                             Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
                                 children: <Widget>[
                                   Spacer(),
                                   Text(
@@ -120,42 +116,30 @@ class _ScreenState extends State<Screen>{
                                   Spacer(),
                                 ]),
                             // CircularProgressIndicator(),
-
-                            SizedBox(
-                              width: 140,
-                              child: Column(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    Text("Powered by",
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                            color: button_text_color)),
-                                    Image.asset(
-                                      "assets/footer.png",
-                                      height: 250,
-                                      width: 250,
-                                      color: Colors.white,
-                                    ),
-                                  ]),
-                            )
+                            Container(
+                              height: 20,
+                            ),
+                            Text("Powered by",
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: button_text_color))
                           ],
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
+              // Tangent Logo and sign up componenet.
               SingleChildScrollView(
                 child: Column(
                   children: [
-                    SizedBox(height:40),
+                    SizedBox(height: 40),
                     Container(
-                      child:  Row(
+                      child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>  [
-
+                          children: <Widget>[
                             Text("Namma",
                                 style: TextStyle(
                                     fontSize: 40, color: Colors.orange)),
@@ -166,8 +150,9 @@ class _ScreenState extends State<Screen>{
                                     fontWeight: FontWeight.bold))
                           ]),
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height/15,),
-
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height / 15,
+                    ),
                     Container(
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.white),
@@ -183,14 +168,16 @@ class _ScreenState extends State<Screen>{
                         ),
                       ),
                     ),
-                    SizedBox(height:20),
+                    SizedBox(height: 20),
                     Container(
                       width: width,
                       child: Text(
                         "To continue,enter your phone Number",
                         textAlign: TextAlign.center,
-                        style:
-                        TextStyle(fontSize: 16, fontWeight: FontWeight.bold,color: Colors.white),
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
                       ),
                     ),
                     SizedBox(height: 10),
@@ -220,7 +207,7 @@ class _ScreenState extends State<Screen>{
                               hintStyle: new TextStyle(color: Colors.grey[800]),
                               hintText: "Enter Phone Number",
                               prefixIcon: Icon(Icons.call,
-                                  color: Color.fromRGBO(223,143,96,1.0)),
+                                  color: Color.fromRGBO(223, 143, 96, 1.0)),
                               fillColor: primary_text_color),
                         ),
                       ),
@@ -241,8 +228,8 @@ class _ScreenState extends State<Screen>{
                           print(_controller.text);
                           if (_controller.text.length == 10)
                             try {
-                              Map data={
-                                "contact":_controller.text.toString()
+                              Map data = {
+                                "contact": _controller.text.toString()
                               };
                               var resp = await HttpResponse.postResponse(
                                   service: '/users/send-otp', data: data);
@@ -256,35 +243,33 @@ class _ScreenState extends State<Screen>{
                                     builder: (BuildContext context) {
                                       return oneButtonDialog(
                                           context: context,
-                                          title: "Already registered",
+                                          title: "Contact Not Registered",
                                           content: response['error'],
-                                          actionTitle: "OK"
-                                      );
+                                          actionTitle: "OK");
                                     });
                                 //print('Invalid Number');
-                              }
-                              else {
-                                SharedPreferences prefs = await SharedPreferences
-                                    .getInstance();
+                              } else {
+                                SharedPreferences prefs =
+                                    await SharedPreferences.getInstance();
                                 prefs.setString('contact', _controller.text);
                                 Navigator.push(
                                     context,
                                     CupertinoPageRoute(
-                                        builder: (context) => OTPScreenAfterLogin(
-                                            contact: _controller.text)));
+                                        builder: (context) =>
+                                            OTPScreenAfterLogin(
+                                                contact: _controller.text)));
                               }
-                            }
-                            catch (e) {
-                            print("Error : ${e}");
+                            } catch (e) {
+                              print("Error : ${e}");
                               showDialog(
                                   context: context,
                                   builder: (BuildContext context) {
                                     return oneButtonDialog(
                                         context: context,
                                         title: "Network Error",
-                                        content: "Check Your Internet Connection !",
-                                        actionTitle: "OK"
-                                    );
+                                        content:
+                                            "Check Your Internet Connection !",
+                                        actionTitle: "OK");
                                   });
                               // print('Invalid Number');
                             }
@@ -295,17 +280,17 @@ class _ScreenState extends State<Screen>{
                                   return oneButtonDialog(
                                       context: context,
                                       title: "Invalid Number",
-                                      content: "Please enter a valid 10 digit mobile number",
-                                      actionTitle: "OK"
-                                  );
+                                      content:
+                                          "Please enter a valid 10 digit mobile number",
+                                      actionTitle: "OK");
                                 });
                           print('Invalid Number');
                         },
                         child: Container(
                           // width: width * 0.8,
                           margin: EdgeInsets.symmetric(horizontal: 80.0),
-                          padding:
-                          EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 25, vertical: 10),
                           decoration: BoxDecoration(
                               color: Color.fromRGBO(67, 88, 185, 1.0),
                               borderRadius: BorderRadius.circular(20.0)),
@@ -351,10 +336,21 @@ class _ScreenState extends State<Screen>{
                       child: Text(
                         "Not Registered ? Sign Up ",
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20.0,color: Colors.white),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                            color: Colors.white),
                       ),
                     ),
-
+                    Container(
+                      height: 40.0,
+                    ),
+                    Image.asset(
+                      "assets/footer.png",
+                      fit: BoxFit.cover,
+                      height: 300,
+                      width: 300.0,
+                      color: Colors.white,
+                    ),
                   ],
                 ),
               ),
@@ -364,5 +360,4 @@ class _ScreenState extends State<Screen>{
       ),
     );
   }
-
 }

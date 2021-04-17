@@ -87,19 +87,7 @@ class _OTPScreenState extends State<OTPScreen> {
                     ),
 
 
-                    // OTPTextField(
-                    //   length: 6,
-                    //   width: width,
-                    //   fieldWidth: width*0.13,
-                    //   style: TextStyle(
-                    //       fontSize: 17
-                    //   ),
-                    //   textFieldAlignment: MainAxisAlignment.spaceAround,
-                    //   fieldStyle: FieldStyle.box,
-                    //   onCompleted: (pin) {
-                    //     _otpPin=pin;
-                    //   },
-                    // ),
+
                     SizedBox(
                       height:20
                     ),
@@ -108,11 +96,6 @@ class _OTPScreenState extends State<OTPScreen> {
                       borderRadius:BorderRadius.circular(20.0) ,
                       child: InkWell(
                         onTap: () async {
-                          // Navigator.push(
-                          //     context, CupertinoPageRoute(
-                          //     builder: (context) => EditProfileScreen(
-                          //       newUser: false,
-                          //     )));
 
 
 
@@ -161,7 +144,7 @@ class _OTPScreenState extends State<OTPScreen> {
                                     return oneButtonDialog(
                                         context: context,
                                         title: "Network Error",
-                                        content: e.toString(),
+                                        content: "Something went wrong",
                                         actionTitle: "OK");
                                   });
 
@@ -186,7 +169,7 @@ class _OTPScreenState extends State<OTPScreen> {
                           width:width*0.8,
                           padding: EdgeInsets.symmetric(horizontal: 25,vertical: 10),
                           decoration: BoxDecoration(
-                              color: Color.fromRGBO(215,111,115,1.0),
+                              color: Color.fromRGBO(215, 111, 115, 1.0),
                               borderRadius: BorderRadius.circular(20.0)
                           ),
                           child: Row(
@@ -274,7 +257,7 @@ class _OTPScreenState extends State<OTPScreen> {
                                             return oneButtonDialog(
                                                 context: context,
                                                 title: "Network Error",
-                                                content: e.toString(),
+                                                content: "Something went wrong",
                                                 actionTitle: "OK"
                                             );
                                           });

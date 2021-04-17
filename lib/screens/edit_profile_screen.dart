@@ -11,6 +11,7 @@ import 'package:http_parser/http_parser.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:namma_badavane/config.dart';
 import 'package:namma_badavane/screens/homescreen.dart';
+import 'package:namma_badavane/screens/splash_screen.dart';
 import 'package:namma_badavane/utils/bottom_navigation.dart';
 import 'package:namma_badavane/utils/colors.dart';
 import 'package:namma_badavane/widgets/dialogs.dart';
@@ -421,7 +422,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               Navigator.pushAndRemoveUntil(
                                 context,
                                 CupertinoPageRoute(
-                                    builder: (context) => BottomBarExample()),
+                                    builder: (context) => SplashScreen()),
                                 (route) => false,
                               );
                             else {
@@ -429,7 +430,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               Navigator.pushAndRemoveUntil(
                                 context,
                                 CupertinoPageRoute(
-                                    builder: (context) => BottomBarExample()),
+                                    builder: (context) => SplashScreen()),
                                 (route) => false,
                               );
                             }

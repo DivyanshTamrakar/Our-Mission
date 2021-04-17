@@ -744,7 +744,7 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                                     return oneButtonDialog(
                                         context: context,
                                         title: "Network Error",
-                                        content: e.toString(),
+                                        content: "Something went Wrong",
                                         actionTitle: "OK");
                                   });
                             }
