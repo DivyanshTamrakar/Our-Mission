@@ -193,23 +193,25 @@ class _OTPScreenState extends State<OTPScreen> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Expanded(
-                              child: Divider()
-                          ),
-                          SizedBox(width: 20),
-                          Text("OR"),
-                          SizedBox(width: 20),
-                          Expanded(
-                              child: Divider()
-                          ),
-                        ],
+                    Row(children: <Widget>[
+                      Expanded(
+                        child: new Container(
+                            margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+                            child: Divider(
+                              color: Colors.black,
+                              height: 46,
+                            )),
                       ),
-                    ),
+                      Text('OR',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
+                      Expanded(
+                        child: new Container(
+                            margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+                            child: Divider(
+                              color: Colors.black,
+                              height: 36,
+                            )),
+                      ),
+                    ]),
                     Material(
                       child: Container(
                         width:width*0.8,

@@ -1,6 +1,5 @@
 name: namma_badavane
 description: An Android Application to report and resolve local issues
-
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 

@@ -225,53 +225,27 @@ class _OTPScreenAfterLoginState extends State<OTPScreenAfterLogin> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Expanded(
-                              child: Divider()
-                          ),
-                          SizedBox(width: 20),
-                          Text("OR"),
-                          SizedBox(width: 20),
-                          Expanded(
-                              child: Divider()
-                          ),
-                        ],
+                    //line with text
+                    Row(children: <Widget>[
+                      Expanded(
+                        child: new Container(
+                            margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+                            child: Divider(
+                              color: Colors.black,
+                              height: 46,
+                            )),
                       ),
-                    ),
-                    // Material(
-                    //   elevation: 5,
-                    //   borderRadius:BorderRadius.circular(20.0) ,
-                    //   child: Container(
-                    //     width:width*0.8,
-                    //     padding: EdgeInsets.symmetric(horizontal: 25,vertical: 10),
-                    //     decoration: BoxDecoration(
-                    //         color: Colors.deepOrange,
-                    //         borderRadius: BorderRadius.circular(20.0)
-                    //     ),
-                    //     child: Row(
-                    //       mainAxisAlignment: MainAxisAlignment.end,
-                    //       children: [
-                    //         SizedBox(width: 15),
-                    //         Expanded(
-                    //           child: Text('Resend OTP',
-                    //             textAlign: TextAlign.center,
-                    //             style: TextStyle(
-                    //                 color: button_text_color,
-                    //                 fontSize: 20,
-                    //                 fontWeight: FontWeight.bold
-                    //             ),),
-                    //         ),
-                    //         SizedBox(width: 10,),
-                    //         Icon(Icons.mobile_screen_share,
-                    //           color: button_icon_color,)
-                    //       ],
-                    //     ),
-                    //   ),
-                    // ),
+                      Text('OR',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
+                      Expanded(
+                        child: new Container(
+                            margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+                            child: Divider(
+                              color: Colors.black,
+                              height: 36,
+                            )),
+                      ),
+                    ]),
+
                     Material(
                       child: Container(
                         width:width*0.8,

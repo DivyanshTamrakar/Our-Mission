@@ -324,7 +324,7 @@ Card makeDashboardItem(String title, IconData icon, Color cardcolor,
               mainAxisSize: MainAxisSize.min,
               verticalDirection: VerticalDirection.down,
               children: <Widget>[
-                SizedBox(height: 5.0),
+                SizedBox(height: 10.0),
                 Center(
                     child: Icon(
                       icon,
@@ -337,11 +337,11 @@ Card makeDashboardItem(String title, IconData icon, Color cardcolor,
                     width: 110.0,
                     alignment: Alignment.center,
                     child: new Text(title,
-                        textAlign: TextAlign.justify,
-                        // overflow: TextOverflow.ellipsis,
+                        textAlign: TextAlign.center,
+
 
                         style: new TextStyle(
-                            fontSize: 18.0,
+                            fontSize: 15.0,
                             color: textcolor,
                             fontWeight: FontWeight.bold)),
                   ),
