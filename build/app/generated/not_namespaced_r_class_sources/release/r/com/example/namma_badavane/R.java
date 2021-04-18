@@ -551,7 +551,7 @@ public final class R {
      * <tr><th>Attribute</th><th>Description</th></tr>
      * <tr><td><code>{@link #ColorStateListItem_android_color android:color}</code></td><td></td></tr>
      * <tr><td><code>{@link #ColorStateListItem_android_alpha android:alpha}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ColorStateListItem_alpha com.example.namma_badavane:alpha}</code></td><td>Alpha multiplier applied to the base color.</td></tr>
+     * <tr><td><code>{@link #ColorStateListItem_alpha com.namma_badavane.app:alpha}</code></td><td>Alpha multiplier applied to the base color.</td></tr>
      * </table>
      * @see #ColorStateListItem_android_color
      * @see #ColorStateListItem_android_alpha
@@ -588,7 +588,7 @@ public final class R {
      *
      * <p>May be a floating point value, such as "<code>1.2</code>".
      *
-     * @attr name com.example.namma_badavane:alpha
+     * @attr name com.namma_badavane.app:alpha
      */
     public static final int ColorStateListItem_alpha=2;
     /**
@@ -598,12 +598,12 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #FontFamily_fontProviderAuthority com.example.namma_badavane:fontProviderAuthority}</code></td><td>The authority of the Font Provider to be used for the request.</td></tr>
-     * <tr><td><code>{@link #FontFamily_fontProviderCerts com.example.namma_badavane:fontProviderCerts}</code></td><td>The sets of hashes for the certificates the provider should be signed with.</td></tr>
-     * <tr><td><code>{@link #FontFamily_fontProviderFetchStrategy com.example.namma_badavane:fontProviderFetchStrategy}</code></td><td>The strategy to be used when fetching font data from a font provider in XML layouts.</td></tr>
-     * <tr><td><code>{@link #FontFamily_fontProviderFetchTimeout com.example.namma_badavane:fontProviderFetchTimeout}</code></td><td>The length of the timeout during fetching.</td></tr>
-     * <tr><td><code>{@link #FontFamily_fontProviderPackage com.example.namma_badavane:fontProviderPackage}</code></td><td>The package for the Font Provider to be used for the request.</td></tr>
-     * <tr><td><code>{@link #FontFamily_fontProviderQuery com.example.namma_badavane:fontProviderQuery}</code></td><td>The query to be sent over to the provider.</td></tr>
+     * <tr><td><code>{@link #FontFamily_fontProviderAuthority com.namma_badavane.app:fontProviderAuthority}</code></td><td>The authority of the Font Provider to be used for the request.</td></tr>
+     * <tr><td><code>{@link #FontFamily_fontProviderCerts com.namma_badavane.app:fontProviderCerts}</code></td><td>The sets of hashes for the certificates the provider should be signed with.</td></tr>
+     * <tr><td><code>{@link #FontFamily_fontProviderFetchStrategy com.namma_badavane.app:fontProviderFetchStrategy}</code></td><td>The strategy to be used when fetching font data from a font provider in XML layouts.</td></tr>
+     * <tr><td><code>{@link #FontFamily_fontProviderFetchTimeout com.namma_badavane.app:fontProviderFetchTimeout}</code></td><td>The length of the timeout during fetching.</td></tr>
+     * <tr><td><code>{@link #FontFamily_fontProviderPackage com.namma_badavane.app:fontProviderPackage}</code></td><td>The package for the Font Provider to be used for the request.</td></tr>
+     * <tr><td><code>{@link #FontFamily_fontProviderQuery com.namma_badavane.app:fontProviderQuery}</code></td><td>The query to be sent over to the provider.</td></tr>
      * </table>
      * @see #FontFamily_fontProviderAuthority
      * @see #FontFamily_fontProviderCerts
@@ -624,7 +624,7 @@ public final class R {
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.example.namma_badavane:fontProviderAuthority
+     * @attr name com.namma_badavane.app:fontProviderAuthority
      */
     public static final int FontFamily_fontProviderAuthority=0;
     /**
@@ -641,7 +641,7 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.example.namma_badavane:fontProviderCerts
+     * @attr name com.namma_badavane.app:fontProviderCerts
      */
     public static final int FontFamily_fontProviderCerts=1;
     /**
@@ -673,7 +673,7 @@ public final class R {
      * default typeface will be used instead.</td></tr>
      * </table>
      *
-     * @attr name com.example.namma_badavane:fontProviderFetchStrategy
+     * @attr name com.namma_badavane.app:fontProviderFetchStrategy
      */
     public static final int FontFamily_fontProviderFetchStrategy=2;
     /**
@@ -692,7 +692,7 @@ public final class R {
      * timeout and wait until a reply is received from the font provider.</td></tr>
      * </table>
      *
-     * @attr name com.example.namma_badavane:fontProviderFetchTimeout
+     * @attr name com.namma_badavane.app:fontProviderFetchTimeout
      */
     public static final int FontFamily_fontProviderFetchTimeout=3;
     /**
@@ -704,7 +704,7 @@ public final class R {
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.example.namma_badavane:fontProviderPackage
+     * @attr name com.namma_badavane.app:fontProviderPackage
      */
     public static final int FontFamily_fontProviderPackage=4;
     /**
@@ -716,7 +716,7 @@ public final class R {
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.example.namma_badavane:fontProviderQuery
+     * @attr name com.namma_badavane.app:fontProviderQuery
      */
     public static final int FontFamily_fontProviderQuery=5;
     /**
@@ -731,11 +731,11 @@ public final class R {
      * <tr><td><code>{@link #FontFamilyFont_android_fontStyle android:fontStyle}</code></td><td></td></tr>
      * <tr><td><code>{@link #FontFamilyFont_android_ttcIndex android:ttcIndex}</code></td><td></td></tr>
      * <tr><td><code>{@link #FontFamilyFont_android_fontVariationSettings android:fontVariationSettings}</code></td><td></td></tr>
-     * <tr><td><code>{@link #FontFamilyFont_font com.example.namma_badavane:font}</code></td><td>The reference to the font file to be used.</td></tr>
-     * <tr><td><code>{@link #FontFamilyFont_fontStyle com.example.namma_badavane:fontStyle}</code></td><td>The style of the given font file.</td></tr>
-     * <tr><td><code>{@link #FontFamilyFont_fontVariationSettings com.example.namma_badavane:fontVariationSettings}</code></td><td>The variation settings to be applied to the font.</td></tr>
-     * <tr><td><code>{@link #FontFamilyFont_fontWeight com.example.namma_badavane:fontWeight}</code></td><td>The weight of the given font file.</td></tr>
-     * <tr><td><code>{@link #FontFamilyFont_ttcIndex com.example.namma_badavane:ttcIndex}</code></td><td>The index of the font in the tcc font file.</td></tr>
+     * <tr><td><code>{@link #FontFamilyFont_font com.namma_badavane.app:font}</code></td><td>The reference to the font file to be used.</td></tr>
+     * <tr><td><code>{@link #FontFamilyFont_fontStyle com.namma_badavane.app:fontStyle}</code></td><td>The style of the given font file.</td></tr>
+     * <tr><td><code>{@link #FontFamilyFont_fontVariationSettings com.namma_badavane.app:fontVariationSettings}</code></td><td>The variation settings to be applied to the font.</td></tr>
+     * <tr><td><code>{@link #FontFamilyFont_fontWeight com.namma_badavane.app:fontWeight}</code></td><td>The weight of the given font file.</td></tr>
+     * <tr><td><code>{@link #FontFamilyFont_ttcIndex com.namma_badavane.app:ttcIndex}</code></td><td>The index of the font in the tcc font file.</td></tr>
      * </table>
      * @see #FontFamilyFont_android_font
      * @see #FontFamilyFont_android_fontWeight
@@ -822,7 +822,7 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name com.example.namma_badavane:font
+     * @attr name com.namma_badavane.app:font
      */
     public static final int FontFamilyFont_font=5;
     /**
@@ -842,7 +842,7 @@ public final class R {
      * <tr><td>normal</td><td>0</td><td></td></tr>
      * </table>
      *
-     * @attr name com.example.namma_badavane:fontStyle
+     * @attr name com.namma_badavane.app:fontStyle
      */
     public static final int FontFamilyFont_fontStyle=6;
     /**
@@ -856,7 +856,7 @@ public final class R {
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.example.namma_badavane:fontVariationSettings
+     * @attr name com.namma_badavane.app:fontVariationSettings
      */
     public static final int FontFamilyFont_fontVariationSettings=7;
     /**
@@ -870,7 +870,7 @@ public final class R {
      *
      * <p>May be an integer value, such as "<code>100</code>".
      *
-     * @attr name com.example.namma_badavane:fontWeight
+     * @attr name com.namma_badavane.app:fontWeight
      */
     public static final int FontFamilyFont_fontWeight=8;
     /**
@@ -881,7 +881,7 @@ public final class R {
      *
      * <p>May be an integer value, such as "<code>100</code>".
      *
-     * @attr name com.example.namma_badavane:ttcIndex
+     * @attr name com.namma_badavane.app:ttcIndex
      */
     public static final int FontFamilyFont_ttcIndex=9;
     /**
@@ -891,7 +891,7 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #ForgotPasswordView_forgotPasswordViewBackgroundColor com.example.namma_badavane:forgotPasswordViewBackgroundColor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ForgotPasswordView_forgotPasswordViewBackgroundColor com.namma_badavane.app:forgotPasswordViewBackgroundColor}</code></td><td></td></tr>
      * </table>
      * @see #ForgotPasswordView_forgotPasswordViewBackgroundColor
      */
@@ -899,12 +899,12 @@ public final class R {
       0x7f01000f
     };
     /**
-     * <p>This symbol is the offset where the {@link com.example.namma_badavane.R.attr#forgotPasswordViewBackgroundColor}
+     * <p>This symbol is the offset where the {@link com.namma_badavane.app.R.attr#forgotPasswordViewBackgroundColor}
      * attribute's value can be found in the {@link #ForgotPasswordView} array.
      *
      * <p>May be an integer value, such as "<code>100</code>".
      *
-     * @attr name com.example.namma_badavane:forgotPasswordViewBackgroundColor
+     * @attr name com.namma_badavane.app:forgotPasswordViewBackgroundColor
      */
     public static final int ForgotPasswordView_forgotPasswordViewBackgroundColor=0;
     /**
@@ -1157,9 +1157,9 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #LoadingImageView_circleCrop com.example.namma_badavane:circleCrop}</code></td><td></td></tr>
-     * <tr><td><code>{@link #LoadingImageView_imageAspectRatio com.example.namma_badavane:imageAspectRatio}</code></td><td></td></tr>
-     * <tr><td><code>{@link #LoadingImageView_imageAspectRatioAdjust com.example.namma_badavane:imageAspectRatioAdjust}</code></td><td></td></tr>
+     * <tr><td><code>{@link #LoadingImageView_circleCrop com.namma_badavane.app:circleCrop}</code></td><td></td></tr>
+     * <tr><td><code>{@link #LoadingImageView_imageAspectRatio com.namma_badavane.app:imageAspectRatio}</code></td><td></td></tr>
+     * <tr><td><code>{@link #LoadingImageView_imageAspectRatioAdjust com.namma_badavane.app:imageAspectRatioAdjust}</code></td><td></td></tr>
      * </table>
      * @see #LoadingImageView_circleCrop
      * @see #LoadingImageView_imageAspectRatio
@@ -1169,26 +1169,26 @@ public final class R {
       0x7f010003, 0x7f010010, 0x7f010011
     };
     /**
-     * <p>This symbol is the offset where the {@link com.example.namma_badavane.R.attr#circleCrop}
+     * <p>This symbol is the offset where the {@link com.namma_badavane.app.R.attr#circleCrop}
      * attribute's value can be found in the {@link #LoadingImageView} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.example.namma_badavane:circleCrop
+     * @attr name com.namma_badavane.app:circleCrop
      */
     public static final int LoadingImageView_circleCrop=0;
     /**
-     * <p>This symbol is the offset where the {@link com.example.namma_badavane.R.attr#imageAspectRatio}
+     * <p>This symbol is the offset where the {@link com.namma_badavane.app.R.attr#imageAspectRatio}
      * attribute's value can be found in the {@link #LoadingImageView} array.
      *
      * <p>May be a floating point value, such as "<code>1.2</code>".
      *
-     * @attr name com.example.namma_badavane:imageAspectRatio
+     * @attr name com.namma_badavane.app:imageAspectRatio
      */
     public static final int LoadingImageView_imageAspectRatio=1;
     /**
-     * <p>This symbol is the offset where the {@link com.example.namma_badavane.R.attr#imageAspectRatioAdjust}
+     * <p>This symbol is the offset where the {@link com.namma_badavane.app.R.attr#imageAspectRatioAdjust}
      * attribute's value can be found in the {@link #LoadingImageView} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -1202,7 +1202,7 @@ public final class R {
      * <tr><td>none</td><td>0</td><td></td></tr>
      * </table>
      *
-     * @attr name com.example.namma_badavane:imageAspectRatioAdjust
+     * @attr name com.namma_badavane.app:imageAspectRatioAdjust
      */
     public static final int LoadingImageView_imageAspectRatioAdjust=2;
     /**
@@ -1212,7 +1212,7 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #MFAView_mfaViewBackgroundColor com.example.namma_badavane:mfaViewBackgroundColor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #MFAView_mfaViewBackgroundColor com.namma_badavane.app:mfaViewBackgroundColor}</code></td><td></td></tr>
      * </table>
      * @see #MFAView_mfaViewBackgroundColor
      */
@@ -1220,12 +1220,12 @@ public final class R {
       0x7f010012
     };
     /**
-     * <p>This symbol is the offset where the {@link com.example.namma_badavane.R.attr#mfaViewBackgroundColor}
+     * <p>This symbol is the offset where the {@link com.namma_badavane.app.R.attr#mfaViewBackgroundColor}
      * attribute's value can be found in the {@link #MFAView} array.
      *
      * <p>May be an integer value, such as "<code>100</code>".
      *
-     * @attr name com.example.namma_badavane:mfaViewBackgroundColor
+     * @attr name com.namma_badavane.app:mfaViewBackgroundColor
      */
     public static final int MFAView_mfaViewBackgroundColor=0;
     /**
@@ -1235,11 +1235,11 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #SignInButton_buttonSize com.example.namma_badavane:buttonSize}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SignInButton_button_style com.example.namma_badavane:button_style}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SignInButton_colorScheme com.example.namma_badavane:colorScheme}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SignInButton_scopeUris com.example.namma_badavane:scopeUris}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SignInButton_text com.example.namma_badavane:text}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SignInButton_buttonSize com.namma_badavane.app:buttonSize}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SignInButton_button_style com.namma_badavane.app:button_style}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SignInButton_colorScheme com.namma_badavane.app:colorScheme}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SignInButton_scopeUris com.namma_badavane.app:scopeUris}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SignInButton_text com.namma_badavane.app:text}</code></td><td></td></tr>
      * </table>
      * @see #SignInButton_buttonSize
      * @see #SignInButton_button_style
@@ -1252,7 +1252,7 @@ public final class R {
       0x7f010016
     };
     /**
-     * <p>This symbol is the offset where the {@link com.example.namma_badavane.R.attr#buttonSize}
+     * <p>This symbol is the offset where the {@link com.namma_badavane.app.R.attr#buttonSize}
      * attribute's value can be found in the {@link #SignInButton} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -1270,11 +1270,11 @@ public final class R {
      * <tr><td>wide</td><td>1</td><td></td></tr>
      * </table>
      *
-     * @attr name com.example.namma_badavane:buttonSize
+     * @attr name com.namma_badavane.app:buttonSize
      */
     public static final int SignInButton_buttonSize=0;
     /**
-     * <p>This symbol is the offset where the {@link com.example.namma_badavane.R.attr#button_style}
+     * <p>This symbol is the offset where the {@link com.namma_badavane.app.R.attr#button_style}
      * attribute's value can be found in the {@link #SignInButton} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -1287,11 +1287,11 @@ public final class R {
      * <tr><td>small</td><td>1</td><td></td></tr>
      * </table>
      *
-     * @attr name com.example.namma_badavane:button_style
+     * @attr name com.namma_badavane.app:button_style
      */
     public static final int SignInButton_button_style=1;
     /**
-     * <p>This symbol is the offset where the {@link com.example.namma_badavane.R.attr#colorScheme}
+     * <p>This symbol is the offset where the {@link com.namma_badavane.app.R.attr#colorScheme}
      * attribute's value can be found in the {@link #SignInButton} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -1309,11 +1309,11 @@ public final class R {
      * <tr><td>light</td><td>1</td><td></td></tr>
      * </table>
      *
-     * @attr name com.example.namma_badavane:colorScheme
+     * @attr name com.namma_badavane.app:colorScheme
      */
     public static final int SignInButton_colorScheme=2;
     /**
-     * <p>This symbol is the offset where the {@link com.example.namma_badavane.R.attr#scopeUris}
+     * <p>This symbol is the offset where the {@link com.namma_badavane.app.R.attr#scopeUris}
      * attribute's value can be found in the {@link #SignInButton} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -1323,17 +1323,17 @@ public final class R {
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.example.namma_badavane:scopeUris
+     * @attr name com.namma_badavane.app:scopeUris
      */
     public static final int SignInButton_scopeUris=3;
     /**
-     * <p>This symbol is the offset where the {@link com.example.namma_badavane.R.attr#text}
+     * <p>This symbol is the offset where the {@link com.namma_badavane.app.R.attr#text}
      * attribute's value can be found in the {@link #SignInButton} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name com.example.namma_badavane:text
+     * @attr name com.namma_badavane.app:text
      */
     public static final int SignInButton_text=4;
     /**
@@ -1343,7 +1343,7 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #SignUpConfirmView_signUpConfirmViewBackgroundColor com.example.namma_badavane:signUpConfirmViewBackgroundColor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SignUpConfirmView_signUpConfirmViewBackgroundColor com.namma_badavane.app:signUpConfirmViewBackgroundColor}</code></td><td></td></tr>
      * </table>
      * @see #SignUpConfirmView_signUpConfirmViewBackgroundColor
      */
@@ -1351,12 +1351,12 @@ public final class R {
       0x7f010014
     };
     /**
-     * <p>This symbol is the offset where the {@link com.example.namma_badavane.R.attr#signUpConfirmViewBackgroundColor}
+     * <p>This symbol is the offset where the {@link com.namma_badavane.app.R.attr#signUpConfirmViewBackgroundColor}
      * attribute's value can be found in the {@link #SignUpConfirmView} array.
      *
      * <p>May be an integer value, such as "<code>100</code>".
      *
-     * @attr name com.example.namma_badavane:signUpConfirmViewBackgroundColor
+     * @attr name com.namma_badavane.app:signUpConfirmViewBackgroundColor
      */
     public static final int SignUpConfirmView_signUpConfirmViewBackgroundColor=0;
     /**
@@ -1366,7 +1366,7 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #SignUpView_signUpViewBackgroundColor com.example.namma_badavane:signUpViewBackgroundColor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #SignUpView_signUpViewBackgroundColor com.namma_badavane.app:signUpViewBackgroundColor}</code></td><td></td></tr>
      * </table>
      * @see #SignUpView_signUpViewBackgroundColor
      */
@@ -1374,12 +1374,12 @@ public final class R {
       0x7f010015
     };
     /**
-     * <p>This symbol is the offset where the {@link com.example.namma_badavane.R.attr#signUpViewBackgroundColor}
+     * <p>This symbol is the offset where the {@link com.namma_badavane.app.R.attr#signUpViewBackgroundColor}
      * attribute's value can be found in the {@link #SignUpView} array.
      *
      * <p>May be an integer value, such as "<code>100</code>".
      *
-     * @attr name com.example.namma_badavane:signUpViewBackgroundColor
+     * @attr name com.namma_badavane.app:signUpViewBackgroundColor
      */
     public static final int SignUpView_signUpViewBackgroundColor=0;
   }

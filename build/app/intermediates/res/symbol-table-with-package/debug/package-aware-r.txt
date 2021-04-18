@@ -1,4 +1,4 @@
-com.example.namma_badavane
+com.namma_badavane.app
 attr alpha
 attr buttonSize
 attr button_style

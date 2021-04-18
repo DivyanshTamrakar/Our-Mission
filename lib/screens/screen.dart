@@ -118,11 +118,23 @@ class _ScreenState extends State<Screen> {
                           Container(
                             height: 20,
                           ),
-                          Text("Powered by",
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: button_text_color))
+                          Column(
+                            children: [
+                              Text("Powered by",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: button_text_color)),
+
+                              Image.asset(
+                                "assets/footer.png",
+                                fit: BoxFit.cover,
+                                height: 50,
+                                width: 190.0,
+                                color: Colors.white,
+                              ),
+                            ],
+                          )
                         ],
                       ),
                     ),
@@ -338,16 +350,7 @@ class _ScreenState extends State<Screen> {
                           color: Colors.white),
                     ),
                   ),
-                  Container(
-                    height: 1.0,
-                  ),
-                  Image.asset(
-                    "assets/footer.png",
-                    fit: BoxFit.cover,
-                    height: 190,
-                    width: 190.0,
-                    color: Colors.white,
-                  ),
+
                 ],
               ),
             ],

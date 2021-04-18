@@ -28,7 +28,6 @@ class _HistoryScreenState extends State<HistoryScreen> {
     var data = await ComplaintApi().getAllComplaints();
     setState(() {
       complaints = data;
-
       getaws();
     });
   }
@@ -51,18 +50,12 @@ class _HistoryScreenState extends State<HistoryScreen> {
       setState(() {
         title_kann.add(translated1.toString());
         description_kann.add(translated2.toString());
-
-        print("title kanana list ");
-        print(title_kann);
-        print("description kannada  list ");
-        print(description_kann);
       });
     }
-
-    print("title kanana list ");
-    print(title_kann);
-    print("descreption kanana list ");
-    print(description_kann);
+    // print("title kanana list ");
+    // print(title_kann);
+    // print("descreption kanana list ");
+    // print(description_kann);
   }
 
   GetPreferData() async {

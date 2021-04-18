@@ -117,10 +117,22 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   }
 
   getlanguage() async {
+
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      language = prefs.getString('language');
-    });
+
+    if(widget.newUser){
+      setState(() {
+        language = "English";
+        prefs.setString("language", "English");
+
+
+      });
+    }else{
+      setState(() {
+        language = prefs.getString('language');
+      });
+    }
+
   }
 
   @override
@@ -323,7 +335,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     children: [
                       Icon(Icons.my_location),
                       SizedBox(width: 3),
-                      Text("Location is Automatically Detected"),
+                      Text( language == "English"?
+                          "Location is Automatically Detected":
+                          "ಸ್ಥಳವನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಕಂಡುಹಿಡಿಯಲಾಗುತ್ತದೆ"
+                      ),
                       // Text(latitude),
                       // Text(longitude),
                     ],
@@ -430,7 +445,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               Navigator.pushAndRemoveUntil(
                                 context,
                                 CupertinoPageRoute(
-                                    builder: (context) => SplashScreen()),
+                                    builder: (context) => BottomBarExample()),
                                 (route) => false,
                               );
                             }

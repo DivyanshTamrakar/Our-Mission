@@ -126,10 +126,6 @@ uses-permission#android.permission.ACCESS_COARSE_LOCATION
 ADDED from C:\Users\hp\Downloads\Namma_Badavane\namma_badavane-master\android\app\src\main\AndroidManifest.xml:7:5-81
 	android:name
 		ADDED from C:\Users\hp\Downloads\Namma_Badavane\namma_badavane-master\android\app\src\main\AndroidManifest.xml:7:22-78
-uses-permission#android.permission.ACCESS_BACKGROUND_LOCATION
-ADDED from C:\Users\hp\Downloads\Namma_Badavane\namma_badavane-master\android\app\src\main\AndroidManifest.xml:8:5-85
-	android:name
-		ADDED from C:\Users\hp\Downloads\Namma_Badavane\namma_badavane-master\android\app\src\main\AndroidManifest.xml:8:22-82
 application
 ADDED from C:\Users\hp\Downloads\Namma_Badavane\namma_badavane-master\android\app\src\main\AndroidManifest.xml:14:5-55:19
 MERGED from [:image_picker] C:\Users\hp\Downloads\Namma_Badavane\namma_badavane-master\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-20:19
