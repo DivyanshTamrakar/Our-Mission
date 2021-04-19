@@ -47,7 +47,12 @@ class _SoutionDetailScreenState extends State<SoutionDetailScreen> {
       subdepartment = response['data']['sub_department'];
       status = response['data']['status'];
       file = response['data']['file'];
-      getaws();
+
+      print("language before aws function call ========$language");
+      if(language != "English")
+      {
+        getaws();
+      }
     });
   }
 
@@ -97,10 +102,11 @@ class _SoutionDetailScreenState extends State<SoutionDetailScreen> {
   @override
   void initState() {
     super.initState();
+    GetPreferData();
     getSolutionDataDetail();
     print("Solution data");
     print("${widget.id}");
-    GetPreferData();
+
   }
 
   @override

@@ -40,8 +40,14 @@ class _SolutionScreenState extends State<SolutionScreen> {
       print(solution);
       print(solution.length);
     });
-    getaws();
 
+    print("language before aws function call ========$language");
+
+
+    if(language != "English")
+    {
+      getaws();
+    }
   }
 
   getaws() async {
@@ -90,8 +96,9 @@ class _SolutionScreenState extends State<SolutionScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    getSolutionData();
     GetPreferData();
+    getSolutionData();
+
   }
 
   @override

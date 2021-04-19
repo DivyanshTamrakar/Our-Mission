@@ -32,26 +32,7 @@ class _ComplaintDetailScreenState extends State<ComplaintDetailScreen> {
 
 
 
-  getlanguage()  async {
-    final translator = GoogleTranslator();
 
-      var translation1 =  await translator.translate(widget.complaint.title, to: 'kn');
-    var translation2 =  await  translator.translate(widget.complaint.description, to: 'kn');
-    var translation3 =  await  translator.translate(widget.complaint.status, to: 'kn');
-      setState(() {
-        title = translation1.toString();
-        description = translation2.toString();
-        status = translation3.toString();
-      });
-      print(translation1 );
-      print(translation2);
-      print(translation3);
-      print("title");
-     print("description");print("status");
-     print(title);
-    print(description);
-    print(status);
-  }
 
 
   getaws() async{
@@ -89,9 +70,8 @@ class _ComplaintDetailScreenState extends State<ComplaintDetailScreen> {
     super.initState();
     print("Complaint data");
     GetPreferData();
-    // getlanguage();
-    getaws();
-    // print("${widget.id.status}");
+
+
   }
 
 
@@ -103,6 +83,11 @@ class _ComplaintDetailScreenState extends State<ComplaintDetailScreen> {
     });
     print(pref.getString("language"));
     print("language ========$language");
+    print("language before aws function call ========$language");
+    if(language != "English")
+    {
+      getaws();
+    }
   }
 
 

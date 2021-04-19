@@ -45,7 +45,13 @@ class _NotificationScreenState extends State<NotificationScreen> {
       print(notification);
       print(notification.length);
     });
-    getaws();
+    print("language before aws function call ========$language");
+
+
+    if(language != "English")
+    {
+      getaws();
+    }
   }
 
   getaws() async {
@@ -66,24 +72,16 @@ class _NotificationScreenState extends State<NotificationScreen> {
       setState(() {
         title_kann.add(translated1.toString());
         description_kann.add(translated2.toString());
-
-        print("title kanana list ");
-        print(title_kann);
-        print("description kannada  list ");
-        print(description_kann);
       });
     }
 
-    print("title kanana list ");
-    print(title_kann);
-    print("descreption kanana list ");
-    print(description_kann);
   }
   @override
   void initState() {
     super.initState();
-    getNotificationData();
     GetPreferData();
+    getNotificationData();
+
   }
 
   @override

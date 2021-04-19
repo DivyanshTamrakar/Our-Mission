@@ -28,7 +28,15 @@ class _HistoryScreenState extends State<HistoryScreen> {
     var data = await ComplaintApi().getAllComplaints();
     setState(() {
       complaints = data;
-      getaws();
+      print("language before aws function call ========$language");
+
+
+      if(language != "English")
+        {
+          getaws();
+        }
+
+
     });
   }
 

@@ -137,6 +137,13 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
       location = prefs.getString('location');
       language = prefs.getString('language');
     });
+    print("language before aws function call ========$language");
+
+
+    if(language != "English")
+    {
+      getaws();
+    }
   }
 
   getaws() async {
@@ -182,7 +189,7 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
     subDepartments = _selectedDepartment.subDepartment;
     getData();
     // getCurrenLocation();
-    getaws();
+
   }
 
   @override
