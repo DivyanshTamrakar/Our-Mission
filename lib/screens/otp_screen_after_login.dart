@@ -6,6 +6,8 @@ import 'package:namma_badavane/utils/HttpResponse.dart';
 import 'package:namma_badavane/utils/bottom_navigation.dart';
 import 'package:namma_badavane/utils/colors.dart';
 import 'package:namma_badavane/widgets/dialogs.dart';
+import 'package:otp_text_field/otp_field.dart';
+import 'package:otp_text_field/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:namma_badavane/screens/edit_profile_screen.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';

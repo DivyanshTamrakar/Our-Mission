@@ -1,0 +1,79 @@
+# Referenced at C:\Users\hp\Downloads\Namma_Badavane\namma_badavane-master\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:28
+-keep class androidx.core.app.CoreComponentFactory { <init>(); }
+# Referenced at C:\Users\hp\Downloads\Namma_Badavane\namma_badavane-master\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:193
+-keep class com.amazonaws.mobile.auth.userpools.ForceChangePasswordActivity { <init>(); }
+# Referenced at C:\Users\hp\Downloads\Namma_Badavane\namma_badavane-master\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:198
+-keep class com.amazonaws.mobile.auth.userpools.ForgotPasswordActivity { <init>(); }
+# Referenced at C:\Users\hp\Downloads\Namma_Badavane\namma_badavane-master\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:208
+-keep class com.amazonaws.mobile.auth.userpools.MFAActivity { <init>(); }
+# Referenced at C:\Users\hp\Downloads\Namma_Badavane\namma_badavane-master\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:203
+-keep class com.amazonaws.mobile.auth.userpools.SignUpActivity { <init>(); }
+# Referenced at C:\Users\hp\Downloads\Namma_Badavane\namma_badavane-master\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:213
+-keep class com.amazonaws.mobile.auth.userpools.SignUpConfirmActivity { <init>(); }
+# Referenced at C:\Users\hp\Downloads\Namma_Badavane\namma_badavane-master\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:35
+-keep class com.example.namma_badavane.MainActivity { <init>(); }
+# Referenced at C:\Users\hp\Downloads\Namma_Badavane\namma_badavane-master\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:176
+-keep class com.google.android.datatransport.runtime.backends.TransportBackendDiscovery { <init>(); }
+# Referenced at C:\Users\hp\Downloads\Namma_Badavane\namma_badavane-master\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:189
+-keep class com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver { <init>(); }
+# Referenced at C:\Users\hp\Downloads\Namma_Badavane\namma_badavane-master\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:183
+-keep class com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService { <init>(); }
+# Referenced at C:\Users\hp\Downloads\Namma_Badavane\namma_badavane-master\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:160
+-keep class com.google.android.gms.common.api.GoogleApiActivity { <init>(); }
+# Referenced at C:\Users\hp\Downloads\Namma_Badavane\namma_badavane-master\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:133
+-keep class com.google.android.gms.measurement.AppMeasurementJobService { <init>(); }
+# Referenced at C:\Users\hp\Downloads\Namma_Badavane\namma_badavane-master\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:123
+-keep class com.google.android.gms.measurement.AppMeasurementReceiver { <init>(); }
+# Referenced at C:\Users\hp\Downloads\Namma_Badavane\namma_badavane-master\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:129
+-keep class com.google.android.gms.measurement.AppMeasurementService { <init>(); }
+# Referenced at C:\Users\hp\Downloads\Namma_Badavane\namma_badavane-master\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:92
+-keep class com.google.firebase.components.ComponentDiscoveryService { <init>(); }
+# Referenced at C:\Users\hp\Downloads\Namma_Badavane\namma_badavane-master\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:151
+-keep class com.google.firebase.iid.FirebaseInstanceIdReceiver { <init>(); }
+# Referenced at C:\Users\hp\Downloads\Namma_Badavane\namma_badavane-master\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:142
+-keep class com.google.firebase.messaging.FirebaseMessagingService { <init>(); }
+# Referenced at C:\Users\hp\Downloads\Namma_Badavane\namma_badavane-master\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:165
+-keep class com.google.firebase.provider.FirebaseInitProvider { <init>(); }
+# Referenced at C:\Users\hp\Downloads\Namma_Badavane\namma_badavane-master\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:28
+-keep class io.flutter.app.FlutterApplication { <init>(); }
+# Referenced at C:\Users\hp\Downloads\Namma_Badavane\namma_badavane-master\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:87
+-keep class io.flutter.plugins.firebasemessaging.FlutterFirebaseMessagingService { <init>(); }
+# Referenced at C:\Users\hp\Downloads\Namma_Badavane\namma_badavane-master\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:77
+-keep class io.flutter.plugins.imagepicker.ImagePickerFileProvider { <init>(); }
+# Referenced at C:\Users\hp\.gradle\caches\transforms-2\files-2.1\d7297ac8ea16129b7bdccec4df9255c2\jetified-aws-android-sdk-auth-userpools-2.16.6\res\layout\activity_force_change_password.xml:13
+-keep class com.amazonaws.mobile.auth.userpools.ForceChangePasswordView { <init>(...); }
+
+# Referenced at C:\Users\hp\.gradle\caches\transforms-2\files-2.1\d7297ac8ea16129b7bdccec4df9255c2\jetified-aws-android-sdk-auth-userpools-2.16.6\res\layout\activity_forgot_password.xml:13
+-keep class com.amazonaws.mobile.auth.userpools.ForgotPasswordView { <init>(...); }
+
+# Referenced at C:\Users\hp\.gradle\caches\transforms-2\files-2.1\d7297ac8ea16129b7bdccec4df9255c2\jetified-aws-android-sdk-auth-userpools-2.16.6\res\layout\activity_sign_up_confirm.xml:45
+# Referenced at C:\Users\hp\.gradle\caches\transforms-2\files-2.1\d7297ac8ea16129b7bdccec4df9255c2\jetified-aws-android-sdk-auth-userpools-2.16.6\res\layout\activity_sign_up.xml:31
+# Referenced at C:\Users\hp\.gradle\caches\transforms-2\files-2.1\d7297ac8ea16129b7bdccec4df9255c2\jetified-aws-android-sdk-auth-userpools-2.16.6\res\layout\activity_mfa.xml:36
+# Referenced at C:\Users\hp\.gradle\caches\transforms-2\files-2.1\d7297ac8ea16129b7bdccec4df9255c2\jetified-aws-android-sdk-auth-userpools-2.16.6\res\layout\activity_forgot_password.xml:36
+# Referenced at C:\Users\hp\.gradle\caches\transforms-2\files-2.1\d7297ac8ea16129b7bdccec4df9255c2\jetified-aws-android-sdk-auth-userpools-2.16.6\res\layout\activity_force_change_password.xml:36
+-keep class com.amazonaws.mobile.auth.userpools.FormView { <init>(...); }
+
+# Referenced at C:\Users\hp\.gradle\caches\transforms-2\files-2.1\d7297ac8ea16129b7bdccec4df9255c2\jetified-aws-android-sdk-auth-userpools-2.16.6\res\layout\activity_mfa.xml:13
+-keep class com.amazonaws.mobile.auth.userpools.MFAView { <init>(...); }
+
+# Referenced at C:\Users\hp\.gradle\caches\transforms-2\files-2.1\d7297ac8ea16129b7bdccec4df9255c2\jetified-aws-android-sdk-auth-userpools-2.16.6\res\layout\activity_sign_up_confirm.xml:12
+-keep class com.amazonaws.mobile.auth.userpools.SignUpConfirmView { <init>(...); }
+
+# Referenced at C:\Users\hp\.gradle\caches\transforms-2\files-2.1\d7297ac8ea16129b7bdccec4df9255c2\jetified-aws-android-sdk-auth-userpools-2.16.6\res\layout\activity_sign_up.xml:14
+-keep class com.amazonaws.mobile.auth.userpools.SignUpView { <init>(...); }
+
+# Referenced at C:\Users\hp\.gradle\caches\transforms-2\files-2.1\d7297ac8ea16129b7bdccec4df9255c2\jetified-aws-android-sdk-auth-userpools-2.16.6\res\layout\activity_sign_up_confirm.xml:52
+-keepclassmembers class * { *** confirmAccount(android.view.View); }
+
+# Referenced at C:\Users\hp\.gradle\caches\transforms-2\files-2.1\d7297ac8ea16129b7bdccec4df9255c2\jetified-aws-android-sdk-auth-userpools-2.16.6\res\layout\activity_force_change_password.xml:42
+-keepclassmembers class * { *** forceChangePassword(android.view.View); }
+
+# Referenced at C:\Users\hp\.gradle\caches\transforms-2\files-2.1\d7297ac8ea16129b7bdccec4df9255c2\jetified-aws-android-sdk-auth-userpools-2.16.6\res\layout\activity_forgot_password.xml:42
+-keepclassmembers class * { *** forgotPassword(android.view.View); }
+
+# Referenced at C:\Users\hp\.gradle\caches\transforms-2\files-2.1\d7297ac8ea16129b7bdccec4df9255c2\jetified-aws-android-sdk-auth-userpools-2.16.6\res\layout\activity_sign_up.xml:38
+-keepclassmembers class * { *** signUp(android.view.View); }
+
+# Referenced at C:\Users\hp\.gradle\caches\transforms-2\files-2.1\d7297ac8ea16129b7bdccec4df9255c2\jetified-aws-android-sdk-auth-userpools-2.16.6\res\layout\activity_mfa.xml:43
+-keepclassmembers class * { *** verify(android.view.View); }
+

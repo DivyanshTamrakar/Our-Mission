@@ -7,6 +7,7 @@ import 'package:namma_badavane/screens/homescreen.dart';
 import 'package:namma_badavane/services/complaint_service.dart';
 import 'package:namma_badavane/utils/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:translator/translator.dart';
 
 import '../config.dart';
 
