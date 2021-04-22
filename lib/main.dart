@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:namma_badavane/location_practise.dart';
 import 'package:namma_badavane/screens/category_list_screen.dart';
 import 'package:namma_badavane/screens/complaint_form_screen.dart';
 import 'package:namma_badavane/screens/homescreen.dart';

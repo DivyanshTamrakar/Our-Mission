@@ -10,7 +10,6 @@ import 'package:namma_badavane/screens/complaint_form_screen.dart';
 import 'package:namma_badavane/utils/colors.dart';
 import 'package:namma_badavane/utils/HttpResponse.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:translator/translator.dart';
 import 'homescreen.dart';
 
 class CategoryListScreen extends StatefulWidget {
@@ -54,21 +53,6 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
     // getlanguage();
 
   }
-
-         getlanguage() async {
-           final translator = GoogleTranslator();
-
-           var translation = await translator.translate("Potholes!", to: 'kn');
-           print("Potholes");
-           setState(() {
-             potholes = translation.toString();
-           });
-           print(translation);
-           print(potholes);
-
-
-
-}
 
   @override
   Widget build(BuildContext context) {

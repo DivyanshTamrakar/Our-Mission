@@ -10,8 +10,6 @@ import 'package:namma_badavane/services/complaint_service.dart';
 import 'package:namma_badavane/utils/HttpResponse.dart';
 import 'package:namma_badavane/utils/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:translator/translator.dart';
-
 import '../config.dart';
 import 'homescreen.dart';
 

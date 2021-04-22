@@ -8,9 +8,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/1404904286/android.connectivity.iml" filepath="$PROJECT_DIR$/.idea/modules/1404904286/android.connectivity.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/2121707008/android.firebase_messaging.iml" filepath="$PROJECT_DIR$/.idea/modules/2121707008/android.firebase_messaging.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/1332744635/android.flutter_plugin_android_lifecycle.iml" filepath="$PROJECT_DIR$/.idea/modules/1332744635/android.flutter_plugin_android_lifecycle.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2010494512/android.geolocator.iml" filepath="$PROJECT_DIR$/.idea/modules/-2010494512/android.geolocator.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1742178376/android.image_picker.iml" filepath="$PROJECT_DIR$/.idea/modules/1742178376/android.image_picker.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-126266984/android.path_provider.iml" filepath="$PROJECT_DIR$/.idea/modules/-126266984/android.path_provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/477018321/android.geolocator.iml" filepath="$PROJECT_DIR$/.idea/modules/477018321/android.geolocator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-65276087/android.image_picker.iml" filepath="$PROJECT_DIR$/.idea/modules/-65276087/android.image_picker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1933721447/android.path_provider.iml" filepath="$PROJECT_DIR$/.idea/modules/-1933721447/android.path_provider.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2124060118/android.permission_handler.iml" filepath="$PROJECT_DIR$/.idea/modules/-2124060118/android.permission_handler.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/-14950604/android.shared_preferences.iml" filepath="$PROJECT_DIR$/.idea/modules/-14950604/android.shared_preferences.iml" />
     </modules>
