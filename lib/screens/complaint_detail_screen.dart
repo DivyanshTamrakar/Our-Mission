@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:aws_translate/aws_translate.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -9,9 +8,6 @@ import 'package:namma_badavane/utils/colors.dart';
 import 'package:http/http.dart' as http;
 import 'package:namma_badavane/widgets/dialogs.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:translator/translator.dart';
-
-import 'homescreen.dart';
 
 class ComplaintDetailScreen extends StatefulWidget {
   final Complaint complaint;

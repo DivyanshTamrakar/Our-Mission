@@ -2,15 +2,11 @@ import 'dart:convert';
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:namma_badavane/screens/otp_screen_after_login.dart';
 import 'package:namma_badavane/screens/screen.dart';
-import 'package:namma_badavane/screens/sign_up_screen.dart';
 import 'package:namma_badavane/utils/HttpResponse.dart';
 import 'package:namma_badavane/utils/colors.dart';
 import 'package:namma_badavane/widgets/dialogs.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import 'homescreen.dart';
 import 'otp_screen.dart';
 
 class ScreenSignup extends StatefulWidget {

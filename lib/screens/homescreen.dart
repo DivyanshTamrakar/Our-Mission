@@ -1,25 +1,17 @@
 import 'dart:convert';
-
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:namma_badavane/config.dart';
 import 'package:namma_badavane/models/complaint_model.dart';
 import 'package:namma_badavane/models/department_model.dart';
 import 'package:namma_badavane/screens/category_list_screen.dart';
 import 'package:namma_badavane/screens/notification.dart';
-import 'package:namma_badavane/services/complaint_service.dart';
 import 'package:namma_badavane/services/department_service.dart';
 import 'package:namma_badavane/utils/HttpResponse.dart';
 import 'package:namma_badavane/utils/bottom_navigation.dart';
 import 'package:namma_badavane/utils/colors.dart';
-import 'package:namma_badavane/widgets/dialogs.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:translator/translator.dart';
-import 'package:http/http.dart' as http;
-
 import 'language_screen.dart';
 
 class HomeScreen extends StatefulWidget {

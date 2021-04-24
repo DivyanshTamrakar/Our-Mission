@@ -6,8 +6,6 @@ import 'package:namma_badavane/screens/history_screen.dart';
 import 'package:namma_badavane/screens/homescreen.dart';
 import 'package:namma_badavane/screens/profile_screen.dart';
 import 'package:namma_badavane/screens/solution_screen.dart';
-import 'package:namma_badavane/screens/stats.dart';
-import 'package:namma_badavane/utils/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class BottomBarExample extends StatefulWidget {

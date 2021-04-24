@@ -4,15 +4,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:namma_badavane/screens/otp_screen_after_login.dart';
 import 'package:namma_badavane/screens/screen_signup.dart';
-import 'package:namma_badavane/screens/sign_up_screen.dart';
 import 'package:namma_badavane/screens/splash_screen.dart';
 import 'package:namma_badavane/utils/HttpResponse.dart';
-import 'package:namma_badavane/utils/bottom_navigation.dart';
 import 'package:namma_badavane/utils/colors.dart';
 import 'package:namma_badavane/widgets/dialogs.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import 'homescreen.dart';
 
 class Screen extends StatefulWidget {
   _ScreenState createState() => _ScreenState();

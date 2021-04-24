@@ -4,9 +4,8 @@ import 'package:namma_badavane/utils/colors.dart';
 import 'package:namma_badavane/utils/HttpResponse.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
-
 import '../config.dart';
-import 'homescreen.dart';
+
 
 class NotificationScreen extends StatefulWidget {
   @override

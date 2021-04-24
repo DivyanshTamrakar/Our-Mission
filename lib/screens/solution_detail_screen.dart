@@ -2,12 +2,9 @@ import 'dart:convert';
 
 import 'package:aws_translate/aws_translate.dart';
 import 'package:flutter/material.dart';
-import 'package:namma_badavane/models/complaint_model.dart';
 import 'package:namma_badavane/utils/HttpResponse.dart';
 import 'package:namma_badavane/utils/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:translator/translator.dart';
-
 import '../config.dart';
 import 'homescreen.dart';
 

@@ -11,17 +11,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  otp_text_field: ^1.0.2
   image_picker: ^0.6.7+21
   http: ^0.12.2
   http_parser:
-  firebase_messaging: ^6.0.9
   shared_preferences: ^0.5.12+4
   dio: ^3.0.10
   geolocator: ^6.2.0
   permission_handler: ^5.1.0+2
   connectivity: ^2.0.2
-  translator: ^0.1.5
   flutter_rating_bar: ^3.2.0+1
   group_radio_button: ^1.0.1
   modal_bottom_sheet: ^1.0.0+1

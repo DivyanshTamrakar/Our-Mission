@@ -1,22 +1,12 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:namma_badavane/models/user_model.dart';
-import 'package:namma_badavane/screens/complaint_form_screen.dart';
 import 'package:namma_badavane/screens/edit_profile_screen.dart';
 import 'package:namma_badavane/screens/screen.dart';
-import 'package:namma_badavane/screens/sign_up_screen.dart';
-import 'package:namma_badavane/services/auth_service.dart';
 import 'package:namma_badavane/utils/HttpResponse.dart';
-import 'package:namma_badavane/utils/bottom_navigation.dart';
 import 'package:namma_badavane/utils/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:namma_badavane/screens/language_screen.dart';
-
-import '../config.dart';
 import 'homescreen.dart';
-import 'login_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
