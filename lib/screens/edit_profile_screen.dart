@@ -7,13 +7,13 @@ import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:namma_badavane/config.dart';
-import 'package:namma_badavane/screens/homescreen.dart';
-import 'package:namma_badavane/screens/splash_screen.dart';
-import 'package:namma_badavane/utils/bottom_navigation.dart';
-import 'package:namma_badavane/utils/colors.dart';
-import 'package:namma_badavane/widgets/dialogs.dart';
-import 'package:namma_badavane/utils/HttpResponse.dart';
+import '../config.dart';
+import '../screens/homescreen.dart';
+import '../screens/splash_screen.dart';
+import '../utils/bottom_navigation.dart';
+import '../utils/colors.dart';
+import '../widgets/dialogs.dart';
+import '../utils/HttpResponse.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -27,22 +27,19 @@ class EditProfileScreen extends StatefulWidget {
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
-
   List<bool> hasError = [false, false, false, false];
   String usertoken;
 
   String latitude = "";
   String longitude = "";
   File image;
-  String language = "";
   String _name = "";
-  String  _email = "";
+  String _email = "";
   String _location = "";
   String _area = "";
-  String profile_image = "";
+  String profileImage = "";
 
-
-     getUserData() async {
+  getUserData() async {
     var resp = await HttpResponse.getResponse(
       service: '/users/profile',
     );
@@ -51,20 +48,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     var response = jsonDecode(resp);
     print("\n\n${response.toString()}\n\n");
 
-
-     setState(() {
-      profile_image = response['data']['profile'].toString();
-      _name  = response['data']['name'].toString();
+    setState(() {
+      profileImage = response['data']['profile'].toString();
+      _name = response['data']['name'].toString();
       _email = response['data']['email'].toString();
       _area = response['data']['address'].toString();
       _location = response['data']['location']['coordinates'].toString();
-     });
-    // print(_name);
-    // print(_email);
-    // print(_area);
+    });
   }
-
-
 
   Future<File> getImageFileFromAssets(String path) async {
     final byteData = await rootBundle.load('assets/$path');
@@ -114,51 +105,21 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     });
   }
 
-  getlanguage() async {
-
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-
-    if(widget.newUser){
-      setState(() {
-        language = "English";
-        prefs.setString("language", "English");
-
-
-      });
-    }else{
-      setState(() {
-        language = prefs.getString('language');
-      });
-    }
-
-  }
-
   @override
   void initState() {
     super.initState();
-    if(widget.newUser == false) getUserData();
+    if (widget.newUser == false) getUserData();
     getCurrenLocation();
-    getlanguage();
-    print("Bool widget.newUser == ${widget.newUser}");
-    print(widget.newUser);
-    print(" Nitesh token");
-    // print(token);
-    print(" My Token");
     getToken().then((value) => {print(value), usertoken = value});
-    print(usertoken);
-    // if (!widget.newUser) getData();
-
-
   }
 
   @override
   Widget build(BuildContext context) {
-    // print(hasError);
-    double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Color.fromRGBO(246,244,246,1.0),
-      appBar: AppBar(        backgroundColor: Colors.transparent,
+      backgroundColor: Color.fromRGBO(246, 244, 246, 1.0),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
       ),
       body: SingleChildScrollView(
@@ -183,7 +144,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       borderRadius: BorderRadius.circular(200),
                       child: image == null
                           ? Image.asset(
-                        "assets/profile_placeholder.png",
+                              "assets/profile_placeholder.png",
                               height: 120,
                               width: 120,
                               fit: BoxFit.cover,
@@ -200,11 +161,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   right: 15,
                   child: GestureDetector(
                     onTap: () async {
-                      var image_picker = await ImagePicker.pickImage(
+                      // ignore: deprecated_member_use
+                      var imagePicker = await ImagePicker.pickImage(
                           source: ImageSource.camera, imageQuality: 50);
-                      if (image_picker != null) {
+                      if (imagePicker != null) {
                         setState(() {
-                          image = image_picker;
+                          image = imagePicker;
                         });
                       }
                     },
@@ -235,8 +197,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     width: width,
                     child: Text(
                       (widget.newUser == false)
-                          ? language == "English"?"Edit your Profile":"ನಿಮ್ಮ ಪ್ರೊಫೈಲ್ ಸಂಪಾದಿಸಿ"
-                          : language == "English"?"Complete your Profile":"ನಿಮ್ಮ ಪ್ರೊಫೈಲ್ ಅನ್ನು ಪೂರ್ಣಗೊಳಿಸಿ",
+                          ? "Edit your Profile"
+                          : "Complete your Profile",
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -258,8 +220,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             borderSide:
                                 BorderSide(color: Colors.grey[500], width: 1.0),
                             borderRadius: BorderRadius.circular(10)),
-                        hintText:
-                            language == "English" ? 'Full Name' : 'ಪೂರ್ಣ ಹೆಸರು',
+                        hintText: 'Full Name',
                         prefixIcon: Icon(Icons.person),
                         suffixIcon: Visibility(
                             visible: hasError[0],
@@ -295,7 +256,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               Icons.error_outline,
                               color: Colors.red,
                             )),
-                        hintText: language == "English" ? 'Email' : 'ಇಮೇಲ್',
+                        hintText: 'Email',
                         prefixIcon: Icon(Icons.alternate_email),
                       ),
                     ),
@@ -318,9 +279,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               borderSide: BorderSide(
                                   color: Colors.grey[500], width: 1.0),
                               borderRadius: BorderRadius.circular(10)),
-                          hintText: language == "English"
-                              ? 'Area/Locality'
-                              : 'ಪ್ರದೇಶ / ಸ್ಥಳ',
+                          hintText: 'Area/Locality',
                           prefixIcon: Icon(Icons.location_on_sharp),
                           suffixIcon: Visibility(
                             visible: hasError[2],
@@ -333,9 +292,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     children: [
                       Icon(Icons.my_location),
                       SizedBox(width: 3),
-                      Text( language == "English"?
-                          "Location is Automatically Detected":
-                          "ಸ್ಥಳವನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಕಂಡುಹಿಡಿಯಲಾಗುತ್ತದೆ"
+                      Text(
+                        "Location is Automatically Detected",
                       ),
                       // Text(latitude),
                       // Text(longitude),
@@ -363,9 +321,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             borderSide:
                                 BorderSide(color: Colors.grey[500], width: 1.0),
                             borderRadius: BorderRadius.circular(10.0)),
-                        hintText: language == "English"
-                            ? 'Enter Location'
-                            : 'ಸ್ಥಳವನ್ನು ನಮೂದಿಸಿ',
+                        hintText: 'Enter Location',
                         suffixIcon: Visibility(
                             visible: hasError[3],
                             child: Icon(
@@ -405,7 +361,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
                             File img = image == null
                                 ? await getImageFileFromAssets(
-                                'profile_placeholder.png')
+                                    'profile_placeholder.png')
                                 : image;
 
                             print("img === $img");
@@ -418,9 +374,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               "location": {
                                 "coordinates": [latitude, longitude],
                               },
-                              "profile": image != null ? await MultipartFile.fromFile(img.path,
-                                  filename: filename,
-                                  contentType: new MediaType('image', 'jpeg')):null,
+                              "profile": image != null
+                                  ? await MultipartFile.fromFile(img.path,
+                                      filename: filename,
+                                      contentType:
+                                          new MediaType('image', 'jpeg'))
+                                  : null,
                             });
                             print("profile update  === $url");
                             var response = await dio.post(url,
@@ -477,7 +436,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         padding:
                             EdgeInsets.symmetric(horizontal: 25, vertical: 10),
                         decoration: BoxDecoration(
-                            color: Color.fromRGBO(215,111,115,1.0),
+                            color: Color.fromRGBO(215, 111, 115, 1.0),
                             borderRadius: BorderRadius.circular(20.0)),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
@@ -486,10 +445,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             Expanded(
                               child: Text(
                                 widget.newUser == false
-                                    ? (language == "English" ? 'Save' : 'ಉಳಿಸು')
-                                    : (language == "English"
-                                        ? 'Continue'
-                                        : 'ಮುಂದುವರಿಸಿ'),
+                                    ? ('Save')
+                                    : ('Continue'),
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     color: button_text_color,

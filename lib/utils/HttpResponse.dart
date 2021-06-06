@@ -2,7 +2,6 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
-
 import 'package:namma_badavane/config.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -10,7 +9,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 
 class HttpResponse{
-
   static Future<String> postResponse({String service,Map data}){
     String url=BASE_URL+service;
     String body = json.encode(data);
@@ -30,7 +28,7 @@ class HttpResponse{
     String url=BASE_URL+service;
     print('Url==$url');
     SharedPreferences prefs = await SharedPreferences.getInstance();
-     String accessToken = await prefs.getString("token");
+    String accessToken = prefs.getString("token");
     print("DIvyansh");
     print(accessToken);
     // http.Response response= await http.get(url,headers: {"Authorization": token});

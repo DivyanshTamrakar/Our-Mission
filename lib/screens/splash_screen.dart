@@ -3,8 +3,8 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:namma_badavane/screens/screen.dart';
-import 'package:namma_badavane/utils/bottom_navigation.dart';
+import '../screens/screen.dart';
+import '../utils/bottom_navigation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -17,7 +17,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  String _versionName = 'V1.0';
   final splashDelay = 3;
 
   @override
@@ -35,14 +34,9 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void navigationPage() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-
     print("user token ========  ${prefs.getString("token")}");
-    print("user default language in shared preference  ========  ${prefs.getString("language")}");
-
-
-    var usertoken = prefs.getString("token");
-
-    if (usertoken == null) {
+    var userToken = prefs.getString("token");
+    if (userToken == null) {
 
       Navigator.pushReplacement(context,
           MaterialPageRoute(builder: (BuildContext context) => Screen()));
@@ -58,8 +52,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,

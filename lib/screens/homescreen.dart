@@ -1,67 +1,31 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:namma_badavane/config.dart';
-import 'package:namma_badavane/models/complaint_model.dart';
-import 'package:namma_badavane/models/department_model.dart';
-import 'package:namma_badavane/screens/category_list_screen.dart';
-import 'package:namma_badavane/screens/notification.dart';
-import 'package:namma_badavane/services/department_service.dart';
-import 'package:namma_badavane/utils/HttpResponse.dart';
-import 'package:namma_badavane/utils/bottom_navigation.dart';
-import 'package:namma_badavane/utils/colors.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'language_screen.dart';
+import '../config.dart';
+import '../models/complaint_model.dart';
+import '../models/department_model.dart';
+import '../screens/category_list_screen.dart';
+import '../screens/notification.dart';
+import '../services/department_service.dart';
+import '../utils/HttpResponse.dart';
+import '../utils/colors.dart';
+
 
 class HomeScreen extends StatefulWidget {
   static Color color = Color.fromRGBO(38, 40, 52, 1.0);
-  static Color button_back = Color.fromRGBO(125, 140, 223, 1.0);
+  static Color buttonBack = Color.fromRGBO(125, 140, 223, 1.0);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String language;
   List<Complaint> complaints = [];
   var complaintLength;
-  var solutionlength;
+  var solutionLength;
   var solvedLength;
   var pendingLength;
-  var arr = new List(9);
   List<Department> departments = [];
-  List<String> kann = [
-    "ರಸ್ತೆನಿರ್ವಹಣೆ",
-    "ತ್ಯಾಜ್ಯ ಸಂಬಂಧಿತ",
-    "ವಿದ್ಯುತ್",
-    "ಆರೋಗ್ಯ ಇಲಾಖೆ",
-    "ಉದ್ಯಾನವನ ಹಾಗೂ ಆಟದ ಮೈದಾನ",
-    "ವಿದ್ಯಾಅಭ್ಯಾಸ ಮತ್ತು ಕಲ್ಯಾಣ ಯೋಜನೆಗಳು(ಸಹಾಯ)",
-    "ಒಳಚರಂಡಿ",
-    "ನೀರು",
-    "ಇತರೆ"
-  ];
-
-  PreferenceData() async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-
-    setState(() {
-      if(pref.getString("language") != null){
-        language = pref.getString("language");
-      }else{
-        language = "English";
-        pref.setString("language", "English");
-      }
-
-    });
-    print(pref.getString("language"));
-    print("language ========$language");
-    print("token ========${pref.getString("token")}");
-  }
-
-
-
 
   fetchData() async {
     var data = await DepartmentApi().getAllDepartments();
@@ -77,9 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
     fetchData();
     fetchDataforStatCard();
     getSolutionDataForStatCard();
-
-    StatusColor();
-    PreferenceData();
+    statusColor();
   }
 
   @override
@@ -93,44 +55,11 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         elevation: 0.0,
         title: Text(
-          language == "English" ? "Departments" : "ಇಲಾಖೆಗಳು",
+           "Departments",
           style: TextStyle(color: Color.fromRGBO(173, 171, 184, 1.0)),
         ),
         backgroundColor: Color.fromRGBO(22, 14, 27, 1.0),
         actions: [
-          GestureDetector(
-            onTap: () {
-              print("clicked");
-              showMaterialModalBottomSheet(
-                context: context,
-                builder: (context) => Language_selection(),
-              ).then((value) {
-                Navigator.pop(context);
-                Navigator.push(
-                    context,
-                    CupertinoPageRoute(
-                        builder: (context) => BottomBarExample()));
-              });
-            },
-            child: Container(
-              margin: EdgeInsets.only(right: 30.0),
-              child: Center(
-                  child: Row(
-                children: [
-                  IconButton(
-                    icon: Icon(Icons.language_rounded, color: Colors.white),
-                    color: button_icon_color,
-                    onPressed: () {},
-                  ),
-                  Text(
-                    language == "English" ?"Language":"ಭಾಷೆ",
-                    style: TextStyle(color: Colors.white),
-                    textAlign: TextAlign.center,
-                  ),
-                ],
-              )),
-            ),
-          ),
           IconButton(
             icon: Icon(Icons.notifications_active_outlined,
                 color: Color.fromRGBO(67, 88, 185, 1.0)),
@@ -185,9 +114,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   child: Image.network(departments[index].file)),
                               Divider(),
                               Text(
-                                language == "English"
-                                    ? departments[index].title
-                                    : kann[index],
+                                    departments[index].title,
+
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize: departments[index].title.length < 20
@@ -212,7 +140,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 36,
                         )),
                   ),
-                  Text(language == "English"?'Complaint Status':'ದೂರು ಸ್ಥಿತಿ',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
+                  Text('Complaint Status',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
                   Expanded(
                     child: new Container(
                         margin: const EdgeInsets.only(left: 10.0, right: 10.0),
@@ -231,20 +159,20 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding: EdgeInsets.all(3.0),
                     children: <Widget>[
                       makeDashboardItem(
-                          language == "English" ? "Registered" : "ನೋಂದಾಯಿಸಲಾಗಿದೆ",
+                           "Registered" ,
                           Icons.insert_comment,
                           Colors.yellow,
                           Colors.black,
                           complaintLength.toString()),
                       makeDashboardItem(
-                          language == "English" ? "Solved" : "ಪರಿಹರಿಸಲಾಗಿದೆ",
+                           "Solved",
                           Icons.assignment_turned_in_rounded,
                           Colors.green,
                           Colors.white,
-                          solutionlength.toString()),
+                          solutionLength.toString()),
 
                       makeDashboardItem(
-                          language == "English" ? "Pending" : "ಬಾಕಿ ಉಳಿದಿದೆ",
+                           "Pending",
                           Icons.pending_actions,
                           Colors.orangeAccent[400],
                           Colors.white,
@@ -283,12 +211,12 @@ class _HomeScreenState extends State<HomeScreen> {
     print("\n\n${response.toString()}\n\n");
 
     setState(() {
-      solutionlength = response['data'].length;
-      if (solutionlength == null) {
-        solutionlength = 0;
+      solutionLength = response['data'].length;
+      if (solutionLength == null) {
+        solutionLength = 0;
       }
-      print(solutionlength);
-      pendingLength = complaintLength - solutionlength;
+      print(solutionLength);
+      pendingLength = complaintLength - solutionLength;
       if (pendingLength == null) {
         pendingLength = 0;
       }

@@ -1,9 +1,6 @@
-import 'package:namma_badavane/models/department_model.dart';
+import '../models/department_model.dart';
 import 'dart:convert';
-import 'dart:io';
-import 'package:namma_badavane/config.dart';
-import 'package:namma_badavane/models/complaint_model.dart';
-import 'package:namma_badavane/models/user_model.dart';
+import '../config.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -19,7 +16,7 @@ class DepartmentApi{
         // "Authorization":  token,
         "Authorization":  prefs.getString('token'),
       };
-      final response = await http.get('${BASE_URL}/department',
+      final response = await http.get('$BASE_URL/department',
           headers: headers);
       print(response.body.toString());
       var responseData=json.decode(response.body)['data'];
@@ -45,7 +42,7 @@ class DepartmentApi{
         // "Authorization":  token,
         "Authorization":  prefs.getString('token'),
       };
-      final response = await http.get('${BASE_URL}/department/${id}',
+      final response = await http.get('$BASE_URL/department/$id',
           headers: headers);
       department = json.decode(response.body)['data'];
       return department;

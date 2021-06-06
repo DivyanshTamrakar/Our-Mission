@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:namma_badavane/screens/splash_screen.dart';
-import 'package:namma_badavane/utils/HttpResponse.dart';
-import 'package:namma_badavane/utils/colors.dart';
-import 'package:namma_badavane/widgets/dialogs.dart';
+import '../utils/bottom_navigation.dart';
+import '../utils/HttpResponse.dart';
+import '../utils/colors.dart';
+import '../widgets/dialogs.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -86,30 +86,6 @@ class _OTPScreenAfterLoginState extends State<OTPScreenAfterLogin> {
                         });
                       },
                     ),
-
-
-                    // OTPTextField(
-                    //   length: 6,
-                    //   width: width,
-                    //   fieldWidth: width*0.13,
-                    //   style: TextStyle(
-                    //       fontSize: 17
-                    //   ),
-                    //   textFieldAlignment: MainAxisAlignment.spaceAround,
-                    //   fieldStyle: FieldStyle.box,
-                    //   onCompleted: (pin) {
-                    //     _otpPin=pin;
-                    //   },
-                    // ),
-
-
-
-
-
-
-
-
-
                     SizedBox(
                       height:20
                     ),
@@ -141,25 +117,24 @@ class _OTPScreenAfterLoginState extends State<OTPScreenAfterLogin> {
                                           actionTitle: "OK"
                                       );
                                     });
-                                //print('Invalid Number');
                               }
                               else {
                                 SharedPreferences prefs = await SharedPreferences
                                     .getInstance();
                                 prefs.setString('token', response['token']);
                                 prefs.setString('id', response['id']);
-                                // Navigator.pushAndRemoveUntil(
-                                //   context,
-                                //   CupertinoPageRoute(
-                                //       builder: (context) => BottomBarExample()),
-                                //       (route) => false,
-                                // );
                                 Navigator.pushAndRemoveUntil(
                                   context,
                                   CupertinoPageRoute(
-                                      builder: (context) => SplashScreen()),
+                                      builder: (context) => BottomBarExample()),
                                       (route) => false,
                                 );
+                                // Navigator.pushAndRemoveUntil(
+                                //   context,
+                                //   CupertinoPageRoute(
+                                //       builder: (context) => SplashScreen()),
+                                //       (route) => false,
+                                // );
 
 
                               }

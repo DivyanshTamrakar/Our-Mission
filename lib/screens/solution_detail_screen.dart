@@ -1,12 +1,8 @@
 import 'dart:convert';
-
-import 'package:aws_translate/aws_translate.dart';
 import 'package:flutter/material.dart';
-import 'package:namma_badavane/utils/HttpResponse.dart';
-import 'package:namma_badavane/utils/colors.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../config.dart';
-import 'homescreen.dart';
+import '../utils/HttpResponse.dart';
+import '../utils/colors.dart';
+import '../screens/homescreen.dart';
 
 class SoutionDetailScreen extends StatefulWidget {
   final id;
@@ -24,9 +20,7 @@ class _SoutionDetailScreenState extends State<SoutionDetailScreen> {
       department = "",
       subdepartment = "",
       status = "",
-      file = "",
-      language = "",
-  titleKn="",statusKn="",descriptionKn="",departmentKn="",subdepartmentKn="" ;
+      file = "";
 
   getSolutionDataDetail() async {
     var resp =
@@ -44,79 +38,22 @@ class _SoutionDetailScreenState extends State<SoutionDetailScreen> {
       subdepartment = response['data']['sub_department'];
       status = response['data']['status'];
       file = response['data']['file'];
-
-      print("language before aws function call ========$language");
-      if(language != "English")
-      {
-        getaws();
-      }
     });
-  }
-
-  getaws() async{
-    AwsTranslate awsTranslate = AwsTranslate(
-      poolId: poolId, // your pool id here
-      region: region,
-    ); // your region here
-
-
-    String translated1 = await awsTranslate.translateText(title, to: 'kn');
-    String translated2 = await awsTranslate.translateText(description, to: 'kn');
-    String translated3 = await awsTranslate.translateText(department, to: 'kn');
-    String translated4 = await awsTranslate.translateText(subdepartment, to: 'kn');
-    String translated5 = await awsTranslate.translateText(status, to: 'kn');
-    if (!mounted) return;
-    setState(() {
-      titleKn = translated1.toString();
-      descriptionKn = translated2.toString();
-      statusKn = translated3.toString();
-      departmentKn = translated4.toString();
-      subdepartmentKn = translated5.toString();
-    });
-
-    print(translated1 );
-    print(translated2);
-    print(translated3);
-    print("title");
-    print("description");print("status");
-    print(title);
-    print(description);
-    print(status);
-
-
-  }
-
-  GetPreferData() async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-
-    setState(() {
-      language = pref.getString("language");
-    });
-    print(pref.getString("language"));
-    print("language ========$language");
   }
 
   @override
   void initState() {
     super.initState();
-    GetPreferData();
     getSolutionDataDetail();
-    print("Solution data");
-    print("${widget.id}");
-
   }
 
   @override
   Widget build(BuildContext context) {
-    // var date = DateTime.parse(widget.complaint.dateOfComplain);
-    // var formattedDate = "${date.day}-${date.month}-${date.year}";
-    double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: HomeScreen.color,
-        title: Text(
-            language == "English"?"Solved Complaint Details View":"ಪರಿಹರಿಸಿದ ದೂರು ವಿವರಗಳ ವೀಕ್ಷಣೆ",
+        title: Text("Solved Complaint Details View",
             style: TextStyle(color: primary_text_color)),
       ),
       body: SingleChildScrollView(
@@ -155,7 +92,7 @@ class _SoutionDetailScreenState extends State<SoutionDetailScreen> {
                             children: [
                               Container(
                                 child: Text(
-                                  "${language == "English"?"Complaint id":"ದೂರು ಐಡಿ"} : ${widget.id}",
+                                  "Complaint id : ${widget.id}",
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 14),
@@ -163,7 +100,6 @@ class _SoutionDetailScreenState extends State<SoutionDetailScreen> {
                               ),
                             ],
                           ),
-
                         ],
                       ),
                     ),
@@ -181,7 +117,7 @@ class _SoutionDetailScreenState extends State<SoutionDetailScreen> {
                               Container(
                                 width: width * 0.5,
                                 child: Text(
-                                  language == "English"?title:titleKn==""?"Please wait...":titleKn,
+                                  title,
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 18),
@@ -204,8 +140,7 @@ class _SoutionDetailScreenState extends State<SoutionDetailScreen> {
                             color: Colors.black38,
                           ),
                           SizedBox(height: 10),
-                          Text(
-                              language == "English"?"Description":"ವಿವರಣೆ",
+                          Text("Description",
                               textAlign: TextAlign.left,
                               style: TextStyle(fontSize: 12)),
                           SizedBox(height: 10),
@@ -215,7 +150,7 @@ class _SoutionDetailScreenState extends State<SoutionDetailScreen> {
                                 border: Border.all(color: Colors.black12),
                                 borderRadius: BorderRadius.circular(5)),
                             child: Text(
-                              language == "English"?description:descriptionKn==""?"Please wait...":descriptionKn,
+                              description,
                               style: TextStyle(),
                             ),
                           ),
@@ -232,7 +167,7 @@ class _SoutionDetailScreenState extends State<SoutionDetailScreen> {
                           Container(
                             width: width,
                             child: Text(
-                              "${language == "English"?"Department :-":"ಇಲಾಖೆ :-"} ${language == "English"?department:departmentKn==""?"Please wait...":departmentKn}",
+                              "Department :- $department",
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
@@ -242,7 +177,7 @@ class _SoutionDetailScreenState extends State<SoutionDetailScreen> {
                           Container(
                             width: width,
                             child: Text(
-                              "${language == "English"?"Sub Department :-":"ಉಪ ಇಲಾಖೆ :-"} ${language == "English"?subdepartment:subdepartmentKn==""?"Please wait...":subdepartmentKn}",
+                              "Sub Department :- $subdepartment",
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
@@ -252,7 +187,7 @@ class _SoutionDetailScreenState extends State<SoutionDetailScreen> {
                           Container(
                             width: width,
                             child: Text(
-                              "${language == "English"?"Status :-":"ಸ್ಥಿತಿ :-"} ${language == "English"?status:statusKn==""?"Please wait...":statusKn}",
+                              "Status :- $status",
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),

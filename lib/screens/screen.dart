@@ -2,12 +2,13 @@ import 'dart:convert';
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:namma_badavane/screens/otp_screen_after_login.dart';
-import 'package:namma_badavane/screens/screen_signup.dart';
-import 'package:namma_badavane/screens/splash_screen.dart';
-import 'package:namma_badavane/utils/HttpResponse.dart';
-import 'package:namma_badavane/utils/colors.dart';
-import 'package:namma_badavane/widgets/dialogs.dart';
+import '../utils/bottom_navigation.dart';
+import '../screens/otp_screen_after_login.dart';
+import '../screens/screen_signup.dart';
+import '../screens/splash_screen.dart';
+import '../utils/HttpResponse.dart';
+import '../utils/colors.dart';
+import '../widgets/dialogs.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Screen extends StatefulWidget {
@@ -19,22 +20,12 @@ class _ScreenState extends State<Screen> {
 
   check() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-
     print("user token ========  ${prefs.getString("token")}");
-    print(
-        "user default language in shared preference  ========  ${prefs.getString("language")}");
-
-    var usertoken = prefs.getString("token");
-    if (usertoken != null) {
+    var userToken = prefs.getString("token");
+    if (userToken != null) {
       Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (BuildContext context) => SplashScreen()));
+          MaterialPageRoute(builder: (BuildContext context) => BottomBarExample()));
     }
-    // else {
-    //   Navigator.pushReplacement(
-    //       context,
-    //       MaterialPageRoute(
-    //           builder: (BuildContext context) => BottomBarExample()));
-    // }
   }
 
   @override
@@ -46,7 +37,6 @@ class _ScreenState extends State<Screen> {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
@@ -265,7 +255,7 @@ class _ScreenState extends State<Screen> {
                                               contact: _controller.text)));
                             }
                           } catch (e) {
-                            print("Error : ${e}");
+                            print("Error : $e");
                             showDialog(
                                 context: context,
                                 builder: (BuildContext context) {

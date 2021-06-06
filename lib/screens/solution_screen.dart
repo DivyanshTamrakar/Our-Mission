@@ -1,13 +1,10 @@
 import 'dart:convert';
-import 'package:aws_translate/aws_translate.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:namma_badavane/screens/solution_detail_screen.dart';
-import 'package:namma_badavane/utils/HttpResponse.dart';
-import 'package:namma_badavane/utils/colors.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../config.dart';
-import 'homescreen.dart';
+import '../screens/solution_detail_screen.dart';
+import '../utils/HttpResponse.dart';
+import '../utils/colors.dart';
+import '../screens/homescreen.dart';
 
 class SolutionScreen extends StatefulWidget {
   @override
@@ -16,9 +13,6 @@ class SolutionScreen extends StatefulWidget {
 
 class _SolutionScreenState extends State<SolutionScreen> {
   List<dynamic> solution = [];
-  String language = "";
-  List<dynamic> title_kann=[];
-  List<dynamic> description_kann=[];
 
   getSolutionData() async {
     var resp = await HttpResponse.getResponse(service: '/users/solution/all');
@@ -34,76 +28,22 @@ class _SolutionScreenState extends State<SolutionScreen> {
       print(solution);
       print(solution.length);
     });
-
-    print("language before aws function call ========$language");
-
-
-    if(language != "English")
-    {
-      getaws();
-    }
   }
 
-  getaws() async {
-    AwsTranslate awsTranslate = AwsTranslate(
-      poolId: poolId, // your pool id here
-      region: region,
-    ); // your region here
-
-    print("outside loop");
-    for (var i = 0; i < solution.length; i++) {
-      print("inside loop");
-
-      String translated1 = await awsTranslate
-          .translateText(solution[i]['title'].toString(), to: 'kn');
-      String translated2 = await awsTranslate
-          .translateText(solution[i]['description'].toString(), to: 'kn');
-      if (!mounted) return CircularProgressIndicator();
-      setState(() {
-        title_kann.add(translated1.toString());
-        description_kann.add(translated2.toString());
-
-        print("title kanana list ");
-        print(title_kann);
-        print("description kannada  list ");
-        print(description_kann);
-      });
-    }
-
-    print("title kanana list ");
-    print(title_kann);
-    print("descreption kanana list ");
-    print(description_kann);
-  }
-
-  GetPreferData() async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-
-    setState(() {
-      language = pref.getString("language");
-
-    });
-    print(pref.getString("language"));
-    print("language ========$language");
-  }
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    GetPreferData();
     getSolutionData();
-
   }
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor:  HomeScreen.color,
+        backgroundColor: HomeScreen.color,
         title: Text(
-          language == "English"?"Solved Complaints":"ಪರಿಹರಿಸಿದ ದೂರುಗಳು",
+          "Solved Complaints",
           style: TextStyle(
             color: primary_text_color,
           ),
@@ -115,12 +55,11 @@ class _SolutionScreenState extends State<SolutionScreen> {
               ? Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-
                     Expanded(
                       child: ListView.builder(
                           itemCount: solution.length,
                           itemBuilder: (context, i) {
-                              return Container(
+                            return Container(
                               margin: EdgeInsets.all(5),
                               child: Card(
                                 elevation: 5,
@@ -151,7 +90,7 @@ class _SolutionScreenState extends State<SolutionScreen> {
                                             Container(
                                               width: width * 0.5,
                                               child: Text(
-                                                language == "English" ? solution[i]['title']:(title_kann.length > i      ? title_kann[i]  : 'Please wait...'),
+                                                solution[i]['title'],
                                                 overflow: TextOverflow.ellipsis,
                                                 maxLines: 1,
                                                 style: TextStyle(
@@ -162,10 +101,11 @@ class _SolutionScreenState extends State<SolutionScreen> {
                                             ),
                                             // Spacer(),
                                             Text(
-                                              language == "English"?"Complain Id:":"ಐಡಿ ದೂರು : ",
+                                              "Complain Id:",
                                               style: TextStyle(
                                                   fontSize: 12,
-                                                  fontWeight: FontWeight.bold),overflow: TextOverflow.ellipsis,
+                                                  fontWeight: FontWeight.bold),
+                                              overflow: TextOverflow.ellipsis,
                                             ),
                                             Container(
                                               width: width * 0.2,
@@ -192,7 +132,7 @@ class _SolutionScreenState extends State<SolutionScreen> {
                                           ),
                                         ),
                                         Text(
-                                          language == "English" ? solution[i]['description']:(description_kann.length > i      ? description_kann[i]  : 'Please wait...'),
+                                          solution[i]['description'],
                                           maxLines: 2,
                                           overflow: TextOverflow.ellipsis,
                                           style: TextStyle(
@@ -209,8 +149,13 @@ class _SolutionScreenState extends State<SolutionScreen> {
                     ),
                   ],
                 )
-              : Center(child: Text(language == "English"?"No complaint Solution Found":"ಯಾವುದೇ ದೂರು ಪರಿಹಾರ ಕಂಡುಬಂದಿಲ್ಲ",textAlign: TextAlign.center),)
-          : Center(child: Text("No complaint Solution Found",textAlign: TextAlign.center)),
+              : Center(
+                  child: Text("No complaint Solution Found",
+                      textAlign: TextAlign.center),
+                )
+          : Center(
+              child: Text("No complaint Solution Found",
+                  textAlign: TextAlign.center)),
     );
   }
 }

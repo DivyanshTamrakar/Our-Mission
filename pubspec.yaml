@@ -23,7 +23,6 @@ dependencies:
   group_radio_button: ^1.0.1
   modal_bottom_sheet: ^1.0.0+1
   path_provider: ^1.6.27
-  aws_translate: ^0.1.1
   timer_button: ^1.0.1
   date_format: 1.0.6
   pin_code_fields: ^6.1.0

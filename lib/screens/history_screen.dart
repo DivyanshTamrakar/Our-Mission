@@ -1,13 +1,10 @@
-import 'package:aws_translate/aws_translate.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:namma_badavane/models/complaint_model.dart';
-import 'package:namma_badavane/screens/complaint_detail_screen.dart';
-import 'package:namma_badavane/screens/homescreen.dart';
-import 'package:namma_badavane/services/complaint_service.dart';
-import 'package:namma_badavane/utils/colors.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../config.dart';
+import '../models/complaint_model.dart';
+import '../screens/complaint_detail_screen.dart';
+import '../screens/homescreen.dart';
+import '../services/complaint_service.dart';
+import '../utils/colors.dart';
 
 class HistoryScreen extends StatefulWidget {
   @override
@@ -16,82 +13,28 @@ class HistoryScreen extends StatefulWidget {
 
 class _HistoryScreenState extends State<HistoryScreen> {
   List<Complaint> complaints = [];
-  List<dynamic> title_kann = [];
-  List<dynamic> description_kann = [];
-  String language = "";
-  String title1 = "";
-  String titleKn = "";
 
   fetchData() async {
     var data = await ComplaintApi().getAllComplaints();
     setState(() {
       complaints = data;
-      print("language before aws function call ========$language");
-
-
-      if(language != "English")
-        {
-          getaws();
-        }
-
-
     });
-  }
-
-  getaws() async {
-    AwsTranslate awsTranslate = AwsTranslate(
-      poolId: poolId, // your pool id here
-      region: region,
-    ); // your region here
-
-    print("outside loop");
-    for (var i = 0; i < complaints.length; i++) {
-      print("inside loop");
-
-      String translated1 = await awsTranslate
-          .translateText(complaints[i].title.toString(), to: 'kn');
-      String translated2 = await awsTranslate
-          .translateText(complaints[i].description.toString(), to: 'kn');
-      if (!mounted) return CircularProgressIndicator();
-      setState(() {
-        title_kann.add(translated1.toString());
-        description_kann.add(translated2.toString());
-      });
-    }
-    // print("title kanana list ");
-    // print(title_kann);
-    // print("descreption kanana list ");
-    // print(description_kann);
-  }
-
-  GetPreferData() async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-
-    setState(() {
-      language = pref.getString("language");
-    });
-    print(pref.getString("language"));
-    print("language ========$language");
   }
 
   @override
   void initState() {
     super.initState();
     fetchData();
-    GetPreferData();
-    print("title lsit kannada ");
-    print(title_kann);
   }
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: HomeScreen.color,
         title: Text(
-          language == "English" ? "History" : "ಇತಿಹಾಸ",
+          "History",
           style: TextStyle(
             color: primary_text_color,
           ),
@@ -138,12 +81,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                             Container(
                                               width: width * 0.5,
                                               child: Text(
-                                                // language == "English"? complaints[i].title:title_kann[i],
-                                                language == "English"
-                                                    ? complaints[i].title
-                                                    : (title_kann.length > i
-                                                        ? title_kann[i]
-                                                        : 'Please wait...'),
+                                                complaints[i].title,
                                                 overflow: TextOverflow.ellipsis,
                                                 maxLines: 1,
                                                 style: TextStyle(
@@ -154,9 +92,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                             ),
                                             Spacer(),
                                             Text(
-                                              language == "English"
-                                                  ? "Complain Id : "
-                                                  : "ಐಡಿ ದೂರು : ",
+                                              "Complain Id : ",
                                               style: TextStyle(
                                                   fontSize: 12,
                                                   fontWeight: FontWeight.bold),
@@ -186,11 +122,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                           ),
                                         ),
                                         Text(
-                                          language == "English"
-                                              ? complaints[i].description
-                                              : (description_kann.length > i
-                                                  ? description_kann[i]
-                                                  : 'Please wait...'),
+                                          complaints[i].description,
                                           //complaints[i].description,
                                           maxLines: 2,
                                           overflow: TextOverflow.ellipsis,
@@ -209,10 +141,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                   ],
                 )
               : Center(
-                  child: Text(
-                      language == "English"
-                          ? "No complaint History Found"
-                          : "ಯಾವುದೇ ದೂರು ಇತಿಹಾಸ ಕಂಡುಬಂದಿಲ್ಲ",
+                  child: Text("No complaint History Found",
                       textAlign: TextAlign.center),
                 )
           : Center(

@@ -40,7 +40,7 @@ Widget oneButtonDialog(
     content: Text(content),
     actions: <Widget>[
 // usually buttons at the bottom of the dialog
-      new FlatButton(
+      new TextButton(
         child: Text(actionTitle),
         onPressed: () {
           if (function != null) {
@@ -68,15 +68,15 @@ Widget twoButtonDialog(
     title: Text(title),
     content: Text(content),
     actions: <Widget>[
-// usually buttons at the bottom of the dialog
-      FlatButton(
+   // usually buttons at the bottom of the dialog
+      TextButton(
         child: new Text(actionOneTitle),
         onPressed: () {
           functionOne();
           Navigator.of(context).pop();
         },
       ),
-      FlatButton(
+      TextButton(
         child: new Text(actionTwoTitle),
         onPressed: () {
           functionTwo();

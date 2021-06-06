@@ -1,0 +1,6 @@
+io/flutter/plugins/GeneratedPluginRegistrant.java
+ io.flutter.plugins.GeneratedPluginRegistrant
+com/example/namma_badavane/MainActivity.java
+ com.example.namma_badavane.MainActivity
+com/example/namma_badavane/BuildConfig.java
+ com.example.namma_badavane.BuildConfig

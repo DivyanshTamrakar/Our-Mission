@@ -2,10 +2,10 @@ import 'dart:convert';
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:namma_badavane/screens/screen.dart';
-import 'package:namma_badavane/utils/HttpResponse.dart';
-import 'package:namma_badavane/utils/colors.dart';
-import 'package:namma_badavane/widgets/dialogs.dart';
+import '../screens/screen.dart';
+import '../utils/HttpResponse.dart';
+import '../utils/colors.dart';
+import '../widgets/dialogs.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'otp_screen.dart';
 
@@ -18,7 +18,6 @@ class _ScreenSignupState extends State<ScreenSignup> {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(

@@ -22,13 +22,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.5.0"
-  aws_translate:
-    dependency: "direct main"
-    description:
-      name: aws_translate
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.1"
   boolean_selector:
     dependency: transitive
     description:

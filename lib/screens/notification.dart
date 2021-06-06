@@ -1,11 +1,7 @@
-import 'package:aws_translate/aws_translate.dart';
 import 'package:flutter/material.dart';
-import 'package:namma_badavane/utils/colors.dart';
-import 'package:namma_badavane/utils/HttpResponse.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import '../utils/colors.dart';
+import '../utils/HttpResponse.dart';
 import 'dart:convert';
-import '../config.dart';
-
 
 class NotificationScreen extends StatefulWidget {
   @override
@@ -14,84 +10,31 @@ class NotificationScreen extends StatefulWidget {
 
 class _NotificationScreenState extends State<NotificationScreen> {
   List<dynamic> notification = [];
-  String language = "";
-  List<dynamic> title_kann=[];
-  List<dynamic> description_kann=[];
-
-
-  GetPreferData() async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-
-    setState(() {
-      language = pref.getString("language");
-    });
-    print(pref.getString("language"));
-    print("language ========$language");
-  }
-
 
   getNotificationData() async {
     var resp = await HttpResponse.getResponse(service: '/notification');
     print("\n\n$resp\n\n");
-
     var response = jsonDecode(resp);
     print("\n\n${response.toString()}\n\n");
 
     setState(() {
       notification = response['data'];
-
-      print("solutions list");
-      print(notification);
-      print(notification.length);
     });
-    print("language before aws function call ========$language");
-
-
-    if(language != "English")
-    {
-      getaws();
-    }
   }
 
-  getaws() async {
-    AwsTranslate awsTranslate = AwsTranslate(
-      poolId: poolId, // your pool id here
-      region: region,
-    ); // your region here
-
-    print("outside loop");
-    for (var i = 0; i < notification.length; i++) {
-      print("inside loop");
-
-      String translated1 = await awsTranslate
-          .translateText(notification[i]['title'].toString(), to: 'kn');
-      String translated2 = await awsTranslate
-          .translateText(notification[i]['description'].toString(), to: 'kn');
-      if (!mounted) return CircularProgressIndicator();
-      setState(() {
-        title_kann.add(translated1.toString());
-        description_kann.add(translated2.toString());
-      });
-    }
-
-  }
   @override
   void initState() {
     super.initState();
-    GetPreferData();
     getNotificationData();
-
   }
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(67,88,185,1.0),
+        backgroundColor: Color.fromRGBO(67, 88, 185, 1.0),
         title: Text(
-          language == "English"?'Notifications':'ಅಧಿಸೂಚನೆಗಳು',
+          'Notifications',
           style: TextStyle(color: primary_text_color),
         ),
       ),
@@ -122,7 +65,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                             title: Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                language == "English" ? notification[i]['title']:(title_kann.length > i      ? title_kann[i]  : 'Please wait...'),
+                                notification[i]['title'],
                                 maxLines: 3,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
@@ -135,7 +78,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                             subtitle: Container(
                               margin: EdgeInsets.only(top: 10.0),
                               child: Text(
-                                language == "English" ? notification[i]['description']:(description_kann.length > i      ? description_kann[i]  : 'Please wait...'),
+                                notification[i]['description'],
                                 maxLines: 3,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
@@ -146,8 +89,9 @@ class _NotificationScreenState extends State<NotificationScreen> {
                         );
                       }),
                 )
-              : Center(child: Text(language == "English"?"No Notification Found":"ಯಾವುದೇ ಅಧಿಸೂಚನೆ ಕಂಡುಬಂದಿಲ್ಲ",
-          textAlign: TextAlign.center))
+              : Center(
+                  child: Text("No Notification Found",
+                      textAlign: TextAlign.center))
           : Center(
               child: Text("No complaint History Found",
                   textAlign: TextAlign.center)),

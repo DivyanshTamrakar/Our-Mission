@@ -1,12 +1,12 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:namma_badavane/screens/edit_profile_screen.dart';
-import 'package:namma_badavane/screens/screen.dart';
-import 'package:namma_badavane/utils/HttpResponse.dart';
-import 'package:namma_badavane/utils/colors.dart';
+import '../screens/edit_profile_screen.dart';
+import '../screens/screen.dart';
+import '../utils/HttpResponse.dart';
+import '../utils/colors.dart';
+import '../screens/homescreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'homescreen.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -14,44 +14,8 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  String name = "", contact = "", profile = "", language = "";
+  String name = "", contact = "", profile = "";
   String dropdownValue = 'Select Ward';
-  String dropdownValueKannada = 'ವಾರ್ಡ್ ಆಯ್ಕೆಮಾಡಿ';
-
-  GetPreferData() async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-
-    setState(() {
-      language = pref.getString("language");
-    });
-
-    if (language == "English") {
-      if (pref.getString("dropvalue") == null) {
-        setState(() {
-          dropdownValue = "Select Ward";
-          pref.setString("dropvalue", "Select Ward");
-        });
-      } else {
-        setState(() {
-          dropdownValue = pref.getString("dropvalue");
-        });
-      }
-    } else {
-      if (pref.getString("dropvalueKannada") == null) {
-        setState(() {
-          dropdownValueKannada = "ವಾರ್ಡ್ ಆಯ್ಕೆಮಾಡಿ";
-          pref.setString("dropvalueKannada", "ವಾರ್ಡ್ ಆಯ್ಕೆಮಾಡಿ");
-        });
-      } else {
-        setState(() {
-          dropdownValueKannada = pref.getString("dropvalueKannada");
-        });
-      }
-    }
-
-    print(pref.getString("language"));
-    print("language ========$language");
-  }
 
   getUserData() async {
     var resp = await HttpResponse.getResponse(
@@ -74,10 +38,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     // TODO: implement initState
     super.initState();
     getUserData();
-    GetPreferData();
-
-    // print("name shared =$name");
-    // print("contact shared =$contact");
   }
 
   @override
@@ -120,7 +80,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 SizedBox(height: 20),
                 Text(
-                  name == "" ? "No Name " : name.toString(),
+                  name == "" ? "Your Name" : name.toString(),
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
@@ -129,7 +89,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 SizedBox(height: 10),
                 Text(
-                  contact == "" ? "111111111" : contact.toString(),
+                  contact == "" ? "Mobile No" : contact.toString(),
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
@@ -139,108 +99,46 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ],
             ),
           ),
-          language == "English"
-              ? Container(
-                  width: MediaQuery.of(context).size.width,
-                  child: Card(
-                      elevation: 5,
-                      child: Center(
-                        child: DropdownButton<String>(
-                          value: dropdownValue,
-                          icon: Icon(
-                            Icons.arrow_drop_down,
-                            color: Colors.black,
-                          ),
-                          iconSize: 30,
-                          elevation: 16,
-                          style: TextStyle(
-                              color: Colors.black, fontWeight: FontWeight.bold),
-                          underline: Container(
-                            height: 2,
-                            color: Colors.transparent,
-                          ),
-                          onChanged: (String newValue) async {
-                            setState(() {
-                              dropdownValue = newValue;
-                            });
-                            SharedPreferences pref =
-                                await SharedPreferences.getInstance();
-                            pref.setString("dropvalue", dropdownValue);
-                          },
-                          items: <String>['Select Ward', 'Ward no 13']
-                              .map<DropdownMenuItem<String>>((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(
-                                value,
-                                style: TextStyle(fontSize: 20.0),
-                              ),
-                            );
-                          }).toList(),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            child: Card(
+                elevation: 5,
+                child: Center(
+                  child: DropdownButton<String>(
+                    value: dropdownValue,
+                    icon: Icon(
+                      Icons.arrow_drop_down,
+                      color: Colors.black,
+                    ),
+                    iconSize: 30,
+                    elevation: 16,
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.bold),
+                    underline: Container(
+                      height: 2,
+                      color: Colors.transparent,
+                    ),
+                    onChanged: (String newValue) async {
+                      setState(() {
+                        dropdownValue = newValue;
+                      });
+                      SharedPreferences pref =
+                          await SharedPreferences.getInstance();
+                      pref.setString("dropvalue", dropdownValue);
+                    },
+                    items: <String>['Select Ward', 'Ward no 13']
+                        .map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(
+                          value,
+                          style: TextStyle(fontSize: 20.0),
                         ),
-                      )
-                      // ListTile(
-                      //   title: Text(
-                      //     language == "English"?"Ward no 13":"ವಾರ್ಡ್ ಸಂಖ್ಯೆ 13",
-                      //     maxLines: 1,
-                      //     overflow: TextOverflow.ellipsis,style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.bold),textAlign: TextAlign.center,
-                      //   ),
-                      //   // trailing: Icon(Icons.arrow_forward, color: Colors.blueAccent),
-                      // ),
-                      ),
-                )
-              : Container(
-                  width: MediaQuery.of(context).size.width,
-                  child: Card(
-                      elevation: 5,
-                      child: Center(
-                        child: DropdownButton<String>(
-                          value: dropdownValueKannada,
-                          icon: Icon(
-                            Icons.arrow_drop_down,
-                            color: Colors.black,
-                          ),
-                          iconSize: 30,
-                          elevation: 16,
-                          style: TextStyle(
-                              color: Colors.black, fontWeight: FontWeight.bold),
-                          underline: Container(
-                            height: 2,
-                            color: Colors.transparent,
-                          ),
-                          onChanged: (String newValue) async {
-                            setState(() {
-                              dropdownValueKannada = newValue;
-                            });
-                            SharedPreferences pref =
-                                await SharedPreferences.getInstance();
-                            pref.setString(
-                                "dropvalueKannada", dropdownValueKannada);
-                          },
-                          items: <String>[
-                            'ವಾರ್ಡ್ ಆಯ್ಕೆಮಾಡಿ',
-                            'ವಾರ್ಡ್ ಸಂಖ್ಯೆ 13'
-                          ].map<DropdownMenuItem<String>>((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(
-                                value,
-                                style: TextStyle(fontSize: 20.0),
-                              ),
-                            );
-                          }).toList(),
-                        ),
-                      )
-                      // ListTile(
-                      //   title: Text(
-                      //     language == "English"?"Ward no 13":"ವಾರ್ಡ್ ಸಂಖ್ಯೆ 13",
-                      //     maxLines: 1,
-                      //     overflow: TextOverflow.ellipsis,style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.bold),textAlign: TextAlign.center,
-                      //   ),
-                      //   // trailing: Icon(Icons.arrow_forward, color: Colors.blueAccent),
-                      // ),
-                      ),
-                ),
+                      );
+                    }).toList(),
+                  ),
+                )),
+          ),
           Card(
             elevation: 5,
             child: InkWell(
@@ -255,7 +153,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: ListTile(
                 leading: Icon(Icons.edit, color: button_color),
                 title: Text(
-                  language == "English" ? "Edit Profile" : "ಪ್ರೊಫೈಲ್ ಬದಲಿಸು",
+                  "Edit Profile",
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -280,7 +178,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: ListTile(
                 leading: Icon(Icons.logout, color: button_color),
                 title: Text(
-                  language == "English" ? "Log out" : "ಲಾಗ್ ಔಟ್",
+                  "Log out",
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -288,49 +186,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
           ),
-          // LIne with TExt
-          Row(children: <Widget>[
-            Expanded(
-              child: new Container(
-                  margin: const EdgeInsets.only(left: 10.0, right: 10.0),
-                  child: Divider(
-                    color: Colors.black,
-                    height: 36,
-                  )),
-            ),
-            Text(language == "English"?'For More Call or Message us':'ಹೆಚ್ಚಿನ ಕರೆಗಾಗಿ ಅಥವಾ ನಮಗೆ ಸಂದೇಶ ಕಳುಹಿಸಿ',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),),
-            Expanded(
-              child: new Container(
-                  margin: const EdgeInsets.only(left: 10.0, right: 10.0),
-                  child: Divider(
-                    color: Colors.black,
-                    height: 36,
-                  )),
-            ),
-
-          ]),
-
-
-
-
-
-
-          Card(
-            elevation: 5,
-            child: InkWell(
-              onTap: () {},
-              child: ListTile(
-                leading: Icon(Icons.phone_iphone, color: button_color),
-                title: Text(
-                  language == "English" ? "Mobile : 9731191313" : "ಮೊಬೈಲ್ : 9731191313",
-                  style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-            ),
-          ),
-
         ],
       ),
     ));

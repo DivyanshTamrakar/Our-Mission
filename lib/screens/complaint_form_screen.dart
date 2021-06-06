@@ -1,16 +1,15 @@
 import 'dart:io';
-import 'package:aws_translate/aws_translate.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:namma_badavane/config.dart';
-import 'package:namma_badavane/models/complaint_model.dart';
-import 'package:namma_badavane/models/department_model.dart';
-import 'package:namma_badavane/screens/submitted_screen.dart';
-import 'package:namma_badavane/utils/colors.dart';
-import 'package:namma_badavane/widgets/dialogs.dart';
+import '../config.dart';
+import '../models/complaint_model.dart';
+import '../models/department_model.dart';
+import '../screens/submitted_screen.dart';
+import '../utils/colors.dart';
+import '../widgets/dialogs.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:date_format/date_format.dart';
@@ -23,16 +22,10 @@ import 'homescreen.dart';
 class ComplaintFormScreen extends StatefulWidget {
   final List<Department> departments;
   final String subDepartment;
-
-  // final File image;
   final int departmentNumber;
 
   ComplaintFormScreen(
-      {Key key,
-      this.departments,
-      this.subDepartment,
-      // this.image,
-      this.departmentNumber})
+      {Key key, this.departments, this.subDepartment, this.departmentNumber})
       : super(key: key);
 
   @override
@@ -42,10 +35,10 @@ class ComplaintFormScreen extends StatefulWidget {
 class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
   DateTime selectedDate = DateTime.now();
   TimeOfDay selectedTime = TimeOfDay(hour: 00, minute: 00);
-  String _setTime;
   TextEditingController _timeController = TextEditingController();
   String _hour, _minute, _time;
   String dateTime;
+
   final _formKey = GlobalKey<FormState>();
   List<String> subDepartments;
   Department _selectedDepartment;
@@ -53,11 +46,8 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
   Complaint complaint = new Complaint();
   String lat = "";
   String lan = "";
-  String language = "";
   File image;
-  String dep_kn = "";
-  String sub_dep_kn = "";
-  bool location_detected = false;
+  bool locationDetected = false;
 
   showLoaderDialog(BuildContext context) {
     AlertDialog alert = AlertDialog(
@@ -94,7 +84,7 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
     setState(() {
       lat = "${geoposition.latitude}";
       lan = "${geoposition.longitude}";
-      location_detected = true;
+      locationDetected = true;
     });
   }
 
@@ -134,46 +124,7 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
       contact = prefs.getString('contact');
       email = prefs.getString('email');
       location = prefs.getString('location');
-      language = prefs.getString('language');
     });
-    print("language before aws function call ========$language");
-
-
-    if(language != "English")
-    {
-      getaws();
-    }
-  }
-
-  getaws() async {
-    AwsTranslate awsTranslate = AwsTranslate(
-      poolId: poolId, // your pool id here
-      region: region,
-    ); // your region here
-
-    print("outside loop");
-
-    String translated1 = await awsTranslate.translateText(
-        widget.departments[widget.departmentNumber].title.toString(),
-        to: 'kn');
-    String translated2 = await awsTranslate
-        .translateText(_selectedSubDepartment.toString(), to: 'kn');
-    if (!mounted) return CircularProgressIndicator();
-    setState(() {
-      dep_kn = translated1.toString();
-      sub_dep_kn = translated2.toString();
-    });
-
-    print("dep_knn ");
-    print(dep_kn);
-    print("sub_dep_kn");
-    print(sub_dep_kn);
-  }
-
-  _imgFromCamera() async {
-    image = await ImagePicker.pickImage(
-        source: ImageSource.camera, imageQuality: 50);
-    print(image);
   }
 
   @override
@@ -188,20 +139,15 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
     subDepartments = _selectedDepartment.subDepartment;
     getData();
     // getCurrenLocation();
-
   }
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(67, 88, 185, 1.0),
-        title: Text(
-            language == "English"
-                ? "Complaint/Issue Detail"
-                : "ದೂರು / ಸಂಚಿಕೆ ವಿವರ",
+        title: Text("Complaint/Issue Detail",
             style: TextStyle(color: primary_text_color)),
       ),
       body: SingleChildScrollView(
@@ -253,11 +199,12 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                           color: HomeScreen.color,
                           iconSize: 25.0,
                           onPressed: () async {
-                            var image_picker = await ImagePicker.pickImage(
+                            // ignore: deprecated_member_use
+                            var imagePicker = await ImagePicker.pickImage(
                                 source: ImageSource.camera, imageQuality: 50);
-                            if (image_picker != null) {
+                            if (imagePicker != null) {
                               setState(() {
-                                image = image_picker;
+                                image = imagePicker;
                               });
                             }
                           },
@@ -286,9 +233,7 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                             borderSide:
                                 BorderSide(color: Colors.grey[500], width: 1.0),
                           ),
-                          hintText: language == "English"
-                              ? 'Enter Complaint title'
-                              : 'ದೂರು ಶೀರ್ಷಿಕೆಯನ್ನು ನಮೂದಿಸಿ',
+                          hintText: 'Enter Complaint title',
                           suffixIcon: Container(
                             width: width * 0.08,
                             // color: Colors.pink,
@@ -331,9 +276,7 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                           children: [
                             Row(
                               children: [
-                                Text(language == "English"
-                                    ? "Enter Complaint Details/Desc"
-                                    : "ದೂರು ವಿವರಗಳನ್ನು ನಮೂದಿಸಿ / ಡೆಸ್ಕ್"),
+                                Text("Enter Complaint Details/Desc"),
                                 Spacer(),
                                 Container(
                                   width: width * 0.08,
@@ -405,9 +348,7 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                             borderSide:
                                 BorderSide(color: Colors.grey[500], width: 1.0),
                           ),
-                          hintText: language == "English"
-                              ? 'Enter Contact Number'
-                              : 'ಸಂಪರ್ಕ ಸಂಖ್ಯೆಯನ್ನು ನಮೂದಿಸಿ',
+                          hintText: 'Enter Contact Number',
                           suffixIcon: Container(
                             width: width * 0.08,
                             // color: Colors.pink,
@@ -446,9 +387,7 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                             borderSide:
                                 BorderSide(color: Colors.grey[500], width: 1.0),
                           ),
-                          hintText: language == "English"
-                              ? 'Enter Email Id'
-                              : 'ಇಮೇಲ್ ಐಡಿ ನಮೂದಿಸಿ',
+                          hintText: 'Enter Email Id',
                           suffixIcon: Container(
                             width: width * 0.08,
                             // color: Colors.pink,
@@ -472,16 +411,8 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                         },
                       ),
                     ),
-                    // SizedBox(height: 10),
-                    // Row(
-                    //   children: [
-                    //     Icon(Icons.my_location_outlined),
-                    //     SizedBox(width: 3),
-                    //     Text("Location is Automatically Detected"),
-                    //   ],
-                    // ),
                     SizedBox(height: 10),
-                    location_detected == true
+                    locationDetected == true
                         ? Row(
                             children: [
                               Icon(
@@ -490,7 +421,7 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                               ),
                               SizedBox(width: 3),
                               Text(
-                                language == "English" ? "Location Detected Successfull!":"ಸ್ಥಳ ಪತ್ತೆಯಾಗಿದೆ ಯಶಸ್ವಿಯಾಗಿದೆ!",
+                                "Location Detected Successfull!",
                                 style: TextStyle(
                                     color: Colors.green,
                                     fontWeight: FontWeight.bold),
@@ -521,9 +452,7 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                               ),
                               SizedBox(width: 3),
                               Text(
-                                language == "English"
-                                    ? "Detect Location"
-                                    : "ಸ್ಥಳವನ್ನು ಪತ್ತೆ ಮಾಡಿ",
+                                "Detect Location",
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(color: Colors.white),
@@ -553,9 +482,7 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                             borderSide:
                                 BorderSide(color: Colors.grey[500], width: 1.0),
                           ),
-                          hintText: language == "English"
-                              ? 'Enter Location'
-                              : 'ಸ್ಥಳವನ್ನು ನಮೂದಿಸಿ',
+                          hintText: 'Enter Location',
                           suffixIcon: Container(
                             width: width * 0.08,
                             // color: Colors.pink,
@@ -588,12 +515,7 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                       elevation: 5,
                       child: ListTile(
                         title: Text(
-                          language == "English"
-                              ? widget
-                                  .departments[widget.departmentNumber].title
-                              : dep_kn == ""
-                                  ? "..."
-                                  : dep_kn,
+                          widget.departments[widget.departmentNumber].title,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -608,17 +530,12 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                       elevation: 5,
                       child: ListTile(
                         title: Text(
-                          language == "English"
-                              ? _selectedSubDepartment
-                              : sub_dep_kn == ""
-                                  ? "..."
-                                  : sub_dep_kn,
+                          _selectedSubDepartment,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
                     ),
-
                     SizedBox(height: 10),
                     Card(
                       shape: RoundedRectangleBorder(
@@ -664,9 +581,6 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                               child: TextFormField(
                                 // style: TextStyle(fontSize: 40),
                                 textAlign: TextAlign.left,
-                                onSaved: (String val) {
-                                  _setTime = val;
-                                },
                                 enabled: false,
                                 // keyboardType: TextInputType.text,
                                 controller: _timeController,
@@ -771,7 +685,7 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                           padding: EdgeInsets.symmetric(
                               horizontal: 25, vertical: 10),
                           decoration: BoxDecoration(
-                              color: HomeScreen.button_back,
+                              color: HomeScreen.buttonBack,
                               borderRadius: BorderRadius.circular(20.0)),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.end,
@@ -779,7 +693,7 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                               SizedBox(width: 15),
                               Expanded(
                                 child: Text(
-                                  language == "English" ? 'Submit' : 'ಸಲ್ಲಿಸು',
+                                  'Submit',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       color: button_text_color,
