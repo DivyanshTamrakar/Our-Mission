@@ -19,8 +19,6 @@ class CategoryListScreen extends StatefulWidget {
 class _CategoryListScreenState extends State<CategoryListScreen> {
   @override
   void initState() {
-    print(widget.departments[widget.departmentNumber].subDepartment);
-    print(widget.departments[widget.departmentNumber].subDepartmentKannada);
     super.initState();
   }
 

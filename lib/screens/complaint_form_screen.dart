@@ -129,7 +129,6 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _timeController.text = formatDate(
         DateTime(2019, 08, 1, DateTime.now().hour, DateTime.now().minute),
@@ -236,11 +235,9 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                           hintText: 'Enter Complaint title',
                           suffixIcon: Container(
                             width: width * 0.08,
-                            // color: Colors.pink,
                             child: Center(
                               child: Container(
                                 width: width * 0.08,
-                                // color: Colors.pink,
                                 child: Center(
                                   child: Text(
                                     "*",
@@ -280,7 +277,6 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                                 Spacer(),
                                 Container(
                                   width: width * 0.08,
-                                  // color: Colors.pink,
                                   child: Center(
                                     child: Text(
                                       "*",
@@ -303,22 +299,13 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                               },
                               keyboardType: TextInputType.multiline,
                               minLines: 3,
-                              //Normal textInputField will be displayed
                               maxLines: 5,
-                              // when user presses enter it will adapt to it
                               decoration: InputDecoration(
                                 contentPadding: EdgeInsets.all(8.0),
                                 border: OutlineInputBorder(
                                   borderSide: BorderSide(
                                       color: Colors.grey[500], width: 1.0),
                                 ),
-                                // hintText: 'Enter Complaint Details/Desc',
-                                //   suffixIcon:Text("*", style:
-                                //   TextStyle(
-                                //     fontSize: 25,
-                                //     color: Colors.red,
-                                //   ),
-                                //     textAlign: TextAlign.center,),
                               ),
                               validator: (value) {
                                 if (value.isEmpty) {
@@ -485,7 +472,6 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                           hintText: 'Enter Location',
                           suffixIcon: Container(
                             width: width * 0.08,
-                            // color: Colors.pink,
                             child: Center(
                               child: Text(
                                 "*",
@@ -579,10 +565,8 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                               padding: EdgeInsets.only(top: 4.0, left: 10.0),
                               width: width / 2,
                               child: TextFormField(
-                                // style: TextStyle(fontSize: 40),
                                 textAlign: TextAlign.left,
                                 enabled: false,
-                                // keyboardType: TextInputType.text,
                                 controller: _timeController,
                               ),
                             ),
@@ -613,18 +597,18 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                                       'placeholder_image.png')
                                   : image;
 
-                              // print("img === $img");
-                              // print("image === $image");
-                              // print("title === ${complaint.title}");
-                              // print("description === ${complaint.description}");
-                              // print("eamil === ${complaint.email}");
-                              // print("contact === ${complaint.contact}");
-                              // print(
-                              //     "department === ${widget.departments[widget.departmentNumber].title}");
-                              // print(
-                              //     "subdepartment === ${_selectedSubDepartment}");
-                              // print("file === $image");
-
+                              print("img === $img");
+                              print("image === $image");
+                              print("title === ${complaint.title}");
+                              print("description === ${complaint.description}");
+                              print("eamil === ${complaint.email}");
+                              print("contact === ${complaint.contact}");
+                              print(
+                                  "department === ${widget.departments[widget.departmentNumber].title}");
+                              print(
+                                  "subdepartment === $_selectedSubDepartment");
+                              print("file === $image");
+                              print("Token ==== ${prefs.getString("token")}");
                               String filename = img.path.split('/').last;
                               var formdata = new FormData.fromMap({
                                 "title": complaint.title,
@@ -633,8 +617,7 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                                 "contact": complaint.contact,
                                 "file": await MultipartFile.fromFile(img.path,
                                     filename: filename,
-                                    contentType:
-                                        new MediaType('image', 'jpeg')),
+                                    contentType: new MediaType('image', 'jpg')),
                                 "department": widget
                                     .departments[widget.departmentNumber].title,
                                 "sub_department": _selectedSubDepartment,
@@ -657,14 +640,13 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                                       builder: (context) => SubmittedScreen()));
                             } catch (e) {
                               Navigator.pop(context);
-                              print(e.toString());
                               showDialog(
                                   context: context,
                                   builder: (BuildContext context) {
                                     return oneButtonDialog(
                                         context: context,
-                                        title: "Network Error",
-                                        content: "Something went Wrong",
+                                        title: "Error",
+                                        content: "${e.toString()}",
                                         actionTitle: "OK");
                                   });
                             }

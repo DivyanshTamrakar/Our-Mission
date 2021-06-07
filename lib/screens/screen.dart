@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import '../utils/bottom_navigation.dart';
 import '../screens/otp_screen_after_login.dart';
 import '../screens/screen_signup.dart';
-import '../screens/splash_screen.dart';
 import '../utils/HttpResponse.dart';
 import '../utils/colors.dart';
 import '../widgets/dialogs.dart';
@@ -30,7 +29,7 @@ class _ScreenState extends State<Screen> {
 
   @override
   void initState() {
-    // TODO: implement initState
+    
     super.initState();
     check();
   }
