@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/android.iml" filepath="$PROJECT_DIR$/.idea/modules/android.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/android.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/android.app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/465015545/android.aws_translate.iml" filepath="$PROJECT_DIR$/.idea/modules/465015545/android.aws_translate.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/1404904286/android.connectivity.iml" filepath="$PROJECT_DIR$/.idea/modules/1404904286/android.connectivity.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/1332744635/android.flutter_plugin_android_lifecycle.iml" filepath="$PROJECT_DIR$/.idea/modules/1332744635/android.flutter_plugin_android_lifecycle.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2010494512/android.geolocator.iml" filepath="$PROJECT_DIR$/.idea/modules/-2010494512/android.geolocator.iml" />

@@ -158,8 +158,6 @@ class _OTPScreenState extends State<OTPScreen> {
                                       actionTitle: "OK"
                                   );
                                 });
-                            //print('Invalid Number');
-
                           }
                           },
                         child: Container(
@@ -243,7 +241,7 @@ class _OTPScreenState extends State<OTPScreen> {
                                           builder: (BuildContext context) {
                                             return oneButtonDialog(
                                                 context: context,
-                                                title: "Successfull!",
+                                                title: "Successful!",
                                                 content: " An OTP has been sent to your registered mobile number !",
                                                 actionTitle: "OK"
                                             );

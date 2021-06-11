@@ -2,19 +2,37 @@ import 'dart:convert';
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../screens/screen.dart';
+import '../utils/bottom_navigation.dart';
+import '../screens/Login_otp_Screen.dart';
+import '../screens/RegisterScreen.dart';
 import '../utils/HttpResponse.dart';
 import '../utils/colors.dart';
 import '../widgets/dialogs.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'otp_screen.dart';
 
-class ScreenSignup extends StatefulWidget {
-  _ScreenSignupState createState() => _ScreenSignupState();
+class Screen extends StatefulWidget {
+  _ScreenState createState() => _ScreenState();
 }
 
-class _ScreenSignupState extends State<ScreenSignup> {
+class _ScreenState extends State<Screen> {
   TextEditingController _controller = new TextEditingController();
+
+  check() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    print("user token ========  ${prefs.getString("token")}");
+    var userToken = prefs.getString("token");
+    if (userToken != null) {
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (BuildContext context) => BottomBarExample()));
+    }
+  }
+
+  @override
+  void initState() {
+    
+    super.initState();
+    check();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +45,7 @@ class _ScreenSignupState extends State<ScreenSignup> {
           child: Stack(
             fit: StackFit.expand,
             children: <Widget>[
+              // Bidar Image backgrounf Blur
               Image.asset('assets/bidar.jpg',
                   fit: BoxFit.cover,
                   height: double.infinity,
@@ -42,9 +61,7 @@ class _ScreenSignupState extends State<ScreenSignup> {
                   ),
                 ),
               ),
-
-// black bacgorund and text
-
+              // Black backGround Color and some Title
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
@@ -67,10 +84,11 @@ class _ScreenSignupState extends State<ScreenSignup> {
                         children: <Widget>[
                           // CircularProgressIndicator(),
                           Container(
-                            height: 30,
+                            height: 50,
                           ),
                           Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              mainAxisAlignment:
+                                  MainAxisAlignment.spaceAround,
                               children: <Widget>[
                                 Spacer(),
                                 Text(
@@ -85,31 +103,30 @@ class _ScreenSignupState extends State<ScreenSignup> {
                           Container(
                             height: 20,
                           ),
-                          Column(
-                            children: [
-                              Text("Powered by",
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      color: button_text_color)),
-                              Image.asset(
-                                "assets/footer.png",
-                                fit: BoxFit.cover,
-                                height: 50,
-                                width: 190.0,
-                                color: Colors.white,
-                              ),
-                            ],
-                          )
+                          // Column(
+                          //   children: [
+                          //     Text("Powered by",
+                          //         style: TextStyle(
+                          //             fontSize: 20,
+                          //             fontWeight: FontWeight.bold,
+                          //             color: button_text_color)),
+                          //
+                          //     Image.asset(
+                          //       "assets/footer.png",
+                          //       fit: BoxFit.cover,
+                          //       height: 50,
+                          //       width: 190.0,
+                          //       color: Colors.white,
+                          //     ),
+                          //   ],
+                          // )
                         ],
                       ),
                     ),
                   ),
                 ],
               ),
-
-// signup and footer
-
+              // Tangent Logo and sign up componenet.
               Column(
                 children: [
                   SizedBox(height: 40),
@@ -117,12 +134,16 @@ class _ScreenSignupState extends State<ScreenSignup> {
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Text("Namma",
+                          Text("Our",
                               style: TextStyle(
-                                  fontSize: 40, color: Colors.orange)),
-                          Text("Badavane",
+                                  fontSize: 45, color: Colors.orange,fontWeight: FontWeight.bold)
+                          ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width/30 ,
+                          ),
+                          Text("Mission",
                               style: TextStyle(
-                                  fontSize: 40,
+                                  fontSize: 45,
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold))
                         ]),
@@ -131,7 +152,6 @@ class _ScreenSignupState extends State<ScreenSignup> {
                     height: MediaQuery.of(context).size.height / 15,
                   ),
 
-                  // SizedBox(height: MediaQuery.of(context).size.height/5.4,),
                   Container(
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.white),
@@ -204,17 +224,14 @@ class _ScreenSignupState extends State<ScreenSignup> {
                     borderRadius: BorderRadius.circular(20.0),
                     child: InkWell(
                       onTap: () async {
-                        // Navigator.push(
-                        //               context,
-                        //               CupertinoPageRoute(
-                        //                   builder: (context) => OTPScreen(
-                        //                       contact: _controller.text)));
-
+                        print(_controller.text);
                         if (_controller.text.length == 10)
                           try {
-                            Map data = {"contact": _controller.text.toString()};
+                            Map data = {
+                              "contact": _controller.text.toString()
+                            };
                             var resp = await HttpResponse.postResponse(
-                                service: '/users/signup', data: data);
+                                service: '/users/send-otp', data: data);
                             print("\n\n$resp\n\n");
                             print(data);
                             var response = jsonDecode(resp);
@@ -225,7 +242,7 @@ class _ScreenSignupState extends State<ScreenSignup> {
                                   builder: (BuildContext context) {
                                     return oneButtonDialog(
                                         context: context,
-                                        title: "Already registered",
+                                        title: "Contact Not Registered",
                                         content: response['error'],
                                         actionTitle: "OK");
                                   });
@@ -237,17 +254,20 @@ class _ScreenSignupState extends State<ScreenSignup> {
                               Navigator.push(
                                   context,
                                   CupertinoPageRoute(
-                                      builder: (context) => OTPScreen(
-                                          contact: _controller.text)));
+                                      builder: (context) =>
+                                          OTPScreenAfterLogin(
+                                              contact: _controller.text)));
                             }
                           } catch (e) {
+                            print("Error : $e");
                             showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
                                   return oneButtonDialog(
                                       context: context,
                                       title: "Network Error",
-                                      content: "Check Your Internet Connection",
+                                      content:
+                                          "Check Your Internet Connection !",
                                       actionTitle: "OK");
                                 });
                             // print('Invalid Number');
@@ -268,8 +288,8 @@ class _ScreenSignupState extends State<ScreenSignup> {
                       child: Container(
                         // width: width * 0.8,
                         margin: EdgeInsets.symmetric(horizontal: 80.0),
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 25, vertical: 10),
                         decoration: BoxDecoration(
                             color: Color.fromRGBO(67, 88, 185, 1.0),
                             borderRadius: BorderRadius.circular(20.0)),
@@ -279,7 +299,7 @@ class _ScreenSignupState extends State<ScreenSignup> {
                             SizedBox(width: 15),
                             Expanded(
                               child: Text(
-                                'Sign Up',
+                                'Sign In',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     color: button_text_color,
@@ -303,21 +323,24 @@ class _ScreenSignupState extends State<ScreenSignup> {
                   GestureDetector(
                     onTap: () {
                       Navigator.pop(context);
-                      Navigator.push(context,
-                          CupertinoPageRoute(builder: (context) => Screen()));
+                      Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                              builder: (context) => ScreenSignup()));
                       // Navigator.push(
                       //     context,
                       //     CupertinoPageRoute(
                       //         builder: (context) => BottomBarExample()));
                     },
                     child: Text(
-                      "Already Registered ? Sign in ",
+                      "Not Registered ? Sign Up ",
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20.0,
                           color: Colors.white),
                     ),
                   ),
+
                 ],
               ),
             ],

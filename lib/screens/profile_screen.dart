@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../screens/edit_profile_screen.dart';
-import '../screens/screen.dart';
+import '../screens/LoginScreen.dart';
 import '../utils/HttpResponse.dart';
 import '../utils/colors.dart';
 import '../screens/homescreen.dart';

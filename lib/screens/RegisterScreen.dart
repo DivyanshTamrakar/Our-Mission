@@ -2,37 +2,19 @@ import 'dart:convert';
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../utils/bottom_navigation.dart';
-import '../screens/otp_screen_after_login.dart';
-import '../screens/screen_signup.dart';
+import '../screens/LoginScreen.dart';
 import '../utils/HttpResponse.dart';
 import '../utils/colors.dart';
 import '../widgets/dialogs.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'Register_otp_screen.dart';
 
-class Screen extends StatefulWidget {
-  _ScreenState createState() => _ScreenState();
+class ScreenSignup extends StatefulWidget {
+  _ScreenSignupState createState() => _ScreenSignupState();
 }
 
-class _ScreenState extends State<Screen> {
+class _ScreenSignupState extends State<ScreenSignup> {
   TextEditingController _controller = new TextEditingController();
-
-  check() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    print("user token ========  ${prefs.getString("token")}");
-    var userToken = prefs.getString("token");
-    if (userToken != null) {
-      Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (BuildContext context) => BottomBarExample()));
-    }
-  }
-
-  @override
-  void initState() {
-    
-    super.initState();
-    check();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +27,6 @@ class _ScreenState extends State<Screen> {
           child: Stack(
             fit: StackFit.expand,
             children: <Widget>[
-              // Bidar Image backgrounf Blur
               Image.asset('assets/bidar.jpg',
                   fit: BoxFit.cover,
                   height: double.infinity,
@@ -61,7 +42,9 @@ class _ScreenState extends State<Screen> {
                   ),
                 ),
               ),
-              // Black backGround Color and some Title
+
+// black bacgorund and text
+
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
@@ -84,11 +67,10 @@ class _ScreenState extends State<Screen> {
                         children: <Widget>[
                           // CircularProgressIndicator(),
                           Container(
-                            height: 30,
+                            height: 50,
                           ),
                           Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceAround,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: <Widget>[
                                 Spacer(),
                                 Text(
@@ -103,30 +85,31 @@ class _ScreenState extends State<Screen> {
                           Container(
                             height: 20,
                           ),
-                          Column(
-                            children: [
-                              Text("Powered by",
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      color: button_text_color)),
-
-                              Image.asset(
-                                "assets/footer.png",
-                                fit: BoxFit.cover,
-                                height: 50,
-                                width: 190.0,
-                                color: Colors.white,
-                              ),
-                            ],
-                          )
+                          // Column(
+                          //   children: [
+                          //     Text("Powered by",
+                          //         style: TextStyle(
+                          //             fontSize: 20,
+                          //             fontWeight: FontWeight.bold,
+                          //             color: button_text_color)),
+                          //     Image.asset(
+                          //       "assets/footer.png",
+                          //       fit: BoxFit.cover,
+                          //       height: 50,
+                          //       width: 190.0,
+                          //       color: Colors.white,
+                          //     ),
+                          //   ],
+                          // )
                         ],
                       ),
                     ),
                   ),
                 ],
               ),
-              // Tangent Logo and sign up componenet.
+
+// signup and footer
+
               Column(
                 children: [
                   SizedBox(height: 40),
@@ -134,10 +117,11 @@ class _ScreenState extends State<Screen> {
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Text("Namma",
+                          Text("Our",
                               style: TextStyle(
-                                  fontSize: 40, color: Colors.orange)),
-                          Text("Badavane",
+                                  fontSize: 40, color: Colors.orange,fontWeight: FontWeight.bold)),
+                          SizedBox(width: MediaQuery.of(context).size.width/30,),
+                          Text("Mission",
                               style: TextStyle(
                                   fontSize: 40,
                                   color: Colors.white,
@@ -147,6 +131,8 @@ class _ScreenState extends State<Screen> {
                   SizedBox(
                     height: MediaQuery.of(context).size.height / 15,
                   ),
+
+                  // SizedBox(height: MediaQuery.of(context).size.height/5.4,),
                   Container(
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.white),
@@ -219,14 +205,17 @@ class _ScreenState extends State<Screen> {
                     borderRadius: BorderRadius.circular(20.0),
                     child: InkWell(
                       onTap: () async {
-                        print(_controller.text);
+                        // Navigator.push(
+                        //               context,
+                        //               CupertinoPageRoute(
+                        //                   builder: (context) => OTPScreen(
+                        //                       contact: _controller.text)));
+
                         if (_controller.text.length == 10)
                           try {
-                            Map data = {
-                              "contact": _controller.text.toString()
-                            };
+                            Map data = {"contact": _controller.text.toString()};
                             var resp = await HttpResponse.postResponse(
-                                service: '/users/send-otp', data: data);
+                                service: '/users/signup', data: data);
                             print("\n\n$resp\n\n");
                             print(data);
                             var response = jsonDecode(resp);
@@ -237,7 +226,7 @@ class _ScreenState extends State<Screen> {
                                   builder: (BuildContext context) {
                                     return oneButtonDialog(
                                         context: context,
-                                        title: "Contact Not Registered",
+                                        title: "Already registered",
                                         content: response['error'],
                                         actionTitle: "OK");
                                   });
@@ -249,20 +238,17 @@ class _ScreenState extends State<Screen> {
                               Navigator.push(
                                   context,
                                   CupertinoPageRoute(
-                                      builder: (context) =>
-                                          OTPScreenAfterLogin(
-                                              contact: _controller.text)));
+                                      builder: (context) => OTPScreen(
+                                          contact: _controller.text)));
                             }
                           } catch (e) {
-                            print("Error : $e");
                             showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
                                   return oneButtonDialog(
                                       context: context,
                                       title: "Network Error",
-                                      content:
-                                          "Check Your Internet Connection !",
+                                      content: "Check Your Internet Connection",
                                       actionTitle: "OK");
                                 });
                             // print('Invalid Number');
@@ -283,8 +269,8 @@ class _ScreenState extends State<Screen> {
                       child: Container(
                         // width: width * 0.8,
                         margin: EdgeInsets.symmetric(horizontal: 80.0),
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 25, vertical: 10),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 25, vertical: 10),
                         decoration: BoxDecoration(
                             color: Color.fromRGBO(67, 88, 185, 1.0),
                             borderRadius: BorderRadius.circular(20.0)),
@@ -294,7 +280,7 @@ class _ScreenState extends State<Screen> {
                             SizedBox(width: 15),
                             Expanded(
                               child: Text(
-                                'Sign In',
+                                'Sign Up',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     color: button_text_color,
@@ -318,24 +304,21 @@ class _ScreenState extends State<Screen> {
                   GestureDetector(
                     onTap: () {
                       Navigator.pop(context);
-                      Navigator.push(
-                          context,
-                          CupertinoPageRoute(
-                              builder: (context) => ScreenSignup()));
+                      Navigator.push(context,
+                          CupertinoPageRoute(builder: (context) => Screen()));
                       // Navigator.push(
                       //     context,
                       //     CupertinoPageRoute(
                       //         builder: (context) => BottomBarExample()));
                     },
                     child: Text(
-                      "Not Registered ? Sign Up ",
+                      "Already Registered ? Sign in ",
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20.0,
                           color: Colors.white),
                     ),
                   ),
-
                 ],
               ),
             ],

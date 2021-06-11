@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './screens/screen.dart';
+import './screens/LoginScreen.dart';
 import './utils/colors.dart';
 
 void main() {
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Namma Badavane',
+      title: 'Our Mission',
       theme: ThemeData(
         primarySwatch: primary_color,
         visualDensity: VisualDensity.adaptivePlatformDensity,
