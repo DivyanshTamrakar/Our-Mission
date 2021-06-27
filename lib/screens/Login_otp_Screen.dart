@@ -58,9 +58,6 @@ class _OTPScreenAfterLoginState extends State<OTPScreenAfterLogin> {
                         height: 1,
                       ),
                     ),
-
-
-
                     PinCodeTextField(
                       appContext: context,
                       length: 6,

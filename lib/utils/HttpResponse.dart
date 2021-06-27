@@ -29,9 +29,8 @@ class HttpResponse{
     print('Url==$url');
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String accessToken = prefs.getString("token");
-    print("DIvyansh");
+    print("Divyansh");
     print(accessToken);
-    // http.Response response= await http.get(url,headers: {"Authorization": token});
     http.Response response= await http.get(url,headers: {"Authorization": accessToken});
     if (response.statusCode < 200 || response.statusCode > 400 || json == null) {
       print("Error occur===============================");

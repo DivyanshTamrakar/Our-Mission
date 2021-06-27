@@ -596,19 +596,6 @@ class _ComplaintFormScreenState extends State<ComplaintFormScreen> {
                                   ? await getImageFileFromAssets(
                                       'placeholder_image.png')
                                   : image;
-
-                              print("img === $img");
-                              print("image === $image");
-                              print("title === ${complaint.title}");
-                              print("description === ${complaint.description}");
-                              print("eamil === ${complaint.email}");
-                              print("contact === ${complaint.contact}");
-                              print(
-                                  "department === ${widget.departments[widget.departmentNumber].title}");
-                              print(
-                                  "subdepartment === $_selectedSubDepartment");
-                              print("file === $image");
-                              print("Token ==== ${prefs.getString("token")}");
                               String filename = img.path.split('/').last;
                               var formdata = new FormData.fromMap({
                                 "title": complaint.title,

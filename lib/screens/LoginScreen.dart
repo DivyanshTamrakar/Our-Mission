@@ -45,14 +45,12 @@ class _ScreenState extends State<Screen> {
           child: Stack(
             fit: StackFit.expand,
             children: <Widget>[
-              // Bidar Image backgrounf Blur
               Image.asset('assets/bidar.jpg',
                   fit: BoxFit.cover,
                   height: double.infinity,
                   width: double.infinity,
                   alignment: Alignment.center),
               ClipRRect(
-                // Clip it cleanly.
                 child: BackdropFilter(
                   filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
                   child: Container(
@@ -61,7 +59,6 @@ class _ScreenState extends State<Screen> {
                   ),
                 ),
               ),
-              // Black backGround Color and some Title
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
@@ -103,30 +100,13 @@ class _ScreenState extends State<Screen> {
                           Container(
                             height: 20,
                           ),
-                          // Column(
-                          //   children: [
-                          //     Text("Powered by",
-                          //         style: TextStyle(
-                          //             fontSize: 20,
-                          //             fontWeight: FontWeight.bold,
-                          //             color: button_text_color)),
-                          //
-                          //     Image.asset(
-                          //       "assets/footer.png",
-                          //       fit: BoxFit.cover,
-                          //       height: 50,
-                          //       width: 190.0,
-                          //       color: Colors.white,
-                          //     ),
-                          //   ],
-                          // )
+                         
                         ],
                       ),
                     ),
                   ),
                 ],
               ),
-              // Tangent Logo and sign up componenet.
               Column(
                 children: [
                   SizedBox(height: 40),
@@ -151,7 +131,6 @@ class _ScreenState extends State<Screen> {
                   SizedBox(
                     height: MediaQuery.of(context).size.height / 15,
                   ),
-
                   Container(
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.white),
@@ -246,7 +225,6 @@ class _ScreenState extends State<Screen> {
                                         content: response['error'],
                                         actionTitle: "OK");
                                   });
-                              //print('Invalid Number');
                             } else {
                               SharedPreferences prefs =
                                   await SharedPreferences.getInstance();
@@ -265,12 +243,10 @@ class _ScreenState extends State<Screen> {
                                 builder: (BuildContext context) {
                                   return oneButtonDialog(
                                       context: context,
-                                      title: "Network Error",
-                                      content:
-                                          "Check Your Internet Connection !",
+                                      title: "Error",
+                                      content: "$e",
                                       actionTitle: "OK");
                                 });
-                            // print('Invalid Number');
                           }
                         else
                           showDialog(
@@ -283,7 +259,7 @@ class _ScreenState extends State<Screen> {
                                         "Please enter a valid 10 digit mobile number",
                                     actionTitle: "OK");
                               });
-                        print('Invalid Number');
+
                       },
                       child: Container(
                         // width: width * 0.8,
@@ -327,10 +303,6 @@ class _ScreenState extends State<Screen> {
                           context,
                           CupertinoPageRoute(
                               builder: (context) => ScreenSignup()));
-                      // Navigator.push(
-                      //     context,
-                      //     CupertinoPageRoute(
-                      //         builder: (context) => BottomBarExample()));
                     },
                     child: Text(
                       "Not Registered ? Sign Up ",

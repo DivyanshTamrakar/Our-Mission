@@ -3,7 +3,6 @@ import './screens/homescreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 const String BASE_URL = "https://namma-badavane.herokuapp.com";// heroku live
 
-
 Future<void> statusColor() async {
    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     systemNavigationBarColor: HomeScreen.color, // navigation bar color
